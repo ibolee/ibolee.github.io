@@ -152,269 +152,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-e9-9b-86-e7-ba-bf-e5-99-a8-ef-bc-8c-e4-ba-a4-e6-8d-a2-e6-9c-ba-ef-bc-8c-e8-b7-af-e7-94-b1-e5-99-a8-e4-b9-8b-e9-97-b4-e7-9a-84-e8-81-94-e7-b3-bb" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2010/10/21/e9-9b-86-e7-ba-bf-e5-99-a8-ef-bc-8c-e4-ba-a4-e6-8d-a2-e6-9c-ba-ef-bc-8c-e8-b7-af-e7-94-b1-e5-99-a8-e4-b9-8b-e9-97-b4-e7-9a-84-e8-81-94-e7-b3-bb/">集线器，交换机，路由器之间的联系</a>
-    </h1>
-  
-
-        
-        <a href="/2010/10/21/e9-9b-86-e7-ba-bf-e5-99-a8-ef-bc-8c-e4-ba-a4-e6-8d-a2-e6-9c-ba-ef-bc-8c-e8-b7-af-e7-94-b1-e5-99-a8-e4-b9-8b-e9-97-b4-e7-9a-84-e8-81-94-e7-b3-bb/" class="archive-article-date">
-  	<time datetime="2010-10-21T00:07:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2010-10-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>首先说HUB,也就是集线器。它的作用可以简单的理解为将一些机器连接起来组成一个局域网。而交换机（又名交换式集线器）作用与集线器大体相同。但是两者在性能上有区别：集线器采用的式共享带宽的工作方式，而交换机是独享带宽。这样在机器很多或数据量很大时，两者将会有比较明显的。而路由器与以上两者有明显区别，它的作用在于连接不同的网段并且找到网络中数据传输最合适的路径 ，可以说一般情况下个人用户需求不大。路由器是产生于交换机之后，就像交换机产生于集线器之后，所以路由器与交换机也有一定联系，并不是完全独立的两种设备。路由器主要克服了交换机不能路由转发数据包的不足。 总的来说，路由器与交换机的主要区别体现在以下几个方面： （1）工作层次不同 最初的的交换机是工作在OSI／RM开放体系结构的数据链路层，也就是第二层，而路由器一开始就设计工作在OSI模型的网络层。由于交换机工作在OSI的第二层（数据链路层），所以它的工作原理比较简单，而路由器工作在OSI的第三层（网络层），可以得到更多的协议信息，路由器可以做出更加智能的转发决策。 （2）数据转发所依据的对象不同 交换机是利用物理地址或者说MAC地址来确定转发数据的目的地址。而路由器则是利用不同网络的ID号（即IP地址）来确定数据转发的地址。IP地址是在软件中实现的，描述的是设备所在的网络，有时这些第三层的地址也称为协议地址或者网络地址。MAC地址通常是硬件自带的，由网卡生产商来分配的，而且已经固化到了网卡中去，一般来说是不可更改的。而IP地址则通常由网络管理员或系统自动分配。 （3）传统的交换机只能分割冲突域，不能分割广播域；而路由器可以分割广播域 由交换机连接的网段仍属于同一个广播域，广播数据包会在交换机连接的所有网段上传播，在某些情况下会导致通信拥挤和安全漏洞。连接到路由器上的网段会被分配成不同的广播域，广播数据不会穿过路由器。虽然第三层以上交换机具有VLAN功能，也可以分割广播域，但是各子广播域之间是不能通信交流的，它们之间的交流仍然需要路由器。 （4）路由器提供了防火墙的服务 路由器仅仅转发特定地址的数据包，不传送不支持路由协议的数据包传送和未知目标网络数据包的传送，从而可以防止广播风暴。 交换机一般用于LAN-WAN的连接，交换机归于网桥，是数据链路层的设备，有些交换机也可实现第三层的交换。 路由器用于WAN-WAN之间的连接，可以解决异性网络之间转发分组，作用于网络层。他们只是从一条线路上接受输入分组，然后向另一条线路转发。这两条线路可能分属于不同的网络，并采用不同协议。相比较而言，路由器的功能较交换机要强大，但速度相对也慢，价格昂贵，第三层交换机既有交换机线速转发报文能力，又有路由器良好的控制功能，因此得以广泛应用。 目前个人比较多宽带接入方式就是ADSL，因此笔者就ADSL的接入来简单的说明一下。现在购买的ADSL猫大多具有路由功能（很多的时候厂家在出厂时将路由功能屏蔽了，因为电信安装时大多是不启用路由功能的，启用DHCP。打开ADSL的路由功能），如果个人上网或少数几台通过ADSL本身就可以了，如果电脑比较多你只需要再购买一个或多个集线器或者交换机。考虑到如今集线器与交换机的 价格相差十分小，不是特殊的原因，请购买一个交换机。不必去追求高价，因为如今产品同质化十分严重，我最便宜的交换机现在没有任 何问题。给你一个参考报价，建议你购买一个8口的，以满足扩充需求，一般的价格100元左右。接上交换机，所有电脑再接到交换机上就行了。余下所要做的事情就只有把各个机器的网线插入交换机的接口，将猫的网线插入uplink接口。然后设置路由功能，DHCP等， 就可以共享上网了。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">电脑软硬件</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT相关//" class="article-tag-list-link color5">IT相关</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2010/10/21/e9-9b-86-e7-ba-bf-e5-99-a8-ef-bc-8c-e4-ba-a4-e6-8d-a2-e6-9c-ba-ef-bc-8c-e8-b7-af-e7-94-b1-e5-99-a8-e4-b9-8b-e9-97-b4-e7-9a-84-e8-81-94-e7-b3-bb/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-e5-b1-80-e5-9f-9f-e7-bd-91-e5-86-85ping-e4-b8-8d-e9-80-9a-ef-bc-8c-e6-a3-80-e6-9f-a5-e4-bb-a5-e4-b8-8b-e5-87-a0-e9-a1-b9" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2010/10/20/e5-b1-80-e5-9f-9f-e7-bd-91-e5-86-85ping-e4-b8-8d-e9-80-9a-ef-bc-8c-e6-a3-80-e6-9f-a5-e4-bb-a5-e4-b8-8b-e5-87-a0-e9-a1-b9/">局域网内ping不通，检查以下几项</a>
-    </h1>
-  
-
-        
-        <a href="/2010/10/20/e5-b1-80-e5-9f-9f-e7-bd-91-e5-86-85ping-e4-b8-8d-e9-80-9a-ef-bc-8c-e6-a3-80-e6-9f-a5-e4-bb-a5-e4-b8-8b-e5-87-a0-e9-a1-b9/" class="archive-article-date">
-  	<time datetime="2010-10-20T12:44:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2010-10-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1.检查硬件连接 2.检查TCP/IP协议 3.检查防火墙等软件设置 4.如果设置了VLAN，看是否是同一VLAN内. 5.一、用高级设置法预防Ping 　　默认情况下，所有Internet控制消息协议(ICMP)选项均被禁用。如果启用ICMP选项，您的网络将在 Internet 中是可视的，因而易于受到攻击。 　　如果要启用ICMP，必须以管理员或Administrators 组成员身份登录计算机，右击“网上邻居”，在弹出的快捷菜单中选择“属性”即打开了“网络连接”，选定已启用Internet连接防火墙的连接，打开其属性窗口，并切换到“高级”选项页，点击下方的“设置”，这样就出现了“高级设置”对话窗口，在“ICMP”选项卡上，勾选希望您的计算机响应的请求信息类型，旁边的复选框即表启用此类型请求，如要禁用请清除相应请求信息类型即可。 　　二、用网络防火墙阻隔Ping 　　使用防火墙来阻隔Ping是最简单有效的方法，现在基本上所有的防火墙在默认情况下都启用了ICMP过滤的功能。在此，以金山网镖2003和天网防火墙2.50版为蓝本来说明。 　　对于使用金山网镖2003的网友，请用鼠标右击系统托盘中的金山网镖2003图标，在弹出的快捷菜单中选择“实用工具”中的“自定义IP规则编辑器”，在出现的窗口中选中“防御ICMP类型攻击”规则，消除“允许别人用ping命令探测本机”规则，保存应用后就发挥效应。 　　如果您用的是天网防火墙，在其主界面点击“自定义IP规则”，然后不勾选“防止别人用ping命令探测”规则，勾选“防御ICMP攻击”规则，然后点击“保存/应用”使IP规则生效。 　　三、启用IP安全策略防Ping 　　IP安全机制（IP Security）即IPSec 策略，用来配置 IPSec 安全服务。这些策略可为多数现有网络中的多数通信类型提供各种级别的保护。您可配置 IPSec 策略以满足计算机、应用程序、组织单位、域、站点或全局企业的安全需要。可使用 Windows XP 中提供的“IP 安全策略”管理单元来为 Active Directory 中的计算机（对于域成员）或本地计算机（对于不属于域的计算机）定义 IPSec 策略。 　　在此以WINDOWS XP为例，通过“控制面板”—“管理工具”来打开“本地安全策略”，选择IP安全策略，在这里，我们可以定义自己的IP安全策略。一个IP安全过滤器由两个部分组成：过滤策略和过滤操作。要新建IP安全过滤器，必须新建自己的过滤策略和过滤操作，右击窗口左侧的“IP安全策略，在本地机器”，在弹出的快捷菜单中选择“创建IP安全策略”，单击“下一步”，然后输入策略名称和策略描述。单击“下一步”，选中“激活默认响应规则”复选项，单击“下一步”。开始设置响应规则身份验证方式，选中“此字符串用来保护密钥交换(预共享密钥)”选项，然后随便输入一些字符（后面还会用到这些字符的），单击“下一步”，就会提示已完成IP安全策略，确认选中了“编辑属性”复选框，单击“完成”按钮，会打开其属性对话框。 　　接下来就要进行此新建安全策略的配置。在“Goodbye Ping 属性”对话窗口的“规则”选项页中单击“添加”按钮，并在打开安全规则向导中单击“下一步”进行隧道终结设置，在这里选择“此规则不指定隧道”。单击“下一步”，并选择“所有网络连接”以保证所有的计算机都Ping不通。单击“下一步”，设置身份验证方式，与上面一样选择第三个选项“此字符串用来保护密钥交换（预共享密钥）”并填入与刚才上面相同的内容。单击“下一步”即打开“IP筛选器列表”窗口，在“IP筛选器列表”中选择“新IP筛选器列表”，单击右侧的“编辑”，在出现的窗口中点击“添加”，单击“下一步”，设置“源地址”为“我的IP地址”，单击“下一步”，设置“目标地址”为“任何IP地址”，单击“下一步”，选择协议类型为ICMP，单击“完成”后再点“确定”返回如图9的窗口，单击“下一步”，选择筛选器操作为“要求安全”选项，然后依次点击“下一步”、“完成”、“确定”、“关闭”按钮保存相关的设置返回管理控制台。 　最后在“本地安全设置”中右击配置好的“Goodbye Ping”策略，在弹出的快捷菜单中选择“指派”命令使配置生效。 　　经过上面的设置，当其他计算机再Ping该计算机时，就不再Ping通了。但如果自己Ping本地计算机，仍可Ping通。在Windows 2000中操作基本相同。 　　四、修改TTL值防Ping 　　许多入侵者喜欢用TTL值来判断操作系统，他们首先会Ping一下你的机子，如看到TTL值为128就认为你的系统为Windows NT/2000，如果TTL值为32则认为目标主机操作系统为Windows 95/98，如果为TTL值为255/64就认为是UNIX/Linux操作系统。既然入侵者相信TTL值所反应出来的结果，那么我们不妨修改TTL值来欺骗入侵者，达到保护系统的目的。 方法如下： 　　打开Windows自带的“记事本”程序，编写如下所示的批处理命令： 　　@echo REGEDIT4&gt;&gt;ChangeTTL.reg 　　@echo.&gt;&gt;ChangeTTL.reg 　　@echo [HKEY_LOCAL_MACHINESystemCurrentControlSetServicesTcpipParamete rs]&gt;&gt;ChangeTTL.reg 　　@echo “DefaultTTL”=dword:000000ff”&gt;&gt;ChangeTTL.reg 　　@REGEDIT /S /C ChangeTTL.reg 　　另存为以.bat为扩展名的批处理文件，点击这个文件，你的操作系统的缺省TTL值就会被修改为ff，即十进制的255，即把你的操作系统人为地改为UNIX系统了！ 　　“DefaultTTL”=dword:000000ff”是用来设置系统缺省TTL值的，如果你想将自己的操作系统的TTL值改为其它操作系统的ICMP回显应答值，请改变”DefaultTTL”的键值，要注意它的键值为16进制。 　　如何禁止别人ping自己的主机（2000自带） 　　我的电脑-控制面板-管理工具-本地安全策略-ip安全策略 补充说明：这是2000给我们的配置ip管理的工具，我这里只说一下如何禁止别人ping我的主机。 　　共有四个步骤： 　　1。建立禁ping 规则 　　2。建立禁止/允许规则 　　3。把这两个规则联系在一起 　　4。指派 　　详细： 　　1。右击ip安全策略-管理ip筛选器表和筛选器操作-ip筛选器列表-添加：名称：ping;描述：ping;(勾选“使用添加向导”),—添加-下一步：指定源/目的ip ,协议类型(icmp),下一步直至完成，关闭此对话框。 　　2。管理ip筛选器表和筛选器操作-管理筛选器操作-添加(勾选“使用添加向导”)-下一步：名称：refuse;描述:refuse–下一步：阻止-下一步直至完成。 　　3。右击ip安全策略-创建ip安全策略-下一步：名称：禁止ping；–下一步：取消激活默认响应规则-下一步：选中选中“编辑属性“-完成。然后再“禁止ping属性“上-添加(勾选“使用添加向导”)-下一步直至“身份验证方法”；选第三项，输入共享字串-下一步：在ip筛选器列表里选“ping”–下一步：选“refuse”-下一步到完成。 　　这是你在“本地安全设置“右侧会看到“禁止ping“这条规则，但是现在他还没有起作用。 　　4。右击“禁止ping“–指派。 　　这回一条禁止别人ping自己的机器的ip策略完成了。 　　赶快找个机器试试，自己的机器不行。会提示：请求超时（timeout). 　　以上只是一条小得的ip过滤。你可以自己制作其他的ip策略。 我用RH9配置了一台代理服务器,服务器安装了3块网卡,分别是: ETH0 接ISP1 动态IP ETH1 接ISP2 固定IP ETH2 连接内网 服务器的默认网关是ETH0的网关。 现在的问题是，用服务器PING ETH1的网关可以ping通，但从外网就ping不到ETH1的IP，起先以为网卡的问题并将ETH1和ETH2对调，可还是不通，于是把ETH1的线路接在别的电脑上从外网就能ping到了这说明线路是没有问题的，为什么接在服务器上就PING不到呢？不知道服务器上是否还少些什么配置，请大家帮忙看看，谢谢！ 当你从外网ping eth1的ＩＰ时，因为服务器的默认网关是eth0的网关，所以服务器把icmp响应通过eth0发送出去。这可能是ping不通的原因，你可以把默认网关设置成eth1的网关试试。还有是不是你的服务器禁ping？ 服务器没有禁PING啊,返回给默认网关了吗? 可不可以加条路由让他不从默认网关返回,而从ETH1的网关返回呢? 应该是从默认网关返回的。使用tcpdump抓一下包就知道了。　你想要的功能是可以实现的，即从哪来的包从哪回去。参考一下linux高级路由。 　 如何禁止PING我的WINDOWS服务器 在黑客入侵寻找对象时，大多都使用Ping命令来检测主机，如果Ping不通，水平差的“黑客”大多就会知难而退。事实上，完全可以造成一种假相，即使我们在线，但对方Ping时也不能相通，这样就能躲避很多攻击。 　　第一步:添加独立管理单元 　　开始-运行，输入:mmc，启动打开“控制台”窗口。再点选“控制台”菜单下的“添加/删除管理单元”，单击“添加”按钮，在弹出的窗口中选择“IP安全策略管理”项，单击“添加”按钮。在打开窗口中选择管理对象为“本地计算机”，单击“完成”按钮，同时关闭“添加/删除管理单元”窗口，返回主控台。 　　第二步:创建IP安全策略 　　右击刚刚添加的“IP安全策略，在本地机器”（图二），选择“创建IP安全策略”，单击“下一步”，然后输入一个策略描述，如“noPing”（图三）。单击“下一步”，选中“激活默认响应规则”复选项，单击“下一步”。开始设置身份验证方式，选中“此字符串用来保护密钥交换(预共享密钥)”选项，然后随便输入一些字符(下面还会用到这些字符)（图四）。单击“下一步”，就会提示已完成IP安全策略，确认选中了“编辑属性”复选框，单击“完成”按钮，会打开其属性对话框。 　　第三步:配置安全策略 　　单击“添加”按钮，并在打开安全规则向导中单击“下一步”进行隧道终结设置，在这里选择“此规则不指定隧道”。（图六）单击“下一步”，并选择“所有网络连接”以保证所有的计算机都Ping不通。单击“下一步”，设置身份验证方式，与上面一样选择第三个选项“此字符串用来保护密钥交换(预共享密钥)”并填入与刚才相同的内容。单击“下一步”，在打开窗口中单击“添加”按钮，打开“IP筛选器列表”窗口。（图七）单击“添加”，单击“下一步”，设置源地址为“我的IP地址”，单击“下一步”，设置目标地址为“任何IP地址”，单击“下一步”，选择协议为ICMP，现在就可依次单击“完成”和“关闭”按钮返回。此时，可以在IP筛选器列表中看到刚刚创建的筛选器，将其选中之后单击“下一步”，选择筛选器操作为“要求安全设置”选项（图八），然后依次点击“完成”、“关闭”按钮，保存相关的设置返回管理控制台。 　　第四步:指派安全策略 　　最后只需在“控制台根节点”中右击配置好的“禁止Ping”策略，选择“指派”命令使配置生效（图九）。经过上面的设置，当其他计算机再Ping该计算机时，就不再相通了。但如果自己Ping本地计算机，仍可相通。此法对于Windows 2000/XP均有效。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">电脑软硬件</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT相关//" class="article-tag-list-link color5">IT相关</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2010/10/20/e5-b1-80-e5-9f-9f-e7-bd-91-e5-86-85ping-e4-b8-8d-e9-80-9a-ef-bc-8c-e6-a3-80-e6-9f-a5-e4-bb-a5-e4-b8-8b-e5-87-a0-e9-a1-b9/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-e7-a0-b4-e8-b6-8a-e7-9a-84-ef-bc-9a-e9-9d-a2-e8-af-95-e5-bb-ba-e8-ae-ae" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2010/10/19/e7-a0-b4-e8-b6-8a-e7-9a-84-ef-bc-9a-e9-9d-a2-e8-af-95-e5-bb-ba-e8-ae-ae/">破越的：面试建议</a>
-    </h1>
-  
-
-        
-        <a href="/2010/10/19/e7-a0-b4-e8-b6-8a-e7-9a-84-ef-bc-9a-e9-9d-a2-e8-af-95-e5-bb-ba-e8-ae-ae/" class="archive-article-date">
-  	<time datetime="2010-10-19T01:50:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2010-10-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>黄金法则：80/20—你要承担起80%的谈话而面试官只会说20%。 　　白金法则：你必须试着控制面试的节奏和话题。 　　钻石法则：对于没有把握的问题，抛回给面试官。 　　1．在一分钟内介绍一下你自己 　　这似乎是必答题。不要以为这很容易。如果你用一分钟来重复你的简历，恭喜你，你的印象加分没有了！建议你最多用二十秒钟介绍自己的姓名、学校、专业。然后话锋一转，引出自己的优势或强项。一定要在最短时间内激发起面试官对你的好感，或者至少是兴趣。 　　成功的模式可以是：我叫XXX，英文名字XXX，XX省XX市人，今年6月将从XX学校XX专业本科（专科）毕业。除了简历上您看到的介绍，我愿意特别说一下我在XXX方面的特长/我最大的特点是……（给出事例）。正是基于对自己这方面的自信，使我有勇气来应聘贵公司的XXX这一职位。（看表）一分钟到了，希望我没有超时。（很阳光的微笑） 　　如果面试官不是EQ太低，你的最后一句话应该会使他放松和微笑。资历嫩一点的还会接着问：“为什么你会这么认为呢？”如果他真的这么问你，Bingo!你完全有机会操纵这次面试！ 　　2．应届生经常会被问到的一个问题是：你为什么会选择你目前学习的专业呢？千万当心，这个问题的目的是考察你的 DecisionQuality这一项胜任力，所以不要简单的说“感兴趣”或者“就业前景乐观”等。给大家一个成功的范例（同样适用于诸如‘您所做过的一个成功/最大的决定是什么”）： 　　问：张先生，您为什么会选择财务专业呢？ 　　答：的确，财务已经连续多年成为高校热门专业，这造成了就业时无可避免的激烈竞争。可当初我选择财务专业时并不是单纯因为它的热门程度。我早就把就业目标锁定在苏州工业园区的外资企业。根据我高三时搜集到的统计资料，园区当时有外企XXX家，而且每年以XXX%的速度在增加。以每个公司财务部至少5个人计算（总账，应收应付，税务，出纳再加上一个经理），加上园区的平均离职率是15%，则在我毕业时，可以有XXX个空缺。我毕业那年应该全国有 XX相关专业的毕业生。其中可能有10%会瞄准苏州，而我填报的苏州大学在当地口碑尚可，属于中等偏上。那么，有1/2的对手能被我淘汰。再加上我就在苏州本地学习，四年中可以更早的寻求机会，所以，我很有信心的选择了这个专业。 　　其实，没有哪个面试官会相信你真的作过如此缜密的调查分析，但你已经展示了你做决策时的思路，所以可以加分。 　　记住：所有的回答要符合你专业的特点。不要说得太到位，可以自圆其说就行了，不然，他们会觉得你要么太虚伪，要么太狂妄。还有，应该表示对自己的专业的确感兴趣，或者增加点戏剧效果：我本来理解的财务管理就是管账，所以开始的时候还真后悔了一阵，直到大三时开始了在企业的实践，才有了改观，并真正喜欢上了我的专业。这样显得真实可信，更重要的是，很自然的由你引导到准备好的问题：实习的收获。 　　3．为了考察您LearningontheFly这一条胜任力，通常我们会问您在实习期间的收获。此时，不要夸大自己的成绩，谦虚一点。还有，不妨说一下自己的失误（不用怕，毕竟你是在实习）。记住：详细说明当时的情况（Situation），你要达到的目的（Task），你采取了哪些步骤（Actions），事情的结果（Result），还有你得到的经验教训(Lessonlearned)以及后来怎样运用到工作中避免犯类似的错误。最后做出总结：原来书本上的知识要能够在工作中熟练运用，这期间还有很长的一段路要走。还可以说：回到学校后，我对自己的实习经历作了一番总结，发现自己在 XXX方面还需要加强。所以，我很注意利用大学的最后一个学期来弥补这一不足。现在，我对自己很有信心，如果时间能够倒流，我相信我能做到更好。 　　4．你有过和别人合作的经历吗？（千万要回答“有”）那么，在这过程中，你是如何处理意见分歧的呢？现在是考察你的 ConflictsManagement。现在的绝大部分企业都不欣赏没有原则的老好人。所以，你要把自己包装得强势一些。 　　我本人比较满意的回答： 　　每个人在团队中都应该可以自由坦诚地发表意见，我会非常认真的聆听，分析；但对于自己的意见我不会没有原则的轻易放弃。民主过后还需要集中。我是学校英语俱乐部的主席，在组织校际年度联欢时，有两个干事的意见和我不一致。（停顿一下，让面试官记住你的这个闪光点）我和他们开了会。大家都阐述了各自的理由。很遗憾，我仍然没有说服这两人。在这种情况下，我感谢他们的积极参与，但表示仍然会采用我的方案。我的理念是：Meeting不等于 Voting，完全不需要少数服从多数；我是负责人，我相信自己有能力采取最佳方案；假如失败了，我也会承担主要责任。而如果我是团队的普通一员，我会保留自己的意见，但还是认真执行管理者已经做出的决策。当然，学校毕竟不同于公司，情况会更加复杂，但我坚信，只要遵循“对事不对人”的原则，任何问题都可以得到解决。 　　在回答时，一定要眼睛看着面试官，微笑，以冲淡你的咄咄逼人。 　　如果你实在没有把握，可以把问题抛还给面试官，试举一例（还是同样的问题）： 　　问：你是如何处理意见分歧的呢？ 　　答：您问的恰好也是我最困惑的一点，而学校里老师从来不给我们这样的指点。一方面，我不想做没有原则的老好人，另一方面，大家都是朝夕相处的同学，我不想让他们觉得我盛气凌人。我当时是这样做的：……可一直到现在，我都不知道是否作的正确，也许我可以从您那里得到一些指教，您说我当时这么做有问题吗？ 　　如果对方马上对你言传身教，那他铁定是菜鸟，你不用紧张了，因为，合理的反应应该是不置可否的说：其实这个问题永远不会有标准答案。 　　5．有人问起多个问题同时出现时，应该如何解决。这就是PrioritySetting的胜任力。应对思路是把所有要处理的事情按轻重缓急分成4个象限：重要而且紧急；重要但不紧急；不重要但紧急；不重要也不紧急。但记住，不要直接叙述这个思路，这会让人觉得你不像应届生。还是通过举例说明比较好。我面试过的一个比较好的例子：我在大三时正好要复习准备英语6级考试，这时有机会可以去一家企业做兼职部门助理，但需要每周花三个半天。同时，每月一次的英语沙龙活动要组织安排，还要(不好意思地说)抽空陪陪女朋友（最后一点很重要，可以活跃气氛，还为下面制造了一个不重要不紧急的事例）。我当时利用没有课程的下午去公司工作，一般要到5点半回学校。在公车上的30分钟正好用来总结当天在公司的收获和需要了解的知识。在食堂与女朋友吃晚饭，六点半去教室自习，到十点回宿舍。英语沙龙的工作委派给大二的两个干事，他们每天会到自习教室找我谈10分钟，我会给他们一些建议。这样，我没有花太多的精力在沙龙活动上，可对整个过程都有了解和掌控。后来6级考试顺利通过，那家公司对我的工作评价很高，我也学了很多东西；英语沙龙的活动如期举行，我和女朋友也没有疏远。 　　这同时展示了三条胜任力：prioritysetting；delegation和work/lifebalance 　　作为应届生，在面试前，应该了解一下外企的部门架构。以欧美企业为例，一般部门内的职位从低到高依次为：助理（如果是本科生，有时候可以跳过）—专员—资深专员—主管—资深主管—部门副经理/SectionManager—部门经理。一般，主管要求有5年以上的相关工作经验，这是一个分水岭。好，回过来谈谈面试时如何回答关于职业生涯规划问题。其实,这种问题并不需要你回答得无懈可击,这也办不到—你说得通俗了,认为你胸无大志;回答太专业了,又觉得你好高鹜远. 　　回答这类问题，有以下几点可以帮你加分： 　　1．设定一个与自己专业相关的长远目标；这个目标要和公司的工作有关但不要局限在企业内部（因为空间有限，会遭遇许多太过于细节的问题）。例如，HR专业的学生可以说，自己的目标是在35岁之前，也就是10年内，成为一名优秀的人才测评专家或者资深企业人力资源顾问；工程技术专业的学生，可以成为精益生产专家或者黑带大师；IT专业则可以在信息资源整合和ERP解决方案方面成为专家，等等。注意，要着重在你想做些什么，而不是你想爬到什么级别。 　　2．把这个目标分解，以1年，3年，5年，10年的进度，逐步推进。这个就要靠你自己编了，恕在下不能一一举例。记住，每个阶段都要说明你能为公司做出怎样的贡献，你能得到怎样的提高，这与你长远目标的关系在哪里。此时，可以适当联系到刚刚提到的部门架构。 　　3．在此过程中，除了自己想办法不断充电，还要说一下你希望公司可以给你怎样的帮助。比如能够有岗位轮换的机会；或者能够参与各种项目等。不要提希望公司会给你培训，送你出国，给你报销学费，要表现得自己希望在实践中成长。 　　4．强调自己的稳定的心态。你可以这样说：“中国人最讲究‘名正言顺’或者‘不在其位，不谋其职’，所以很多人都认为，只有给了主管的职位，才能运用主管的权利，发挥主管的作用。我的理念和别人不同，我认为恰恰相反，当你展示出了主管该具有的能力，能完成更多的工作，公司自然会考虑对你的职位进行调整。在没有足够的权力时，要使用自己的影响力，所以我鄙视那些成天想着晋升却没有任何建树的人。”这样子，你的自我包装就成功了一大半。 　　5．最后要注意，在回答类似问题时，不要显得太胸有成竹。偶尔显示出涉世未深可以让面试官觉得你还有学生的单纯。“这个问题很大，我在学校里也曾经断断续续的考虑过，现在我简单的讲一下，可能会显得一厢情愿，希望得到您的指教”这样的一个缓冲在许多时候很管用哦。（还记得钻石法则吗？） 　　最后想提一下面试的肢体语言。我面试过的应届生应该没有1000也有800了吧。我发现几乎90%的人在入座后都采用一种非常闭合的姿势，很拘谨。这不能说是坏事，但的确会让面试开始的破冰显得艰难。现在，闭上眼睛，想象一对亲密情侣在烛光下甜蜜交谈，他们的姿势应该是几乎一样的；你们平时和好朋友促膝长谈，相信采用的也是相同的姿势；电视上的国家元首交谈时，绝大多数情况两人的姿势也相同或接近。这是因为：两个人如果在交谈过程中采用同一种姿势，则双方在潜意识中会有彼此认同的感觉。我们把这样的姿势一致称为Rapport。我本人非常注重采用Rapport来增进沟通效果（特别是，如果有人盛气凌人的叉腰对我说话，不论他的职位高低，我也会叉腰和他说话—输人不输阵：）） 　　还有，面试时，手势的运用很重要。特别是回答较大的问题时，用手虚拟的在桌面上列出1，2，3，这样会让人觉得你很有条理，而且不会显得很稚嫩。而说到我会怎样怎样时，把手掌放在心口，真的有强化的效果。 　　一句话：面试时，要表现的有教养，容易</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">干货</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/转载-amp-分享//" class="article-tag-list-link color5">转载&amp;分享</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2010/10/19/e7-a0-b4-e8-b6-8a-e7-9a-84-ef-bc-9a-e9-9d-a2-e8-af-95-e5-bb-ba-e8-ae-ae/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-e7-bd-91-e7-bc-96-e7-9a-8440-e6-9d-a1-e8-a7-84-e7-9f-a9" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -976,9 +713,231 @@
 
 
   
+    <article id="post-e4-ba-ba-e4-bd-93-e7-96-b2-e5-8a-b3-e7-9a-84-e5-a5-a5-e7-a7-98" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2010/08/20/e4-ba-ba-e4-bd-93-e7-96-b2-e5-8a-b3-e7-9a-84-e5-a5-a5-e7-a7-98/">人体疲劳的奥秘</a>
+    </h1>
+  
+
+        
+        <a href="/2010/08/20/e4-ba-ba-e4-bd-93-e7-96-b2-e5-8a-b3-e7-9a-84-e5-a5-a5-e7-a7-98/" class="archive-article-date">
+  	<time datetime="2010-08-20T05:19:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2010-08-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>生理学知识告诉我们，疲劳的产生是有物质基础的，这就是细胞在新陈代谢过程中不断地释放二氧化碳、乳酸等“废物”。当然，人体依靠自身完整的生理机能，又在不断地把这些物质转化或输出体外。当人们劳动的时间过长或劳动强度过大时，代谢物质所产生的数量就会大大超过人的体能转化、输出的数量，以致在体内积累。当这种积累达到一定的数值时，机体就会产生疲劳的感觉，而且疲劳的程度与代谢物质积累的数量成正比。机体休息时，体内蓄积的代谢物质则被逐渐转化并输送出去，当代谢物质的蓄积量降至数值以下时，疲劳也就消失了。 　　人体生理学家发现人的心脏工作量大得惊人，以它每分钟平均收缩70次计算，一天便达100万次，其搏出的血量，足够装满一节油罐。然而心脏却永不疲劳，这是为什么呢？因为心脏在每次收缩做功之后，便立即处于“完全不应期”，挂出了“现在我休息，请勿打扰”的“牌子”，从心电图上可以看出，心脏工作与休息的时间约为3∶5，也就是说在一天中，心脏只工作9小时，而休息的时间长达15小时，而且它是在疲劳之前就休息了。这就是心脏永不疲劳的奥秘所在。 　　科学家发现，一个身强力壮的工人，如果让他一天连续搬生铁8小时，到下班时他已经筋疲力尽，搬动的生铁量为12.5吨。如果让这位工人在每小时中只干活26分钟，然后休息34分钟。结果他在8小时中搬运了生铁47吨，而且毫无疲劳感。实验证实了这样的观点：在疲劳之前休息，就能始终保持充沛的精力和体力，就永远不会疲劳。 【《新民晚报》9月8日】文易</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/其它//" class="article-tag-list-link color3">其它</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2010/08/20/e4-ba-ba-e4-bd-93-e7-96-b2-e5-8a-b3-e7-9a-84-e5-a5-a5-e7-a7-98/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-e5-9b-9e-e5-ae-b6-e8-bf-99-e4-bf-a9-e5-a4-a9" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2010/08/15/e5-9b-9e-e5-ae-b6-e8-bf-99-e4-bf-a9-e5-a4-a9/">回家这俩天</a>
+    </h1>
+  
+
+        
+        <a href="/2010/08/15/e5-9b-9e-e5-ae-b6-e8-bf-99-e4-bf-a9-e5-a4-a9/" class="archive-article-date">
+  	<time datetime="2010-08-15T15:23:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2010-08-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>回家第一天，没睡觉！ 上午打了几个电话，看了看老妈 下午约了多加 但是他没能来 下午三点跟李相君喝了茶 取了经 傍晚吃了老妈做的蛋炒饭，味道还可以，就是不好看。 晚上看了会儿电视，醒了接着睡！ 次日一早，先是骑自行车到于丽那儿打了个招呼 又到妇幼保健院 见到了刘勇，打了招呼。和张大夫，跟张大夫约了明天下午三点治疗的事儿 翻回来给于注册了MSN，请吃饭，跟她父母聊了聊 离开，见了刘振浩，聊聊，转战大公园。第一次吃了羊宝！ 和金泰，还有嫂子。 多加给我打了电话，当时我没时间，我有了时间他没时间，约好明晚。 给爸妈边看照片边聊天 晚上回家，吕打电话，溜达了一圈，去肯德基喝了杯水，溜达到张云翔家附近打车回家 发博文，睡觉。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/日记//" class="article-tag-list-link color3">日记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2010/08/15/e5-9b-9e-e5-ae-b6-e8-bf-99-e4-bf-a9-e5-a4-a9/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-e6-8f-90-e4-be-9bflickr-e9-ab-98-e7-ba-a7-e5-9b-be-e7-89-87-e6-90-9c-e7-b4-a2-e7-9a-845-e4-b8-aa-e7-bd-91-e7-ab-99" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2010/08/09/e6-8f-90-e4-be-9bflickr-e9-ab-98-e7-ba-a7-e5-9b-be-e7-89-87-e6-90-9c-e7-b4-a2-e7-9a-845-e4-b8-aa-e7-bd-91-e7-ab-99/">提供flickr高级图片搜索的5个网站</a>
+    </h1>
+  
+
+        
+        <a href="/2010/08/09/e6-8f-90-e4-be-9bflickr-e9-ab-98-e7-ba-a7-e5-9b-be-e7-89-87-e6-90-9c-e7-b4-a2-e7-9a-845-e4-b8-aa-e7-bd-91-e7-ab-99/" class="archive-article-date">
+  	<time datetime="2010-08-09T08:19:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2010-08-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>找图片素材真是一件麻烦的事情，各大素材网站上的素材的图片搜素功能都相对较弱，一个个的查看真是浪费了不少时间，可惜还是找不到自己喜欢的图片。没事去 flickr.com上去搜一下，发现图片质量还是不错的。但是flickr的搜素结果展示并不是很友好，为了提高搜索的效率，整理了5个提供 flickr图片搜索高级服务的网站。 1：Compfight：排版整洁，一目了然。 <a href="http://www.compfight.com/" target="_blank" rel="noopener">http://www.compfight.com/</a> 输入搜索结果后，可以直接显示出近300张照片，免去了频繁翻页的痛苦。鼠标放在图片上会显示图片的像素，点击后可以直接到flickr的图片上。友情提示一下：不支持IE6，请用其他浏览器访问该网站。 2：Filckr-storm：提供浏览记录和批量下载 <a href="http://www.zoo-m.com/flickr-storm/" target="_blank" rel="noopener">http://www.zoo-m.com/flickr-storm/</a> 搜索的条件中多了几个选项，可以根据条件来查询相关的关键词对应的图片，除了搜索的功能还提供了两个小工具：一个是“浏览历史”，用来记录你点击过的图片，另一个是收藏夹，将你满意的图片放在这个收藏夹中，到浏览结束的时候可以一次将它们全部保存到硬盘上，下载素材非常实用。 3：Picturesandbox：多网站关键词检索 <a href="http://picturesandbox.com/?d=ps" target="_blank" rel="noopener">http://picturesandbox.com/?d=ps</a> 可以同时搜索多个网站的图片资料，有Flickr，Stockxpert，Fotolia，Dreamstime，SmugMug，Webshots。鼠标放上去可以显示照片的尺寸等简单信息，点击提示的尺寸可以链接到相关的网站上去浏览。感觉网站有点慢，而且莫名其妙的闪动。 4：Multicolr ：根据颜色搜索 <a href="http://labs.ideeinc.com/multicolr" target="_blank" rel="noopener">http://labs.ideeinc.com/multicolr</a> 可以选择10中颜色，根据你选择的颜色来检索相关的图片，是一个比较好玩的网站，小朋友应该比较喜欢。 5：FlickrBabel： 帮你把关键词翻译不同的语言 <a href="http://www.flickrbabel.com/en" target="_blank" rel="noopener">http://www.flickrbabel.com/en</a> FlickrBabel是在Flickr图片搜索引擎基础上构建的，利用了Google翻译和Flickr API：Google Translation + Flickr API = FlickrBabel。每页可以显示60个图片，搜索的图片结果可以按照Most relevants，Most recent ，Most interesting来排序显示，点击搜索图片的链接，可以到flickr的网站上去。友情提示：不支持IE6，IE7。 或许很多人也比较喜欢以下方式的插件 1:15 款出色的 Flickr 的 Firefox 扩展 <a href="http://parandroid.com/15-firefox-flickr-extensions/" target="_blank" rel="noopener">http://parandroid.com/15-firefox-flickr-extensions/</a> 2:Flickr工具、插件大集合 <a href="http://www.williamlong.info/archives/691.html" target="_blank" rel="noopener">http://www.williamlong.info/archives/691.html</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/IT相关//" class="article-tag-list-link color5">IT相关</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2010/08/09/e6-8f-90-e4-be-9bflickr-e9-ab-98-e7-ba-a7-e5-9b-be-e7-89-87-e6-90-9c-e7-b4-a2-e7-9a-845-e4-b8-aa-e7-bd-91-e7-ab-99/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/16/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="page-number" href="/page/16/">16</a><span class="page-number current">17</span><a class="page-number" href="/page/18/">18</a><a class="page-number" href="/page/19/">19</a><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/18/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/16/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="page-number" href="/page/16/">16</a><span class="page-number current">17</span><a class="page-number" href="/page/18/">18</a><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/18/">Next &amp;raquo;</a>
     </nav>
   
 

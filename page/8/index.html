@@ -152,413 +152,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-mac-e7-89-88-e7-9a-84xampp-e9-85-8d-e7-bd-ae-e5-a4-9a-e5-9f-9f-e5-90-8d-e5-92-8c-e8-a7-a3-e5-86-b380-e7-ab-af-e5-8f-a3-e5-8d-a0-e7-94-a8-e9-97-ae-e9-a2-98" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2013/06/18/mac-e7-89-88-e7-9a-84xampp-e9-85-8d-e7-bd-ae-e5-a4-9a-e5-9f-9f-e5-90-8d-e5-92-8c-e8-a7-a3-e5-86-b380-e7-ab-af-e5-8f-a3-e5-8d-a0-e7-94-a8-e9-97-ae-e9-a2-98/">mac版的XAMPP配置多域名、多站点环境</a>
-    </h1>
-  
-
-        
-        <a href="/2013/06/18/mac-e7-89-88-e7-9a-84xampp-e9-85-8d-e7-bd-ae-e5-a4-9a-e5-9f-9f-e5-90-8d-e5-92-8c-e8-a7-a3-e5-86-b380-e7-ab-af-e5-8f-a3-e5-8d-a0-e7-94-a8-e9-97-ae-e9-a2-98/" class="archive-article-date">
-  	<time datetime="2013-06-18T03:08:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-06-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>前言：最近用mac工作了，需要搭建个调试前段程序的站点，选了xampp，需求是能同时运行多个站点，多个域名，目录自定义，网上找了好多资料，都感觉有些不符合心意，且复制文确实很多，甚至有些没实践过的在乱写，不能达到我的需求，因此自己配置成功后，写个博文，一来纪录下防止忘记，二来希望对有些同学有帮助。 注明：该博文的终端用的是zsh，因此界面上和bash有些许不同，但命令基本上都相同，可参考<a href="http://www.cnblogs.com/heiniuhaha/archive/2011/10/18/2216357.html" target="_blank" rel="noopener">把 Mac 上的 bash 换成 zsh</a> xampp，下载地址：<a href="http://www.apachefriends.org/en/xampp-macosx.html#849" target="_blank" rel="noopener">http://www.apachefriends.org/en/xampp-macosx.html#849</a>，版本是<a href="http://www.apachefriends.org/download.php?xampp-macosx-1.7.3.dmg" target="_blank" rel="noopener">XAMPP Mac OS X 1.7.3</a> <img src="http://img2.ibolee.com/wp-blog-uploads/2013/06/4ea054727908ab0d32378d4647f7e1a5.png" alt=""> 1、编辑hosts文件，目录是/etc/hosts，打开终端操作，因为mac有权限限制，因此需要暂时获取root权限。 <img src="http://img2.ibolee.com/wp-blog-uploads/2013/06/8f3ef23a78c8c35277a47e62c3fc98ab.png" alt=""> 输入密码，安全考虑，密码不显示占用位数，在gnu nano编辑器中进行修改，按control+X退出，按Y确认 <img src="http://img2.ibolee.com/wp-blog-uploads/2013/06/631323d50a5c143a271dd73994b85772.png" alt="">     三、修改xampp的配置文件 1、修改httpd.conf文件，目录是/Applications/XAMPP/xamppfiles/etc/httpd.conf,在终端里输入命令如下 <img src="http://img2.ibolee.com/wp-blog-uploads/2013/06/0ccd2f9d1dd9d465ddc031776a486bb7.png" alt=""> 2、打开httpd.conf文件后，按ctrl＋W搜索 “httpd-vhosts.conf”，去掉前面的 # 注释符，确保引入了 vhosts 虚拟主机配置文件。 <img src="http://img2.ibolee.com/wp-blog-uploads/2013/06/07b26102d7ad7cfc2cf38bf6a45c327c.png" alt=""> 3、再在httpd.conf的最后面添加一段以下代码</p>
-<p><img src="http://img2.ibolee.com/wp-blog-uploads/2013/06/9148256b89e79e5d03bf03a93cf12ac4.gif" alt="复制代码"></p>
-<p>&lt;Directory “/Users/heiniuhaha/Sites/project”&gt;<br>        #Options Indexes FollowSymLinks ExecCGI Includes #don’t permission see list<br>        Options All<br>        AllowOverride All<br>        Order allow,deny<br>        Allow from all<br></Directory></p>
-<p><img src="http://img2.ibolee.com/wp-blog-uploads/2013/06/9148256b89e79e5d03bf03a93cf12ac4.gif" alt="复制代码"></p>
-<p><img src="http://img2.ibolee.com/wp-blog-uploads/2013/06/13ce61f03dced8dfcca69bd294e7dd12.png" alt=""> 说明： “Options All”是允许目录浏览，有安全性风险，适合用于个人调试程序，需注意当站点根目录含index.html页面时，会默认打开网页，而不是目录列表，因此此模式需删除index.html. “Options Indexes FollowSymLinks ExecCGI Includes”是不允许目录浏览，适合正式站点   4、打开文件httpd-vhosts.conf文件，目录是/Applications/XAMPP/xamppfiles/etc/extra/httpd-vhosts.conf,在终端里输入命令如下： <img src="http://img2.ibolee.com/wp-blog-uploads/2013/06/2e49d97edfd0de91bd2abdbe66d9a0c5.png" alt=""> 输入密码后打开httpd-vhosts.conf文件开始编辑 <img src="http://img2.ibolee.com/wp-blog-uploads/2013/06/3d9ceeeddbac00c755ef6976ef17d854.png" alt=""> 编辑完成后，按ctrl＋X退出，按Y保存，重启xampp，浏览器输入127.0.0.1 <a href="http://www.server.com" target="_blank" rel="noopener">www.server.com</a> <a href="http://www.test.com" target="_blank" rel="noopener">www.test.com</a> <a href="http://www.admin.com看看页面出来的内容。" target="_blank" rel="noopener">www.admin.com看看页面出来的内容。</a> 你会发现127.0.0.1和<a href="http://www.server.com会指向原来的xampp的引导页，而www.test.com" target="_blank" rel="noopener">www.server.com会指向原来的xampp的引导页，而www.test.com</a> <a href="http://www.admin.com分别指向不同的站点。" target="_blank" rel="noopener">www.admin.com分别指向不同的站点。</a> <img src="http://img2.ibolee.com/wp-blog-uploads/2013/06/fbbfb75fca0393b72915f654b9bffcb5.png" alt="">   5、mysql配置 此时你进入mysql的phpmyadmin页面会发现提示空密码错误。 <img src="http://img2.ibolee.com/wp-blog-uploads/2013/06/629e8b87a2bc7bda8032b459eced5745.png" alt=""> 找到config.inc.php文件,路径是/Applications/XAMPP/xamppfiles/phpmyadmin/config.inc.php <img src="http://img2.ibolee.com/wp-blog-uploads/2013/06/ce136936c4e6ddf3da8e553413749a28.png" alt=""> 打开文件config.inc.php后，找到$cfg[‘Servers’][$i][‘password’] = ‘’，改为$cfg[‘Servers’][$i][‘password’] = ‘123’; 保存退出后，重启xampp即可。 <img src="http://img2.ibolee.com/wp-blog-uploads/2013/06/941d3bbdcdccc4ec242933fd2ec6eeaf.png" alt="">   终端进入mysql命令行操作 <img src="http://img2.ibolee.com/wp-blog-uploads/2013/06/d78e383a450330737af8b60c8f12fff0.png" alt="">     需要以目录形式访问，而不要默认以index.html index.php等打开的话，需要配置下将原来默认打开的去掉。 sudo nano /Applications/XAMPP/xamppfiles/etc/httpd.conf <img src="http://img2.ibolee.com/wp-blog-uploads/2013/06/f3fdedecd232341f4da8ca3a00e083a5.png" alt="">   －－－－－－－－－－－－－－－－－－－－更新于2011－12－13日－－－－－－－－－－－－－－－－－－－－－ 今天遇到了mysql被禁用的问题</p>
-<h1 id="Access-forbidden"><a href="#Access-forbidden" class="headerlink" title="Access forbidden!"></a>Access forbidden!</h1><hr>
-<p>New XAMPP security concept: Access to the requested directory is only available from the local network. This setting can be configured in the file “httpd-xampp.conf”.</p>
-<hr>
-<p>  If you think this is a server error, please contact the <a href="mailto:webmaster@dummy-host.example.com">webmaster</a>.</p>
-<h2 id="Error-403"><a href="#Error-403" class="headerlink" title="Error 403"></a>Error 403</h2><p><a href="http://www.server.com/" target="_blank" rel="noopener">www.server.com</a> Tue Dec 13 11:00:00 2011 Apache/2.2.14 (Unix) DAV/2 mod_ssl/2.2.14 OpenSSL/0.9.8l PHP/5.3.1 mod_perl/2.0.4 Perl/v5.10.1</p>
-<p><img src="http://img2.ibolee.com/wp-blog-uploads/2013/06/76d956e5320b83f5a6b7f0b96ce79941.png" alt=""> 解决办法是禁用deny from all sudo nano /Applications/XAMPP/xamppfiles/etc/extra/httpd-xampp.conf <img src="http://img2.ibolee.com/wp-blog-uploads/2013/06/f25e1ae14251ddcbc012c4659678793d.png" alt=""> <img src="http://img2.ibolee.com/wp-blog-uploads/2013/06/8a1624ffdd0dcf7a66e27061f62124b1.png" alt="">  </p>
-<p> 本文原作者为:黑妞haha   来源CSDN:<a href="http://www.cnblogs.com/heiniuhaha/archive/2011/10/14/2212478.html" target="_blank" rel="noopener">http://www.cnblogs.com/heiniuhaha/archive/2011/10/14/2212478.html</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">mac</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">apache</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">xampp</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT相关//" class="article-tag-list-link color5">IT相关</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2013/06/18/mac-e7-89-88-e7-9a-84xampp-e9-85-8d-e7-bd-ae-e5-a4-9a-e5-9f-9f-e5-90-8d-e5-92-8c-e8-a7-a3-e5-86-b380-e7-ab-af-e5-8f-a3-e5-8d-a0-e7-94-a8-e9-97-ae-e9-a2-98/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-ted-e5-8f-8c-e8-af-ad-e6-bc-94-e8-ae-b2-e7-a8-bf-e6-bc-94-e8-ae-b2-e5-8f-b0-e8-af-8d-e7-bf-bb-e8-af-91-e4-b9-8btony-porter-e8-87-b4-e7-94-b7-e4-ba-ba-e7-9a-84-e5-ae-a3-e8-a8-80" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2013/06/17/ted-e5-8f-8c-e8-af-ad-e6-bc-94-e8-ae-b2-e7-a8-bf-e6-bc-94-e8-ae-b2-e5-8f-b0-e8-af-8d-e7-bf-bb-e8-af-91-e4-b9-8btony-porter-e8-87-b4-e7-94-b7-e4-ba-ba-e7-9a-84-e5-ae-a3-e8-a8-80/">TED双语演讲稿,演讲台词翻译之Tony Porter-致男人的宣言</a>
-    </h1>
-  
-
-        
-        <a href="/2013/06/17/ted-e5-8f-8c-e8-af-ad-e6-bc-94-e8-ae-b2-e7-a8-bf-e6-bc-94-e8-ae-b2-e5-8f-b0-e8-af-8d-e7-bf-bb-e8-af-91-e4-b9-8btony-porter-e8-87-b4-e7-94-b7-e4-ba-ba-e7-9a-84-e5-ae-a3-e8-a8-80/" class="archive-article-date">
-  	<time datetime="2013-06-17T03:55:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-06-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Tony-Porter-致男人的宣言演讲视频"><a href="#Tony-Porter-致男人的宣言演讲视频" class="headerlink" title="Tony Porter-致男人的宣言演讲视频:"></a>Tony Porter-致男人的宣言演讲视频:</h2><h2 id="Tony-Porter-谈对男性的呼吁《致男人的宣言》英语演讲稿-演讲台词："><a href="#Tony-Porter-谈对男性的呼吁《致男人的宣言》英语演讲稿-演讲台词：" class="headerlink" title="Tony Porter 谈对男性的呼吁《致男人的宣言》英语演讲稿,演讲台词："></a>Tony Porter 谈对男性的呼吁《致男人的宣言》英语演讲稿,演讲台词：</h2><p>I grew up in New York City, between Harlem and the Bronx. Growing up as a boy, we were taught that men had to be tough, had to be strong, had to be courageous, dominating – no pain, no emotions, with the exception of anger – and definitely no fear – that men are in charge, which means women are not; that men lead, and you should just follow and do what we say; that men are superior, women are inferior; that men are strong, women are weak; that women are of less value – property of men – and objects, particularly sexual objects. I’ve later come to know that to be the collective socialization of men, better known as the “man box.” See this man box has in it all the ingredients of how we define what it means to be a man. Now I also want to say, without a doubt, there are some wonderful, wonderful, absolutely wonderful things about being a man. But at the same time, there’s some stuff that’s just straight up twisted. And we really need to begin to challenge, look at it and really get in the process of deconstructing, redefining, what we come to know as manhood. 我在纽约长大，位于哈莱姆区跟布朗克斯区之间。作为男孩子，大人教给我们，男人必须要坚决，要强壮，要勇敢，要强硬；不许痛苦，不许表露情感，愤怒除外。当然，也不能畏缩。男性负责，也就是说女性不用。男性引路，你们只要跟着照做就好。男性高一等，女性低一等。男性强大，女性弱小。女性价值不大，是男性的所有物，是物品。更确切说，是性对象。后来我知道，那是男性的社会形象标准，或称其为“男子汉的标准”。看看这里面都有什么，所有关于如何做才够男人的定义。我还想说，毫无疑问，作为男人，有很多美好的事情，非常美好。但与此同时，有些东西实在非常纠结。我们确实需要开始质疑它，审视它，并对我们所熟知的男子汉标准进行拆析和重定义。 This is my two at home, Kendall and Jay. They’re 11 and 12. Kendall’s 15 months older than Jay. There was a period of time when my wife, her name is Tammie, and I, we just got real busy and whip, bam, boom: Kendall and Jay. (Laughter) And when they were about five and six, four and five, Jay could come to me, come to me crying. It didn’t matter what she was crying about, she could get on my knee, she could snot my sleeve up, just cry, cry it out. Daddy’s got you. That’s all that’s important. 这是我的两个孩子，Kendall和Jay，一个11岁，一个12岁。Kendall比Jay大15个月。有段时间我的妻子，她叫Tammie，还有我，我们非常忙，叮，咚，当，Kendall和Jay诞生了。（笑声）当他们长到五六岁，四五岁时，Jay可以过来，哭着跑过来。至于她为什么哭没有关系，她可以趴在我的膝盖上，拿我的袖子擦鼻涕。哭吧，大声哭，爸爸在呢，就是这样。 Now Kendall on the other hand – and like I said, he’s only 15 months older than her – he came to me crying, it’s like as soon as I would hear him cry, a clock would go off. I would give the boy probably about 30 seconds, which means, by the time he got to me, I was already saying things like, “Why are you crying? Hold your head up. Look at me. Explain to me what’s wrong. Tell me what’s wrong. I can’t understand you. Why are you crying?” And out of my own frustration of my role and responsibility of building him up as a man to fit into these guidelines and these structures that are defining this man box, I would find myself saying things like, “Just go in your room. Just go on, go on in your room. Sit down, get yourself together and come back and talk to me when you can talk to me like a –” What? (Audience: Man.) “like a man.” And he’s five years old. And as I grow in life, I would say to myself, “My God, what’s wrong with me? What am I doing? Why would I this?” And I think back. I think back to my father. 另一方面，如果Kendall，如我所说，他只比妹妹大15个月，他哭着跑过来，或是只要我听到他的哭声，就要拉警报了。我会给他大约30秒的时间，也就是说，等他到我跟前，我就会说，“你哭什么哭？抬起头来，看着我，告诉我怎么了？告诉我怎么了？我不能理解，你为什么哭？”由于自己的失职，我有责任和义务把他教育成一个男人，让他符合这些男子汉标准中的条条框框。我发现我会这么说，“回你的房间去。回去，回你的房间。坐下，振作一下，再回来跟我说话，当你可以像…”，像什么？（观众：男人）“像男人一样。”他才五岁。当我这么做的时候，我会对自己说，“天呢，我是怎么了？我在做什么？我为什么要这样？”回想一下，我想到了我父亲。 There was a time in my life where we had a very troubled experience in our family. My brother, Henry, he died tragically when we were teenagers. We lived in New York City, as I said. We lived in the Bronx at the time. And the burial was in a place called Long Island, it was about two hours outside of the city. And as we were preparing to come back from the burial, the cars stopped at the bathroom to let folks take care of themselves before the long ride back to the city. And the limousine empties out. My mother, my sister, my auntie, they all get out, but my father and I stayed in the limousine. And no sooner than the women got out, he burst out crying. He didn’t want cry in front of me. But he knew he wasn’t going to make it back to the city, and it was better me than to allow himself to express these feelings and emotions in front of the women. And this is a man who, 10 minutes ago, had just put his teenage son in the ground – something I just can’t even imagine. The thing that sticks with me the most is that he was apologizing to me for crying in front of me. And at the same time, he was also giving me props, lifting me up, for not crying. 有一段时间，我们家发生了一次很痛苦的经历。我哥哥，Henry，当我们十几岁的时候，他死于不幸。如我所说，我们住在纽约，当时我们住在布朗克斯区。葬礼在一个叫长岛的地方举行，距市区有两小时车程。当我们准备从墓地返回时，车子停在洗手间旁，让大家在长途返回之前下车方便一下。随后人们都下车了，我母亲，我姐姐，我姑姑，她们都出去了，只有我爸爸和我留在车里。女人们离开不久，他便放声大哭。他不想在我面前哭，但他知道，回去的路上他会忍不住的。在我面前哭，要比在有女性的场合下哭的好。这个男人，在10分钟之前，刚刚把他年幼的儿子亲手埋葬。这种痛苦是我无法想象的。我印象最深的是，他为在我面前哭而向我道歉。同时，他还给我鼓励，把我举起来，因为我没哭。 I come to also look at this as this fear that we have as men, this fear that just has us paralyzed, holding us hostage to this man box. I can remember speaking to a 12 year-old boy, a football player, and I asked him, I said, “How would you feel if, in front of all the players, your coach told you you were playing like a girl?” Now I expected him to say something like, I’d be sad, I’d be mad, I’d be angry, or something like that. No, the boy said to me – the boy said to me, “It would destroy me.” And I said to myself, “God, if it would destroy him to be called a girl, what are we then teaching him about girls?” 我重新审视这件事。作为男人，我们会害怕，这种害怕让我们瘫痪，让我们成为男子汉的标准的奴隶。我还记得跟一个12岁男孩的对话，他是足球选手。我问他，我说，“如果当着所有队员的面，教练说你踢球像个女孩，你会怎么样？”我本以为他会说，我会很伤心，很愤怒，很生气之类的。但不，男孩这么跟我说，男孩说，“这会把我毁掉。”于是我自问，“天呢，如果被称作女孩就会把他毁掉，那么关于女孩，我们都教给他些什么？” (Applause)（掌声） It took me back to a time when I was about 12 years old. I grew up in tenement buildings in the inner-city. At this time we’re living in the Bronx. And in the building next to where I lived there was a guy named Johnny. He was about 16 years old, and we were all about 12 years old – younger guys. And he was hanging out with all us younger guys. And this guy, he was up to a lot of no good. He was the kind of kid who parents would have to wonder, “What is this 16 year-old boy doing with these 12 year-old boys?” And he did spend a lot of time up to no good. He was a troubled kid. His mother had died from a heroin overdose. He was being raised by his grandmother. His father wasn’t on the set. His grandmother had two jobs. He was home alone a lot. But I’ve got to tell you, we young guys, we looked up to this dude. He was cool. He was fine. That’s what the sisters said, “He was fine.” He was having sex. We all looked up to him. 这把我带回了我的12岁那年。我在市区的廉租公寓长大，那时我们住在布朗克斯区。一个叫Johnny的家伙住在我家附近，他当时16岁左右，我们都12岁左右，比较小。他总是跟我们这些小孩呆在一起。这个家伙，他经常不干好事。他让很多家长感到奇怪，“这个16岁孩子，在一群12岁孩子中做什么？”他也确实不做好事。他是个问题少年，母亲因海洛因摄入过量而死，奶奶把他养大，父亲不管他。他奶奶有两份工作，他经常独自在家。我说过，我们都是小孩，得仰望这个大哥哥。他很酷，他很好。这是那些小妹妹说的，“他很好。”他做过爱，我们都仰望他。 So one day, I’m out in front of the house doing something – just playing around, doing something – I don’t know what. He looks out his window, he calls me upstairs, he said, “Hey Anthony.” They called my Anthony growing up as a kid. “Hey Anthony, come on upstairs.” Johnny call, you go. So I run right upstairs. As he opens the door, he says to me, “Do you want some?” Now I immediately knew what he meant. Because for me growing up at that time, and our relationship with this man box, do you want some meant one of two things, sex or drugs – and we weren’t doing drugs. Now my box, card, man box card, was immediately in jeopardy. Two things: One, I never had sex. We don’t talk about that as men. You only tell your dearest, closest friend, sworn to secrecy for life, the first time you had sex. For everybody else, we go around like we’ve been having sex since we were two. There ain’t no first time. (Laughter) The other thing I couldn’t tell him is that I didn’t want any. That’s even worse. We’re supposed to always be on the prowl. Women are objects, especially sexual objects. 一天，我出门玩，就在周围玩，我记不得在玩什么。他在窗口，叫我上去。他说，“嘿，Anthony。”小时候他叫我Anthony。“嘿，Anthony，快上来。”Johnny叫我，我就去。我跑上楼。他打开门后，对我说，“你想要吗？”我立刻明白了他的意思。因为在我们长大的那个年代，根据当时的男子汉标准，“你想要吗”只有两层意思，不是性就是毒品。而我们不吸毒。我的准则，我的男子汉准则，立刻受到威胁。有两点：一，我没做过爱。男人之间不讨论这个。你只会告诉最亲密的朋友，让他发誓保密，跟他讲你的第一次。而对其他人，则会说我两岁就开始做爱了，没什么第一次可言。 Anyway, so I couldn’t tell him any of that. So, like my mother would say, make a long story short. I just simply said to Johnny, “Yes.” He told me to go in his room. I go in his room. On his bed is a girl from the neighborhood named Sheila. She’s 16 years old. She’s nude. She’s what I know today to be mentally ill, higher functioning at times than others. We had a whole choice’s-worth of inappropriate names for her. Anyway, Johnny had just gotten through having sex with her. Well actually, he raped her, but he would say he had sex with her. Because, while Sheila never said no, she also never said yes. （笑声）另一点我不能说的是，我不想要。这样更糟。我们应该时刻窥伺，女性只是物品，确切说，是性对象。总之，这些我都不能说。所以，就如我母亲所言，长话短说，我只是对Johnny说，“好。”他让我到他房间里。我进去了，躺在床上的是个叫Sheila的邻居女孩，她16岁，全身赤裸。现在来看，她有心理疾病，有时会比其他人更自闭。我们给她取了很多不好的绰号。总之，Johnny刚跟她做完爱。其实，他强奸了她，但他会说是做爱。因为，当时Sheila没有说“不”，她也没说“是”。 So he was offering me the opportunity to do the same. So when I go in the room, I close the door. Folks, I’m petrified. I stand with my back to the door so Johnny can’t bust in the room and see that I’m not doing anything. And I stand there long enough that I could have actually done something. So now I’m no longer trying to figure out what I’m going to do, I’m trying to figure out how I’m going to get out of this room. So in my 12 years of wisdom, I zip my pants down, I walk out into the room. And lo and behold to me, while I was in the room with Sheila, Johnny was back at the window calling guys up. So now there’s a living room full of guys. It was like the waiting room in the doctor’s office. And they asked me how was it. And I say to them, “It was good.” And I zip my pants up in front of them, and I head for the door. 因此他给我机会也这样做。于是我走进去，关上门。各位，我呆住了。我依门而立，这样Johnny不能破门而入，发现我什么都没干。我站了好长一会，长到足够我干点什么了。现在，我想的不是要做什么，而是要怎么出去。我只有12岁，但很聪明。我把裤拉链拉下来，走进客厅。我看到的是，当我和Sheila在房间里时，Johnny到窗边招呼别人上来，所以现在满屋子都是人，就像医生的候诊室。他们问我感觉如何，我对他们说，“感觉不错。”然后在他们面前拉上裤拉链，走出门去。 Now I say this all with remorse, and I was feeling a tremendous amount of remorse at that time, but I was conflicted, because, while I was feeling remorse, I was excited, because I didn’t get caught, but I knew I felt bad about what was happening. This fear getting outside the man box totally enveloped me. It was way more important to me, about me and my man box card than about Sheila and what was happening to her. 我是带着愧疚说出这段的。当时我也带着极大的愧疚感，但我很矛盾。因为我感到愧疚的同时，又感到兴奋，我没被抓住。而对发生的一切，我觉得糟糕。这种害怕脱离了男子汉的标准，完全包住了我。对我来说，我和我的男子汉标准，曾经比Sheila和她的遭遇更重要。 See collectively, we as men are taught to have less value in women, to view them as property and the objects of men. We see that as an equation that equals violence against women. We as men, good men, the large majority of men, we operate on the foundation of this whole collective socialization. We kind of see ourselves separate, but we’re very much a part of it. You see, we have to come to understand that less value, property and objectification is the foundation and the violence can’t happen without it. So we’re very much a part of the solution as well as the problem. The center for disease control says that men’s violence against women is at epidemic proportions, is the number one health concern for women in this country and abroad. 总的来说，我们作为男人，被教育说女性价值不大，把她们看做所有物，看做男人的性对象，这就形成一个等式，等号右边是对女性的暴力侵害。我们作为男人，作为好男人，就如大多数的男人，我们所做的事，都是在这个社会形象标准下进行。我们以为自己不在此列，但其实我们正是其中之一。看到了吗，我们必须明白，这类价值不大，所有物，性对象的观念，致使暴力现象频频发生。因此解决办法就在我们身上，同时问题也在我们身上。疾病控制中心说过，男性对女性的暴力现象，已达到流行病的普遍程度，是女性的最大健康隐忧。国内如此，国外亦如此。 So quickly, I’d like to just say, this is the love of my life, my daughter Jay. The world I envision for her, how do I want men to be acting and behaving? I need you on board. I need you with me. I need you working with me and me working with you on how we raise our sons and teach them to be men – that it’s okay to not be dominating, that it’s okay to have feelings and emotions, that it’s okay to promote equality, that it’s okay to have women who are just friends and that’s it, that it’s okay to be whole, that my liberation as a man is tied to your liberation as a woman. 所以我再简单说几句。这是我生命中的挚爱，我女儿Jay，我希望她的世界里，我会希望男性如何对待女性？我需要你们与我一道，共同努力。你我共同合作，致力于如何培养我们的儿子，教导他们成为男人。可以不强硬，也可以表露情感，可以促进平等，可以拥有女性朋友，就是这样，可以做一个完整的人。我们男性的解放，与你们女性的解放相依存。 I remember asking a nine year-old boy. I asked a nine year-old boy, “What would life be like for you, if you didn’t have to adhere to this man box?” He said to me, “I would be free.” 我问过一个九岁男孩，我问他说，“如果你不用再遵循这些男子汉标准，你会怎样？”他告诉我，“我就自由了。” Thank you folks. 谢谢大家。 (Applause) 附注： Tony Porter是非盈利组织“对男性的呼吁：终止对女性暴力侵害组织”的策划者和共同创始人。Porter的参与和自我检查的要点，与许多家庭暴力和性暴力项目紧密相联，施行于一些知名组织，如全国橄榄球联盟和全国职业篮球联赛，以及全国各地高校，包括美国西点军校和安纳波利斯美国海军学院。Porter还是美国国务院国际讲师，在刚果民主共和国做过大量工作。他是酒精与药物成瘾研究机构纽约办公室的教员，在此，他参与编著了针对美国黑人化学品依赖的临床课程。他还为社会服务组织开发社会公正模型。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">干货</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习笔记//" class="article-tag-list-link color5">学习笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2013/06/17/ted-e5-8f-8c-e8-af-ad-e6-bc-94-e8-ae-b2-e7-a8-bf-e6-bc-94-e8-ae-b2-e5-8f-b0-e8-af-8d-e7-bf-bb-e8-af-91-e4-b9-8btony-porter-e8-87-b4-e7-94-b7-e4-ba-ba-e7-9a-84-e5-ae-a3-e8-a8-80/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-e5-85-bc-e5-ae-b9-e8-b4-b1iejs-e4-b8-ad-e5-8f-96-e5-be-97-e7-9a-84-e5-85-b3-e4-ba-8e-e7-aa-97-e5-8f-a3-e5-ae-bd-e9-ab-98-e5-92-8c-e6-bb-9a-e5-8a-a8-e5-80-bc-e7-9a-84-e5-b1-9e-e6-80-a7-e5-88-97" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2013/06/16/e5-85-bc-e5-ae-b9-e8-b4-b1iejs-e4-b8-ad-e5-8f-96-e5-be-97-e7-9a-84-e5-85-b3-e4-ba-8e-e7-aa-97-e5-8f-a3-e5-ae-bd-e9-ab-98-e5-92-8c-e6-bb-9a-e5-8a-a8-e5-80-bc-e7-9a-84-e5-b1-9e-e6-80-a7-e5-88-97/">兼容贱IE,JS中取得的关于窗口宽高和滚动值的属性列表：</a>
-    </h1>
-  
-
-        
-        <a href="/2013/06/16/e5-85-bc-e5-ae-b9-e8-b4-b1iejs-e4-b8-ad-e5-8f-96-e5-be-97-e7-9a-84-e5-85-b3-e4-ba-8e-e7-aa-97-e5-8f-a3-e5-ae-bd-e9-ab-98-e5-92-8c-e6-bb-9a-e5-8a-a8-e5-80-bc-e7-9a-84-e5-b1-9e-e6-80-a7-e5-88-97/" class="archive-article-date">
-  	<time datetime="2013-06-16T02:13:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-06-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>感谢CSDN的kindma做的辛苦而又努力的尝试，本文原作者为kindma，转自CSDN。 在工作中尝试把一个FLASH居中全屏放置，窗口RESIZE的时候和页面SCROLL的时候都要动态变化，需要取得当前窗口显示区域的WIDTH与HEIGHT，翻了翻资料脑子就一半面一半水搅匀了。类似的参数我全列出来：</p>
-<p>window.screen.width:</p>
-<p>document.body.offsetWidth:</p>
-<p>document.documentElement.offsetWidth:</p>
-<p>window.screen.height:</p>
-<p>document.body.offsetHeight:</p>
-<p>document.documentElement.offsetHeight:</p>
-<p>window.screen.availWidth:</p>
-<p>document.body.scrollWidth:</p>
-<p>document.documentElement.scrollWidth:</p>
-<p>window.screen.availHeight:</p>
-<p>document.body.scrollHeight:</p>
-<p>document.documentElement.scrollHeight:</p>
-<p>window.scrollMaxX:</p>
-<p>document.body.scrollLeft:</p>
-<p>document.documentElement.scrollLeft:</p>
-<p>window.scrollMaxY:</p>
-<p>document.body.scrollTop:</p>
-<p>document.documentElement.scrollTop:</p>
-<p>window.scrollX:</p>
-<p>document.body.clientTop:</p>
-<p>document.documentElement.clientTop:</p>
-<p>window.scrollY:</p>
-<p>document.body.clientLeft:</p>
-<p>document.documentElement.clientLeft:</p>
-<p>window.pageXOffset:</p>
-<p>document.body.clientWidth:</p>
-<p>document.documentElement.clientWidth:</p>
-<p>window.pageYOffset:</p>
-<p>document.body.clientHeight:</p>
-<p>document.documentElement.clientHeight:</p>
-<p>window.screenX:</p>
-<p>document.width:</p>
-<p>window.screenY:</p>
-<p>document.height:</p>
-<p>window.innerWidth:</p>
-<p>window.innerHeight:</p>
-<p>window.screen.availTop</p>
-<p>window.screen.availLeft</p>
-<p>而且我痛苦的发现，同一个属性，在不同的浏览器的JS取值是不一样的，甚至是无效的，就算都在IE中不同版本的值也不一样的，W3C的标准就从没被完整执行过，微软丈着本钱厚，肆意修改其定义，而且朝三暮四，同样一个事在版本升级时也搞出不同的标准来，一看开发组群就不是一个娘养的。 就在同一个版本同一浏览器中，标准模式与混杂模式的定义也大不相同，比如document.documentElement.scrollWidth和document.body.scrollWidth，在混杂模式中，后者有效前者无效，在标准模式中前者有效后者无效，直接让人崩溃。无奈之下，把这个参数用JS统一列出来，一个个做实验，这才做成了一个完整的结果。如下表，当然，这只是在标准模式下，混杂模式我一般不用，也没精力去研究了。</p>
-<p>IE6</p>
-<p>IE8</p>
-<p>FF</p>
-<p>OPREA</p>
-<p>CHROME</p>
-<p>window.screen.width:</p>
-<p>屏幕宽</p>
-<p>window.screen.height:</p>
-<p>屏幕高</p>
-<p>window.screen.availWidth:</p>
-<p>窗口最大化后宽度</p>
-<p>window.screen.availHeight:</p>
-<p>窗口最大后的高度</p>
-<p>window.scrollMaxX:</p>
-<p>最大横向滚动幅度，即BODY加左MARGIN减去窗口显示区不含滚动棒的宽度后的值</p>
-<p>window.scrollMaxY:</p>
-<p>最大纵向滚动幅度，即BODY加上下MARGIN减去窗口显示区不含滚动棒的高度后的值</p>
-<p>window.scrollX:</p>
-<p>左滚动值</p>
-<p>window.scrollY:</p>
-<p>上滚动值</p>
-<p>window.pageXOffset:</p>
-<p>左滚动值</p>
-<p>window.pageYOffset:</p>
-<p>上滚动值</p>
-<p>window.screenX:</p>
-<p>窗口左上角离屏幕左上角横向距离</p>
-<p>标准模式下均为0.</p>
-<p>窗口左上角离屏幕左上角横向距离</p>
-<p>window.screenY:</p>
-<p>窗口左上角离屏幕左上角纵向距离</p>
-<p>标准模式下均为0.</p>
-<p>窗口左上角离屏幕左上角纵向距离</p>
-<p>window.innerWidth:</p>
-<p>窗口显示区宽含滚动棒，同IE8的document.documentElement.offsetWidth:</p>
-<p>window.innerHeight:</p>
-<p>窗口显示区高含滚动棒，同IE的document.documentElement.offsetHeight:</p>
-<p>window.screen.availTop</p>
-<p>窗口最大化后的window.screenX:</p>
-<p>窗口最大化后的window.screenX:</p>
-<p>window.screen.availLeft</p>
-<p>窗口最大化后的window.screenY:</p>
-<p>窗口最大化后的window.screenY:</p>
-<p>document.body.offsetWidth:</p>
-<p>窗口显示区不含滚动棒宽度减去左右margin值后的数字/BODY宽度两者取大值</p>
-<p>窗口显示区不含滚动棒宽度减左右MARGIN,最小为0</p>
-<p>document.body.offsetHeight:</p>
-<p>BODY高度,不含滚动棒与MARGIN</p>
-<p>document.body.scrollWidth:</p>
-<p>同IE6的document.body.offsetWidth:</p>
-<p>同IE8，FF，oprea的document.body.offsetWidth:</p>
-<p>浏览器窗口的宽度，最小值取BODY加MARGINLEFT值，不含滚动棒</p>
-<p>document.body.scrollHeight:</p>
-<p>同IE,FF,OPREA的document.body.offsetHeight:</p>
-<p>BODY高度加MARGIN值/窗口显示区高度不含滚动棒取两者取其大</p>
-<p>document.body.scrollLeft:</p>
-<p>标准模式下均为0.</p>
-<p>左滚动值</p>
-<p>document.body.scrollTop:</p>
-<p>上滚动值</p>
-<p>document.body.clientTop:</p>
-<p>标准模式下均为0.</p>
-<p>document.body.clientLeft:</p>
-<p>标准模式下均为0.</p>
-<p>document.body.clientWidth:</p>
-<p>窗口显示区不含滚动棒宽度/BODY宽度两者之最大值</p>
-<p>同IE8，FF，oprea的document.body.offsetWidth:</p>
-<p>document.body.clientHeight:</p>
-<p>同IE,FF,OPREA的document.body.offsetHeight:</p>
-<p>document.documentElement.offsetWidth:</p>
-<p>窗口显示区的宽度，含滚动棒</p>
-<p>浏览器窗口的宽度，不含滚动棒</p>
-<p>document.documentElement.offsetHeight:</p>
-<p>窗口显示区的高度，含滚动棒</p>
-<p>BODY高度加MARGIN</p>
-<p>document.documentElement.scrollWidth:</p>
-<p>窗口显示区宽度不含滚动棒/BODY加两边MARGIN两者中大值</p>
-<p>窗口显示区不含滚动棒宽度/BODY宽度加左GARGIN值两者中最大值</p>
-<p>document.documentElement.scrollHeight:</p>
-<p>BODY的高度</p>
-<p>BODY加上下MARGIN值</p>
-<p>窗口显示区不含滚动棒高度/body加上下MARGIN两者中最大值</p>
-<p>同IE8</p>
-<p>document.documentElement.scrollLeft:</p>
-<p>左滚动值</p>
-<p>0</p>
-<p>document.documentElement.scrollTop:</p>
-<p>上滚动值</p>
-<p>0</p>
-<p>document.documentElement.clientTop:</p>
-<p>2</p>
-<p>标准模式下均为0.</p>
-<p>document.documentElement.clientLeft:</p>
-<p>2</p>
-<p>标准模式下均为0.</p>
-<p>document.documentElement.clientWidth:</p>
-<p>窗口显示区的宽度，不含滚动棒</p>
-<p>document.documentElement.clientHeight:</p>
-<p>窗口显示区的高度，不含滚动棒</p>
-<p>document.width:</p>
-<p>同IE8，FF，oprea的document.body.offsetWidth:</p>
-<p>同document.body.scrollWidth</p>
-<p>document.height:</p>
-<p>同IE8，FF，oprea的document.body.offsetWidth:</p>
-<p>document.body.scrollHeight</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT相关//" class="article-tag-list-link color5">IT相关</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2013/06/16/e5-85-bc-e5-ae-b9-e8-b4-b1iejs-e4-b8-ad-e5-8f-96-e5-be-97-e7-9a-84-e5-85-b3-e4-ba-8e-e7-aa-97-e5-8f-a3-e5-ae-bd-e9-ab-98-e5-92-8c-e6-bb-9a-e5-8a-a8-e5-80-bc-e7-9a-84-e5-b1-9e-e6-80-a7-e5-88-97/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-e7-94-a8mysql-e8-af-ad-e5-8f-a5-e6-89-b9-e9-87-8f-e4-bf-ae-e6-94-b9wordpress-e6-95-b0-e6-8d-ae-e5-ba-93-e6-96-87-e7-ab-a0-e5-86-85-e5-ae-b9" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1277,9 +870,336 @@
 
 
   
+    <article id="post-e4-ba-ac-e4-b8-9c-e5-95-86-e5-9f-8e-e5-9c-a8seo-e4-b8-8a-e7-9a-84-e5-a4-a7-e8-83-86-e5-b0-9d-e8-af-95-e6-95-b4-e7-ab-99301-e9-87-8d-e5-ae-9a-e5-90-91-e5-88-b0jd-com" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/04/04/e4-ba-ac-e4-b8-9c-e5-95-86-e5-9f-8e-e5-9c-a8seo-e4-b8-8a-e7-9a-84-e5-a4-a7-e8-83-86-e5-b0-9d-e8-af-95-e6-95-b4-e7-ab-99301-e9-87-8d-e5-ae-9a-e5-90-91-e5-88-b0jd-com/">京东商城在SEO上的大胆尝试整站301重定向到jd.com</a>
+    </h1>
+  
+
+        
+        <a href="/2013/04/04/e4-ba-ac-e4-b8-9c-e5-95-86-e5-9f-8e-e5-9c-a8seo-e4-b8-8a-e7-9a-84-e5-a4-a7-e8-83-86-e5-b0-9d-e8-af-95-e6-95-b4-e7-ab-99301-e9-87-8d-e5-ae-9a-e5-90-91-e5-88-b0jd-com/" class="archive-article-date">
+  	<time datetime="2013-04-04T12:07:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-04-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天忽然发现京东商城整站301重定向至jd.com,目前百度谷歌正在大批量的收录其新域名的页面,这一壮举无疑是SEO方面的巨大挑战,看得出来京东已经做好了充分准备,将整站进行301,而区别于易车网,购买了yiche.com却始终没有301新的域名,一直沿用bitauto.com,而yiche.com仅仅做为辅助解析. 有几个问题还需要关注: 1.如此大型的京东网站整站301的动荡期有多长?(理论上是60天) 2.京东为什么选择在4月开始做301,这个时间是否是京东的淡季. 3.此次301对京东的负面影响究竟有多大,解决过程是什么样的,让我们持续关注吧.   以下截图收集自2013年4月4日20:07,持续关注中…….. <a href="http://img2.ibolee.com/wp-blog-uploads/2013/04/屏幕快照-2013-04-04-下午7.56.42.png" target="_blank" rel="noopener"><img src="http://img2.ibolee.com/wp-blog-uploads/2013/04/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7-2013-04-04-%E4%B8%8B%E5%8D%887.56.42-300x155.png" alt="屏幕快照 2013-04-04 下午7.56.42"></a> <a href="http://img2.ibolee.com/wp-blog-uploads/2013/04/屏幕快照-2013-04-04-下午7.56.21.png" target="_blank" rel="noopener"><img src="http://img2.ibolee.com/wp-blog-uploads/2013/04/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7-2013-04-04-%E4%B8%8B%E5%8D%887.56.21-300x165.png" alt="屏幕快照 2013-04-04 下午7.56.21"></a> <a href="http://img2.ibolee.com/wp-blog-uploads/2013/04/屏幕快照-2013-04-04-下午7.55.09.png" target="_blank" rel="noopener"><img src="http://img2.ibolee.com/wp-blog-uploads/2013/04/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7-2013-04-04-%E4%B8%8B%E5%8D%887.55.09-300x233.png" alt="屏幕快照 2013-04-04 下午7.55.09"></a> <a href="http://img2.ibolee.com/wp-blog-uploads/2013/04/屏幕快照-2013-04-04-下午7.54.20.png" target="_blank" rel="noopener"><img src="http://img2.ibolee.com/wp-blog-uploads/2013/04/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7-2013-04-04-%E4%B8%8B%E5%8D%887.54.20-300x229.png" alt="屏幕快照 2013-04-04 下午7.54.20"></a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/IT相关//" class="article-tag-list-link color5">IT相关</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2013/04/04/e4-ba-ac-e4-b8-9c-e5-95-86-e5-9f-8e-e5-9c-a8seo-e4-b8-8a-e7-9a-84-e5-a4-a7-e8-83-86-e5-b0-9d-e8-af-95-e6-95-b4-e7-ab-99301-e9-87-8d-e5-ae-9a-e5-90-91-e5-88-b0jd-com/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-excel-e4-b8-ad-e4-bd-bf-e7-94-a8vba-e8-87-aa-e5-ae-9a-e4-b9-89-e5-87-bd-e6-95-b0-e5-af-b9-e5-ad-97-e7-ac-a6-e4-b8-b2-e8-bf-9b-e8-a1-8c-e6-89-b9-e9-87-8furl-e7-bc-96-e7-a0-81" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/03/29/excel-e4-b8-ad-e4-bd-bf-e7-94-a8vba-e8-87-aa-e5-ae-9a-e4-b9-89-e5-87-bd-e6-95-b0-e5-af-b9-e5-ad-97-e7-ac-a6-e4-b8-b2-e8-bf-9b-e8-a1-8c-e6-89-b9-e9-87-8furl-e7-bc-96-e7-a0-81/">Excel中用宏批量把文字链接转成url编码（urlencode）</a>
+    </h1>
+  
+
+        
+        <a href="/2013/03/29/excel-e4-b8-ad-e4-bd-bf-e7-94-a8vba-e8-87-aa-e5-ae-9a-e4-b9-89-e5-87-bd-e6-95-b0-e5-af-b9-e5-ad-97-e7-ac-a6-e4-b8-b2-e8-bf-9b-e8-a1-8c-e6-89-b9-e9-87-8furl-e7-bc-96-e7-a0-81/" class="archive-article-date">
+  	<time datetime="2013-03-29T06:07:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-03-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>先来说明一下URL编码是什么,什么是URLEncode在因特网上传送URL，只能采用ASCII字符集。 但由于URL常常包含ASCII字符集以外的字符，所以我们必须对URL进行转换。URL编码要做的，就是将URL转换为有效的ASCII字符格式。</p>
+<p>通常单个转URL编码的工具有：<a href="http://tool.chinaz.com/Tools/URLEncode.aspx" target="_blank" rel="noopener">http://tool.chinaz.com/Tools/URLEncode.aspx</a></p>
+<p>但还是可以实现批量转URL编码的，这是一个SEO从业人员必备常识喔～用来做什么的谁用谁知道。</p>
+<p>Excel是个非常强大的工具，工作中因为需要用到他老完成一些表格数据的处理，所以抽空学了一点小技巧。 VBA是Visual Basic Application的全称，我们在Office的产品家族里面会经常看到它的身影。甚至SQL Server里头也有它的足迹，善于使用这些VBA函数或者自定义一些函数能够帮我们实现一些看似很强大的功能而又不用花费太大的精力。 步骤一. 打开Excel 2007中的Visual Basic编辑器<em>在Excel 2007中的开发工具菜单下，点击Visual Basic，即可弹出Visual Basic的编辑界面。默认情况下，这个开发工具在功能区是不显示的，需要在Excel设置中勾选上，如下图（点击放大）。</em> <a href="http://img2.ibolee.com/wp-blog-uploads/2013/03/1.png" target="_blank" rel="noopener"><img src="http://img2.ibolee.com/wp-blog-uploads/2013/03/1-300x78.png" alt="1"></a>   <a href="http://img2.ibolee.com/wp-blog-uploads/2013/03/2.png" target="_blank" rel="noopener"><img src="http://img2.ibolee.com/wp-blog-uploads/2013/03/2-300x148.png" alt="2"></a>   <a href="http://img2.ibolee.com/wp-blog-uploads/2013/03/3.png" target="_blank" rel="noopener"><img src="http://img2.ibolee.com/wp-blog-uploads/2013/03/3-248x300.png" alt="3"></a> 步骤二. 编写自定义函数怎么搞呢？<a href="http://lijunnan.com/" target="_blank" rel="noopener" title="黑李白">黑李白</a>是这么做的。 选择菜单-&gt;插入-&gt;模块，就会弹出一个编辑窗口，在其中输入下面代码，即可定义一个UrlEncode的函数。 code———–&gt;star</p>
+<p>Public Function UrlEncode(ByRef szString As String) As String<br>       Dim szChar   As String<br>       Dim szTemp   As String<br>       Dim szCode   As String<br>       Dim szHex    As String<br>       Dim szBin    As String<br>       Dim iCount1  As Integer<br>       Dim iCount2  As Integer<br>       Dim iStrLen1 As Integer<br>       Dim iStrLen2 As Integer<br>       Dim lResult  As Long<br>       Dim lAscVal  As Long<br>       szString = Trim$(szString)<br>       iStrLen1 = Len(szString)<br>       For iCount1 = 1 To iStrLen1<br>           szChar = Mid$(szString, iCount1, 1)<br>           lAscVal = AscW(szChar)<br>           If lAscVal &gt;= &amp;H0 And lAscVal &lt;= &amp;HFF Then<br>              If (lAscVal &gt;= &amp;H30 And lAscVal &lt;= &amp;H39) Or _<br>                 (lAscVal &gt;= &amp;H41 And lAscVal &lt;= &amp;H5A) Or _<br>                 (lAscVal &gt;= &amp;H61 And lAscVal &lt;= &amp;H7A) Then<br>                 szCode = szCode &amp; szChar<br>              Else</p>
+<pre><code>          szCode = szCode &amp; &quot;%&quot; &amp; Hex(AscW(szChar))
+       End If
+    Else
+       szHex = Hex(AscW(szChar))
+       iStrLen2 = Len(szHex)
+       For iCount2 = 1 To iStrLen2
+           szChar = Mid$(szHex, iCount2, 1)
+           Select Case szChar
+                  Case Is = &quot;0&quot;
+                       szBin = szBin &amp; &quot;0000&quot;
+                  Case Is = &quot;1&quot;
+                       szBin = szBin &amp; &quot;0001&quot;
+                  Case Is = &quot;2&quot;
+                       szBin = szBin &amp; &quot;0010&quot;
+                  Case Is = &quot;3&quot;
+                       szBin = szBin &amp; &quot;0011&quot;
+                  Case Is = &quot;4&quot;
+                       szBin = szBin &amp; &quot;0100&quot;
+                  Case Is = &quot;5&quot;
+                 szBin = szBin &amp; &quot;0101&quot;
+                  Case Is = &quot;6&quot;
+                       szBin = szBin &amp; &quot;0110&quot;
+                  Case Is = &quot;7&quot;
+                       szBin = szBin &amp; &quot;0111&quot;
+                  Case Is = &quot;8&quot;
+                       szBin = szBin &amp; &quot;1000&quot;
+                  Case Is = &quot;9&quot;
+                       szBin = szBin &amp; &quot;1001&quot;
+                  Case Is = &quot;A&quot;
+                       szBin = szBin &amp; &quot;1010&quot;
+                  Case Is = &quot;B&quot;
+                       szBin = szBin &amp; &quot;1011&quot;
+                  Case Is = &quot;C&quot;
+                       szBin = szBin &amp; &quot;1100&quot;
+                  Case Is = &quot;D&quot;
+                       szBin = szBin &amp; &quot;1101&quot;
+                  Case Is = &quot;E&quot;
+                       szBin = szBin &amp; &quot;1110&quot;
+                  Case Is = &quot;F&quot;
+                       szBin = szBin &amp; &quot;1111&quot;
+                  Case Else
+           End Select
+       Next iCount2
+       szTemp = &quot;1110&quot; &amp; Left$(szBin, 4) &amp; &quot;10&quot; &amp; Mid$(szBin, 5, 6) &amp; &quot;10&quot; &amp; Right$(szBin, 6)
+       For iCount2 = 1 To 24
+           If Mid$(szTemp, iCount2, 1) = &quot;1&quot; Then
+              lResult = lResult + 1 * 2 ^ (24 - iCount2)
+           Else: lResult = lResult + 0 * 2 ^ (24 - iCount2)
+           End If
+       Next iCount2
+       szTemp = Hex(lResult)
+             szCode = szCode &amp; &quot;%&quot; &amp; Left$(szTemp, 2) &amp; &quot;%&quot; &amp; Mid$(szTemp, 3, 2) &amp; &quot;%&quot; &amp; Right$(szTemp, 2)
+    End If
+    szBin = vbNullString
+    lResult = 0
+Next iCount1
+UrlEncode = szCode</code></pre><p>End Function</p>
+<p>code—————》END 步骤三：测试 定义完之后，我们选择菜单-&gt;文件-&gt;关闭并返回Excel。然后我们就可以在Excel中测试刚才定义的这个函数了。如下图所示。 <a href="http://img2.ibolee.com/wp-blog-uploads/2013/03/4.png" target="_blank" rel="noopener"><img src="http://img2.ibolee.com/wp-blog-uploads/2013/03/4-300x24.png" alt="4"></a> 注意，使用了VBA函数的excel文件需要在打开时启用宏，否则函数无效。使用=urlencode(单元格位置)执行，如图： <a href="http://img2.ibolee.com/wp-blog-uploads/2013/03/6.jpg" target="_blank" rel="noopener"><img src="http://img2.ibolee.com/wp-blog-uploads/2013/03/6-300x175.jpg" alt="6"></a></p>
+<p><strong>本文原作者：Kevin Yang</strong></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">IT技术</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">excle</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">URLEncode</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">url编码</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/IT相关//" class="article-tag-list-link color5">IT相关</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/IT相关/其它//" class="article-tag-list-link color3">其它</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2013/03/29/excel-e4-b8-ad-e4-bd-bf-e7-94-a8vba-e8-87-aa-e5-ae-9a-e4-b9-89-e5-87-bd-e6-95-b0-e5-af-b9-e5-ad-97-e7-ac-a6-e4-b8-b2-e8-bf-9b-e8-a1-8c-e6-89-b9-e9-87-8furl-e7-bc-96-e7-a0-81/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-excel-e4-b8-ad-e6-89-b9-e9-87-8f-e6-8f-90-e5-8f-96-e5-8d-95-e5-85-83-e6-a0-bc-e8-b6-85-e9-93-be-e6-8e-a5-e6-93-8d-e4-bd-9c-e6-ad-a5-e5-a5-8f" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/03/25/excel-e4-b8-ad-e6-89-b9-e9-87-8f-e6-8f-90-e5-8f-96-e5-8d-95-e5-85-83-e6-a0-bc-e8-b6-85-e9-93-be-e6-8e-a5-e6-93-8d-e4-bd-9c-e6-ad-a5-e5-a5-8f/">excel中批量提取单元格超链接操作步骤</a>
+    </h1>
+  
+
+        
+        <a href="/2013/03/25/excel-e4-b8-ad-e6-89-b9-e9-87-8f-e6-8f-90-e5-8f-96-e5-8d-95-e5-85-83-e6-a0-bc-e8-b6-85-e9-93-be-e6-8e-a5-e6-93-8d-e4-bd-9c-e6-ad-a5-e5-a5-8f/" class="archive-article-date">
+  	<time datetime="2013-03-25T08:05:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-03-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>如果Excel表格单元格中包含有许多用文本形式显示的超链接，如“给我发邮件”、“访问我的网站”等，要逐一查看所有超链接的地址，用手工的方法显得太繁琐，我们可以用自定义函数来批量提取这些超链接中的地址，将下列代码插入到标准模块中： Function GetURL(rng As Range) As String On Error Resume Next GetURL = rng.Hyperlinks(1).Address End Function     使用方法是在单元格中输入公式，假如单元格D6中含有超链接：     =geturl(D6)     还可以使用下面的代码将工作表中的所有超链接地址全部显示出来，运行代码前先备份工作簿，因为它会在含有超链接的单元格的右侧显示其地址，有可能会破坏工作表结构。 Sub ExtractHL() Dim HL As Hyperlink For Each HL In ActiveSheet.Hyperlinks HL.Range.Offset(0, 1).Value = HL.Address Next End Sub</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">IT技术</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/IT相关//" class="article-tag-list-link color5">IT相关</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/IT相关/其它//" class="article-tag-list-link color3">其它</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2013/03/25/excel-e4-b8-ad-e6-89-b9-e9-87-8f-e6-8f-90-e5-8f-96-e5-8d-95-e5-85-83-e6-a0-bc-e8-b6-85-e9-93-be-e6-8e-a5-e6-93-8d-e4-bd-9c-e6-ad-a5-e5-a5-8f/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/7/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/9/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/7/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/9/">Next &amp;raquo;</a>
     </nav>
   
 
