@@ -15,16 +15,16 @@
 <meta property="og:site_name" content="黑李白的博客">
 <meta property="og:description" content="excel两列对比应用一： excel分别对AB列两列数据对比，比如A2&#x3D;B2，就返回相同，否则返回不相同。  C2公式为：&#x3D;IF(A2&#x3D;B2,”相同”,”不同”)，这样就可以实现excel两列对比。 不过细心的朋友会发现，A5和B5实质上有大小写区分的，因此使用这个公式不是完全准确。Excel中exact函数可以完全区分大小写，请参考：《exact函数用法和实例》 因此C2公式可以更改为：&#x3D;IF">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://img2.ibolee.com/wp-blog-uploads/2013/01/9912ace00af9f83f51c599cc04eda6f4.gif">
-<meta property="og:image" content="http://img2.ibolee.com/wp-blog-uploads/2013/01/fce75e2bda0cbc3633e73f7efcd260d3.gif">
-<meta property="og:image" content="http://img2.ibolee.com/wp-blog-uploads/2013/01/c60da925d89ede8eedb7b79d1c7d6def.gif">
-<meta property="og:image" content="http://img2.ibolee.com/wp-blog-uploads/2013/01/991c3d7b3475806b429284c53a9e5976.gif">
+<meta property="og:image" content="https://upimg.ibolee.com/wp-blog-uploads/2013/01/9912ace00af9f83f51c599cc04eda6f4.gif">
+<meta property="og:image" content="https://upimg.ibolee.com/wp-blog-uploads/2013/01/fce75e2bda0cbc3633e73f7efcd260d3.gif">
+<meta property="og:image" content="https://upimg.ibolee.com/wp-blog-uploads/2013/01/c60da925d89ede8eedb7b79d1c7d6def.gif">
+<meta property="og:image" content="https://upimg.ibolee.com/wp-blog-uploads/2013/01/991c3d7b3475806b429284c53a9e5976.gif">
 <meta property="article:published_time" content="2013-01-06T09:14:39.000Z">
-<meta property="article:modified_time" content="2020-04-30T14:47:05.318Z">
+<meta property="article:modified_time" content="2020-05-03T04:02:02.764Z">
 <meta property="article:author" content="黑李白">
 <meta property="article:tag" content="excle">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://img2.ibolee.com/wp-blog-uploads/2013/01/9912ace00af9f83f51c599cc04eda6f4.gif">
+<meta name="twitter:image" content="https://upimg.ibolee.com/wp-blog-uploads/2013/01/9912ace00af9f83f51c599cc04eda6f4.gif">
   
     <link rel="alternative" href="/atom.xml" title="黑李白的博客" type="application/atom+xml">
   
@@ -185,13 +185,13 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><strong>excel两列对比应用一：</strong> excel分别对AB列两列数据对比，比如A2=B2，就返回相同，否则返回不相同。</p>
-<p><img src="http://img2.ibolee.com/wp-blog-uploads/2013/01/9912ace00af9f83f51c599cc04eda6f4.gif" alt="excel两列对比"></p>
+<p><img src="https://upimg.ibolee.com/wp-blog-uploads/2013/01/9912ace00af9f83f51c599cc04eda6f4.gif" alt="excel两列对比"></p>
 <p>C2公式为：=IF(A2=B2,”相同”,”不同”)，这样就可以实现excel两列对比。 不过细心的朋友会发现，A5和B5实质上有大小写区分的，因此使用这个公式不是完全准确。Excel中exact函数可以完全区分大小写，请参考：<a href="http://www.ittribalwo.com/show.asp?id=1107" target="_blank" rel="noopener">《exact函数用法和实例》</a> 因此C2公式可以更改为：=IF(EXACT(A2,B2)=TRUE,”相同”,”不同”)，然后下拉复制公式，完成excel两列数据对比。 <strong>excel两列对比应用二：</strong> AB两列都是客户的姓名，需要找到两列重复的客户名称，并标示出来。</p>
-<p><img src="http://img2.ibolee.com/wp-blog-uploads/2013/01/fce75e2bda0cbc3633e73f7efcd260d3.gif" alt="excel两列对比１"></p>
+<p><img src="https://upimg.ibolee.com/wp-blog-uploads/2013/01/fce75e2bda0cbc3633e73f7efcd260d3.gif" alt="excel两列对比１"></p>
 <p>C1单元格输入公式：=IF(COUNTIF(A:A,B1)=0,”不重复”,””)，然后下拉完成excel两列数据对比。 纠错：公式是普通公式，截图有误。 <strong>excel两列对比应用三：</strong> 在 Excel 中通过比较两列中的数据来查找重复项。如果A列的数据没有在B列出现过，就保留单元格为空。如果A列的数据在B列出现过，就返回A列对应的数据。</p>
-<p><img src="http://img2.ibolee.com/wp-blog-uploads/2013/01/c60da925d89ede8eedb7b79d1c7d6def.gif" alt="excel两列数据对比"></p>
+<p><img src="https://upimg.ibolee.com/wp-blog-uploads/2013/01/c60da925d89ede8eedb7b79d1c7d6def.gif" alt="excel两列数据对比"></p>
 <p>C1输入公式：=IF(ISERROR(MATCH(A1,$B$1:$B$5,0)),””,A1)。Match部分得到的结果是#N/A或者数字，然后用ISERROR函数，将#N/A错误值进行处理，ISERROR(#N/A)得到TRUE，ISERROR(数字)得到false，最外面用IF函数来进行判断，如果第一参数是true，就执行第二参数，否则执行第三参数。这个应用是巧用excel两列对比，完成查找重复项。 <strong>excel两列对比应用四：</strong> excel中用vlookup函数来对比两列。</p>
-<p><img src="http://img2.ibolee.com/wp-blog-uploads/2013/01/991c3d7b3475806b429284c53a9e5976.gif" alt="excel两列数据对比２"></p>
+<p><img src="https://upimg.ibolee.com/wp-blog-uploads/2013/01/991c3d7b3475806b429284c53a9e5976.gif" alt="excel两列数据对比２"></p>
 <p>B1单元格公式为：=IF(ISNA(VLOOKUP(A1,$C$1:$C$6,1,)),”←A有C无”,”←AC共有”) D1单元格公式为：=IF(ISNA(VLOOKUP(C1,$A$1:$A$6,1,)),”←C有A无”,”←CA共有”) 然后下拉复制公式，完成excel两列对比。</p>
 
       

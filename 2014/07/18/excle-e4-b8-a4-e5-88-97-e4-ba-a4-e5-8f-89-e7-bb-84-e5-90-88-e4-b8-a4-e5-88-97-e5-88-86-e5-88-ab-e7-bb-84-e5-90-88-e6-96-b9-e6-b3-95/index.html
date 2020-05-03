@@ -15,12 +15,12 @@
 <meta property="og:site_name" content="黑李白的博客">
 <meta property="og:description" content="经常碰到需要将excel中 两列数据 相互交叉组合，类似排列组合的全排  就是a列的每一个数据去和b列每一个组合 现在把函数写下来 很方便  向下填充就行了  里面的数字 5 就是代表a列有多少行 其他的不用理会 自用把函数写到c列 就行了  &#x3D;INDEX(A:A,MOD(ROW(A5),5)+1)&amp;INDEX(B:B,INT(ROW(A5)&#x2F;5))  来分析下这个函数 可以从图片中看出c">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://img2.ibolee.com/wp-blog-uploads/2014/07/0380a86c6a4defef1c36cded50867aa2.jpg">
+<meta property="og:image" content="https://upimg.ibolee.com/wp-blog-uploads/2014/07/0380a86c6a4defef1c36cded50867aa2.jpg">
 <meta property="article:published_time" content="2014-07-18T02:52:13.000Z">
-<meta property="article:modified_time" content="2020-04-30T14:47:05.319Z">
+<meta property="article:modified_time" content="2020-05-03T04:02:02.764Z">
 <meta property="article:author" content="黑李白">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://img2.ibolee.com/wp-blog-uploads/2014/07/0380a86c6a4defef1c36cded50867aa2.jpg">
+<meta name="twitter:image" content="https://upimg.ibolee.com/wp-blog-uploads/2014/07/0380a86c6a4defef1c36cded50867aa2.jpg">
   
     <link rel="alternative" href="/atom.xml" title="黑李白的博客" type="application/atom+xml">
   
@@ -183,7 +183,7 @@
         <p>经常碰到需要将excel中 两列数据 相互交叉组合，类似排列组合的全排  就是a列的每一个数据去和b列每一个组合</p>
 <p>现在把函数写下来 很方便  向下填充就行了  里面的数字 5 就是代表a列有多少行 其他的不用理会</p>
 <p>自用把函数写到c列 就行了</p>
-<p><img src="http://img2.ibolee.com/wp-blog-uploads/2014/07/0380a86c6a4defef1c36cded50867aa2.jpg" alt="excel A列 B列互相组合的方法"></p>
+<p><img src="https://upimg.ibolee.com/wp-blog-uploads/2014/07/0380a86c6a4defef1c36cded50867aa2.jpg" alt="excel A列 B列互相组合的方法"></p>
 <p>=INDEX(A:A,MOD(ROW(A5),5)+1)&amp;INDEX(B:B,INT(ROW(A5)/5))</p>
 <p> 来分析下这个函数</p>
 <p>可以从图片中看出c列是由 2字符组成  前半边是<strong>不断的顺序读取 a1到a5的值</strong>   半边是1重复 a到e的个数  次 例如这里就是重复5次</p>

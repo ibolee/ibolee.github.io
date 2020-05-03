@@ -156,161 +156,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-e7-94-a8mysql-e8-af-ad-e5-8f-a5-e6-89-b9-e9-87-8f-e4-bf-ae-e6-94-b9wordpress-e6-95-b0-e6-8d-ae-e5-ba-93-e6-96-87-e7-ab-a0-e5-86-85-e5-ae-b9" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2013/06/13/e7-94-a8mysql-e8-af-ad-e5-8f-a5-e6-89-b9-e9-87-8f-e4-bf-ae-e6-94-b9wordpress-e6-95-b0-e6-8d-ae-e5-ba-93-e6-96-87-e7-ab-a0-e5-86-85-e5-ae-b9/">用mysql语句批量修改wordpress数据库文章内容</a>
-    </h1>
-  
-
-        
-        <a href="/2013/06/13/e7-94-a8mysql-e8-af-ad-e5-8f-a5-e6-89-b9-e9-87-8f-e4-bf-ae-e6-94-b9wordpress-e6-95-b0-e6-8d-ae-e5-ba-93-e6-96-87-e7-ab-a0-e5-86-85-e5-ae-b9/" class="archive-article-date">
-  	<time datetime="2013-06-13T08:53:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-06-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>开始之前，先介绍以下如何执行SQL语句，进行批量操作。现在一般的空间都是用phpmyadmin来管理数据库，这里将以phpmyadmin为例来介绍如何执行SQL语句：</p>
-<ol>
-<li>进入你的phpmyadmin管理页面，然后进入你的博客对应的数据库</li>
-<li>菜单栏有个 <strong>SQL</strong> 选项，点击进去</li>
-<li>出现一个SQL语句的输入框，现在你就可以在里面输入SQL语句了</li>
-<li>输入完毕，点击 <strong>执行</strong> ，将执行你刚才输入的SQL语句</li>
-<li>SQL语句执行完毕，你的文章也被批量修改了，现在去看看你的文章是否都被更改了</li>
-<li>最后提个醒：以下介绍的SQL语句都在我的博客上做过测试，但是尽管如此，操作数据库之前都要先备份一下你的数据库；定期备份你的数据库是好习惯</li>
-</ol>
-<p>SQL命令执行窗口：</p>
-<p><img src="http://img2.ibolee.com/wp-blog-uploads/2013/06/ac5c74b64b4b8352ef2f181affb5ac2a.gif" alt="SQL命令执行窗口"></p>
-<h4 id="1、批量修改文章内容："><a href="#1、批量修改文章内容：" class="headerlink" title="1、批量修改文章内容："></a>1、批量修改文章内容：</h4><p>如果你想替换之前写过的所有文章中的某些内容，如更换博客的名称，更换博客的网址，更换文章配图的链接等等，你可以使用以下SQL语句：</p>
-<p>1 2</p>
-<p>UPDATE wp_posts SET post_content = REPLACE( post_content, ‘露兜博客’, ‘露兜中文博客’ );</p>
-<p>该语句的功能是将所有文章中的 <strong>露兜博客</strong> 字眼，全部替换成 <strong>露兜中文博客</strong>，你可以根据需要做一些更改。因为文章内容在数据库中是以HTML代码形式存储的，所以以上SQL语句同样可以替换HTML代码。 如果你只是想更改文章插图的链接，而不想影响其他的链接，可以使用以下SQL语句，所有src=”oldurl.com被替换成了src=”newurl.com</p>
-<p>1 2 3</p>
-<p>UPDATE wp_posts SET post_content = REPLACE (post_content, ‘src=”oldurl.com’, ‘src=”newurl.com’);</p>
-<p>如果你是以图片附件形式上传的话，需要更改图片附件的GUID</p>
-<p>1 2 3</p>
-<p>UPDATE wp_posts SET  guid = REPLACE (guid, ‘oldsiteurl.com’, ‘newsiteurl.com’) WHERE post_type = ‘attachment’;</p>
-<h4 id="2、批量修改文章摘要："><a href="#2、批量修改文章摘要：" class="headerlink" title="2、批量修改文章摘要："></a>2、批量修改文章摘要：</h4><p>文章摘要就是你在WordPress后台编辑文章时，”摘要”框中输入的内容，如果你想批量更改文章摘要，可以使用以下语句：</p>
-<p>1 2</p>
-<p>UPDATE wp_posts SET post_excerpt = REPLACE( post_excerpt, ‘露兜博客’, ‘露兜中文博客’ );</p>
-<p>该语句的功能是将所有文章摘要中的 <strong>露兜博客</strong> 字眼，全部替换成 <strong>露兜中文博客</strong>。  </p>
-<h4 id="3、批量修改文章的作者："><a href="#3、批量修改文章的作者：" class="headerlink" title="3、批量修改文章的作者："></a>3、批量修改文章的作者：</h4><p>假设你的博客有两名注册用户，张三和李四，你想将张三的所有文章划归到李四名下，这时候该怎么办呢？你可以执行以下语句：</p>
-<p>1 2 3</p>
-<p>UPDATE wp_posts SET post_author = 李四用户id WHERE post_author = 张三用户id;</p>
-<p>那如何获得 李四的用户id 和 张三的用户id 呢？你可以执行以下SQL语句：</p>
-<p>1</p>
-<p>SELECT ID, user_nicename, display_name FROM wp_users;</p>
-<p>这时将列出你博客上所有的注册用户的ID，昵称和公开显示的名称，你现在就可以找到对应用户的ID了，如下图，zhangsan的ID为2，lisi的ID为5：</p>
-<p><img src="http://img2.ibolee.com/wp-blog-uploads/2013/06/ea8f538c94b6e352418254ed6474a81f.jpg" alt="用户id"></p>
-<p>你的SQL就可以这样写了：</p>
-<p>1 2 3</p>
-<p>UPDATE wp_posts SET post_author = 5 WHERE post_author = 2;</p>
-<h4 id="4、批量修改文章评论者的网站URL："><a href="#4、批量修改文章评论者的网站URL：" class="headerlink" title="4、批量修改文章评论者的网站URL："></a>4、批量修改文章评论者的网站URL：</h4><p>假设，你的博客有个非常忠实的读者，给你的博客文章留下很多有用的评论，同时他的评论都填写了留言者的网站URL，但是有一天他的博客域名换了，并请求你更新他留言中的网站URL，那你怎么办？手动一个一个帮他改，这不太现实。你可以使用以下SQL语句：</p>
-<p>1 2 3</p>
-<p>UPDATE wp_comments SET comment_author_url = REPLACE( comment_author_url, ‘oldurl.com’, ‘newurl.com’ )</p>
-<p>以上语句，将留言者所有旧的网站链接oldurl.com，更改为新的网址newurl.com  </p>
-<h4 id="5、禁用所有文章的pingback功能："><a href="#5、禁用所有文章的pingback功能：" class="headerlink" title="5、禁用所有文章的pingback功能："></a>5、禁用所有文章的pingback功能：</h4><p>开启pingback功能，可以在别人引用你的文章链接的情况下，给你发送通知，但是该功能似乎对我们的文章没多大帮助，那为何不把pingback给禁止了呢？在WordPress后台 – 设置 – 讨论，取消勾选”接收来自外部博客的引用通告(pingbacks 和 trackbacks)”，这样以后的文章都不开启pingback，但是该选项不会对之前的已发布的文章起作用，还是要用到SQL:</p>
-<p>1 2</p>
-<p>UPDATE wp_posts SET ping_status = ‘closed’;</p>
-<h4 id="6、删除所有文章的修订版："><a href="#6、删除所有文章的修订版：" class="headerlink" title="6、删除所有文章的修订版："></a>6、删除所有文章的修订版：</h4><p>在通常情况下，文章的修订版对大多数人来说没多大意义，而且修订版的数量会随着你修改文章的次数不断增长，这会增加数据库的查询速度，这并不是什么好事。互联网上有很多教你如何禁止修订版的文章，还有很多插件可以删除文章修订版，你可以自己搜索看看。这里教你如何使用SQL语句，删除所有已产生的文章修订版数据：</p>
-<p>1 2 3 4 5</p>
-<p>DELETE a,b,c FROM wp_posts a LEFT JOIN wp_term_relationships b ON (a.ID = b.object_id) LEFT JOIN wp_postmeta c ON (a.ID = c.post_id) WHERE a.post_type = ‘revision’;</p>
-<h4 id="7、删除某个评论者的所有评论："><a href="#7、删除某个评论者的所有评论：" class="headerlink" title="7、删除某个评论者的所有评论："></a>7、删除某个评论者的所有评论：</h4><p>如果你的博客想要封杀某人，并删除其在你博客的所有留言，可以使用以下SQL语句。 (1)根据留言者的博客URL进行删除，以下SQL语句将删除所有URL为 <strong><a href="http://www.example.com" target="_blank" rel="noopener">www.example.com</a></strong> 的评论</p>
-<p>1 2</p>
-<p>DELETE FROM wp_comments WHERE comment_author_url LIKE ‘%<a href="http://www.example.com%&#39;">www.example.com%&#39;</a>;</p>
-<p>(2)根据留言者的昵称进行删除，以下语句将删除所有昵称为 <strong>example</strong> 的评论</p>
-<p>1 2</p>
-<p>DELETE FROM wp_comments WHERE comment_author = ‘example’;</p>
-<p>(2)根据留言者的Email进行删除，以下语句将删除所有Email为 <strong><a href="mailto:example@example.com">example@example.com</a></strong> 的评论</p>
-<p>1 2</p>
-<p>DELETE FROM wp_comments WHERE comment_author_email = ‘example@example.com’;</p>
-<h4 id="8、替换所有评论中的敏感词汇："><a href="#8、替换所有评论中的敏感词汇：" class="headerlink" title="8、替换所有评论中的敏感词汇："></a>8、替换所有评论中的敏感词汇：</h4><p>国内的互联网监控力度表现出了不断加强的趋势，如果你的博客评论中出现了大量的敏感词汇，很可能离被墙也不远了。最好的做法是，替换相关的敏感词汇，以保证你的博客安全，以下SQL语句将所有评论中的 <strong>fuck</strong>，替换成 **，替换内容根据你的需要来。</p>
-<p>1 2</p>
-<p>UPDATE wp_comments SET comment_content = REPLACE( comment_content, ‘fuck’, ‘**’ );</p>
-<h4 id="9、关闭文章评论功能"><a href="#9、关闭文章评论功能" class="headerlink" title="9、关闭文章评论功能"></a>9、关闭文章评论功能</h4><p>有时候你的博客可能会因为某种原因，需要关闭文章的评论。在WordPress后台 – 设置 – 讨论，那里取消勾选”允许人们发表新文章的评论”，以后发表的文章默认是关闭评论的。但是之前已经发表的文章，若想关闭评论需要你一篇一篇地去修改评论设置，这是一件比较痛苦的事情。以下SQL语句可以帮助你轻松地批量关闭文章评论： (1) 关闭所有旧文章的评论： 通常情况下，一篇旧文章就很少会有人发表评论了，一般访问旧文章的访客大都来自搜索引擎，这是好事，但是这部分访客还会提出一些新问题，尤其是技术问题，但是可能文章中提到的技术细节你已经淡忘，这时候会让你很难办。最好的做法还是还是禁用旧文章的评论，以下SQL将禁止2009-01-01之前发表的所有文章的评论，你可以根据需要修改日期：</p>
-<p>1 2 3</p>
-<p>UPDATE wp_posts SET comment_status = ‘closed’ WHERE post_date &lt; ‘2009-01-01’ AND post_status = ‘publish’;</p>
-<p>(2) 关闭所有文章的评论： 有时候很不幸，在不可抗力的威胁下，你不得不关闭所有文章的评论，可以使用以下SQL语句：</p>
-<p>1 2</p>
-<p>UPDATE wp_posts SET comment_status = ‘closed’ WHERE post_status = ‘publish’;</p>
-<p>批量发布文章 UPDATE wp_posts SET post_status = ‘value’ WHERE (post_type =’post’ and post_status = ‘value’) ;</p>
-<p>其中value的值包括draft，pending和publish。</p>
-<p>SQL实例</p>
-<p>将所有状态为draft的文章改为publish。SQL语句如下：</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">IT技术</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT相关//" class="article-tag-list-link color5">IT相关</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT相关/其它//" class="article-tag-list-link color3">其它</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2013/06/13/e7-94-a8mysql-e8-af-ad-e5-8f-a5-e6-89-b9-e9-87-8f-e4-bf-ae-e6-94-b9wordpress-e6-95-b0-e6-8d-ae-e5-ba-93-e6-96-87-e7-ab-a0-e5-86-85-e5-ae-b9/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-navicat-e4-b8-8d-e6-94-af-e6-8c-81-e8-bf-9c-e7-a8-8b-e8-bf-9e-e6-8e-a5mysql-e7-9a-84-e8-a7-a3-e5-86-b3-e6-96-b9-e6-a1-88" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -633,7 +478,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>mac默认mail邮件客户端出现:”不能使用发件服务器”的解决方法，提及如何设置<a href="http://lijunnan.com/828/" target="_blank" rel="noopener" title="黑李白">mac</a>下的mail的接收邮件相信大家都可以，今天找到一个如何设置发送的贴子解决了我的问题，拿来和大家分享！ 希望对新同志们有帮助 <img src="http://img2.ibolee.com/wp-blog-uploads/2013/04/4877a94ff79e0fb3bab9b945870bd9ab.jpg" alt="1.jpg" title="1.jpg"> <img src="http://img2.ibolee.com/wp-blog-uploads/2013/04/b393148c3c737aa3c556837690b1357c.jpg" alt="2.jpg" title="2.jpg"> <img src="http://img2.ibolee.com/wp-blog-uploads/2013/04/cc04bec6557d7b50f85c780d9aef08d1.jpg" alt="3.jpg" title="3.jpg"> <img src="http://img2.ibolee.com/wp-blog-uploads/2013/04/69fbab01bae86cbbe88c90c5465efa2b.jpg" alt="4.jpg" title="4.jpg"> <img src="http://img2.ibolee.com/wp-blog-uploads/2013/04/d98f99a817489b3f170487905609efc3.jpg" alt="5.jpg" title="5.jpg"></p>
+        <p>mac默认mail邮件客户端出现:”不能使用发件服务器”的解决方法，提及如何设置<a href="http://lijunnan.com/828/" target="_blank" rel="noopener" title="黑李白">mac</a>下的mail的接收邮件相信大家都可以，今天找到一个如何设置发送的贴子解决了我的问题，拿来和大家分享！ 希望对新同志们有帮助 <img src="https://upimg.ibolee.com/wp-blog-uploads/2013/04/4877a94ff79e0fb3bab9b945870bd9ab.jpg" alt="1.jpg" title="1.jpg"> <img src="https://upimg.ibolee.com/wp-blog-uploads/2013/04/b393148c3c737aa3c556837690b1357c.jpg" alt="2.jpg" title="2.jpg"> <img src="https://upimg.ibolee.com/wp-blog-uploads/2013/04/cc04bec6557d7b50f85c780d9aef08d1.jpg" alt="3.jpg" title="3.jpg"> <img src="https://upimg.ibolee.com/wp-blog-uploads/2013/04/69fbab01bae86cbbe88c90c5465efa2b.jpg" alt="4.jpg" title="4.jpg"> <img src="https://upimg.ibolee.com/wp-blog-uploads/2013/04/d98f99a817489b3f170487905609efc3.jpg" alt="5.jpg" title="5.jpg"></p>
 
       
 
@@ -894,7 +739,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>今天忽然发现京东商城整站301重定向至jd.com,目前百度谷歌正在大批量的收录其新域名的页面,这一壮举无疑是SEO方面的巨大挑战,看得出来京东已经做好了充分准备,将整站进行301,而区别于易车网,购买了yiche.com却始终没有301新的域名,一直沿用bitauto.com,而yiche.com仅仅做为辅助解析. 有几个问题还需要关注: 1.如此大型的京东网站整站301的动荡期有多长?(理论上是60天) 2.京东为什么选择在4月开始做301,这个时间是否是京东的淡季. 3.此次301对京东的负面影响究竟有多大,解决过程是什么样的,让我们持续关注吧.   以下截图收集自2013年4月4日20:07,持续关注中…….. <a href="http://img2.ibolee.com/wp-blog-uploads/2013/04/屏幕快照-2013-04-04-下午7.56.42.png" target="_blank" rel="noopener"><img src="http://img2.ibolee.com/wp-blog-uploads/2013/04/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7-2013-04-04-%E4%B8%8B%E5%8D%887.56.42-300x155.png" alt="屏幕快照 2013-04-04 下午7.56.42"></a> <a href="http://img2.ibolee.com/wp-blog-uploads/2013/04/屏幕快照-2013-04-04-下午7.56.21.png" target="_blank" rel="noopener"><img src="http://img2.ibolee.com/wp-blog-uploads/2013/04/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7-2013-04-04-%E4%B8%8B%E5%8D%887.56.21-300x165.png" alt="屏幕快照 2013-04-04 下午7.56.21"></a> <a href="http://img2.ibolee.com/wp-blog-uploads/2013/04/屏幕快照-2013-04-04-下午7.55.09.png" target="_blank" rel="noopener"><img src="http://img2.ibolee.com/wp-blog-uploads/2013/04/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7-2013-04-04-%E4%B8%8B%E5%8D%887.55.09-300x233.png" alt="屏幕快照 2013-04-04 下午7.55.09"></a> <a href="http://img2.ibolee.com/wp-blog-uploads/2013/04/屏幕快照-2013-04-04-下午7.54.20.png" target="_blank" rel="noopener"><img src="http://img2.ibolee.com/wp-blog-uploads/2013/04/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7-2013-04-04-%E4%B8%8B%E5%8D%887.54.20-300x229.png" alt="屏幕快照 2013-04-04 下午7.54.20"></a></p>
+        <p>今天忽然发现京东商城整站301重定向至jd.com,目前百度谷歌正在大批量的收录其新域名的页面,这一壮举无疑是SEO方面的巨大挑战,看得出来京东已经做好了充分准备,将整站进行301,而区别于易车网,购买了yiche.com却始终没有301新的域名,一直沿用bitauto.com,而yiche.com仅仅做为辅助解析. 有几个问题还需要关注: 1.如此大型的京东网站整站301的动荡期有多长?(理论上是60天) 2.京东为什么选择在4月开始做301,这个时间是否是京东的淡季. 3.此次301对京东的负面影响究竟有多大,解决过程是什么样的,让我们持续关注吧.   以下截图收集自2013年4月4日20:07,持续关注中…….. <a href="https://upimg.ibolee.com/wp-blog-uploads/2013/04/屏幕快照-2013-04-04-下午7.56.42.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2013/04/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7-2013-04-04-%E4%B8%8B%E5%8D%887.56.42-300x155.png" alt="屏幕快照 2013-04-04 下午7.56.42"></a> <a href="https://upimg.ibolee.com/wp-blog-uploads/2013/04/屏幕快照-2013-04-04-下午7.56.21.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2013/04/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7-2013-04-04-%E4%B8%8B%E5%8D%887.56.21-300x165.png" alt="屏幕快照 2013-04-04 下午7.56.21"></a> <a href="https://upimg.ibolee.com/wp-blog-uploads/2013/04/屏幕快照-2013-04-04-下午7.55.09.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2013/04/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7-2013-04-04-%E4%B8%8B%E5%8D%887.55.09-300x233.png" alt="屏幕快照 2013-04-04 下午7.55.09"></a> <a href="https://upimg.ibolee.com/wp-blog-uploads/2013/04/屏幕快照-2013-04-04-下午7.54.20.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2013/04/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7-2013-04-04-%E4%B8%8B%E5%8D%887.54.20-300x229.png" alt="屏幕快照 2013-04-04 下午7.54.20"></a></p>
 
       
 
@@ -971,7 +816,7 @@
         <p>先来说明一下URL编码是什么,什么是URLEncode在因特网上传送URL，只能采用ASCII字符集。 但由于URL常常包含ASCII字符集以外的字符，所以我们必须对URL进行转换。URL编码要做的，就是将URL转换为有效的ASCII字符格式。</p>
 <p>通常单个转URL编码的工具有：<a href="http://tool.chinaz.com/Tools/URLEncode.aspx" target="_blank" rel="noopener">http://tool.chinaz.com/Tools/URLEncode.aspx</a></p>
 <p>但还是可以实现批量转URL编码的，这是一个SEO从业人员必备常识喔～用来做什么的谁用谁知道。</p>
-<p>Excel是个非常强大的工具，工作中因为需要用到他老完成一些表格数据的处理，所以抽空学了一点小技巧。 VBA是Visual Basic Application的全称，我们在Office的产品家族里面会经常看到它的身影。甚至SQL Server里头也有它的足迹，善于使用这些VBA函数或者自定义一些函数能够帮我们实现一些看似很强大的功能而又不用花费太大的精力。 步骤一. 打开Excel 2007中的Visual Basic编辑器<em>在Excel 2007中的开发工具菜单下，点击Visual Basic，即可弹出Visual Basic的编辑界面。默认情况下，这个开发工具在功能区是不显示的，需要在Excel设置中勾选上，如下图（点击放大）。</em> <a href="http://img2.ibolee.com/wp-blog-uploads/2013/03/1.png" target="_blank" rel="noopener"><img src="http://img2.ibolee.com/wp-blog-uploads/2013/03/1-300x78.png" alt="1"></a>   <a href="http://img2.ibolee.com/wp-blog-uploads/2013/03/2.png" target="_blank" rel="noopener"><img src="http://img2.ibolee.com/wp-blog-uploads/2013/03/2-300x148.png" alt="2"></a>   <a href="http://img2.ibolee.com/wp-blog-uploads/2013/03/3.png" target="_blank" rel="noopener"><img src="http://img2.ibolee.com/wp-blog-uploads/2013/03/3-248x300.png" alt="3"></a> 步骤二. 编写自定义函数怎么搞呢？<a href="http://lijunnan.com/" target="_blank" rel="noopener" title="黑李白">黑李白</a>是这么做的。 选择菜单-&gt;插入-&gt;模块，就会弹出一个编辑窗口，在其中输入下面代码，即可定义一个UrlEncode的函数。 code———–&gt;star</p>
+<p>Excel是个非常强大的工具，工作中因为需要用到他老完成一些表格数据的处理，所以抽空学了一点小技巧。 VBA是Visual Basic Application的全称，我们在Office的产品家族里面会经常看到它的身影。甚至SQL Server里头也有它的足迹，善于使用这些VBA函数或者自定义一些函数能够帮我们实现一些看似很强大的功能而又不用花费太大的精力。 步骤一. 打开Excel 2007中的Visual Basic编辑器<em>在Excel 2007中的开发工具菜单下，点击Visual Basic，即可弹出Visual Basic的编辑界面。默认情况下，这个开发工具在功能区是不显示的，需要在Excel设置中勾选上，如下图（点击放大）。</em> <a href="https://upimg.ibolee.com/wp-blog-uploads/2013/03/1.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2013/03/1-300x78.png" alt="1"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2013/03/2.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2013/03/2-300x148.png" alt="2"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2013/03/3.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2013/03/3-248x300.png" alt="3"></a> 步骤二. 编写自定义函数怎么搞呢？<a href="http://lijunnan.com/" target="_blank" rel="noopener" title="黑李白">黑李白</a>是这么做的。 选择菜单-&gt;插入-&gt;模块，就会弹出一个编辑窗口，在其中输入下面代码，即可定义一个UrlEncode的函数。 code———–&gt;star</p>
 <p>Public Function UrlEncode(ByRef szString As String) As String<br>       Dim szChar   As String<br>       Dim szTemp   As String<br>       Dim szCode   As String<br>       Dim szHex    As String<br>       Dim szBin    As String<br>       Dim iCount1  As Integer<br>       Dim iCount2  As Integer<br>       Dim iStrLen1 As Integer<br>       Dim iStrLen2 As Integer<br>       Dim lResult  As Long<br>       Dim lAscVal  As Long<br>       szString = Trim$(szString)<br>       iStrLen1 = Len(szString)<br>       For iCount1 = 1 To iStrLen1<br>           szChar = Mid$(szString, iCount1, 1)<br>           lAscVal = AscW(szChar)<br>           If lAscVal &gt;= &amp;H0 And lAscVal &lt;= &amp;HFF Then<br>              If (lAscVal &gt;= &amp;H30 And lAscVal &lt;= &amp;H39) Or _<br>                 (lAscVal &gt;= &amp;H41 And lAscVal &lt;= &amp;H5A) Or _<br>                 (lAscVal &gt;= &amp;H61 And lAscVal &lt;= &amp;H7A) Then<br>                 szCode = szCode &amp; szChar<br>              Else</p>
 <pre><code>          szCode = szCode &amp; &quot;%&quot; &amp; Hex(AscW(szChar))
        End If
@@ -1030,7 +875,7 @@
     lResult = 0
 Next iCount1
 UrlEncode = szCode</code></pre><p>End Function</p>
-<p>code—————》END 步骤三：测试 定义完之后，我们选择菜单-&gt;文件-&gt;关闭并返回Excel。然后我们就可以在Excel中测试刚才定义的这个函数了。如下图所示。 <a href="http://img2.ibolee.com/wp-blog-uploads/2013/03/4.png" target="_blank" rel="noopener"><img src="http://img2.ibolee.com/wp-blog-uploads/2013/03/4-300x24.png" alt="4"></a> 注意，使用了VBA函数的excel文件需要在打开时启用宏，否则函数无效。使用=urlencode(单元格位置)执行，如图： <a href="http://img2.ibolee.com/wp-blog-uploads/2013/03/6.jpg" target="_blank" rel="noopener"><img src="http://img2.ibolee.com/wp-blog-uploads/2013/03/6-300x175.jpg" alt="6"></a></p>
+<p>code—————》END 步骤三：测试 定义完之后，我们选择菜单-&gt;文件-&gt;关闭并返回Excel。然后我们就可以在Excel中测试刚才定义的这个函数了。如下图所示。 <a href="https://upimg.ibolee.com/wp-blog-uploads/2013/03/4.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2013/03/4-300x24.png" alt="4"></a> 注意，使用了VBA函数的excel文件需要在打开时启用宏，否则函数无效。使用=urlencode(单元格位置)执行，如图： <a href="https://upimg.ibolee.com/wp-blog-uploads/2013/03/6.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2013/03/6-300x175.jpg" alt="6"></a></p>
 <p><strong>本文原作者：Kevin Yang</strong></p>
 
       
@@ -1172,6 +1017,80 @@ UrlEncode = szCode</code></pre><p>End Function</p>
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2013/03/25/excel-e4-b8-ad-e6-89-b9-e9-87-8f-e6-8f-90-e5-8f-96-e5-8d-95-e5-85-83-e6-a0-bc-e8-b6-85-e9-93-be-e6-8e-a5-e6-93-8d-e4-bd-9c-e6-ad-a5-e5-a5-8f/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-e6-b5-8b-e8-af-95-e7-bd-91-e7-ab-99-e9-80-9f-e5-ba-a6-e7-9a-845-e7-a7-8d-e6-96-b9-e6-b3-95-e6-b5-85-e8-b0-88-e5-a6-82-e4-bd-95-e6-b5-8b-e8-af-95-e7-bd-91-e7-ab-99-e6-89-93-e5-bc-80-e9-80-9f-e5-ba-a6" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/03/14/e6-b5-8b-e8-af-95-e7-bd-91-e7-ab-99-e9-80-9f-e5-ba-a6-e7-9a-845-e7-a7-8d-e6-96-b9-e6-b3-95-e6-b5-85-e8-b0-88-e5-a6-82-e4-bd-95-e6-b5-8b-e8-af-95-e7-bd-91-e7-ab-99-e6-89-93-e5-bc-80-e9-80-9f-e5-ba-a6/">测试网站速度的5种方法,浅谈如何测试网站打开速度</a>
+    </h1>
+  
+
+        
+        <a href="/2013/03/14/e6-b5-8b-e8-af-95-e7-bd-91-e7-ab-99-e9-80-9f-e5-ba-a6-e7-9a-845-e7-a7-8d-e6-96-b9-e6-b3-95-e6-b5-85-e8-b0-88-e5-a6-82-e4-bd-95-e6-b5-8b-e8-af-95-e7-bd-91-e7-ab-99-e6-89-93-e5-bc-80-e9-80-9f-e5-ba-a6/" class="archive-article-date">
+  	<time datetime="2013-03-14T07:38:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-03-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>网页载入速度对于一个网站来讲很关键，Google已经将一个网站的载入速度列入了网站关键字排名的考虑因素当中，也就是说如果你的网站有足够的内容，而且载入速度比别人的网站更快一步的话，那么你就是获得更好的排名。那么下面就赶快测试你的网站，提高网站访问速度吧。 <strong>1：用Ping命令简单测网站速度的方法</strong> Ping可以用来检查网络是否通畅或者网络连接速度，点击开始→运行 在运行中输入“cmd”回车或点击确定，输入ping www.你的网址.com 就可以了。 <a href="https://upimg.ibolee.com/wp-blog-uploads/2013/03/298.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2013/03/298-300x106.jpg" alt="298"></a> （新手只需注意本图红框里的含义即可） Ping结果属于表示，bytes表示发送多少字节，time是时间，时间越小速度越快，TTL可以判断对方操作系统，TTL=119是XP系统，但TTL一般不准，服务器可以修改注册表更改TTL类型，更详细测速的办法，请多多搜索。 新手只需看最下面一行即可，最短时间、最长时间和平均时间（时间越短越好），这样你就能大致判断出网站的速度了。 同样，站长之家的ping工具也不错，网址：<a href="http://ping.chinaz.com/" target="_blank" rel="noopener">http://ping.chinaz.com/</a> <strong>2：用tracert命令简单测网站速度的方法</strong> 测试方法和ping命令类似，只是ping换成tracert www.你的网址.com， tracert就是用来检测从终端客户到你的服务器所在机房的“跳数”和响应时间，也就是测试出服务器与全国各地客户的连接速度，当到达任何一个网关的时候,tracert会进行三次测试,并把三次测试的结果以ms为单位显示，当然time时间越短越好。 <strong>3：全方位的免费网站速度测试工具 — GTmetrix</strong> gtmetrix.com提供了丰富的详细的测量结果，它结合了Google Page Speed和Yahoo! YSlow的网页速度测试功能，并且提供可行的建议帮你改善网站速度。无需注册为会员即可使用该工具，并建议如何来优化网页中每个元素的，最重要的是会根据网站的具体情况，直接告诉你导致网站加载速度变慢的根源在哪里。 做为GTmetrix注册会员，你可以设置每天、每周或每月自动测试一次你的网站，可设置测试记录自动保存，还能够同时对4个网址进行对比测试。如果你不知道自己的载入速度到底是快还是慢，你可以输入一个名站来对比结果，比如Google.com 网址：<a href="http://gtmetrix.com/" target="_blank" rel="noopener">http://gtmetrix.com</a> <strong>4：比较哪个网站载入速度较快 — WhichLoadsFaster</strong> 2010年7月7日，FastSoft推出免费动态网站加速互动演示网站 WhichLoadsFaster.com WhichLoadsFaster是一个免费公开网速测试工具，用以促进Web网站间良性竞争让网页浏览速度更快。 它是通过你的连接，在你的浏览器里，让两个真实的网页在你面前展示出来。所以使用WhichLoadsFaster是反应当前你的网络下来对比两个站的速度的。 网址：<a href="http://whichloadsfaster.com/" target="_blank" rel="noopener">http://whichloadsfaster.com/</a> <strong>5：国内免费的网站速度测试平台 — WebKaka</strong> 这个网站是卢松松一直在用的，卡卡网是国内的一家帮你测试网站页面载入速度的免费站长工具，即时检测你的网站在全国各地访问的有效性、响应时间以及打开速度，目前在全国15个省市、美国、澳大利亚、日本等8个国家均设有检测点。此类网站速度测试工具基本都是国外的，国内的测速服务还比较少。卡卡网主要有网站速度测试、ping检测、路由追踪等功能。 网址：<a href="http://www.webkaka.com/" target="_blank" rel="noopener">http://www.webkaka.com</a> 里面的网址我已经收录到博客大全的实用工具中了，当然还有其他很不错的在线网速测试的网站，比如speedtest.cn，speedtest.net等，同时，在你选择网站空间时，能用到本文的一些小方法，相信对你选择物美价廉的空间是个不错的办法。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/IT相关//" class="article-tag-list-link color5">IT相关</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2013/03/14/e6-b5-8b-e8-af-95-e7-bd-91-e7-ab-99-e9-80-9f-e5-ba-a6-e7-9a-845-e7-a7-8d-e6-96-b9-e6-b3-95-e6-b5-85-e8-b0-88-e5-a6-82-e4-bd-95-e6-b5-8b-e8-af-95-e7-bd-91-e7-ab-99-e6-89-93-e5-bc-80-e9-80-9f-e5-ba-a6/">展开全文 >></a>
         </p>
       
 

@@ -15,15 +15,15 @@
 <meta property="og:site_name" content="黑李白的博客">
 <meta property="og:description" content="youku对每一个视频都有一个唯一的id，此id可以在查看页面源文件时得到， 以 videoID &#x3D; 4579646 为例 1 flv播放器load完成后，会向后台请求该id的播放列表，请求地址如下： http:&#x2F;&#x2F;v.youku.com&#x2F;player&#x2F;getPlayList&#x2F;VideoIDS&#x2F;4579646 将videoid修改便可获得任意video的播放列表。 此请求返回一个JSON对象，该对">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://img2.ibolee.com/wp-blog-uploads/2014/02/738693e7d1bd8e03db46c8122f7262eb.png">
-<meta property="og:image" content="http://img2.ibolee.com/wp-blog-uploads/2014/02/738693e7d1bd8e03db46c8122f7262eb.png">
-<meta property="og:image" content="http://img2.ibolee.com/wp-blog-uploads/2014/02/738693e7d1bd8e03db46c8122f7262eb.png">
+<meta property="og:image" content="https://upimg.ibolee.com/wp-blog-uploads/2014/02/738693e7d1bd8e03db46c8122f7262eb.png">
+<meta property="og:image" content="https://upimg.ibolee.com/wp-blog-uploads/2014/02/738693e7d1bd8e03db46c8122f7262eb.png">
+<meta property="og:image" content="https://upimg.ibolee.com/wp-blog-uploads/2014/02/738693e7d1bd8e03db46c8122f7262eb.png">
 <meta property="article:published_time" content="2014-02-16T03:59:42.000Z">
-<meta property="article:modified_time" content="2020-04-30T14:47:05.319Z">
+<meta property="article:modified_time" content="2020-05-03T04:02:02.763Z">
 <meta property="article:author" content="黑李白">
 <meta property="article:tag" content="IT技术">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://img2.ibolee.com/wp-blog-uploads/2014/02/738693e7d1bd8e03db46c8122f7262eb.png">
+<meta name="twitter:image" content="https://upimg.ibolee.com/wp-blog-uploads/2014/02/738693e7d1bd8e03db46c8122f7262eb.png">
   
     <link rel="alternative" href="/atom.xml" title="黑李白的博客" type="application/atom+xml">
   
@@ -184,7 +184,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>youku对每一个视频都有一个唯一的id，此id可以在查看页面源文件时得到， 以 videoID = 4579646 为例 1 flv播放器load完成后，会向后台请求该id的播放列表，请求地址如下： <a href="http://v.youku.com/player/getPlayList/VideoIDS/4579646" target="_blank" rel="noopener">http://v.youku.com/player/getPlayList/VideoIDS/4579646</a> 将videoid修改便可获得任意video的播放列表。 此请求返回一个JSON对象，该对象保存了视频播放列表，以及视频地址解密方法。 2 JSON对象中关于视频地址解密的参数 “seed”:6064, “fileid”:”34*56*56*31*34*32*67*7*34*34*6*31*4*67*46*32*0*29*56*4*32*10*34*34*29*67*3*10*29*29* 31*10*29*4*34*56*7*62*18*5*31*34*6*18*56*62*4*32*18*5*55*32*0*18*46*31*55*67*46*3*4*62*34*10*62*56*“ “key1”:”bd7e2210”, “key2”:”a4b19712badcd042” 下面是视频地址的“样子”： <a href="http://f.youku.com/player/getFlvPath/sid/123122029188218825571_00" target="_blank" rel="noopener">http://f.youku.com/player/getFlvPath/sid/123122029188218825571_00</a> /st/flv/fileid/02006401004962DC0F6102007FC5984715CE4E-D1FC-1363-8681-ABDC115158DA?K=206c9dcb7e2eb9a614fa7e0 红色的部分时根据不同的视频及请求时间而变化的 而蓝色的部分表示视频文件的序号（16进制），如果一个视频文件被分为11部分，那只要把蓝色部分改为从 00到0A就可以了。 <strong>sid：</strong></p>
-<p>Java代码  <img src="http://img2.ibolee.com/wp-blog-uploads/2014/02/738693e7d1bd8e03db46c8122f7262eb.png" alt="收藏代码"></p>
+<p>Java代码  <img src="https://upimg.ibolee.com/wp-blog-uploads/2014/02/738693e7d1bd8e03db46c8122f7262eb.png" alt="收藏代码"></p>
 <ol>
 <li>private String getSid() {</li>
 <li>String sid = new Date().getTime() + “”</li>
@@ -200,7 +200,7 @@
 <li>}</li>
 </ol>
 <p>这里只是得到SID的前半部分，后面还要加上视频文件的序号。 <strong>fileID：</strong></p>
-<p>Java代码  <img src="http://img2.ibolee.com/wp-blog-uploads/2014/02/738693e7d1bd8e03db46c8122f7262eb.png" alt="收藏代码"></p>
+<p>Java代码  <img src="https://upimg.ibolee.com/wp-blog-uploads/2014/02/738693e7d1bd8e03db46c8122f7262eb.png" alt="收藏代码"></p>
 <ol>
 <li><p>/*</p>
 </li>
@@ -256,7 +256,7 @@
 </li>
 </ol>
 <p>然后将得到的fileid的9,10位（非数组位）修改为视频文件序号（同seed的后缀）。 <strong>key：</strong></p>
-<p>Java代码  <img src="http://img2.ibolee.com/wp-blog-uploads/2014/02/738693e7d1bd8e03db46c8122f7262eb.png" alt="收藏代码"></p>
+<p>Java代码  <img src="https://upimg.ibolee.com/wp-blog-uploads/2014/02/738693e7d1bd8e03db46c8122f7262eb.png" alt="收藏代码"></p>
 <ol>
 <li><p>private String getKey(String key1, String key2) {</p>
 </li>

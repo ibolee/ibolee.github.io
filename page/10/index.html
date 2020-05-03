@@ -156,85 +156,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-e4-b8-8d-e5-8a-a8css-e5-9c-a8wordpress-e9-87-8c-e7-bc-96-e8-be-91-e6-96-87-e7-ab-a0-e7-9a-84-e5-ad-97-e4-bd-93-e3-80-81-e5-ad-97-e5-8f-b7-ef-bc-88fckeditorckeditor-ef-bc-89" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2013/01/08/e4-b8-8d-e5-8a-a8css-e5-9c-a8wordpress-e9-87-8c-e7-bc-96-e8-be-91-e6-96-87-e7-ab-a0-e7-9a-84-e5-ad-97-e4-bd-93-e3-80-81-e5-ad-97-e5-8f-b7-ef-bc-88fckeditorckeditor-ef-bc-89/">不动css在WordPress里编辑文章的字体、字号（FCKeditor/CKEditor）</a>
-    </h1>
-  
-
-        
-        <a href="/2013/01/08/e4-b8-8d-e5-8a-a8css-e5-9c-a8wordpress-e9-87-8c-e7-bc-96-e8-be-91-e6-96-87-e7-ab-a0-e7-9a-84-e5-ad-97-e4-bd-93-e3-80-81-e5-ad-97-e5-8f-b7-ef-bc-88fckeditorckeditor-ef-bc-89/" class="archive-article-date">
-  	<time datetime="2013-01-08T13:37:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-01-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>WordPress自带的文本编辑器功能简单，我们通过安装**</strong><a href="http://wordpress.org/extend/plugins/ckeditor-for-wordpress/" target="_blank" rel="noopener">CKEditor</a>(以前叫FCKeditor)插件和修改插件来实现更加强大的文本编辑共更能** **      首先，安装一个插件—<a href="http://wordpress.org/extend/plugins/ckeditor-for-wordpress/" target="_blank" rel="noopener">CKEditor</a>，启动这个插件后，你就可以方便的编辑、美化Wordpress的文章了。** **     从下图你就可以看到，这比Wordpress自带的文本编辑器增加了好多功能** <strong><a href="http://img2.ibolee.com/wp-blog-uploads/2013/01/3da4fd3fc35949f343ddcdd03e5fc709.jpg" target="_blank" rel="noopener"><img src="http://img2.ibolee.com/wp-blog-uploads/2013/01/3da4fd3fc35949f343ddcdd03e5fc709.jpg" alt="" title="CKEditor-1"></a></strong> <strong>但这个插件编辑字体选项中只有几种英文字体，这显然是不够，我们要增加更多的中文字体。</strong>  </p>
-<ul>
-<li><strong>怎么样增加更多的中文字体呢？</strong></li>
-</ul>
-<p><strong>在Wordpress后台，打开CKEditor插件的管理的”File Editor“选项，如下图</strong> <strong><a href="http://ztyhome.com/" target="_blank" rel="noopener"><img src="http://img2.ibolee.com/wp-blog-uploads/2013/01/fadb784b285dfd79d62b64878f99af01.jpg" alt="" title="CKEditor-2"></a></strong> **     在CKEDITOR.editorConfig = function( config ) 这句话后面的大括号内的第一行加上如下代码：** c_onfig.font_names = ‘宋体/宋体;黑体/黑体;仿宋/仿宋_GB2312;楷体/楷体_GB2312;隶书/隶书;幼圆/幼圆;微软雅黑/微软雅黑;’+ config.font_names ;_</p>
-<p><strong>这样你就成功添加了几种中文字体，你可以扩展上面这段代码来增加更多的字体。</strong></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT相关//" class="article-tag-list-link color5">IT相关</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2013/01/08/e4-b8-8d-e5-8a-a8css-e5-9c-a8wordpress-e9-87-8c-e7-bc-96-e8-be-91-e6-96-87-e7-ab-a0-e7-9a-84-e5-ad-97-e4-bd-93-e3-80-81-e5-ad-97-e5-8f-b7-ef-bc-88fckeditorckeditor-ef-bc-89/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-e7-94-a8excel-e4-b8-a4-e5-88-97-e5-af-b9-e6-af-94-e9-80-89-e5-87-ba-e9-87-8d-e5-a4-8d-e9-a1-b9-e7-9a-84-e5-9b-9b-e4-b8-aa-e5-ae-9e-e4-be-8b" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -256,13 +177,13 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><strong>excel两列对比应用一：</strong> excel分别对AB列两列数据对比，比如A2=B2，就返回相同，否则返回不相同。</p>
-<p><img src="http://img2.ibolee.com/wp-blog-uploads/2013/01/9912ace00af9f83f51c599cc04eda6f4.gif" alt="excel两列对比"></p>
+<p><img src="https://upimg.ibolee.com/wp-blog-uploads/2013/01/9912ace00af9f83f51c599cc04eda6f4.gif" alt="excel两列对比"></p>
 <p>C2公式为：=IF(A2=B2,”相同”,”不同”)，这样就可以实现excel两列对比。 不过细心的朋友会发现，A5和B5实质上有大小写区分的，因此使用这个公式不是完全准确。Excel中exact函数可以完全区分大小写，请参考：<a href="http://www.ittribalwo.com/show.asp?id=1107" target="_blank" rel="noopener">《exact函数用法和实例》</a> 因此C2公式可以更改为：=IF(EXACT(A2,B2)=TRUE,”相同”,”不同”)，然后下拉复制公式，完成excel两列数据对比。 <strong>excel两列对比应用二：</strong> AB两列都是客户的姓名，需要找到两列重复的客户名称，并标示出来。</p>
-<p><img src="http://img2.ibolee.com/wp-blog-uploads/2013/01/fce75e2bda0cbc3633e73f7efcd260d3.gif" alt="excel两列对比１"></p>
+<p><img src="https://upimg.ibolee.com/wp-blog-uploads/2013/01/fce75e2bda0cbc3633e73f7efcd260d3.gif" alt="excel两列对比１"></p>
 <p>C1单元格输入公式：=IF(COUNTIF(A:A,B1)=0,”不重复”,””)，然后下拉完成excel两列数据对比。 纠错：公式是普通公式，截图有误。 <strong>excel两列对比应用三：</strong> 在 Excel 中通过比较两列中的数据来查找重复项。如果A列的数据没有在B列出现过，就保留单元格为空。如果A列的数据在B列出现过，就返回A列对应的数据。</p>
-<p><img src="http://img2.ibolee.com/wp-blog-uploads/2013/01/c60da925d89ede8eedb7b79d1c7d6def.gif" alt="excel两列数据对比"></p>
+<p><img src="https://upimg.ibolee.com/wp-blog-uploads/2013/01/c60da925d89ede8eedb7b79d1c7d6def.gif" alt="excel两列数据对比"></p>
 <p>C1输入公式：=IF(ISERROR(MATCH(A1,$B$1:$B$5,0)),””,A1)。Match部分得到的结果是#N/A或者数字，然后用ISERROR函数，将#N/A错误值进行处理，ISERROR(#N/A)得到TRUE，ISERROR(数字)得到false，最外面用IF函数来进行判断，如果第一参数是true，就执行第二参数，否则执行第三参数。这个应用是巧用excel两列对比，完成查找重复项。 <strong>excel两列对比应用四：</strong> excel中用vlookup函数来对比两列。</p>
-<p><img src="http://img2.ibolee.com/wp-blog-uploads/2013/01/991c3d7b3475806b429284c53a9e5976.gif" alt="excel两列数据对比２"></p>
+<p><img src="https://upimg.ibolee.com/wp-blog-uploads/2013/01/991c3d7b3475806b429284c53a9e5976.gif" alt="excel两列数据对比２"></p>
 <p>B1单元格公式为：=IF(ISNA(VLOOKUP(A1,$C$1:$C$6,1,)),”←A有C无”,”←AC共有”) D1单元格公式为：=IF(ISNA(VLOOKUP(C1,$A$1:$A$6,1,)),”←C有A无”,”←CA共有”) 然后下拉复制公式，完成excel两列对比。</p>
 
       
@@ -526,7 +447,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>学英语和学Google Analytics其实是可以同步进行的，本文参照最新的谷歌分析视图提供对应的中英文单词表，并且已经排版好，下载即可打印（视图建议单独全图A4纸打印也很清晰，亲测）<a href="http://lijunnan.com/" target="_blank" rel="noopener" title="黑李白">黑李白</a>希望能为学互联网英语的人带来实惠。 图1是Google Analytics的最新视图 <a href="http://img2.ibolee.com/wp-blog-uploads/2012/12/Google-Analytics页面UI位置标注.png" target="_blank" rel="noopener"><img src="http://img2.ibolee.com/wp-blog-uploads/2012/12/Google-Analytics%E9%A1%B5%E9%9D%A2UI%E4%BD%8D%E7%BD%AE%E6%A0%87%E6%B3%A8-300x214.png" alt="" title="Google Analytics页面UI位置标注"></a> 图二则是Google Analytics视图中标注处的注视（中英文） <a href="http://img2.ibolee.com/wp-blog-uploads/2012/12/zh_EN.jpg" target="_blank" rel="noopener"><img src="http://img2.ibolee.com/wp-blog-uploads/2012/12/zh_EN-300x210.jpg" alt="" title="zh_EN"></a> 文档下载地址：<a href="http://goo.gl/IbxNH" target="_blank" rel="noopener">http://goo.gl/IbxNH</a> <strong>ljn1</strong> <strong>LJN2</strong></p>
+        <p>学英语和学Google Analytics其实是可以同步进行的，本文参照最新的谷歌分析视图提供对应的中英文单词表，并且已经排版好，下载即可打印（视图建议单独全图A4纸打印也很清晰，亲测）<a href="http://lijunnan.com/" target="_blank" rel="noopener" title="黑李白">黑李白</a>希望能为学互联网英语的人带来实惠。 图1是Google Analytics的最新视图 <a href="https://upimg.ibolee.com/wp-blog-uploads/2012/12/Google-Analytics页面UI位置标注.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2012/12/Google-Analytics%E9%A1%B5%E9%9D%A2UI%E4%BD%8D%E7%BD%AE%E6%A0%87%E6%B3%A8-300x214.png" alt="" title="Google Analytics页面UI位置标注"></a> 图二则是Google Analytics视图中标注处的注视（中英文） <a href="https://upimg.ibolee.com/wp-blog-uploads/2012/12/zh_EN.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2012/12/zh_EN-300x210.jpg" alt="" title="zh_EN"></a> 文档下载地址：<a href="http://goo.gl/IbxNH" target="_blank" rel="noopener">http://goo.gl/IbxNH</a> <strong>ljn1</strong> <strong>LJN2</strong></p>
 
       
 
@@ -818,7 +739,7 @@
 <li>自定义链接</li>
 <li>设置管理器</li>
 </ul>
-<p>还有一些其他的内容，上面都是每一个大项，里面有包括了很多详细的其它设置。   以下是汉化截图： <a href="http://img2.ibolee.com/wp-blog-uploads/2012/11/1.jpg" target="_blank" rel="noopener"><img src="http://img2.ibolee.com/wp-blog-uploads/2012/11/1.jpg" alt="" title="1"></a> <a href="http://img2.ibolee.com/wp-blog-uploads/2012/11/2.jpg" target="_blank" rel="noopener"><img src="http://img2.ibolee.com/wp-blog-uploads/2012/11/2.jpg" alt="" title="2"></a> <a href="http://img2.ibolee.com/wp-blog-uploads/2012/11/3.jpg" target="_blank" rel="noopener"><img src="http://img2.ibolee.com/wp-blog-uploads/2012/11/3.jpg" alt="" title="3"></a>   下载地址：<a href="http://url.cn/7U64uK?type=1&from=19&u=junnanlee&s=1&f=1&skey=" target="_blank" rel="noopener">http://url.cn/7U64uK</a></p>
+<p>还有一些其他的内容，上面都是每一个大项，里面有包括了很多详细的其它设置。   以下是汉化截图： <a href="https://upimg.ibolee.com/wp-blog-uploads/2012/11/1.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2012/11/1.jpg" alt="" title="1"></a> <a href="https://upimg.ibolee.com/wp-blog-uploads/2012/11/2.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2012/11/2.jpg" alt="" title="2"></a> <a href="https://upimg.ibolee.com/wp-blog-uploads/2012/11/3.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2012/11/3.jpg" alt="" title="3"></a>   下载地址：<a href="http://url.cn/7U64uK?type=1&from=19&u=junnanlee&s=1&f=1&skey=" target="_blank" rel="noopener">http://url.cn/7U64uK</a></p>
 
       
 
@@ -1017,6 +938,91 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2012/10/31/e6-9b-be-e5-9b-bd-e8-97-a9-e7-89-a2-e9-aa-9a-e5-a4-aa-e7-94-9a-e8-80-85-ef-bc-8c-e5-85-b6-e5-90-8e-e5-bf-85-e5-a4-9a-e6-8a-91-e5-a1-9e-e3-80-82-e6-80-8e-e4-b9-88-e7-90-86-e8-a7-a3/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-e6-b2-99-e6-bc-a0-e4-ba-ba-e5-8f-82-e8-8b-81-e8-93-89-e7-9a-84-e5-8a-9f-e6-95-88-e4-bb-a5-e5-8f-8a-e5-90-83-e6-b3-95" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2012/10/12/e6-b2-99-e6-bc-a0-e4-ba-ba-e5-8f-82-e8-8b-81-e8-93-89-e7-9a-84-e5-8a-9f-e6-95-88-e4-bb-a5-e5-8f-8a-e5-90-83-e6-b3-95/">沙漠人参:苁蓉的功效以及吃法</a>
+    </h1>
+  
+
+        
+        <a href="/2012/10/12/e6-b2-99-e6-bc-a0-e4-ba-ba-e5-8f-82-e8-8b-81-e8-93-89-e7-9a-84-e5-8a-9f-e6-95-88-e4-bb-a5-e5-8f-8a-e5-90-83-e6-b3-95/" class="archive-article-date">
+  	<time datetime="2012-10-12T07:16:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2012-10-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>关于苁蓉 苁蓉，又名大芸，主产于内蒙古自治区的阿拉善盟。中医称其为地精或金笋，是极其名贵的中药材，素有“沙漠人参”之美誉，历史上就被西域各国作为上贡朝廷的珍品。 苁蓉入药，由来已久。它甘而性温，咸而质润，具有补阳不燥，温通肾阳补肾虚；补阴不腻，润肠通腹治便秘的特点。正因为它补性和缓，才有苁蓉（从容）之称。 明代医药学家李时珍在《本草纲目》中不仅详细地记载了历代医药学家有关苁蓉的论述，并且进一步分析、研究了苁蓉的性质和功能。其中写道：“大芸与羊肉煮食，可治‘五为七伤’，腹中寒热病，强阴益精髓”，‘以其温而能润、滑而不泻、常补不峻、峻而精血、兴阳助人”；本经谓其“养五脏、强阴、益精气”；《大明》称其治“男子绝阳不兴，女子绝阴不产”。近年来，医药界应用现代科学方法对苁蓉进行化验分析，结果表明，苁蓉含有微量生物碱及结晶性中性物质，确有治疗腰膝冷痛、神经衰弱、听力减退的功效，还具有降低血压的作用，并可作为膀胱炎、膀胱出血、肾脏出血的止血药用。   --------------苁蓉的吃法----------- 【苁蓉酒】 1.肉苁蓉酒：肉苁蓉200g放入3千克白酒内浸泡7-15日后，每日饮用10-30毫升。 2．肉苁蓉枸杞酒：肉苁蓉200g锁阳100g天麻30g 枸杞子50g，放入3千克白酒内浸泡7-15日后，每日饮用10-30毫升。 3．肉苁蓉菟丝酒：肉苁蓉30g菟丝子20g，放入500克白酒内浸泡后饮用。 饮用完可继续加入白酒浸泡。 【苁蓉粥 】 1．苁蓉羊肉粥 原料：肉苁蓉15g ,精羊肉100g,粳米100g,精盐少许,葱白2茎,生姜3片。 制作：将肉苁蓉 精羊肉洗净细切，用砂锅煎肉苁蓉取汁去渣，入羊肉粳米同煮，待煮沸后加入精盐生姜葱白煮为稀粥。 用法：早餐或夜宵食用，适于冬季食用，5—7日为一疗程。 功效：补肾助阳健脾养胃润肠通便。适用于肾阳虚所致的阳痿遗精早泄女子不孕腰膝冷痛小便频数夜间多尿遗尿等患者食用。 2．苁蓉大米粥 原料：肉苁蓉10g 大米100 g 白糖适量。 制作：将肉苁蓉洗净，放入瓦罐内加清水，先煎35分钟，取汁去渣，将大米淘洗干净放入锅内，加肉苁蓉汁和清水，武火烧沸，改文火煮成粥，最后调入白糖即成。 用法：每日1次，正餐食用。 功效：温补肾阳，适用于阴冷患者早餐食用。 【苁蓉汤】 1．苁蓉巴戟羊肉汤 原料：羊肉60g 巴戟15g 苁蓉15g 薏苡仁20g 生姜3片 大蒜30g。 制作：将羊肉洗净切块，与上药同煮，先武火煮开，改文火煮3小时，调味食用。 用法：5—7日一疗程或遵医嘱。 功效：适用于耳部脓液清稀 听力下降 胃寒 腰酸痛 头晕耳鸣 夜尿多 舌淡 苔白 脉沉细。 2．锁阳牛肉汤 原料：锁阳15g 仙茅9g 枸杞子15g 金樱子9g 熟地9g 菟丝子9g 山药15g 蜂房9g 淫羊藿9g 五味子6g 牛肉300g 黄狗鞭30g 花椒3g 姜10g 料酒5g 胡椒粉3g 葱10g 精盐5g 味精3g。 制作：将上药洗净后放入炖锅内，加水煎45分钟，滤出药液，再加水煮25分钟，滤去药渣，合并药液备用；牛肉洗净切块，将牛肉 狗鞭 姜 葱 花椒放入炖锅内，加入清水药液，放入精盐料酒等调料，武火烧沸，再改文火炖3.5小时即可。 用法：每周2次，吃牛肉，喝汤。 功效：补肾壮阳生精添髓。适用于早泄滑精阳痿等患者食用。 3．苁蓉乌鸡汤：肉苁蓉30g 乌鸡1只，辅料、调料炖食。 4．苁蓉猪肘汤：肉苁蓉30g 猪肘肉400g，辅料、调料炖食。 【核桃苁蓉茶 】 原料：核桃肉 肉苁蓉 炒白术各10g，川大黄5g。 制作：将上料全部掰成小块，放入保温瓶内，加滚开水约1500毫升，盖紧瓶口浸泡3小时后饮用。倒茶时用纱布缠紧瓶口，以防药渣倾出。 用法：每日饮500毫升，分两次空腹饮用。每剂服用3日，持续至便秘消失。 功效：温补脾肾润肠通便 【苁蓉炒菜 】 1．肉苁蓉炒虾仁：肉苁蓉粉30g 虾仁250g，辅料、调料炒食。 2．肉苁蓉炒腰花：肉苁蓉粉30g 猪腰花250g，辅料、调料炒食。 3．肉苁蓉炒凤脯：肉苁蓉30g 鸡胸脯肉250g，辅料、调料炒食。 【苁蓉蒸菜 】 1．肉苁蓉蒸青鳝：肉苁蓉粉30g 青鳝鱼1条（750 g）,辅料、调料蒸食。 2．肉苁蓉蒸大虾：肉苁蓉粉20g 大虾500 g，辅料蒸食。 3．肉苁蓉蒸乳鸽：肉苁蓉30g 乳鸽1只，辅料、调料蒸食。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">美食</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/其它//" class="article-tag-list-link color3">其它</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2012/10/12/e6-b2-99-e6-bc-a0-e4-ba-ba-e5-8f-82-e8-8b-81-e8-93-89-e7-9a-84-e5-8a-9f-e6-95-88-e4-bb-a5-e5-8f-8a-e5-90-83-e6-b3-95/">展开全文 >></a>
         </p>
       
 

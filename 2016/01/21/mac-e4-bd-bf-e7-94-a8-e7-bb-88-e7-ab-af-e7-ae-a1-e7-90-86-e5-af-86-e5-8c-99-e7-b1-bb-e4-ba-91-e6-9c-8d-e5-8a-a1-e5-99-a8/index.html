@@ -15,16 +15,16 @@
 <meta property="og:site_name" content="黑李白的博客">
 <meta property="og:description" content="首先创建下载腾讯云服务器的SSH密钥，创建地址如下：  将下载下来的SSH密钥保存在 Finder 的 ~&#x2F;.ssh 目录下，如果没有这个目录，可以通过终端创建一个： 1 2 cd ~ mkdir .&#96;&#96;ssh 然后通过 Finder 的「前往」功能，或者快捷键 Shift + Command + G 来进入 ~&#x2F;.ssh 目录。将下载下来的密钥文件复制粘贴到这个目录里，并修改密钥文件的权限，修改">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://img2.ibolee.com/wp-blog-uploads/201510181.png">
-<meta property="og:image" content="http://img2.ibolee.com/wp-blog-uploads/201510183-600x378.png">
-<meta property="og:image" content="http://img2.ibolee.com/wp-blog-uploads/201510211-600x563-599x562.png">
-<meta property="og:image" content="http://img2.ibolee.com/wp-blog-uploads/201510212-600x378.png">
-<meta property="og:image" content="http://img2.ibolee.com/wp-blog-uploads/201510213-600x563-599x562.png">
+<meta property="og:image" content="https://upimg.ibolee.com/wp-blog-uploads/201510181.png">
+<meta property="og:image" content="https://upimg.ibolee.com/wp-blog-uploads/201510183-600x378.png">
+<meta property="og:image" content="https://upimg.ibolee.com/wp-blog-uploads/201510211-600x563-599x562.png">
+<meta property="og:image" content="https://upimg.ibolee.com/wp-blog-uploads/201510212-600x378.png">
+<meta property="og:image" content="https://upimg.ibolee.com/wp-blog-uploads/201510213-600x563-599x562.png">
 <meta property="article:published_time" content="2016-01-21T02:47:54.000Z">
-<meta property="article:modified_time" content="2020-04-30T14:47:05.321Z">
+<meta property="article:modified_time" content="2020-05-03T04:02:02.764Z">
 <meta property="article:author" content="黑李白">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://img2.ibolee.com/wp-blog-uploads/201510181.png">
+<meta name="twitter:image" content="https://upimg.ibolee.com/wp-blog-uploads/201510181.png">
   
     <link rel="alternative" href="/atom.xml" title="黑李白的博客" type="application/atom+xml">
   
@@ -184,7 +184,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>首先创建下载腾讯云服务器的SSH密钥，创建地址如下： <a href="http://img2.ibolee.com/wp-blog-uploads/201510181.png" target="_blank" rel="noopener"><img src="http://img2.ibolee.com/wp-blog-uploads/201510181.png" alt="201510181"></a> 将下载下来的SSH密钥保存在 <strong>Finder</strong> 的 <strong>~/.ssh</strong> 目录下，如果没有这个目录，可以通过终端创建一个：</p>
+        <p>首先创建下载腾讯云服务器的SSH密钥，创建地址如下： <a href="https://upimg.ibolee.com/wp-blog-uploads/201510181.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/201510181.png" alt="201510181"></a> 将下载下来的SSH密钥保存在 <strong>Finder</strong> 的 <strong>~/.ssh</strong> 目录下，如果没有这个目录，可以通过终端创建一个：</p>
 <p>1</p>
 <p>2</p>
 <p><code>cd</code> <code>~</code></p>
@@ -203,9 +203,9 @@
 <p>如果觉得每次都要通过输入一长句命令来SSH服务器比较麻烦的话，也可以借助客户端来一键SSH，这里我用的是 <a href="https://www.iterm2.com/" target="_blank" rel="noopener">iTerm2.app</a> 来实现的： <strong>第一种方法用到的命令是：</strong></p>
 <p>1</p>
 <p><code>ssh</code> <code>-i ~/.``ssh``/id_rsa</code> <code>root@192.168.1.1</code></p>
-<p><a href="http://img2.ibolee.com/wp-blog-uploads/201510183-600x378.png" target="_blank" rel="noopener"><img src="http://img2.ibolee.com/wp-blog-uploads/201510183-600x378.png" alt="201510183-600x378"></a> 效果如下（虽然有错误提示，但不影响正常操作使用，我也 Google 了相关信息，暂时没找到适当的解决方法）： <a href="http://img2.ibolee.com/wp-blog-uploads/201510211-600x563.png" target="_blank" rel="noopener"><img src="http://img2.ibolee.com/wp-blog-uploads/201510211-600x563-599x562.png" alt="201510211-600x563"></a> <strong>第二种方法用到的命令是（推荐）：</strong></p>
+<p><a href="https://upimg.ibolee.com/wp-blog-uploads/201510183-600x378.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/201510183-600x378.png" alt="201510183-600x378"></a> 效果如下（虽然有错误提示，但不影响正常操作使用，我也 Google 了相关信息，暂时没找到适当的解决方法）： <a href="https://upimg.ibolee.com/wp-blog-uploads/201510211-600x563.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/201510211-600x563-599x562.png" alt="201510211-600x563"></a> <strong>第二种方法用到的命令是（推荐）：</strong></p>
 <p><code>ssh</code> <code>-l root -p 22 192.168.1.1</code></p>
-<p><a href="http://img2.ibolee.com/wp-blog-uploads/201510212-600x378.png" target="_blank" rel="noopener"><img src="http://img2.ibolee.com/wp-blog-uploads/201510212-600x378.png" alt="201510212-600x378"></a> 效果如下： <a href="http://img2.ibolee.com/wp-blog-uploads/201510213-600x563.png" target="_blank" rel="noopener"><img src="http://img2.ibolee.com/wp-blog-uploads/201510213-600x563-599x562.png" alt="201510213-600x563"></a> 第一次登录会询问：</p>
+<p><a href="https://upimg.ibolee.com/wp-blog-uploads/201510212-600x378.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/201510212-600x378.png" alt="201510212-600x378"></a> 效果如下： <a href="https://upimg.ibolee.com/wp-blog-uploads/201510213-600x563.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/201510213-600x563-599x562.png" alt="201510213-600x563"></a> 第一次登录会询问：</p>
 <blockquote>
 <p>Are you sure you want to continue connecting（yes/no）? 输入 “yes”</p>
 </blockquote>
