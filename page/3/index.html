@@ -156,559 +156,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-wp-e4-bc-98-e5-8c-96-e6-97-a5-e5-bf-97-ef-bc-8c-e5-9f-ba-e4-ba-8eseo-e6-96-b9-e9-9d-a2-e5-a4-9a-e4-b8-80-e7-82-b9-ef-bc-9b" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/5b9a27d4.html">wp速度优化日志，基于SEO方面多一点；</a>
-    </h1>
-  
-
-        
-        <a href="/posts/5b9a27d4.html" class="archive-article-date">
-  	<time datetime="2015-09-09T09:01:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-09-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="——-速度优化———"><a href="#——-速度优化———" class="headerlink" title="——-速度优化———-"></a>——-速度优化———-</h2><p>因为这个程序与一般的程序有些”不同”，所以我整理收集一下速度优化思路，注意，这里是思路，不会很轴的说怎么做。 1.解决google字体的问题，有人直接干掉google字体，有的则是用是360公用库替换； 谷歌字体替换后，可以在css中重新定义一下别的字体效果更加，比如： [cc lang=”php”] body { font-size: 14px; font-size: 1rem; font-family: Microsoft YaHei, Helvetica, Arial, sans-serif; text-rendering: optimizeLegibility; color: #444; } [/cc] 2.<a href="http://www.xiaoz.me/archives/5832" target="_blank" rel="noopener">解决emoji表情的问题</a>；我的做法简单粗暴：删掉不用； 3.解决Gravatar 头像问题，我的做法简单粗暴删掉不用； 4. 不要使用国内的BD云加速、各种云加速，越用越慢； 5.用七牛云存储去异步加载js，css文件，要是有条件的话合并一下再异步加载（对于tf下载汉化的主题尤为重要，歪果人的主题绚丽高大上，同时需要加载的这类文件还很多，有的甚至调用的是一些谷歌之外的公用库的。） 使用完wpjam出品的七牛同步插件后，发现缩略图不可见，这个时候需要按照该插件的说明中替换对应地方的函数，此外：如果本地图片非常的大的话，参考这个文档进行七牛图片批量同步：<a href="http://docs.qiniu.com/tools/v6/qrsync.html" target="_blank" rel="noopener">http://docs.qiniu.com/tools/v6/qrsync.html</a> 围绕这个文档的博文如：<a href="http://cnfeat.com/blog/2015/11/30/cli-qiniu/" target="_blank" rel="noopener">http://cnfeat.com/blog/2015/11/30/cli-qiniu/</a> 6.wp-super-cache做缓存，这是一个经典的插件，比起cos-html-cache好在支持自适应上；（非强迫症可不使用） 围绕这个插件的七牛加速教程见：<a href="https://iyaozhen.com/qiniu-cdn-wordpress.html" target="_blank" rel="noopener">https://iyaozhen.com/qiniu-cdn-wordpress.html</a> 7.还有各种加载慢，需要用chrome或者firefox查，具体情况具体解决。</p>
-<h2 id="——–以下是SEO部分———"><a href="#——–以下是SEO部分———" class="headerlink" title="——–以下是SEO部分———-"></a>——–以下是SEO部分———-</h2><h2 id="A-固定链接设计，俩个思路：1-URL隶属目录，2-隶属目录后解决category目录的多余部分。"><a href="#A-固定链接设计，俩个思路：1-URL隶属目录，2-隶属目录后解决category目录的多余部分。" class="headerlink" title="A.固定链接设计，俩个思路：1.URL隶属目录，2.隶属目录后解决category目录的多余部分。"></a>A.固定链接设计，俩个思路：1.URL隶属目录，2.隶属目录后解决category目录的多余部分。</h2><p>[cc lang=”php”] /%category%/%post_id%.html [/cc] 上面提到的2需要用到个插件：WP No Category Base WP No Category Base这个插件可以把WP分类目录URL里面的/category/去掉，主要是达到让栏目页URL比内页浅的目的 固定链接设置：/%category%/%postname%/ 就是内页URL变成栏目名+文章名，这个文章名是自定义的。想省事的话，可以用：/%category%/%post_id%/ id是自动来的，没必要自己写。 如果是新增的自定义内容类型的话，可以使用：custom post type permalink这个插件，来为自定义内容类型，设置URL规则。</p>
-<h2 id="B-标题优化："><a href="#B-标题优化：" class="headerlink" title="B.标题优化："></a>B.标题优化：</h2><p>[cc lang=”php”] [/cc] 这段代码的效果如—— 首页：君南的稀罕货 内页：wp优化日志，基于SEO方面多一点；_ 君南的稀罕货 （当然只是举例，我的博客不做任何SEO优化） 如果前面的”right”设置是”left”的话，内页就会是<em>在前面。前面的”</em>“自然指的是其中的分隔符。 bloginfo(‘name’)的意思是WP的 设置-&gt;常规 里面设定的站点标题。 如果要把首页的特别设置为不一样的话，可以用下面一段代码：（不保证有效） [cc lang=”php”]</p>
-<title><?php if(is\_home()) { ?>站点名称-宣传口号<?php } else {?><?php wp\_title('_', true, 'right');bloginfo('name');?><?php } ?></title>
-
-<p>[/cc] 意思就是先判断是不是首页，如果是首页的话，就显示为首页特别设置的title，不然就按照原先的设置来。 keyword是没什么用的，这个就不提了。 desciption标签，建议设置为： [cc lang=”php”] <?php if(is_home()) { ?><meta name="desciption" content="<?php bloginfo('description'); ?>" /><?php } ?> [/cc] 意思就是如果是网站首页的话，显示 设置-&gt;常规 里面设定的副标题。如果是内页就不显示description。 觉得对于博客这种文章内容为主的网站而言，SERP里面的摘要还是让搜索引擎自行去动态提取比较好，应该有利于点击率的提升。 锚链接的话： [cc lang=”php”] [[/cc]](<?php bloginfo('url'); ?>/) 不过现在有很多插件可以自动匹配锚链接，比如：WP Keyword Link 自行搜索下。</p>
-<h2 id="C：防spam的方案"><a href="#C：防spam的方案" class="headerlink" title="C：防spam的方案;"></a>C：防spam的方案;</h2><p>方法1： 水煮鱼的跳转方法： <a href="http://blog.wpjam.com/project/comments-link-redirect/" target="_blank" rel="noopener">http://blog.wpjam.com/project/comments-link-redirect/</a> 方法2：Akismet插件（就不介绍了。）</p>
-<h2 id="D：栏目热点内容排序问题；"><a href="#D：栏目热点内容排序问题；" class="headerlink" title="D：栏目热点内容排序问题；"></a>D：栏目热点内容排序问题；</h2><p>首先用开源的热力图程序：<a href="http://www.labsmedia.com/clickheat/index.html知道哪些地方是用户比较喜欢的；" target="_blank" rel="noopener">www.labsmedia.com/clickheat/index.html知道哪些地方是用户比较喜欢的；</a> 然后，插件：让栏目按照某个特定顺序来排列吧，那么就可以用Category Order插件来实现。</p>
-<h2 id="E：Gzip压缩；"><a href="#E：Gzip压缩；" class="headerlink" title="E：Gzip压缩；"></a>E：Gzip压缩；</h2><p>2个插件：WP Minify 和 CssGaga（有压缩图片的功能，如果用了又拍云等服务，这似乎没有必要）</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习笔记//" class="article-tag-list-link color5">学习笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/posts/5b9a27d4.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-e7-8e-a9-e8-bd-acwp-super-cache-e4-b8-ba-e7-ab-99-e7-82-b9-e6-8f-90-e9-80-9f-e6-97-a5-e5-bf-97" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/936d8061.html">玩转wp-super-cache,为站点提速</a>
-    </h1>
-  
-
-        
-        <a href="/posts/936d8061.html" class="archive-article-date">
-  	<time datetime="2015-09-08T06:21:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-09-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1-配置"><a href="#1-配置" class="headerlink" title="1.配置"></a>1.配置</h2><p>wordpress 的插件越来越多,速度也越来越慢,咋整?（原文出处：<a href="http://bigc.at/wp-super-cache.orz）" target="_blank" rel="noopener">http://bigc.at/wp-super-cache.orz）</a> 静态化! 今天主要是把流程 Step by Step 一下,不用理解为啥这么设置, 只需要知道设置后会变的很快 所谓提前优化是万恶之源的意思就是说,之前网站做的越烂,优化的空间就越多 和老板说看,之前多烂多烂,俺给你省了多少多少钱,一般都能拿奖金 静态化也一样,之前一大堆插件,开个页面上百次MYSQL查询,或烂人写的没效率SQL会让人不禁抓栏杆撕床单 WP Super Cache 并不是100%静态化,不过这个不重要,他把最卡的部分搞定了即可 WP Super Cache 他唯一的缺点就是如果你在改主题或搞啥插件,后台设置了前台看不出变化,为毛?下面有解决方案 OK, let’s gou</p>
-<ol>
-<li>首先，永久连接不能使用默认格式</li>
-<li>修改永久链接格式,中文推荐采用 /%post_id%.html (这下你知道我的.orz哪里来了吧) 如果你和我一样蛋疼愿意为每篇文章写一个英语的post slug 建议采用这样的格式：/%postname%.html (百分号外面的随意写)</li>
-</ol>
-<p><a href="https://upimg.ibolee.com/wp-blog-uploads/2015/09/supercache1.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/09/supercache1-292x300.png" alt="supercache1"></a> 这里我一二三四五六七都标注了就不介绍了吧,常规装插件也是这个套路 那些个神马ftp时代都已经过去鸟过去鸟 <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/09/supercache2.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/09/supercache2-300x86.png" alt="supercache2"></a> 装完后激活一下 <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/09/supercache3.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/09/supercache3-300x87.png" alt="supercache3"></a> 激活了,但他说还需要去设置一把, Rock it <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/09/supercache4.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/09/supercache4-242x300.png" alt="supercache4"></a> 凡是推荐的都打钩,无脑输出嘛   <strong>需要注意的是</strong>Don’t cache for known users的意思是对已经登录的用户不缓存 这就解决的后台改主题无法更新的缺点 也就是说,平时的时候这个选项不打钩,当你需要改主题或调试插件什么时候就打他,改完了再去掉 <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/09/supercache5.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/09/supercache5-169x300.png" alt="supercache5"></a> 因为我们选择了最快的mod_rewrite 方式,所以继续往下拉,会看到一坨螺旋状大黄色的容器,点里头的update mod_rewrite rules <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/09/supercache6.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/09/supercache6-300x95.png" alt="supercache6"></a> 不出意外会给个绿色的确认,某某.htaccess被插了… <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/09/supercache7.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/09/supercache7-300x205.png" alt="supercache7"></a> 有个激动人心的功能上几个版本才加进来的叫Preload,具体有兴趣可以看我写过的<a href="http://bigc.at/preload-cache-wp-super-cache.orz" target="_blank" rel="noopener">Preload</a> 就不累赘再说一次了 <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/09/supercache8.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/09/supercache8-300x42.png" alt="supercache8"></a> 全都搞定后去前台页面,右键查看源代码,拉到最下面,会有三行状态告诉你已经搞定鸟 FAQ: Q: 我流量那么小,有必要搞这个么? A: 搞这个纯粹为了自High,和流量没关系,例如打开自己的网站快个两三秒不是一键很爽的事咩? Q: 那个过期时间我能改咩? A: 建议用默认的</p>
-<blockquote>
-<p>Preload 模式下更改过期时间,会导致全站文件一遍遍的重新生成,这是完全没必要的 普通模式下更改过期时间,太短或太长都会导致CPU飙升,得不偿失,除非你流量大一个月五六千才有必要</p>
-</blockquote>
-<p>Q: 我发表新日志,或访客留言后他会全站再静态化一次么? A:不用担心,使用起来和没有装是一样的,有内容更新它会重新生成对应的页面的静态文件,没有更新的就没必要再去重新生成一次 Q: 这个对SEO有没有影响? A: 有,SEO里爬虫对页面打开速度比较敏感,</p>
-<blockquote>
-<p>常规模式下第一次访问才生成,到期后回收掉,也就是说第一次比较慢 Preload模式先给你都静态了,不管何时访问都快,对SEO更好</p>
-</blockquote>
-<p>Q: 乱码啦乱死人啦～～～ A: 关掉 Compress pages so they’re served more quickly to visitors. (Recommended)</p>
-<h2 id="2-预缓存"><a href="#2-预缓存" class="headerlink" title="2.预缓存"></a>2.预缓存</h2><p>下面是翻译自官方blog的预缓存(Preload cache) 介绍 <a href="http://ocaoimh.ie/preload-cache-wp-super-cache/" target="_blank" rel="noopener">Preload the cache in WP Super Cache</a> <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/09/cpu.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/09/cpu-300x124.png" alt="cpu"></a> 看到本周帅气的下垂了么? 我上周日启用了 WP Super Cache 的预缓存(preload cache),这玩意儿明显的降低了服务器的负载,创建缓存时会有个峰值,很黄很暴力 我一直不鼓励用户使用预缓存,主要是因为文件数量会导致一些问题,如果你有几千个缓存文件,硬盘挂了会需要很长时间才能恢复. (注: 有些主机商会限制文件数) 但反过来说,Google把速度作为一个网站的衡量标准之一.在过去,这个插件会忽略爬虫,因为爬虫每次只访问每个页面一次,缓存相对它们是毫无意义的.所有的页面都应该在 Google 还没开始爬过来之前就缓存好 (注: WP Super Cache 工作流程是第一次请求页面时把PHP+MySQL处理结果生成静态页面,再次访问时甚至都不用执行一行代码 ) <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/09/preload-screenshot.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/09/preload-screenshot-300x245.png" alt="preload-screenshot"></a> 如图所示,一旦你启动预缓存,它会挂载在 wp-cron 去获取100 个帖子, 过10秒后再去获取100个帖子 直到读完所有帖子. 它同时会禁止掉老帖子的垃圾回收机制,但有评论和新帖子的时候还是会干掉一些适当的缓存文件 目前它只缓存 文章页 (注:is_single()那种,中文差不知道咋翻译),貌似没啥必要去缓存 archive 或 tag 页,因为很多站已经写了 robots.txt去忽略这些页面 这次 WP Super Cache 的更新包括了</p>
-<ol>
-<li>更好的支持移动设备插件,例如 MobilePress (注:之前会有电脑访问出现手机界面的bug,不知道现在如何,有遇到问题的朋友请留言)</li>
-<li>增加了缓存测试功能(注:之前只能通过查看页面源代码最底下的注释了解情况)</li>
-<li>可设置只在评论更新的时候更新缓存,而不是前台或相关页面</li>
-<li>Works in WordPress 3.0.</li>
-</ol>
-<p>它还有一堆 bug 要修, 和其他功能要增加 愿意当小白鼠的可以尝试开发版本 from <a href="http://wordpress.org/extend/plugins/wp-super-cache/download/" target="_blank" rel="noopener">the download page</a> ,有问题就反馈到 <a href="http://wordpress.org/tags/wp-super-cache?forum_id=10" target="_blank" rel="noopener">support forum</a> =====补刀====================== 如何安装 WP Super Cache ? 答: 进入后台,选择左侧 plugins -&gt; Add New -&gt;输入 WP Super Cache 点 Search Plugs -&gt; Install Now 小博客很适合开启全站预缓存 个人觉得没必要设置定时重新生成全站缓存,如果你老帖子变动不频繁的话 因为即使老帖子变动了,对应的也会自动生成 有同学问,我网站规模太小,是不是不需要缓存? 答: 缓存是为了自己爽, 提速不是一个段位</p>
-<h2 id="3-结合七牛云存储，进行CDN加速；"><a href="#3-结合七牛云存储，进行CDN加速；" class="headerlink" title="3.结合七牛云存储，进行CDN加速；"></a>3.结合七牛云存储，进行CDN加速；</h2><p>如果你的博客使用 WP Super Cache 进行静态缓存加速的话，我们也可以使用 WP Super Cache 后台自带的 CDN 功能，更加完美实现博客整站的静态文件 CDN 加速。</p>
-<h2 id="在-WP-Super-Cache-中使用七牛镜像存储"><a href="#在-WP-Super-Cache-中使用七牛镜像存储" class="headerlink" title="在 WP Super Cache 中使用七牛镜像存储"></a>在 WP Super Cache 中使用七牛镜像存储</h2><p>在 WP Super Cache 中使用七牛云存储的前面三步都是一样的： 1. 登陆七牛，选择你的空间，然后点击 <strong>空间设置</strong> &gt; <strong>域名绑定</strong>，输入自定义的域名，或者直接使用七牛提供的域名： <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/09/600" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/09/600-300x155." alt="60"></a> 2. 然后点击 <strong>镜像存储</strong> 菜单，点击一键加速按钮： <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/09/6001" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/09/6001-300x107." alt="600"></a> 3. 输入源站的地址，点击确定加速： <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/09/6003" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/09/6003-300x157." alt="600"></a> 4. 最后登陆 WordPress 后台，点击 设置 &gt; WP Super Cache，选择 CDN Tab，在 off-site url 里面输入前面第一步获取的 url（注意要带 http://），如果你的 WordPress 安装子目录，这里还要带上子目录，并且实际测试下，其他设置如下图： <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/09/6002" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/09/6002-290x300." alt="600"></a> 关于在 WP Super Cache 中使用七牛云存储就介绍这么多，需要强调的是七牛是有免费套餐的，每个月 10G 流量，总空间 10GB，所以你可以来先体验下七牛加速之后的博客速度</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习笔记//" class="article-tag-list-link color5">学习笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/posts/936d8061.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-e8-af-86-e5-88-ab-e4-b8-80-e4-b8-aaweb-e9-a1-b5-e9-9d-a2-e6-98-af-e4-bc-aa-e9-9d-99-e6-80-81-e8-bf-98-e6-98-af-e7-94-9f-e6-88-90-e9-9d-99-e6-80-81-e7-9a-84-e6-96-b9-e6-b3-95" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/99274366.html">识别一个web页面是伪静态还是生成静态的方法</a>
-    </h1>
-  
-
-        
-        <a href="/posts/99274366.html" class="archive-article-date">
-  	<time datetime="2015-09-01T03:43:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-09-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>识别静态网页与伪静态网页的简单方法： 识别真伪静态方法：打开目标网址，然后在地址输入框中输入： [cc lang=”php”] javascript:alert(document.lastModified) [/cc] 来得到网页最后的修改时间，如果得到的时间和现在时间一致，此页面就是伪静态，反之是真静态；因为动态页面的最后修改时间总是当前时间，而静态页面的最后修改时间则是它生成的时间。 如果用的是chrome浏览器的话，需要模拟手动输入才能被执行。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习笔记//" class="article-tag-list-link color5">学习笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/posts/99274366.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-e7-a6-81-e7-94-a8wp-e5-8a-a0-e8-bd-bdgravatar-com-e5-a4-b4-e5-83-8f-ef-bc-8c-e4-b8-ba-e7-ab-99-e7-82-b9-e6-8f-90-e9-80-9f-e3-80-82" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/7d45904.html">禁用wp加载Gravatar.com头像，为站点提速。</a>
-    </h1>
-  
-
-        
-        <a href="/posts/7d45904.html" class="archive-article-date">
-  	<time datetime="2015-08-31T07:24:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-08-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>【问题】WordPress默认的头像是读取gravatar.com上的，对于大陆用户而言是打开不了的，徒然损害网页加载效率。所以需要禁用此功能。 【方法】在wp-includes/pluggable.php内修改get_avatar函数。修改后的函数如下： [cc lang=”php”] if ( !function_exists( ‘get_avatar’ ) ) : function get_avatar( $id_or_email, $size = ‘96’, $default = ‘’, $alt = false ) { if ( ! get_option(‘show_avatars’) ) return false; if ( false === $alt) $safe_alt = ‘’; else $safe_alt = esc_attr( $alt ); if ( !is_numeric($size) ) $size = ‘96’; $default = includes_url(‘images/blank.gif’); $avatar = “”; return apply_filters(‘get_avatar’, $avatar, $id_or_email, $size, $default, $alt); } endif; [/cc] 修改之后的该函数仅返回默认头像（wp-includes/images/blank.gif）。 如果需要让用户使用个性化头像，可以配合simple local avatars或Add Local Avatar插件来实现效果。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习笔记//" class="article-tag-list-link color5">学习笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/posts/7d45904.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-php-e4-bb-a3-e7-a0-81-ef-bc-9a-e8-8e-b7-e5-8f-96-e7-bd-91-e9-a1-b5-e4-b8-ad-e7-9a-84-e6-89-80-e6-9c-89-e9-93-be-e6-8e-a5" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/f3dc39ef.html">PHP代码：获取网页中的所有链接</a>
-    </h1>
-  
-
-        
-        <a href="/posts/f3dc39ef.html" class="archive-article-date">
-  	<time datetime="2015-08-24T03:20:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-08-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>以下代码可以获取到指定URL页面中的所有链接，即所有a标签的href属性： [cc lang=”php”] // 获取链接的HTML代码 $html = file_get_contents(‘<a href="http://www.example.com&#39;" target="_blank" rel="noopener">http://www.example.com&#39;</a>); $dom = new DOMDocument(); @$dom-&gt;loadHTML($html); $xpath = new DOMXPath($dom); $hrefs = $xpath-&gt;evaluate(‘/html/body//a’); for ($i = 0; $i &lt; $hrefs-&gt;length; $i++) { $href = $hrefs-&gt;item($i); $url = $href-&gt;getAttribute(‘href’); echo $url.’<br>‘; } [/cc] 这段代码会获取到所有a标签的href属性，但是href属性值不一定是链接，我们可以在做个过滤，只保留http开头的链接地址： [cc lang=”php”] // 获取链接的HTML代码 $html = file_get_contents(‘<a href="http://www.example.com&#39;" target="_blank" rel="noopener">http://www.example.com&#39;</a>); $dom = new DOMDocument(); @$dom-&gt;loadHTML($html); $xpath = new DOMXPath($dom); $hrefs = $xpath-&gt;evaluate(‘/html/body//a’); for ($i = 0; $i &lt; $hrefs-&gt;length; $i++) { $href = $hrefs-&gt;item($i); $url = $href-&gt;getAttribute(‘href’); // 保留以http开头的链接 if(substr($url, 0, 4) == ‘http’) echo $url.’<br>‘; } [/cc]</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习笔记//" class="article-tag-list-link color5">学习笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/posts/f3dc39ef.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-bbc-e7-ba-aa-e5-bd-95-e7-89-87-e5-85-a8-e9-9b-86-e5-a4-a7-e5-85-a827t-e6-ad-a3-e7-89-88-e9-ab-98-e6-b8-85nhkdiscovery-e5-9b-bd-e5-ae-b6-e5-9c-b0-e7-90-86-e4-b8-ad-e8-8b-b1-e5-8f-8c-e8-af-ad-e5-ad-97" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/bca4e921.html">BBC纪录片全集、Discovery国家地理纪录片中英双语字幕【限内部分享】</a>
-    </h1>
-  
-
-        
-        <a href="/posts/bca4e921.html" class="archive-article-date">
-  	<time datetime="2015-08-15T04:59:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-08-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>黑李白的朋友请注意：以下资源会持续更新，保证其有效性。如果发现内容无法打开等情况，请与我联系。 如果是因为使用障碍导致，请自行谷歌百度寻求解决方案。 <strong>—————-以下内容非常重要————————–</strong> 下载地址：<a href="http://yunpan.cn/cdWnHdJRsIQ8Q" target="_blank" rel="noopener">http://yunpan.cn/cdWnHdJRsIQ8Q</a> （提取码：880a）   备用下载地址（如果上面的红色下载地址打不开，请使用以下地址）：</p>
-<p>链接：</p>
-<pre><code>[http://yunpan.cn/cjSsme79QxziJ](http://yunpan.cn/cjSsme79QxziJ)</code></pre><p>  访问密码 45c2</p>
-<p><a href="http://yunpan.cn/cZBCyBbc5zYCF" target="_blank" rel="noopener">http://yunpan.cn/cZBCyBbc5zYCF</a></p>
-<p>  访问密码 5f3f</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/转载-amp-分享//" class="article-tag-list-link color5">转载&amp;分享</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/posts/bca4e921.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-wp-e5-9b-be-e6-a0-87-e5-ad-97-e4-bd-93-e6-9b-bf-e6-8d-a2-e5-b7-a5-e4-bd-9c-e6-97-a5-e5-bf-97" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/a9f1aded.html">wp图标字体替换工作结果</a>
-    </h1>
-  
-
-        
-        <a href="/posts/a9f1aded.html" class="archive-article-date">
-  	<time datetime="2015-08-11T06:07:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-08-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>直接说最终结果吧，1.在wp文章中添加分享图标，及利用jiathis的分享链接进行分享： [cc lang=”php”] add_filter(‘avia_social_share_link_arguments’, ‘avia_add_social_share_link_arguments’, 10, 1); function avia_add_social_share_link_arguments($args) { $args[‘wechat’] = array(“encode”=&gt;true, “encode_urls”=&gt;false, “pattern” =&gt; “<a href="http://www.jiathis.com/send/?webid=weixin&amp;url=\[permalink\]&amp;title=\[title\]&amp;uid=1561992&quot;" target="_blank" rel="noopener">http://www.jiathis.com/send/?webid=weixin&amp;url=\[permalink\]&amp;title=\[title\]&amp;uid=1561992&quot;</a>); $args[‘weibo’] = array(“encode”=&gt;true, “encode_urls”=&gt;false, “pattern” =&gt; “<a href="http://www.jiathis.com/send/?webid=tsina&amp;url=\[permalink\]&amp;title=\[title\]&amp;uid=1561992&quot;" target="_blank" rel="noopener">http://www.jiathis.com/send/?webid=tsina&amp;url=\[permalink\]&amp;title=\[title\]&amp;uid=1561992&quot;</a>); $args[‘baidu’] = array(“encode”=&gt;true, “encode_urls”=&gt;false, “pattern” =&gt; “<a href="http://www.jiathis.com/send/?webid=baidu&amp;url=\[permalink\]&amp;title=\[title\]&amp;uid=1561992&quot;" target="_blank" rel="noopener">http://www.jiathis.com/send/?webid=baidu&amp;url=\[permalink\]&amp;title=\[title\]&amp;uid=1561992&quot;</a>); $args[‘qq’] = array(“encode”=&gt;true, “encode_urls”=&gt;false, “pattern” =&gt; “<a href="http://www.jiathis.com/send/?webid=cqq&amp;url=\[permalink\]&amp;title=\[title\]&amp;uid=1561992&quot;" target="_blank" rel="noopener">http://www.jiathis.com/send/?webid=cqq&amp;url=\[permalink\]&amp;title=\[title\]&amp;uid=1561992&quot;</a>); $args[‘renren’] = array(“encode”=&gt;true, “encode_urls”=&gt;false, “pattern” =&gt; “<a href="http://www.jiathis.com/send/?webid=renren&amp;url=\[permalink\]&amp;title=\[title\]&amp;uid=1561992&quot;" target="_blank" rel="noopener">http://www.jiathis.com/send/?webid=renren&amp;url=\[permalink\]&amp;title=\[title\]&amp;uid=1561992&quot;</a>); $args[‘qweibo’] = array(“encode”=&gt;true, “encode_urls”=&gt;false, “pattern” =&gt; “<a href="http://www.jiathis.com/send/?webid=tqq&amp;url=\[permalink\]&amp;title=\[title\]&amp;uid=1561992&quot;" target="_blank" rel="noopener">http://www.jiathis.com/send/?webid=tqq&amp;url=\[permalink\]&amp;title=\[title\]&amp;uid=1561992&quot;</a>); return $args; } function avia_add_custom_icon($icons) { $icons[‘wechat’] = array( ‘font’ =&gt;’微信分享’, ‘icon’ =&gt; ‘ue821’); $icons[‘weibo’] = array( ‘font’ =&gt;’weibo’, ‘icon’ =&gt; ‘ue826’); $icons[‘baidu’] = array( ‘font’ =&gt;’baidu’, ‘icon’ =&gt; ‘ue822’); $icons[‘qq’] = array( ‘font’ =&gt;’qq’, ‘icon’ =&gt; ‘ue824’); $icons[‘renren’] = array( ‘font’ =&gt;’renren’, ‘icon’ =&gt; ‘ue827’); $icons[‘qweibo’] = array( ‘font’ =&gt;’qweibo’, ‘icon’ =&gt; ‘ue823’); return $icons; } add_filter(‘avf_default_icons’,’avia_add_custom_icon’, 10, 1); （如果是在functions.php中添加的话，这段代码末尾不要忘记加php的结束符号?&gt;） [/cc] 上面的变量中，有一个jiathis的链接分享的webid查询表见：<a href="http://www.jiathis.com/help/html/support-media-website" target="_blank" rel="noopener">http://www.jiathis.com/help/html/support-media-website</a> ————20160223——迭代代码如下———- [cc lang=”php”] add_filter(‘avia_social_share_link_arguments’, ‘avia_add_social_share_link_arguments’, 10, 1); function avia_add_social_share_link_arguments($args) { $args[‘微信’] = array(“encode”=&gt;true, “encode_urls”=&gt;false, “pattern” =&gt; “<a href="http://www.jiathis.com/send/?webid=weixin&amp;url=\[permalink\]&amp;title=\[title\]&amp;uid=1561992&quot;" target="_blank" rel="noopener">http://www.jiathis.com/send/?webid=weixin&amp;url=\[permalink\]&amp;title=\[title\]&amp;uid=1561992&quot;</a>); $args[‘微博’] = array(“encode”=&gt;true, “encode_urls”=&gt;false, “pattern” =&gt; “<a href="http://www.jiathis.com/send/?webid=tsina&amp;url=\[permalink\]&amp;title=\[title\]&amp;uid=1561992&quot;" target="_blank" rel="noopener">http://www.jiathis.com/send/?webid=tsina&amp;url=\[permalink\]&amp;title=\[title\]&amp;uid=1561992&quot;</a>); $args[‘百度’] = array(“encode”=&gt;true, “encode_urls”=&gt;false, “pattern” =&gt; “<a href="http://www.jiathis.com/send/?webid=baidu&amp;url=\[permalink\]&amp;title=\[title\]&amp;uid=1561992&quot;" target="_blank" rel="noopener">http://www.jiathis.com/send/?webid=baidu&amp;url=\[permalink\]&amp;title=\[title\]&amp;uid=1561992&quot;</a>); $args[‘QQ’] = array(“encode”=&gt;true, “encode_urls”=&gt;false, “pattern” =&gt; “<a href="http://www.jiathis.com/send/?webid=cqq&amp;url=\[permalink\]&amp;title=\[title\]&amp;uid=1561992&quot;" target="_blank" rel="noopener">http://www.jiathis.com/send/?webid=cqq&amp;url=\[permalink\]&amp;title=\[title\]&amp;uid=1561992&quot;</a>); $args[‘人人网’] = array(“encode”=&gt;true, “encode_urls”=&gt;false, “pattern” =&gt; “<a href="http://www.jiathis.com/send/?webid=renren&amp;url=\[permalink\]&amp;title=\[title\]&amp;uid=1561992&quot;" target="_blank" rel="noopener">http://www.jiathis.com/send/?webid=renren&amp;url=\[permalink\]&amp;title=\[title\]&amp;uid=1561992&quot;</a>); $args[‘腾讯微博’] = array(“encode”=&gt;true, “encode_urls”=&gt;false, “pattern” =&gt; “<a href="http://www.jiathis.com/send/?webid=tqq&amp;url=\[permalink\]&amp;title=\[title\]&amp;uid=1561992&quot;" target="_blank" rel="noopener">http://www.jiathis.com/send/?webid=tqq&amp;url=\[permalink\]&amp;title=\[title\]&amp;uid=1561992&quot;</a>); return $args; } function avia_add_custom_icon($icons) { $icons[‘微信’] = array( ‘font’ =&gt;’fontello’, ‘icon’ =&gt; ‘ue821’); $icons[‘微博’] = array( ‘font’ =&gt;’fontello’, ‘icon’ =&gt; ‘ue826’); $icons[‘百度’] = array( ‘font’ =&gt;’fontello’, ‘icon’ =&gt; ‘ue822’); $icons[‘QQ’] = array( ‘font’ =&gt;’fontello’, ‘icon’ =&gt; ‘ue824’); $icons[‘人人网’] = array( ‘font’ =&gt;’fontello’, ‘icon’ =&gt; ‘ue827’); $icons[‘腾讯微博’] = array( ‘font’ =&gt;’fontello’, ‘icon’ =&gt; ‘ue823’); return $icons; } add_filter(‘avf_default_icons’,’avia_add_custom_icon’, 10, 1); [/cc] 换图标方法2： —————————————- /themes/lj/functions.php(291): ‘weixin’ =&gt; array( ‘font’ =&gt;’fontello’, ‘icon’ =&gt; ‘ue901’), /themes/lj/config-templatebuilder/avia-shortcodes/social_share.php’: /themes/lj/config-templatebuilder/avia-shortcodes/social_share.php(161): “id” =&gt; “share_weixin”, /themes/lj/config-templatebuilder/avia-shortcodes/social_share.php(227): ‘share_weixin’ =&gt; ‘’, /themes/lj/includes/helper-social-media.php’: /themes/lj/includes/helper-social-media.php(157): ‘weixin’ =&gt; array(“encode”=&gt;true, “encode_urls”=&gt;false, “pattern” =&gt; “<a href="http://www.jiathis.com/send/?webid=weixin&amp;url=\[permalink\]&amp;title=\[title\]&quot;" target="_blank" rel="noopener">http://www.jiathis.com/send/?webid=weixin&amp;url=\[permalink\]&amp;title=\[title\]&quot;</a> , ‘label’ =&gt; ‘分享到微信’), /themes/lj/includes/admin/register-admin-options.php’: /themes/lj/includes/admin/register-admin-options.php(1921): ‘微信’ =&gt; ‘weixin’, /themes/lj/includes/admin/register-admin-options.php(2283): “id” =&gt; “share_weixin”,   最好还有function.php的图标ID，ue901，类似这样。 在这个位置修改：   修改完毕后，得到layout.css中去修改对应的css样式。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习笔记//" class="article-tag-list-link color5">学习笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/posts/a9f1aded.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-e7-bd-91-e7-bb-9c-e7-a1-ac-e4-bb-b6-e4-b8-89-e5-89-91-e5-ae-a2-e9-9b-86-e7-ba-bf-e5-99-a8-e3-80-81-e4-ba-a4-e6-8d-a2-e6-9c-ba-e4-b8-8e-e8-b7-af-e7-94-b1-e5-99-a8-e5-9f-ba-e7-a1-80-e7-9f-a5" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1025,9 +472,696 @@
 
 
   
+    <article id="post-e5-b0-8f-e5-bd-93-e5-ae-b6-e5-b9-b2-e8-84-86-e9-9d-a2-e6-b0-b4-e6-b5-92-e4-bc-a0-e4-b8-bb-e9-a2-98-e5-8d-a1-e6-bb-a1-e6-bb-a1-e7-9a-84-e7-ab-a5-e5-b9-b4-e5-9b-9e-e5-bf-86-ef-bc-81" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/posts/f5e3a1c0.html">小当家干脆面---水浒传主题卡-满满的童年回忆！</a>
+    </h1>
+  
+
+        
+        <a href="/posts/f5e3a1c0.html" class="archive-article-date">
+  	<time datetime="2015-05-27T03:08:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-05-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>小时候为存一套不惜把方便面一箱一箱地买，于是有那么一段时间经常拉肚子。。。<img src="http://b.bst.126.net/common/portrait/pop/preview/pop6.gif" alt="">（油炸东西吃太多，就是这下场。。。各位请勿尝试）。 不过小浣熊也是够坑爹的，原来是一批一批地出卡的。。。知道这个真相，在下就开始慢慢一包一包买就算了。。。（虽然干脆面有很多种口味，但还真可以吃到吐。。。于是在下到现在一直都不怎么喜欢方便面<img src="http://b.bst.126.net/common/portrait/pop/preview/pop14.gif" alt="">） 后来还有些什么特别的银边彩闪什么的卡，那个看着印刷不怎么样，也没怎么收。。。恶人卡一张都没有抽到过，RP奇差啊。PS：恶人卡是可以换钱的。 最后辛苦收集完毕，后来一张小温侯。吕方给友人，然后就一直残缺到现在了。。。 今日看微薄，有人发这个东西，突然勾起这个回忆，于是发这博文纪念一下。 图片基本来自以下链接。。。不过链接里，LZ不知道为何漏了个14号武松，不过在下这里补上了。。。另外六大恶人是在司徒玄羽那里找的，看水印就知道了。。。 <a href="http://tieba.baidu.com/p/1414090580?pn=1" target="_blank" rel="noopener">http://tieba.baidu.com/p/1414090580?pn=1</a> <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597958172051869245.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597958172051869245-300x223.jpg" alt="6597958172051869245"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597852618935600363.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597852618935600363-300x223.jpg" alt="6597852618935600363"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598070322237727093.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598070322237727093-300x222.jpg" alt="6598070322237727093"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598090113447027001.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598090113447027001-300x223.jpg" alt="6598090113447027001"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597428207447220009.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597428207447220009-300x222.jpg" alt="6597428207447220009"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597343545053317002.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597343545053317002-300x222.jpg" alt="6597343545053317002"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597818534075141469.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597818534075141469-300x223.jpg" alt="6597818534075141469"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598237448005148692.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598237448005148692-300x223.jpg" alt="6598237448005148692"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598121999284231483.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598121999284231483-300x223.jpg" alt="6598121999284231483"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597949375958847101.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597949375958847101-300x223.jpg" alt="6597949375958847101"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597836126261187032.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597836126261187032-300x223.jpg" alt="6597836126261187032"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597427107935592232.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597427107935592232-300x223.jpg" alt="6597427107935592232"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598208860702829742.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598208860702829742-300x223.jpg" alt="6598208860702829742"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597786648237928696.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597786648237928696-300x220.jpg" alt="6597786648237928696"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597811937005372548.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597811937005372548-300x223.jpg" alt="6597811937005372548"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598207761191202007.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598207761191202007-300x223.jpg" alt="6598207761191202007"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598165979749342357.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598165979749342357-300x223.jpg" alt="6598165979749342357"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597517267889071995.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597517267889071995-300x223.jpg" alt="6597517267889071995"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598163780726086814.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598163780726086814-300x223.jpg" alt="6598163780726086814"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597476585958844064.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597476585958844064-300x223.jpg" alt="6597476585958844064"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598249542633052927.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598249542633052927-300x223.jpg" alt="6598249542633052927"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597143433936977889.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597143433936977889-300x223.jpg" alt="6597143433936977889"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597679995610033636.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597679995610033636-300x223.jpg" alt="6597679995610033636"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597666801470498750.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597666801470498750-300x223.jpg" alt="6597666801470498750"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597376530402156078.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597376530402156078-300x223.jpg" alt="6597376530402156078"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597379828937037992.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597379828937037992-300x223.jpg" alt="6597379828937037992"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597530462028655490.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597530462028655490-300x223.jpg" alt="6597530462028655490"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597785548726300910.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597785548726300910-300x223.jpg" alt="6597785548726300910"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598083516377260517.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598083516377260517-300x223.jpg" alt="6598083516377260517"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598116501726092612.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598116501726092612-300x223.jpg" alt="6598116501726092612"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598084615888888284.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598084615888888284-300x223.jpg" alt="6598084615888888284"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597902096958850065.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597902096958850065-300x223.jpg" alt="6597902096958850065"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597408416239352320.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597408416239352320-300x223.jpg" alt="6597408416239352320"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597824031633280325.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597824031633280325-300x223.jpg" alt="6597824031633280325"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598233049958635133.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598233049958635133-300x223.jpg" alt="6598233049958635133"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597944977912333473.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597944977912333473-300x223.jpg" alt="6597944977912333473"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597352341146345069.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597352341146345069-300x223.jpg" alt="6597352341146345069"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597874609168157088.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597874609168157088-300x223.jpg" alt="6597874609168157088"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597964769121637028.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597964769121637028-300x223.jpg" alt="6597964769121637028"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597710781935608032.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597710781935608032-300x223.jpg" alt="6597710781935608032"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597756961423977783.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597756961423977783-300x223.jpg" alt="6597756961423977783"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597756961423977768.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597756961423977768-300x223.jpg" alt="6597756961423977768"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597593134191438721.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597593134191438721-300x223.jpg" alt="6597593134191438721"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597816335051883596.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597816335051883596-300x223.jpg" alt="6597816335051883596"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597891101842573070.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597891101842573070-300x223.jpg" alt="6597891101842573070"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597194011471847064.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597194011471847064-300x223.jpg" alt="6597194011471847064"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598124198307487001.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598124198307487001-300x223.jpg" alt="6598124198307487001"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598094511493538469.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598094511493538469-300x222.jpg" alt="6598094511493538469"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598124198307486986.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598124198307486986-300x223.jpg" alt="6598124198307486986"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598219855819103840.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598219855819103840-300x223.jpg" alt="6598219855819103840"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597511770330933133.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597511770330933133-300x222.jpg" alt="6597511770330933133"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598237448005148659.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598237448005148659-300x223.jpg" alt="6598237448005148659"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597971366191400416.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597971366191400416-300x223.jpg" alt="6597971366191400416"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597960371075125956.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597960371075125956-300x223.jpg" alt="6597960371075125956"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597706383889096835.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597706383889096835-300x223.jpg" alt="6597706383889096835"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598289125051656090.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598289125051656090-300x223.jpg" alt="6598289125051656090"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598157183656320654.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598157183656320654-300x223.jpg" alt="6598157183656320654"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597622821005389051.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597622821005389051-300x222.jpg" alt="6597622821005389051"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598085715400516009.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598085715400516009-300x223.jpg" alt="6598085715400516009"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598237448005148632.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598237448005148632-300x223.jpg" alt="6598237448005148632"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597663502935615373.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597663502935615373-300x223.jpg" alt="6597663502935615373"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597679995610033586.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597679995610033586-300x222.jpg" alt="6597679995610033586"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598288025540028324.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598288025540028324-300x223.jpg" alt="6598288025540028324"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598119800260975893.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598119800260975893-300x223.jpg" alt="6598119800260975893"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598197865586547646.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598197865586547646-300x223.jpg" alt="6598197865586547646"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597535959586793280.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597535959586793280-300x223.jpg" alt="6597535959586793280"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597983460819307245.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597983460819307245-300x223.jpg" alt="6597983460819307245"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598202263633063127.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598202263633063127-300x223.jpg" alt="6598202263633063127"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598140690981904155.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598140690981904155-300x223.jpg" alt="6598140690981904155"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597513969354188702.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597513969354188702-300x223.jpg" alt="6597513969354188702"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597583238586786458.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597583238586786458-300x223.jpg" alt="6597583238586786458"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597741568261186891.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597741568261186891-300x223.jpg" alt="6597741568261186891"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597226996820682033.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597226996820682033-300x223.jpg" alt="6597226996820682033"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597855917470483697.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597855917470483697-300x223.jpg" alt="6597855917470483697"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597201708053241158.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597201708053241158-300x223.jpg" alt="6597201708053241158"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597979062772794801.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597979062772794801-300x222.jpg" alt="6597979062772794801"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597921888168151326.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597921888168151326-300x223.jpg" alt="6597921888168151326"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597487581075121752.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597487581075121752-300x223.jpg" alt="6597487581075121752"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597261081681155937.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597261081681155937-300x223.jpg" alt="6597261081681155937"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597951574982102615.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597951574982102615-300x222.jpg" alt="6597951574982102615"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598167079260970019.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598167079260970019-300x222.jpg" alt="6598167079260970019"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598234149470262839.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598234149470262839-300x223.jpg" alt="6598234149470262839"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598181372912134588.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598181372912134588-300x223.jpg" alt="6598181372912134588"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597163225146275560.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597163225146275560-300x223.jpg" alt="6597163225146275560"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597884504772806371.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597884504772806371-300x223.jpg" alt="6597884504772806371"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597968067656520340.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597968067656520340-300x223.jpg" alt="6597968067656520340"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598268234330726753.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598268234330726753-300x223.jpg" alt="6598268234330726753"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598075819795865955.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598075819795865955-300x223.jpg" alt="6598075819795865955"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597786648237928638.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597786648237928638-300x223.jpg" alt="6597786648237928638"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597258882657900375.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597258882657900375-300x223.jpg" alt="6597258882657900375"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597650308796084360.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597650308796084360-300x222.jpg" alt="6597650308796084360"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597808638470489147.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597808638470489147-300x223.jpg" alt="6597808638470489147"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597659104889104893.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597659104889104893-300x223.jpg" alt="6597659104889104893"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597407316727724512.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597407316727724512-300x223.jpg" alt="6597407316727724512"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597807538958861362.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597807538958861362-300x223.jpg" alt="6597807538958861362"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597993356423957403.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597993356423957403-300x222.jpg" alt="6597993356423957403"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597571143958882670.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597571143958882670-300x223.jpg" alt="6597571143958882670"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597929584749546882.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597929584749546882-300x223.jpg" alt="6597929584749546882"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597504073749538720.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597504073749538720-300x222.jpg" alt="6597504073749538720"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598095611005166205.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598095611005166205-300x223.jpg" alt="6598095611005166205"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597534860075165465.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597534860075165465-300x223.jpg" alt="6597534860075165465"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597504073749538689.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597504073749538689-300x223.jpg" alt="6597504073749538689"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597806439447233583.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597806439447233583-300x222.jpg" alt="6597806439447233583"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597985659842562748.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597985659842562748-300x222.jpg" alt="6597985659842562748"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597654706842593806.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597654706842593806-300x223.jpg" alt="6597654706842593806"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597219300239297559.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597219300239297559-300x223.jpg" alt="6597219300239297559"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597526063982144327.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597526063982144327-300x223.jpg" alt="6597526063982144327"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597606328330967408.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597606328330967408-300x223.jpg" alt="6597606328330967408"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/102456891524051915.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/102456891524051915-300x220.jpg" alt="102456891524051915"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/102456891524051890.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/102456891524051890-300x220.jpg" alt="102456891524051890"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/102456891524051801.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/102456891524051801-300x220.jpg" alt="102456891524051801"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/102456891524051863.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/102456891524051863-300x220.jpg" alt="102456891524051863"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/102456891524051835.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/102456891524051835-300x220.jpg" alt="102456891524051835"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/102456891524051778.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/102456891524051778-300x220.jpg" alt="102456891524051778"></a> 来源：路人月</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/其它//" class="article-tag-list-link color3">其它</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/posts/f5e3a1c0.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-ef-bf-bd-e7-9a-84-e9-97-ae-e9-a2-98-e8-a7-a3-e5-86-b3-e8-ae-ba-e9-bb-91-e6-a1-86-e9-97-ae-e5-8f-b7-e6-96-b9-e6-a1-86-e9-97-ae-e5-8f-b7-e5-9c-a8-e4-bb-a3-e7-a0-81-e4-b8-ad-e7-9a-84-e5-ae-b3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/posts/23eff0a8.html">�的问题解决,论:黑框问号,方框问号在代码中的害处</a>
+    </h1>
+  
+
+        
+        <a href="/posts/23eff0a8.html" class="archive-article-date">
+  	<time datetime="2015-05-13T09:43:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-05-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>中文截断的部分结尾处总有一个带问号的黑色方框乱码。 我查看了一下模板，代码是这样写的： <?php echo mb\_strimwidth(strip\_tags(apply\_filters('the\_content', $post->post_content)), 0, 250,"..."); ?> 解决的办法有两个： <strong>1、开启mb_string extension</strong> 如果你是自己的服务器，可以更改apache配置，可以将mb_string extension设置为on。 <strong>2、设置字符集</strong> 将代码加上UTF-8参数，代码就变成了： <?php echo mb\_strimwidth(strip\_tags(apply\_filters('the\_content', $post->post\_content)), 0, 250,"...",'utf-8'); ?> 这样就解决了这个WordPress中mb_strimwidth函数中文截断产生乱码的问题。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">干货</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/学习笔记//" class="article-tag-list-link color5">学习笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/posts/23eff0a8.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-e5-a4-87-e5-bf-98-e5-bd-95-ef-bc-9alinux-e7-b3-bb-e7-bb-9f-e4-b8-ad-e5-b8-b8-e7-94-a8-e6-93-8d-e4-bd-9c-e5-91-bd-e4-bb-a4" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/posts/87900d73.html">备忘录：linux系统中常用操作命令</a>
+    </h1>
+  
+
+        
+        <a href="/posts/87900d73.html" class="archive-article-date">
+  	<time datetime="2015-05-11T08:24:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-05-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>常用指令</strong> ls　　        显示文件或目录 -l          列出文件详细信息l(list) -a         列出当前目录下所有文件及目录，包括隐藏的a(all) mkdir         创建目录 -p         创建目录，若无父目录，则创建p(parent) cd             切换目录 touch        创建空文件 echo          创建带有内容的文件。 cat            查看文件内容 cp             拷贝 mv            移动或重命名 rm            删除文件 -r           递归删除，可删除子目录及文件 -f            强制删除 find           在文件系统中搜索某文件 wc            统计文本中行数、字数、字符数 grep         在文本文件中查找某个字符串 rmdir        删除空目录 tree          树形结构显示目录，需要安装tree包 pwd          显示当前目录 ln              创建链接文件 more、less    分页显示文本文件内容 head、tail     显示文件头、尾内容 ctrl+alt+F1   命令行全屏模式 <strong>系统管理命令</strong> stat            显示指定文件的详细信息，比ls更详细 who           显示在线登陆用户 whoami      显示当前操作用户 hostname   显示主机名 uname        显示系统简要信息 -a          显示系统完整信息 top             动态显示当前耗费资源最多进程信息 ps               显示瞬间进程状态 ps aux -ef         显示系统常驻进程 du              查看目录大小 du -h /home带有单位显示目录信息 df               查看磁盘大小 df -h 带有单位显示磁盘信息 ifconfig       查看网络情况 ping           测试网络连通 netstat       显示网络状态信息 man           显示命令手册 clear           清屏 alias            对命令重命名 如：alias showmeit=”ps aux” ，另外解除使用unaliax showmeit kill              杀死进程，可以先用 ps 或 top 命令查看进程的id，然后再用kill命令杀死进程。 <strong>打包压缩相关命令</strong> gzip： bzip2： tar:                打包压缩 -c             归档文件 -x             解压缩文件 -z             gzip压缩文件 -j             bzip2压缩文件 -v            显示压缩或解压缩过程 v(view) -f             使用档名 例： tar -cvf /home/abc.tar /home/abc              只打包，不压缩 tar -zcvf /home/abc.tar.gz /home/abc        打包，并用gzip压缩 tar -jcvf /home/abc.tar.bz2 /home/abc       打包，并用bzip2压缩 如果想解压缩，就直接替换上面的命令  tar -cvf  / tar -zcvf  / tar -jcvf 中的“c” 换成“x” 就可以了。 <strong>关机/重启机器</strong> shutdown -r              关机重启 -h             关机不重启 now          立刻关机 halt                关机 reboot           重启 <strong>Linux管道</strong> 将一个命令的标准输出作为另一个命令的标准输入。也就是把几个命令组合起来使用，后一个命令处理前一个命令的输出结果。 例：grep -r “close” /home/* | more       在home目录下所有文件中查找，包括close的文件，并分页输出。 <strong>Linux软件包管理</strong> dpkg (Debian Package)管理工具，软件包名以.deb后缀。这种方法适合系统不能联网的情况下。 比如安装tree命令的安装包，先将tree.deb传到Linux系统中。再使用如下命令安装。 sudo dpkg -i tree_1.5.3-1_i386.deb         安装软件 sudo dpkg -r tree                                     卸载软件 注：将tree.deb传到Linux系统中，有多种方式。VMwareTool，使用挂载方式；使用winSCP工具等； APT（Advanced Packaging Tool）高级软件工具。这种方法适合系统能够连接互联网的情况。 依然以tree为例 sudo apt-get install tree                  安装tree sudo apt-get remove tree              卸载tree sudo apt-get update                      更新软件 sudo apt-get upgrade 将.rpm文件转为.deb文件 .rpm为RedHat使用的软件格式。在Ubuntu下不能直接使用，所以需要转换一下。 sudo alien filename.rpm <strong>vim使用</strong> vim三种模式：命令模式、插入模式、编辑模式。使用ESC或i或：来切换模式。 命令模式下： :q                      退出 :q!                     强制退出 :wq                   保存并退出 :set number      显示行号 :set nonumber  隐藏行号 /apache            在文档中查找字符apache，按n跳到下一个，shift+n上一个 yyp                  复制光标所在行，并粘贴 h(左移一个字符←)、j(下一行↓)、k(上一行↑)、l(右移一个字符→) <strong>用户及用户组管理</strong> /etc/passwd      存储用户账号 /etc/group        存储组账号 /etc/shadow      存储用户账号的密码 /etc/gshadow    存储用户组账号的密码 useradd user      添加用户 userdel user       删除用户 groupadd user   添加组用户 groupdel user    删除组用户 passwd root      给用户root设置密码 su root             临时提权到root用户 su – root           切换到root用户 /etc/profile        系统环境变量 bash_profile      用户环境变量 .bashrc             用户环境变量 su user             切换用户，加载配置文件.bashrc su – user           切换用户，加载配置文件/etc/profile ，加载bash_profile <strong>更改文件的用户及用户组</strong> sudo chown [-R递归] owner[:group] {File|Directory} 要想切换文件所属的用户及组。可以使用命令。 sudo chown root:root rarlinux-x64-5.1.b3.tar.gz <strong>文件权限管理</strong> 三种基本权限 R          读          数值表示为4 W         写          数值表示为2 X          可执行   数值表示为1 <strong>更改权限</strong> sudo chmod [u所属用户  g所属组  o其他用户  a所有用户]  [+增加权限  -减少权限]  [r  w  x]   目录名 例如：有一个文件filename，权限为“-rw-r—-x” ,将权限值改为”-rwxrw-r-x”，用数值表示为765 sudo chmod u+x g+w o+r  filename 上面的例子可以用数值表示 sudo chmod 765 filename</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">干货</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/学习笔记//" class="article-tag-list-link color5">学习笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/posts/87900d73.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-e8-8b-b1-e8-af-ad-e5-ad-a6-e4-b9-a0-e4-b9-8b-e5-a4-9a-e9-82-bb-e5-9b-bdapp-e8-af-84-e6-b5-8b" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/posts/b31eca4d.html">英语学习之多邻国app评测</a>
+    </h1>
+  
+
+        
+        <a href="/posts/b31eca4d.html" class="archive-article-date">
+  	<time datetime="2015-04-21T15:07:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-04-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p> 多邻国app是免费的，并且已经被列入了App Store精华，本app的ue就是交互体验是目前我发现的最顶级的了，下面带大家看看里面的界面。<a href="https://upimg.ibolee.com/wp-blog-uploads/2015/04/IMG_0597.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/04/IMG_0597.png" alt=""></a>   进入app的时候他会有一个选项问你是初学者还是有点基础的，要给你来个测评。这个体验简直是把用户捧上天的节奏，测试中，答错题的提示是这样的。笔者认为这个不太好，因为我懒的打字。多邻国在细节考核上比较多，比如你多打了s是不行的，虽然回答问题答案容错上下了大功夫。<a href="https://upimg.ibolee.com/wp-blog-uploads/2015/04/IMG_0598.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/04/IMG_0598.png" alt=""></a>   这是选字回答。<a href="https://upimg.ibolee.com/wp-blog-uploads/2015/04/IMG_0599.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/04/IMG_0599.png" alt=""></a>   简短的任务结束后，有适当的鼓励。 <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/04/IMG_0600.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/04/IMG_0600.png" alt=""></a> 个别问题让你看的图片翻译，并且在上面有进度条。 <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/04/IMG_0601.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/04/IMG_0601.png" alt=""></a>  这个问题考的就比较好，有代表性。看得出来产品设计上花了很大功夫。 总体来说这个应用没有语音识别带来的学习体验相对来说：他给我的感觉就是问答填空比较多，时间久了让人觉得乏味。感觉是把应试教育英语用一个别的样式搬到荧幕上来，对细节的考核比较多。但它的ue肯定是业内顶级，总体来说是不错的应用。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/其它//" class="article-tag-list-link color3">其它</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/posts/b31eca4d.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-excel-e4-b8-a4-e5-88-97-e5-90-88-e5-b9-b6-e5-8f-a0-e5-8a-a0-e4-b8-ba-e4-b8-80-e5-88-97semseo-e6-95-b0-e6-8d-ae-e6-95-b4-e7-90-86-e7-bb-8f-e5-b8-b8-e7-94-a8-e5-88-b0" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/posts/a17621a5.html">excel两列合并/叠加为一列,sem/seo数据整理经常用到</a>
+    </h1>
+  
+
+        
+        <a href="/posts/a17621a5.html" class="archive-article-date">
+  	<time datetime="2015-04-10T06:36:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-04-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>内容提要：</strong>文章介绍了两个excel两列合并为一列的小例子供新手朋友学习。</p>
+<p>excel两列合并为一列最简单的就是用“&amp;”链接符号链接两列的数据。如下图所示，将AB两列合并成一列，C2单元格输入公式：=A2&amp;B2，下拉即可。</p>
+<p><a href="https://upimg.ibolee.com/wp-blog-uploads/2015/04/20120311223905231.gif" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/04/20120311223905231.gif" alt="20120311223905231"></a></p>
+<p>　　另外一种情况，excel两列合并成一列的同时，并在其中间添加空格隔开，如下图所示的效果。我们在C2单元格输入公式：=A2&amp;” “&amp;B2，下拉即可。</p>
+<p><a href="https://upimg.ibolee.com/wp-blog-uploads/2015/04/20120311223917125.gif" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/04/20120311223917125.gif" alt="20120311223917125"></a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">excle</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/IT相关//" class="article-tag-list-link color5">IT相关</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/posts/a17621a5.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-e7-ab-99-e5-a4-96-e5-bc-95-e7-94-a8-e7-be-8e-e6-8b-8d-e8-a7-86-e9-a2-91-ef-bc-8c-e6-94-af-e6-8c-81ios-e8-ae-be-e5-a4-87-e7-9a-84-e8-a7-a3-e5-86-b3-e6-80-9d-e8-b7-af" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/posts/1664c5bd.html">站外引用美拍视频，支持ios设备的解决思路</a>
+    </h1>
+  
+
+        
+        <a href="/posts/1664c5bd.html" class="archive-article-date">
+  	<time datetime="2015-04-08T08:21:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-04-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>模拟iphone5s打开美拍播放页面，美拍的播放代码如下： [cc lang=”html”]</p>
+<p>60秒</p>
+<p><img src="http://mvimg1.meitudata.com/55211543329641385.jpg!thumb320" alt=""></p>
+<p>[/cc] mac版chrome打开美拍播放页面，美拍的播放代码如下： [cc lang=”html”]</p>
+<p>您还没有安装flash播放器，请点击<a href="http://www.adobe.com/go/getflash" target="_blank" rel="noopener">这里</a>安装</p>
+<p>[/cc] 复制美拍iframe播放代码如下： [cc lang=”html”] [/cc]</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/其它//" class="article-tag-list-link color3">其它</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/posts/1664c5bd.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-mysql-e5-9f-ba-e6-9c-ac-e5-91-bd-e4-bb-a4-e7-94-a8-e6-b3-95" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/posts/85f74ce2.html">Mysql基本命令用法</a>
+    </h1>
+  
+
+        
+        <a href="/posts/85f74ce2.html" class="archive-article-date">
+  	<time datetime="2015-03-31T06:59:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-03-31</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://upimg.ibolee.com/wp-blog-uploads/2015/03/mysql.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/03/mysql-296x300.png" alt="mysql"></a></p>
+<hr>
+<ul>
+<li>连接本地数据库，User为用户名，Password为用户口令，DBName为数据库名(可选)</li>
+</ul>
+<blockquote>
+<pre><code>mysql -uUser -pPassword [DBName]</code></pre></blockquote>
+<ul>
+<li>连接远程数据库，Host为远程数据库地址</li>
+</ul>
+<blockquote>
+<pre><code>mysql -hHost -uUser -pPassword [DBName]</code></pre></blockquote>
+<ul>
+<li>示例:</li>
+</ul>
+<blockquote>
+<pre><code>mysql -h10.10.10.10 -ulifulong -plifulong</code></pre></blockquote>
+<h4 id="操作数据库"><a href="#操作数据库" class="headerlink" title="操作数据库"></a>操作数据库</h4><hr>
+<ul>
+<li>创建数据库，DBName为数据库名字</li>
+</ul>
+<blockquote>
+<pre><code>create database DBName;</code></pre></blockquote>
+<ul>
+<li>删除数据库，DBName 为 数据库名字</li>
+</ul>
+<blockquote>
+<pre><code>drop datbase DBName;</code></pre></blockquote>
+<ul>
+<li>查询数据库</li>
+</ul>
+<blockquote>
+<pre><code>show databases;</code></pre></blockquote>
+<ul>
+<li>使用数据库</li>
+</ul>
+<blockquote>
+<pre><code>use DBName;</code></pre></blockquote>
+<h4 id="操作表"><a href="#操作表" class="headerlink" title="操作表"></a>操作表</h4><hr>
+<ul>
+<li>创建表</li>
+</ul>
+<blockquote>
+<pre><code>create table tbl_name(?);</code></pre></blockquote>
+<ul>
+<li>删除表</li>
+</ul>
+<blockquote>
+<pre><code>drop table tbl_name;</code></pre></blockquote>
+<ul>
+<li>插入元素</li>
+</ul>
+<blockquote>
+<pre><code>insert into tbl_name values();</code></pre></blockquote>
+<ul>
+<li>删除元素</li>
+</ul>
+<blockquote>
+<pre><code>delete from tbl_name where field_01 = val;</code></pre></blockquote>
+<ul>
+<li>更新元素</li>
+</ul>
+<blockquote>
+<pre><code>update tbl_name set field_01 = val [where field_02 = val];</code></pre></blockquote>
+<ul>
+<li>查询元素</li>
+</ul>
+<blockquote>
+<pre><code>select parametes from tbl_name [where field_01 = val1]  [and where field_02 = val2];</code></pre></blockquote>
+<h4 id="用户管理"><a href="#用户管理" class="headerlink" title="用户管理"></a>用户管理</h4><hr>
+<ul>
+<li>增加用户</li>
+</ul>
+<blockquote>
+<pre><code>insert into mysql.user(Host,User,Password) values(&apos;localhost&apos;,&apos;username&apos;,password(&apos;passwd&apos;));</code></pre></blockquote>
+<blockquote>
+<pre><code>grant privileges on *.* to &apos;write&apos;@&apos;localhost&apos; identified by &apos;passwd&apos;;</code></pre></blockquote>
+<ul>
+<li>删除用户</li>
+</ul>
+<blockquote>
+<pre><code>delete from mysql.user where User=&apos;username&apos;;
+flush privileges;</code></pre></blockquote>
+<blockquote>
+<pre><code>drop user UserName@&apos;%&apos;
+drop user UserName@&apos;localhost&apos;</code></pre></blockquote>
+<ul>
+<li>修改用户权限</li>
+</ul>
+<blockquote>
+<pre><code>grant privileges on *.* to &apos;write&apos;@&apos;localhost&apos;;</code></pre></blockquote>
+<ul>
+<li><p>收回用户权限</p>
+<p>撤销用户权限</p>
+</li>
+</ul>
+<blockquote>
+<pre><code>invoke privileges on *.* from &apos;write&apos;@&apos;localhost&apos;;</code></pre></blockquote>
+<ul>
+<li>查看用户权限</li>
+</ul>
+<blockquote>
+<pre><code>show grants;
+show grants for &apos;user&apos;@&apos;localhost&apos;;
+
+-----常用------</code></pre><h3 id="登录数据库"><a href="#登录数据库" class="headerlink" title="登录数据库"></a>登录数据库</h3><pre><code>mysql -h localhost -uroot -p</code></pre><h3 id="导出数据库"><a href="#导出数据库" class="headerlink" title="导出数据库"></a>导出数据库</h3><pre><code>mysqldump -uroot -p db &gt; db.sql</code></pre><h3 id="导入数据库"><a href="#导入数据库" class="headerlink" title="导入数据库"></a>导入数据库</h3><pre><code>mysql -uroot -p db &lt; db.sql
+// or
+mysql -uroot -p db -e &quot;source /path/to/db.sql&quot;</code></pre><h3 id="开启远程登录"><a href="#开启远程登录" class="headerlink" title="开启远程登录"></a>开启远程登录</h3><pre><code>grant all privileges on ss.* to &apos;root&apos;@&apos;%&apos; indentified by &apos;passoword&apos; with grant option;
+// or 
+update user set Host=&quot;%&quot; and User=&quot;root&quot;
+// 注意%是不包含localhost的
+flush privileges;</code></pre><h3 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h3><pre><code>CREATE USER &apos;test&apos;@&apos;localhost&apos; IDENTIFIED BY &apos;password&apos;;
+grant all privileges on *.* to test@&apos;localhost&apos; identified by &apos;test&apos;;</code></pre><h3 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h3><pre><code>CREATE SCHEMA testdb DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;</code></pre><h3 id="赋予数据库权限"><a href="#赋予数据库权限" class="headerlink" title="赋予数据库权限"></a>赋予数据库权限</h3><pre><code>GRANT ALL ON testdb.* TO &apos;test&apos;@&apos;localhost&apos;;</code></pre></blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/学习笔记//" class="article-tag-list-link color5">学习笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/posts/85f74ce2.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -1122,14 +1256,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">技术</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">电脑软硬件</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">干货</a>
               </li>
              
@@ -1139,6 +1265,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">IT技术</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">技术</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">电脑软硬件</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1254,19 +1388,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">apache</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">xampp</a>
+                <a href="javascript:void(0)" class="js-tag color1">邮件客户端</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">MAC终端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">邮件客户端</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1278,15 +1404,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">TED</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">sticky</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">template</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">TED</a>
               </li>
             
             <div class="clearfix"></div>

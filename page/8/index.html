@@ -156,224 +156,28 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-navicat-e4-b8-8d-e6-94-af-e6-8c-81-e8-bf-9c-e7-a8-8b-e8-bf-9e-e6-8e-a5mysql-e7-9a-84-e8-a7-a3-e5-86-b3-e6-96-b9-e6-a1-88" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-e9-81-87-e5-88-b0-e6-97-a0-e7-ba-bf-e7-bd-91-e7-bb-9c-e5-8f-97-e9-99-90-e5-88-b6-e6-88-96-e6-97-a0-e8-bf-9e-e6-8e-a5-e7-9a-843-e7-a7-8d-e8-a7-a3-e5-86-b3-e6-96-b9-e6-b3-95" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/posts/2850eb26.html">NaviCat不支持远程连接MySql的解决方案</a>
+      <a class="article-title" href="/posts/616999e9.html">遇到“无线网络受限制或无连接”的3种解决方法</a>
     </h1>
   
 
         
-        <a href="/posts/2850eb26.html" class="archive-article-date">
-  	<time datetime="2013-05-23T05:50:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-05-23</time>
+        <a href="/posts/616999e9.html" class="archive-article-date">
+  	<time datetime="2013-02-24T07:00:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-02-24</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>前段时间，因为一项目，需要做MYSql的数据同步服务，但由于网站空间服务供应商不提供远程连接MYSql，所以无法利用NaviCat客户端通过填写服务器地址来连接远程服务器，在网上找到了SSH方式连接，但经过测试后发现依旧无法连接。后来参巧网上的文献后，通过Http方式成功连上服务器的MYSql数据库。特此记录一下： 　　首先到NaviCat官网(<a href="http://www.NaviCat.com.cn)上下载最新版本的NaviCat" target="_blank" rel="noopener">www.NaviCat.com.cn)上下载最新版本的NaviCat</a> 　　安装完成后，打开NaviCat，如下图所示： 　　然后点击左上角的连接，弹出新键连接信息，如下图所示： 　　在主机名IP地址那里填写LocalHost 　　用户名与密码一栏则填写你所在的数据库用户名与密码。 　　这时候还不能连接数据库的，需要通过Http通道的形式进行数据库连接。 　　点击连接属性标签栏中的Http，如下图所示： 　　勾选使用Http通道后，在通道地址一栏输入你的网址与后台文件地址。 　　例如：<a href="http://www.google.cn/database.php" target="_blank" rel="noopener">http://www.google.cn/database.php</a> 　　这里说明一下通道地址，前半部份：<a href="http://www.google.cn/是指你的服务器的域名，后半部份：database.php是指NaviCat客户端后台连接地址。这里Database.php可以根据你自己的喜好去重命名。那么，这个database.php文件在哪里找呢" target="_blank" rel="noopener">http://www.google.cn/是指你的服务器的域名，后半部份：database.php是指NaviCat客户端后台连接地址。这里Database.php可以根据你自己的喜好去重命名。那么，这个database.php文件在哪里找呢</a>? 　　这个database.php文件在你点击确定保存了连接信息后，会自动生成一个php文件于NaviCat的文件根目录下，但它并不为DataBase.php文件，而是统一命名为ntunnel_mysql.php文件，如下图所示： 　　我们可以通过重命名，即可修改成为我们刚才连接主机的Http通道的后台文件。 　　重命名该文件完毕后，我们利用FlashFxp工具把该文件上传到我们的网站根目录下。然后测试一下看看： 　　这过程有点慢，由于他要通过PHP文件连到网站服务器并且要返回信息所以需要稍等一下。 　　上图是成功连接到网站所在的MySql数据库。 　　备注： 　　上图网址：<a href="http://www.google.cn为实例虚拟网址。" target="_blank" rel="noopener">www.google.cn为实例虚拟网址。</a> 　　配置好连接信息后，千万不要忘了把NaviCat文件目录下的PHP文件上传到你的网站根目录下。 　　上传到网站根目录下的NaviCat生成的PHP文件一定要与你的连接信息的文件名一致，否则是连不上了。 　　本人菜鸟，高手勿笑</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">NaviCat</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT相关//" class="article-tag-list-link color5">IT相关</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/posts/2850eb26.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-e5-85-8d-e5-af-86-e7-a0-81-e7-99-bb-e9-99-86-e9-98-bf-e9-87-8c-e4-ba-91-e3-80-81linode-linux-e6-96-b9-e6-b3-95-e8-af-a6-e8-a7-a3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/ec4a2052.html">免密码登陆阿里云、linode for linux方法详解</a>
-    </h1>
-  
-
-        
-        <a href="/posts/ec4a2052.html" class="archive-article-date">
-  	<time datetime="2013-05-20T14:00:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-05-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>服务器环境：阿里云云服务器，Linux版本 - CentOS 客户端环境：Mac OSX Terminal 在Terminal中用ssh命令登录服务器每次都要输入密码，虽然可以复制/粘贴密码，但登录后一段时间不操作，服务器会自动断开连接，连接时又要复制/粘贴密码，还是有些不方便。 有没有办法实现登录时不用输入密码呢？有办法，这篇博文分享的就是解决方法。 不输入密码，服务器如何验证客户端呢？通过证书，证书就像你进办公室门时的门卡。客户端登录时，拿门卡（证书）在服务器上刷一下（证书验证），服务器会检查这张门卡能不能开门。 那如何制作门卡，如何把门卡信息告诉服务器呢？用下面的操作步骤来回答这个问题。 1. 打开你放门卡的皮夹</p>
-<p>cd ~/.ssh/</p>
-<p>如果没有皮夹，去买一个：</p>
-<p>mkdir ~/.ssh</p>
-<p>2. 制作门卡</p>
-<p>ssh-keygen -t rsa</p>
-<p>默认门卡文件名：id_rsa.pub 3. 将门卡复制一个并放至服务器的皮夹</p>
-<p>scp id_rsa.pub username@server:~/.ssh/id_rsa.pub</p>
-<p>注：如果服务器上没有.ssh文件夹，需要先登录服务器进行创建。 4. 登录到服务器（需要输入密码），从服务器皮夹中拿出门卡，取出其中的信息，放到专用的夹层</p>
-<p>ssh username@server</p>
-<p>cd ~/.ssh<br>cat id_rsa.pub &gt;&gt; authorized_keys</p>
-<p>5. 销毁服务器皮夹中的门卡</p>
-<p>rm id_rsa.pub</p>
-<p>6. 退出服务器</p>
-<p>exit</p>
-<p>7. 再次登录时就无需输入密码</p>
-<p>ssh username@server</p>
-<p>Welcome Houyi VM System ! </p>
-<p>[root@aliyun-cnblogs ~]#</p>
-<p>无密码ssh登录就这么简单！ 参考文章： <a href="http://www.finiteloops.com/weblog/?p=259" target="_blank" rel="noopener">How to SSH into Terminals without entering the password?</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">IT技术</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT相关//" class="article-tag-list-link color5">IT相关</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT相关/其它//" class="article-tag-list-link color3">其它</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/posts/ec4a2052.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-e9-98-bf-e9-87-8c-e4-ba-91-e3-80-81linode-e7-ad-89vps-e4-b9-8blinux-e4-b8-8bssh-e5-b8-b8-e7-94-a8-e5-91-bd-e4-bb-a4" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/11b405ad.html">阿里云、linode等VPS之linux下SSH常用命令</a>
-    </h1>
-  
-
-        
-        <a href="/posts/11b405ad.html" class="archive-article-date">
-  	<time datetime="2013-05-09T06:32:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-05-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>目录操作：</strong> rm -rf mydir /<em>删除mydir目录</em>/ mkdir dirname /<em>创建名为dirname的目录</em>/ cd mydir /<em>进入mydir目录</em>/ cd - /<em>回上一级目录</em>/ cd .. /<em>回父目录，中间有空格</em>/ cd ~ /<em>回根目录</em>/ mv tools tool /<em>把tools目录改名为tool <em>/ ln -s tool bac /</em>给tool目录创建名为bac的符号链接,最熟悉的应该就是FTP中www链接到public_html目录了</em>/ cp -a tool /home/vpser/www /<em>把tool目录下所有文件复制到www目录下 <em>/ *</em>文件操作：** rm go.tar        /</em> 删除go.tar文件 <em>/ find mt.cgi    /</em> 查找文件名为mt.cgi的文件 <em>/ df –h              /</em> 查看磁盘剩余空间,好像没这个必要，除非你太那个了 <em>/ <strong>解压缩：</strong> tar xvf wordpress.tar       /</em> 解压tar格式的文件 <em>/ tar -tvf myfile.tar     /</em> 查看tar文件中包含的文件 <em>/ tar cf toole.tar tool /</em> 把tool目录打包为toole.tar文件 <em>/ tar cfz vpser.tar.gz tool /</em> 把tool目录打包且压缩为vpser.tar.gz文件，因为.tar文件几乎是没有压缩过的，MT的.tar.gz文件解压成.tar文件后差不多是10MB <em>/ tar jcvf  /var/bak/<a href="http://www.tar.bz2" target="_blank" rel="noopener">www.tar.bz2</a> /var/www/    /*创建.tar.bz2文件，压缩率高</em>/ tar xjf <a href="http://www.tar.bz2" target="_blank" rel="noopener">www.tar.bz2</a> /<em>解压tar.bz2格式</em>/ gzip -d ge.tar.gz        /* 解压.tar.gz文件为.tar文件 <em>/ unzip phpbb.zip      /</em> 解压zip文件，windows下要压缩出一个.tar.gz格式的文件还是有点麻烦的 <em>/ <strong>下载：</strong> wget <a href="http://soft.vpser.net/web/nginx/nginx-0.8.0.tar.gz" target="_blank" rel="noopener">http://soft.vpser.net/web/nginx/nginx-0.8.0.tar.gz</a> /*下载远程服务器上的文件到自己的服务器，连上传都省了，服务器不是100M就是1000M的带宽，下载一个2-3兆的MT还不是几十秒的事 */ wget -c <a href="http://soft.vpser.net/web/nginx/nginx-0.8.0.tar.gz" target="_blank" rel="noopener">http://soft.vpser.net/web/nginx/nginx-0.8.0.tar.gz</a> /</em> 继续下载上次未下载完的文件 <em>/ <strong>进程管理：</strong> ps -aux   /*ps 进程状态查询命令\</em>/ ps命令输出字段的含义： [list] [<em>]USER，进程所有者的用户名。 [<em>]PID，进程号，可以唯一标识该进程。 [</em>]%CPU，进程自最近一次刷新以来所占用的CPU时间和总时间的百分比。 [<em>]%MEM，进程使用内存的百分比。 [</em>]VSZ，进程使用的虚拟内存大小，以K为单位。 [<em>]RSS，进程占用的物理内存的总数量，以K为单位。 [</em>]TTY，进程相关的终端名。 [<em>]STAT，进程状态，用(R–运行或准备运行；S–睡眠状态；I–空闲；Z–冻结；D–不间断睡眠；W-进程没有驻留页；T停止或跟踪。)这些字母来表示。 [</em>]START，进程开始运行时间。 [<em>]TIME，进程使用的总CPU时间。 [</em>]COMMAND，被执行的命令行。 [/list] ps -aux | grep nginx  /*在所有进程中，查找nginx的进程</em>/ kill 1234    /*1234为进程ID，即ps -aux 中的PID*/ killall nginx /*killall 通过程序的名字，直接杀死所有进程，nginx为进程名*/ <strong>Vim操作：</strong> 移动类的： h/j/k/l: 左/下/上/右　移一格 w : 向后词移动　（前面加数字移动多少个词） b : 向前词移动　（前面加数字移动多少个词） e : 向后移到词末 ge : 向前移到词末 $ <End> : 行末 0 <Home> : 行首 tx : 向右查找本行的x并移到那儿（大写时向左） 33G : 移到文件的第33行 gg : 文件首行 G : 文件尾行 33% : 文件的33%处 H/M/L : 屏幕的首/中/尾行 zt/zz/zb : 当前行移到屏幕的首/中/底部 跳转： “  : 回到跳转来的地方 CTRL-O : 跳到一个 “较老” 的地方 CTRL-I <Tab> : 则跳到一个 “较新” 的地方 查找： / : 向下查找（后加关键字） ? : 向上查找（后加关键字） n : 下一条符合的记录 编辑： i : 转换到插入模式 x : 删除当前字符 . : 重复最后一次的修改操作(同PS里ctrl+f执行滤镜) u : 撤销操作 CTRL-R : 重做 p : 将删除的字符插入到当前位置(put) 退出保存： :q : 退出 :q! : 不保存退出 ZZ : 保存后退出 :e! : 放弃修改重新编辑 掌握这些基本命令，Linux下的基本使用已经掌握，只要多加练习，多遇到问题，解决问题，能力就会不断的提升。 转自：VPS侦探 <a href="http://www.vpser.net/" target="_blank" rel="noopener"></a></p>
+        <p>如果你碰到如图所示无线网络受限制或无连接的问题，试着从以下3方面着手 <em><img src="https://upimg.ibolee.com/wp-blog-uploads/2013/02/aa90718a7e944a01607abc4c970722bd.jpg" alt="null"> 一、查看无线网卡端配置是否与前端路由器配置一致（密码、加密方式）；操作如下（以Windows XP为例）：</em> 1. 右击“网上邻居”属性 <img src="https://upimg.ibolee.com/wp-blog-uploads/2013/02/a1331986823ff3703cf38230e903c637.jpg" alt="null"> 2.右击“无线网络连接”属性 <img src="https://upimg.ibolee.com/wp-blog-uploads/2013/02/0d067211345953c1e2181f98de7eacc6.jpg" alt="null"> 3.点击——无线网络配置——首选网络——属性 <img src="https://upimg.ibolee.com/wp-blog-uploads/2013/02/e847491629df57bd9e5e91843b1a3af0.jpg" alt="null"> 4.出现以下页面，网络身份验证、数据加密、网络密钥选择与路由器一致——确定；如下图： <img src="https://upimg.ibolee.com/wp-blog-uploads/2013/02/d6f221554f6113837fcf78257f82256c.jpg" alt="null"> 二、是否关闭了路由器的DHCP服务器，用有线连接路由器，本地连接的IP地址用自动获取，看是否能获取到IP地址，如果获取得到，那就没关闭DHCP服务器，如果获取不到，提示受限制，那就是关闭了DHCP服务器，需要教用户开启DHCP服务器；操作如下（以Windows XP为例），如下图： 1.右击——“网上邻居”属性 <img src="https://upimg.ibolee.com/wp-blog-uploads/2013/02/d37533f7341142c200da1f31a48a4101.jpg" alt="null"> 2.（1）右击——“本地连接”状态——点击——支持，查看是否是通过DHCP指派（图1）： <img src="https://upimg.ibolee.com/wp-blog-uploads/2013/02/024911f6978ecda3ccca110d2baf368f.jpg" alt="null"> （图1） （2）如果显示“连接受限制”，点击——“常规”属性——“Internet协议（TCP/IP）”属性，点击——“使用下面的IP地址（手动分配IP地址）”——确定，如图（2）： <img src="https://upimg.ibolee.com/wp-blog-uploads/2013/02/c5058489495ef8b658a029d6ee9c187c.jpg" alt="null"> 3.进入路由器首页，高级设置——网络设置——局域网（“DHCP类型”选择（服务器））；如下图： <img src="https://upimg.ibolee.com/wp-blog-uploads/2013/02/a30e4d715852a0c5b8f14889e3c4b76a.jpg" alt="null"> 三、IP地址是否已分配完，进入路由器首页——高级设置——网络设置——局域网——起始IP地址、结束IP地址（看分配到你电脑的IP地址是否在该区域内）；如下图： <img src="https://upimg.ibolee.com/wp-blog-uploads/2013/02/af7674fe75c464a709308818d0bcb630.jpg" alt=""> 好了，通过这几个设置就可以解决“连接受限制”的问题了，你可以尽情的享受网络带来的快乐与自由。  </p>
+<p><strong>原文来自:猫理会</strong></p>
 
       
 
@@ -393,22 +197,6 @@
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">电脑软硬件</a>
         		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">aliyun</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">linode</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vps</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">阿里云</a>
-        		</li>
       		
 		</ul>
 	</div>
@@ -428,7 +216,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/posts/11b405ad.html">展开全文 >></a>
+          <a class="article-more-a" href="/posts/616999e9.html">展开全文 >></a>
         </p>
       
 
@@ -458,27 +246,27 @@
 
 
   
-    <article id="post-mac-e9-bb-98-e8-ae-a4mail-e9-82-ae-e4-bb-b6-e5-ae-a2-e6-88-b7-e7-ab-af-e5-87-ba-e7-8e-b0-e4-b8-8d-e8-83-bd-e4-bd-bf-e7-94-a8-e5-8f-91-e4-bb-b6-e6-9c-8d-e5-8a-a1-e5-99-a8-e7-9a-84-e8-a7-a3-e5-86-b3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-e7-94-b5-e5-ad-90-e4-b9-a6-e7-9a-84-e5-af-bb-e6-89-be-e6-96-b9-e6-b3-95-e3-80-90-e6-b1-87-e6-80-bb-e7-af-87-e3-80-91" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/posts/db9aee13.html">mac默认mail邮件客户端出现:&#34;不能使用发件服务器&#34;的解决方法</a>
+      <a class="article-title" href="/posts/966f1cd0.html">电子书的寻找方法【汇总篇】</a>
     </h1>
   
 
         
-        <a href="/posts/db9aee13.html" class="archive-article-date">
-  	<time datetime="2013-04-28T14:37:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-04-28</time>
+        <a href="/posts/966f1cd0.html" class="archive-article-date">
+  	<time datetime="2013-02-12T14:13:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-02-12</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>mac默认mail邮件客户端出现:”不能使用发件服务器”的解决方法，提及如何设置<a href="http://lijunnan.com/828/" target="_blank" rel="noopener" title="黑李白">mac</a>下的mail的接收邮件相信大家都可以，今天找到一个如何设置发送的贴子解决了我的问题，拿来和大家分享！ 希望对新同志们有帮助 <img src="https://upimg.ibolee.com/wp-blog-uploads/2013/04/4877a94ff79e0fb3bab9b945870bd9ab.jpg" alt="1.jpg" title="1.jpg"> <img src="https://upimg.ibolee.com/wp-blog-uploads/2013/04/b393148c3c737aa3c556837690b1357c.jpg" alt="2.jpg" title="2.jpg"> <img src="https://upimg.ibolee.com/wp-blog-uploads/2013/04/cc04bec6557d7b50f85c780d9aef08d1.jpg" alt="3.jpg" title="3.jpg"> <img src="https://upimg.ibolee.com/wp-blog-uploads/2013/04/69fbab01bae86cbbe88c90c5465efa2b.jpg" alt="4.jpg" title="4.jpg"> <img src="https://upimg.ibolee.com/wp-blog-uploads/2013/04/d98f99a817489b3f170487905609efc3.jpg" alt="5.jpg" title="5.jpg"></p>
+        <p>昨天的文章中分享的是寻找方法，今天的文章分享一些具体地址，文章中总结基本上比较全了，很多都是我平时经常用的，可以自己看去。 这篇文章应该是在论坛里看到的，应该是HiPDA论坛或是多看，没找到原始链接，有知道的请告知一下，我把会加入原始链接。 【推荐】爱问共享资料 （<a href="http://ishare.iask.sina.com.cn/）新浪旗下的在线资料分享站，电子书资源丰富，可以按格式搜索。注册即赠送积分，部分电子书下载需要积分，也有很多电子书是骗下载赚积分的，可能只是几个章节，可以先看评论再选择是否下载。搜索kindle电子书的时候可以用“6寸”、“mobi”这样的关键词。" target="_blank" rel="noopener">http://ishare.iask.sina.com.cn/）新浪旗下的在线资料分享站，电子书资源丰富，可以按格式搜索。注册即赠送积分，部分电子书下载需要积分，也有很多电子书是骗下载赚积分的，可能只是几个章节，可以先看评论再选择是否下载。搜索kindle电子书的时候可以用“6寸”、“mobi”这样的关键词。</a> 【推荐】子午书简 （<a href="http://book.zi5.me/）" target="_blank" rel="noopener">http://book.zi5.me/）</a> 适合kindle用户，是一个站长为分享kindle电子书专门建立的网站，可在线阅读，也可下载epub或mobi格式，亦可推送至kindle。 【推荐】亿年书海 （<a href="http://www.inien.com/）" target="_blank" rel="noopener">http://www.inien.com/）</a> 据说是上海某强人做的，可在线阅读及下载，下载可以选择不同的尺寸及格式，还可自定义格式，功能十分强大。注意下载按钮在导航栏登录注册右边。 【推荐】Kindle电子书搜索 （<a href="http://forfrigg.com/）" target="_blank" rel="noopener">http://forfrigg.com/）</a> Kindle电子书搜索引擎，用google自定义搜索制作，这里介绍的网站基本上都有收录，电子书、电子杂志等资源很丰富，可以分格式搜索，很好用。 【推荐】完美文库（<a href="http://www.wmwk.org/）" target="_blank" rel="noopener">http://www.wmwk.org/）</a> 可在线阅读及下载，可下载txt,mobi,epub格式，亦可投递到kindle。而且移动版可免积分阅读所有内容。积分规则比较复杂。 【推荐】COAY （<a href="http://coay.com/）" target="_blank" rel="noopener">http://coay.com/）</a> 提供ePub、mobi格式电子书下载，支持iBooks，Kindle，Stanza等阅读器。 【推荐】掌上书苑 （<a href="http://www.cnepub.com）" target="_blank" rel="noopener">http://www.cnepub.com）</a> 下载电子书需要书币，提供epub和mobi格式下载，还可以推送到kindle。 【推荐】书仓网 （<a href="http://shucang.com/）" target="_blank" rel="noopener">http://shucang.com/）</a> 可在线阅读，提供epub,mobi,pdf等多种格式下载。 【推荐】皮皮书屋（<a href="http://www.ppurl.com/）" target="_blank" rel="noopener">http://www.ppurl.com/）</a> 收集的书籍专攻计算机科学以及相关延伸学科。大部分是pdf和chm格式，需注册才能查看书籍。注册需要编程基础。可在线浏览及下载（国外IP需申请加入白名单）。 【推荐】七彩英语 （<a href="http://www.qcenglish.com/）" target="_blank" rel="noopener">http://www.qcenglish.com/）</a> 提供英文原版电子书下载，大多为pdf格式，注意有解压密码。 【推荐】原版图书下载（<a href="http://www.cnshare.org/）" target="_blank" rel="noopener">http://www.cnshare.org/）</a> 英文图书杂志，以计算机及经管励志类书籍为主，其次是原版杂志期刊，大部分书籍是pdf格式。 【推荐】dogear（<a href="http://dogear.mobi/）Kindle看新闻，可下载mobi和epub格式。" target="_blank" rel="noopener">http://dogear.mobi/）Kindle看新闻，可下载mobi和epub格式。</a> 【推荐】ikindle （<a href="http://ikindle.mobi/）" target="_blank" rel="noopener">http://ikindle.mobi/）</a> 每天投递新鲜的报纸和杂志到你的kindle。 【推荐】kindle4rss （<a href="http://kindle4rss.com/）" target="_blank" rel="noopener">http://kindle4rss.com/）</a> Kindle4RSS是一个让你订阅RSS Feed并定时递送到Kindle的服务。 ———————- 其它简体电子书网站 ———————- 苦瓜书盘 （<a href="http://kgbook.com/），主要提供6寸pdf以及少量mobi的下载，目前网站因备案问题被关闭。" target="_blank" rel="noopener">http://kgbook.com/），主要提供6寸pdf以及少量mobi的下载，目前网站因备案问题被关闭。</a> 苹果电子书 （<a href="http://ibook.178.com/）" target="_blank" rel="noopener">http://ibook.178.com/）</a> 178旗下网站，提供epub格式电子书下载，适合苹果设备，下载方式比较奇特，点击“找[ta]借阅”即可下载，被借阅次数即下载次数最多的会排在前面。 书朋网 （<a href="http://www.shupeng.com/）" target="_blank" rel="noopener">http://www.shupeng.com/）</a> 下载链接综合索引自其他网站，如爱问共享资料等。多为txt格式。 西东网 （<a href="http://xidong.net/）" target="_blank" rel="noopener">http://xidong.net/）</a> 学习资料共享，主要提供教育方面的电子书及其他资料，大多为pdf格式，电驴下载。 ———————- 其它繁体电子书网站 ———————- 古登堡计划（中文书籍） （<a href="http://www.gutenberg.org/browse/languages/zh）" target="_blank" rel="noopener">http://www.gutenberg.org/browse/languages/zh）</a> 英文书籍为主，也有部分中文书籍，繁体。 好读网站 （<a href="http://haodoo.net/）" target="_blank" rel="noopener">http://haodoo.net/）</a> 免费的线上繁体中文图书馆，可在线阅读及下载，可下载的格式有：updb，pdb，prc，epub。 百年千书 （<a href="http://1000ebooks.tw/）" target="_blank" rel="noopener">http://1000ebooks.tw/）</a> 百年千书计划，详细介绍请看该网站的“关于我们”或“Q&amp;A”页面。 ———————- 其它英文电子书网站 ———————- feedbooks （<a href="http://www.feedbooks.com/）" target="_blank" rel="noopener">http://www.feedbooks.com/）</a> 除了付费书籍外，也提供public domain的书籍和一些新作家免费开放的orginal books，如果想下载免费图书。可点击“Free Public Domain Books”浏览或直接搜索。 library.nu （<a href="http://library.nu/）著名英文电子书下载网站，书籍大部分是pd格式。提供多种网盘下载链接，注意部分文件下载后需要解压密码。" target="_blank" rel="noopener">http://library.nu/）著名英文电子书下载网站，书籍大部分是pd格式。提供多种网盘下载链接，注意部分文件下载后需要解压密码。</a> 再分享几个国外电子书网站，不一一介绍了： <a href="http://avaxhome.ws/ebooks" target="_blank" rel="noopener">http://avaxhome.ws/ebooks</a> <a href="http://www.wowebook.com/" target="_blank" rel="noopener">http://www.wowebook.com/</a> <a href="http://www.ebookee.net/" target="_blank" rel="noopener">http://www.ebookee.net/</a> <a href="http://ebook3000.com/" target="_blank" rel="noopener">http://ebook3000.com/</a> <a href="http://www.ebookshare.net/" target="_blank" rel="noopener">http://www.ebookshare.net/</a> ————————- Kindle电子书书目分享 ————————- 【推荐】Dropbox之Kindle中文电子书 （<a href="https://www.dropbox.com/s/b44t0swhzsdlaof）" target="_blank" rel="noopener">https://www.dropbox.com/s/b44t0swhzsdlaof）</a> 网友在dropbox中分享的适合kindle阅读的电子书，大部分为mobi格式，部分PRC格式和PDF格式，电子书目录可以下载word版（<a href="https://www.dropbox.com/s/b44t0swhzsdlaof/Book%20index%EF%BC%88%E8%AE%BF%E9%97%AE%20irising.me%2C%20%E4%B8%80%E8%B5%B7%E6%B3%A8%E8%A7%A3%E6%95%B0%E5%AD%97%E7%94%9F%E6%B4%BB%EF%BC%89.docx）或者看网页版目录（http://irising.me/2011/05/930/）" target="_blank" rel="noopener">https://www.dropbox.com/s/b44t0swhzsdlaof/Book%20index%EF%BC%88%E8%AE%BF%E9%97%AE%20irising.me%2C%20%E4%B8%80%E8%B5%B7%E6%B3%A8%E8%A7%A3%E6%95%B0%E5%AD%97%E7%94%9F%E6%B4%BB%EF%BC%89.docx）或者看网页版目录（http://irising.me/2011/05/930/）</a> 【推荐】skydrive （by young seakye）（<a href="https://skydrive.live.com/?cid=ab536aff86b227d2）资源异常丰富，多为pdf格式，分类有CFA、CPA、Economics、Finance、Hacker、IT、Law、psychology、三联哈佛燕京学术丛书、全美经典学习指导系列丛书、剑桥史等等。" target="_blank" rel="noopener">https://skydrive.live.com/?cid=ab536aff86b227d2）资源异常丰富，多为pdf格式，分类有CFA、CPA、Economics、Finance、Hacker、IT、Law、psychology、三联哈佛燕京学术丛书、全美经典学习指导系列丛书、剑桥史等等。</a> 【推荐】txt精排版资源（<a href="http://www.hi-pda.com/forum/viewthread.php?tid=569396&amp;extra=page%3D1）" target="_blank" rel="noopener">http://www.hi-pda.com/forum/viewthread.php?tid=569396&amp;extra=page%3D1）</a> 【推荐】skydrive （by chan jingstone）（<a href="https://skydrive.live.com/?cid=65c27572e1ef52ba&amp;id=65C27572E1EF52BA%21125）" target="_blank" rel="noopener">https://skydrive.live.com/?cid=65c27572e1ef52ba&amp;id=65C27572E1EF52BA%21125）</a> 同上，资源很丰富，txt精排版。 【推荐】6寸pdf资源 （<a href="http://www.hi-pda.com/forum/viewthread.php?tid=483779&amp;extra=page%3D1）" target="_blank" rel="noopener">http://www.hi-pda.com/forum/viewthread.php?tid=483779&amp;extra=page%3D1）</a> 6寸pdf资源汇总。 ————- 经验及技巧 ————- 【推荐】HiPDA论坛-Amazon Kindle论坛资源汇总检索帖（<a href="http://www.hi-pda.com/forum/viewthread.php?tid=526444&amp;extra=page%3D1&amp;sid=bTuoBx）" target="_blank" rel="noopener">http://www.hi-pda.com/forum/viewthread.php?tid=526444&amp;extra=page%3D1&amp;sid=bTuoBx）</a> HiPDA论坛中与Amazon Kindle有关的知识和资源汇总。 【推荐】Kindle 博文概览（<a href="http://irising.me/2011/09/10389/）" target="_blank" rel="noopener">http://irising.me/2011/09/10389/）</a> 一个多人博客，写了很多Kindle方面的博文，文章分为：入手前准备，到手初使用，阅读，上网，折腾，其它等栏目。 【推荐】kindle 3经验技巧收集汇总（<a href="http://www.douban.com/group/topic/19630427/）" target="_blank" rel="noopener">http://www.douban.com/group/topic/19630427/）</a> kindle 3 经验技巧收集汇总。 ———————- 论坛 ———————- HiPDA E-INK论坛 （<a href="http://www.hi-pda.com/forum/forumdisplay.php?fid=59）" target="_blank" rel="noopener">http://www.hi-pda.com/forum/forumdisplay.php?fid=59）</a> HiPDA论坛的e-ink讨论区，置顶帖里都是精华。 多看电子书交流 （<a href="http://www.duokan.com/forum/forum-16-1.html）" target="_blank" rel="noopener">http://www.duokan.com/forum/forum-16-1.html）</a> Kindle中文系统多看网的电子书交流频道。 威锋电子书分享 （<a href="http://bbs.weiphone.com/thread-htm-fid-224.html）" target="_blank" rel="noopener">http://bbs.weiphone.com/thread-htm-fid-224.html）</a> 威锋论坛电子书分享频道，多为epub和pdf格式。 ———————————– 最后再献上几个电子杂志下载站 ———————————– VeryCD（<a href="http://www.verycd.com/sto/datum/magazine/）" target="_blank" rel="noopener">http://www.verycd.com/sto/datum/magazine/）</a> 提供国内外中英文杂志、报纸下载，定期更新，资源丰富。下载方式为电驴。 Bucee雜誌館（<a href="http://bucee.net/）" target="_blank" rel="noopener">http://bucee.net/）</a> 提供最新简体及繁体中文杂志下载，下载方式为网盘。 QMAG免費雜誌（<a href="http://qmag.org/）" target="_blank" rel="noopener">http://qmag.org/）</a> 提供最新香港、台灣中文電子雜誌下載，下载方式为网盘。 原版电子杂志免费下载（<a href="http://www.cnrser.com/）" target="_blank" rel="noopener">http://www.cnrser.com/）</a> 提供最新原版英文杂志下载，下载方式为网盘。 杂志虫（<a href="http://zineworm.com/）外文原版杂志网" target="_blank" rel="noopener">http://zineworm.com/）外文原版杂志网</a> ，提供最新原版英文杂志下载，下载方式为网盘。 媛诺诺时尚杂志馆（<a href="http://ynono.com/）" target="_blank" rel="noopener">http://ynono.com/）</a> 提供日本、韩国、欧美地区原版时尚杂志下载，下载方式为网盘。 麦根 （<a href="http://www.nmag.cn/）" target="_blank" rel="noopener">http://www.nmag.cn/）</a> 主要提供国内外时尚设计类电子杂志下载。 免費鏈 （<a href="http://freelian.com/）" target="_blank" rel="noopener">http://freelian.com/）</a> 是一个电子杂志链接收集平台，提供PDF电子杂志下载。</p>
 
       
 
@@ -492,19 +280,355 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">发现</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">电脑软硬件</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">kindle</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">mac</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">电子书</a>
         		</li>
-      		 
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">邮件客户端</a>
+        			<a href="/categories/其它//" class="article-tag-list-link color3">其它</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/posts/966f1cd0.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-e7-bd-91-e5-9d-80-e5-89-8d-e5-a4-b4-e7-9a-84https-e5-8d-8f-e8-ae-ae-e6-98-af-e4-bb-80-e4-b9-88-e6-84-8f-e6-80-9d-e5-9b-be-e8-a7-a3https-e5-8d-8f-e8-ae-ae-e8-af-a6-e7-bb-86-e7-89-88" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/posts/c07399be.html">网址前头的https协议是什么意思,图解https协议详细版</a>
+    </h1>
+  
+
+        
+        <a href="/posts/c07399be.html" class="archive-article-date">
+  	<time datetime="2013-02-03T10:46:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-02-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>我们都知道HTTPS能够加密信息，以免敏感信息被第三方获取。所以很多银行网站或电子邮箱等等安全级别较高的服务都会采用HTTPS协议。 HTTPS简介 HTTPS其实是有两部分组成：HTTP + SSL / TLS，也就是在HTTP上又加了一层处理加密信息的模块。服务端和客户端的信息传输都会通过TLS进行加密，所以传输的数据都是加密后的数据。具体是如何进行加密，解密，验证的，且看下图。 <a href="https://upimg.ibolee.com/wp-blog-uploads/2013/02/图片1.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2013/02/%E5%9B%BE%E7%89%871-300x259.png" alt="图片1"></a> 1. 客户端发起HTTPS请求 这个没什么好说的，就是用户在浏览器里输入一个https网址，然后连接到server的443端口。 2. 服务端的配置 采用HTTPS协议的服务器必须要有一套数字证书，可以自己制作，也可以向组织申请。区别就是自己颁发的证书需要客户端验证通过，才可以继续访问，而使用受信任的公司申请的证书则不会弹出提示页面(startssl就是个不错的选择，有1年的免费服务)。这套证书其实就是一对公钥和私钥。如果对公钥和私钥不太理解，可以想象成一把钥匙和一个锁头，只是全世界只有你一个人有这把钥匙，你可以把锁头给别人，别人可以用这个锁把重要的东西锁起来，然后发给你，因为只有你一个人有这把钥匙，所以只有你才能看到被这把锁锁起来的东西。 3. 传送证书 这个证书其实就是公钥，只是包含了很多信息，如证书的颁发机构，过期时间等等。 4. 客户端解析证书 这部分工作是有客户端的TLS来完成的，首先会验证公钥是否有效，比如颁发机构，过期时间等等，如果发现异常，则会弹出一个警告框，提示证书存在问题。如果证书没有问题，那么就生成一个随机值。然后用证书对该随机值进行加密。就好像上面说的，把随机值用锁头锁起来，这样除非有钥匙，不然看不到被锁住的内容。 5. 传送加密信息 这部分传送的是用证书加密后的随机值，目的就是让服务端得到这个随机值，以后客户端和服务端的通信就可以通过这个随机值来进行加密解密了。 6. 服务段解密信息 服务端用私钥解密后，得到了客户端传过来的随机值(私钥)，然后把内容通过该值进行对称加密。所谓对称加密就是，将信息和私钥通过某种算法混合在一起，这样除非知道私钥，不然无法获取内容，而正好客户端和服务端都知道这个私钥，所以只要加密算法够彪悍，私钥够复杂，数据就够安全。 7. 传输加密后的信息 这部分信息是服务段用私钥加密后的信息，可以在客户端被还原。 8. 客户端解密信息 客户端用之前生成的私钥解密服务段传过来的信息，于是获取了解密后的内容。整个过程第三方即使监听到了数据，也束手无策。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/IT相关//" class="article-tag-list-link color5">IT相关</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/posts/c07399be.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-e3-80-8a-e7-99-be-e5-ae-b6-e8-ae-b2-e5-9d-9b-e3-80-8b-e9-83-a6-e6-b3-a2-e6-95-99-e6-8e-88-e6-9b-be-e5-9b-bd-e8-97-a9-e5-ae-b6-e8-ae-admp3-e5-85-a8-e9-9b-86-e4-b8-8b-e8-bd-bd" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/posts/24fa811f.html">《百家讲坛》郦波教授曾国藩家训MP3全集下载</a>
+    </h1>
+  
+
+        
+        <a href="/posts/24fa811f.html" class="archive-article-date">
+  	<time datetime="2013-01-30T01:15:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-01-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>曾国藩，初名子城，字伯涵，号涤生，谥文正，出生于湖南长沙府湘乡县杨树坪，晚清重臣，湘军之父，湘军的创立者和统帅者。清朝军事家、理学家、政治家、书法家，文学家，晚清散文“湘乡派”创立人。晚清“中兴四大名臣”之一，官至两江总督、直隶总督、武英殿大学士，封一等毅勇侯，谥曰文正。 <a href="http://lijunnan.com/698/" target="_blank" rel="noopener" title="曾国藩家训MP3">曾国藩家训MP3版全集</a>分13集，全部是郦波教授讲的曾国藩家训录音，音质还不错。<img src="https://upimg.ibolee.com/wp-blog-uploads/2013/01/82e7aed0e489ea6a969608c10b899d4d.jpg" alt=""> <a href="http://lijunnan.com/698/" target="_blank" rel="noopener" title="曾国藩">曾国藩</a>毕生服膺程朱理学,又主张兼取各家之长, 认为义理、考据、经济、辞章四者不可缺一, 但始终将理学放在首要地位。于古文、诗词也很有造诣,被奉为桐城派后期领袖。1872年3月在南京病卒。赠太傅,谥文正。后人辑其所著诗、文、奏章、批牍等为《曾文正公全集》。 001逆来顺受之法  002戒多言不纠缠少争论  003先晓事后办事  004合众人之私以成众人之公  005扬善于公庭规过于私室  006上场当念下场时  007刚的智慧  008内断于心自为主持  009五到与五勤  010男儿要倔强  011困而知勉而行  012有信仰的团队  013流水高山心自知 下载地址： <a href="http://pan.baidu.com/wap/link?uk=3492876942&amp;shareid=2194062091&amp;third=0" target="_blank" rel="noopener">http://pan.baidu.com/wap/link?uk=3492876942&amp;shareid=2194062091&amp;third=0</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">干货</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/转载-amp-分享//" class="article-tag-list-link color5">转载&amp;分享</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/posts/24fa811f.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-e5-a5-bd-e5-a4-b4-e8-84-91-e4-b8-8d-e5-a6-82-e5-a5-bd-e4-b9-a0-e6-83-af-e5-85-a5-e8-81-8c-e5-bf-85-e5-a4-87-e6-96-87-e7-ab-a0" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/posts/dc068877.html">好头脑不如好习惯_好员工职场必读</a>
+    </h1>
+  
+
+        
+        <a href="/posts/dc068877.html" class="archive-article-date">
+  	<time datetime="2013-01-29T09:31:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-01-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一、管好自己不容易 一个好员工自然能够取得好绩效，而取得卓越绩效的前提是自动自发地进行自我管理。关于自我管理的的问题，诙谐作家杰克森.布朗曾经有一个有趣的比喻：“缺少了自我管理的才华，就好像穿上溜冰鞋的八爪鱼。眼看动作不断可是却搞不清楚到底是往前、往后，还是原地打转。”如果你知道自己确实有几分才华和能力，而且又确实干了不少活儿，但却总是看不见太多的成果的时候，那么你很可能缺少自我约束与自我管理的能力。 1、 管好时间就是管好生命 人在职场身不由已。朋友见面，通常第一句话就是：“最近忙吗？”回答大都是：“嘿，别提啦，最近真是晕头转向，快忙死了！这日子真不是人过的！”说完之后，仍然过着“不是人过的日子”。忙碌的人很可爱，像辛勤的小蜜蜂，似乎不知道疲倦，但忙碌的人也有可恨之处，忙人的可恨之处主要表现在他们抓不住工作重点，不懂得自我管理。 坚持“二八法则” 1897年，意大利经济学家帕累托在从事经济学研究时，偶然注意到19世纪英国人财富和收益之间存在着一种重要的现象，即20%的人中占有80%的社会财富。这一重大的发现揭开了世界财富分配的秘密。后来，人们把这一研究成果运用到企业管理中，比如，20%的产品带来80%的利润；20%的时间和精力创造80%的绩效等。这就是所谓的“二八法则”。 “二八法则”在日常生活中也普遍存在，比如，你衣柜里的衣服琳琅满目，经常穿的也就是20%；你的朋友遍天下，经常和你来往并能帮上忙的也就是20%；大街小巷，商店超市到处都是，你经常光顾的顶多就是那其中的20%。 “二八法则”也叫帕累托法则、不平衡法则、关键少数法则、最省力法则等，是指在因和果、努力和收获之间，普遍存在着似乎无法解释的不平等关系。“二八法则”的精髓是：抓住关键的少数，用80%的时间和精力，去做对你的工作最有价值和最重要的那20%的大事，而对于那些琐碎的80%的小事可以有所取舍，甚至可以干脆忽略不计。其实，“二八法风吹草动”并不神秘，人们常说的“抓主要矛盾”“牵牛要牵牛鼻子”“擒贼先擒王”“纲举目张”等都是这个道理。问题是不少人知道，但是就是没有做到，或是没有坚持做到，结果总是劳而无功，最后变成了可怜兮兮的“没有功劳也有苦劳”的人。 在实际工作中，所有的工作都既有紧急程度的不同，同时又有重要程度的不同，根据这两个维度，人们工作和生活中的事情可以分别列入如下表所示的四个象限。 日常事务的四个象限 </p>
+<p>紧急</p>
+<p>不紧急</p>
+<p>重要</p>
+<p>第一象限：又紧急又重要突发的危机事件有时间要求的工作计划 事关大局的急迫问题</p>
+<p>第二象限：重要但不紧急制订计划、未雨绸缪的工作改进方法、挖掘机会、提升能力 学习、健康、家庭、休闲</p>
+<p>不重要</p>
+<p>第三象限；紧急但不重要朋友现在打电话与你逛街不速之客 某些电话、信件、邮件</p>
+<p>第四象限：不重要不紧急某些闲聊的拜访或电话有趣但无意义的活动：无休止地看肥皂剧、打牌、吹牛等</p>
+<p> 你在不同的象限投入时间的多少，决定了你绩效水平的高低。 如果你的大量时间都耗费在第一象限，说明你是一个“消防队员”式的人物，主要原因是因为你的工作方法不当，缺乏规划和计划，抓不住工作的重点，因而在工作中漏洞百出，整天陷入似乎既紧急又重要的事务之中，忙于挽救失误、处理本不该发生的问题等。这种情况下，你很难取得满意的工作绩效，即使取得了一些工作业绩，也是用自己的精神压力、超时加班、身体健康或家庭幸福换来的。 如果你把大量时间浪费在三、四象限，说明你不是一个失败者就是一个平庸无为的人。因为你急功近利，缺乏自制和自律，对工作乃至对自己生命不负责任，随波逐流，你分不清哪些事情对你来说是重要的，是应该做好的；哪些事情对你来说是不重要的，根本不值得你去花费时间。最终是得过且过，碌碌无为。 一个好员工，主要做的应该是第二象限的工作，并尽量减少第一象限的工作。第二象限的事情尽管很重要，但是往往不紧急，却是人生路上的“大石块”。比如：制订计划，坚持学习，提升能力，锻炼身体，关心家庭，孝顺父母，与配偶、孩子沟通，休闲身心等。但是这些大石块往往因为不是迫在眉睫的事情，所以常常会被忽视。因此，要搬起这些大石块，就要做到： 1、 合理地将自己的工作按紧急和重要程度划分到不同的象限中去； 2、 先做或者将大部分时间和精力用于做第二象限的工作 3、 许多第一象限的工作，实际上是因为第二象限的工作没有做好而产生的，要注意纠正 4、 不要被第三象限中的一些工作假象所迷惑，它没有你想象得那么紧急 5、 根据第二象限的事务制订有序的时间安排计划 6、 用80%的时间做第二象限和第一象限的工作，用20%的时间做其它象限的工作 要时刻牢记：用80%的时间和精力去做影响和决定你工作和生活的那20%的重要的事情。也就是说，你要时刻抓住并做好那些关键的少数事情，而不是相反。  留出时间自省 孔子说“吾日三省吾身”。主管在与下属进行绩效面谈时经常会问：“你这个月怎么样？”下属说：“哎呀，这个月可真是忙得天翻地覆，光是加班就有十来次，好在绩效目标总算超额完成了！”主管会说：“好是好，问题是你这样忙碌的工作，有没有给自己留下总结思考的时间？”下属摇了摇头。主管接着说：“如果你每天给自己留出哪怕十分钟的思考时间，总结反省一下自己，你的绩效可能会有新的提高，你也不会像现在这样忙碌得不可开交了。” 当你日夜兼程的时候，请提醒自己：给自己留一些思考、喘息和总结的机会，总结反省会帮助你找到更简单、方便、快捷的通往成功的方法和路径。好员工应该常常自我反省，多总结，多思考，为接下来的工作做好准备。 日常的工作和生活中，应该如何思考和反省自己呢？以每天为例，有三个方法可以参考： 1、 闻鸡超舞的十分钟。每天早上醒来的时候，你可以不要急着起床，让自己坐起来靠在松软的床头上，问自己三个问题：我今天最重要的三件事是什么？我应该如何完成他们？今天有什么事情让我期待和高兴？问自己这些事情，不仅能使一天的主要目标更加清晰，有条不紊地开展工作，而且能让你以阳光快乐的心态面对生命中崭新的一天。 2、 静夜沉思的十分钟。夜深人静之时，你可以冲个热水澡，然后关掉电视，静静地仰卧在沙发上，问自己三个问题：“我今天完成了确定的重要目标了吗？今天有什么经验和教训？今天让我最快乐的一件事情是什么？”这样做会让你把当天的成功与失败都镶嵌在天花板上，然后安然地进入甜美的梦乡。 3、 养成记工作日志的习惯。其实，你可以把前两项的思考与反省工作和工作日志结合起来。不少成功人士的经历证明，坚持记工作日志是一个职业人士不可缺少的职业习惯，写日志的过程就是一个思考反省的过程，把当天的工作收获、经验教训用文字的形式记录下来，既可以进一步梳理当天的行为，也方便以后不断温习过去的得失，以更加坚定的信心和心态迎接光明的未来，同时，记日志更是锻炼毅力、磨练意志、增加韧性的最好方法，关键在于坚持、坚持、再坚持！日志的内容可以分为目标完成、经验教训、学习进步、明天的目标计划、创新灵感等，安数可多可少，全由你自己掌握。  “6S大脚印” 未来是由现在产生出来的。做好了现在就是做好了未来。未来不会无端地来，它将会从当下的这个片刻产生出来。只要能够保证工作的每一个时间段都有效率，那么，你就会拥有高绩效的一天。活在当下，抓住现在，生命才会有质量、有价值，职业生涯才会充满精彩。 抓住现在，就必须要彻底根除办事拖拉的坏毛病，从现在就开始行动。有的人总是不由自主地把事情往后拖，并且给自己找一些拖拉的借口，比如“今天刮风下雨了”“天气太热或太冷了”“身体不太舒服了”等，结果今天的事拖到明天，明天的事拖到后天，事情越积越多，小事变成了大事，简单的事变成了复杂的事，容易的事变成了困难的事，甚至是好事变成了坏事。这种遇事拖延的陋习不仅便自己背上了“拖拉机”的坏名声，更重要的是使自己丧失了效率和效能，潜能得不到发挥，最终一事无成！ 要想成为一个好员工，就应该多抽时间检查对照一下自己，看看是否有拖拉的习惯。治理拖拉的毛病有以下几个方法： 1、“6S大脚印法”。 “6S大脚印法”是海尔的一个独特的生产现场管理方法。“6S”的含义是：整理、整顿、清扫、清洁、素养、安全。车间员工每天下班前，都要在6S大脚印前召开短会，总结自己一天来是否做到了日事日毕、日清日高、表现好的要站在大脚印上谈体会，表现差的要站在大脚印上做检查。你是否也可以给自己制作一个“大脚印”，放在自己的办公桌下，或者放在自己的卧室里，每天工作结束的时候，站在“大脚印”上反省一下自己：今天的事做完了吗？为什么？ 2、对外宣布，请人监督。 你可以对外宣布你的<a href="http://lijunnan.com/684/" target="_blank" rel="noopener" title="好头脑不如好习惯">工作计划</a>，请你的上司、同事、朋友或家人监督，并立下“军令状”：如果到时候不完任务，我一定当众裸奔！为了不至于那么丢人，你自然会全力以赴。坚持做几次，你就会养成雷厉风行的好作风。 3、制订最后期限。 给自己每月、每周、每天的每一项工作都制订一个完成的具体时间和最后期限。完成了就自己激励自己一下自己，如果奖励自己吃个冰激凌；完不成自己惩罚一下自己，比如做50个俯卧撑。 4、 现在行动。 根冶拖拉的最好办法就是现在行动，当你发觉自己想往后拖的时候，马上警告自己：拖延是无能的表现，拖延会毁掉我的职业前程。我是一个追求卓越的人，我必须现在开始行动！ 犹太人的商业圣经《塔木德》中说：我见日光之下，快跑的未必能赢，力战的未必得胜，智慧的未必得粮食，明哲的未必得资财，灵巧的未必得喜悦，所临到众人的，是在乎当时的机会。 昨天是一张过期的支票，明天是一张空头支票，只有今天才是现金。所以，好员工都能够抓住今天，活在当下，积极行动，抓住了今天，也就抓住了明天和未来！</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">干货</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/转载-amp-分享//" class="article-tag-list-link color5">转载&amp;分享</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/posts/dc068877.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-e5-ad-a6-e8-8b-b1-e8-af-ad-e5-8f-af-e4-bb-a5-e6-9c-89-e4-b9-90-e5-ad-90-e3-80-8a-e8-80-81-e5-8f-8b-e8-ae-b0-e3-80-8b-e5-85-a8-e9-9b-86-e4-b8-ad-e8-8b-b1-e6-96-87-e5-af-b9-e7-85-a7-e5-8f-b0-e8-af-8d" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/posts/27acc810.html">学英语可以有乐子,《老友记》全集中英文对照台词下载</a>
+    </h1>
+  
+
+        
+        <a href="/posts/27acc810.html" class="archive-article-date">
+  	<time datetime="2013-01-27T13:43:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-01-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近几天<a href="http://lijunnan.com/" target="_blank" rel="noopener" title="黑李白">黑李白</a>又开始浑浑噩噩了，没买到火车票，又遇到一些不如意的事情；但是依然不忘坚持自学英语，如果枯燥的各种英文词典难以帮你坚持英语自学的话，可以考虑给自己学习英语找点乐子；比如学唱一首英文歌，或者熟背<a href="http://lijunnan.com/680/" target="_blank" rel="noopener">《老友记》中英文台词</a>，逗翻你想逗的人，比如HR，逗翻他你就会得到你想要的offer。 <img src="https://upimg.ibolee.com/wp-blog-uploads/2013/01/2f6f240bfb3e8db100ce91d8a6ef0451.jpg" alt=""></p>
+<h2 id="什么是老友记："><a href="#什么是老友记：" class="headerlink" title="什么是老友记："></a>什么是老友记：</h2><p>《老友记》（《Friends》）是美国NBC电视台从1994年开播、 《Friends》 连续播出了10年（1994-2004）的一部幽默情景喜剧。[1]全剧共236集，每集大约20分钟左右。曾在1996年1月28日创下5,300万的收视记录，2004年5月6日播出的最后一集5250万收视记录。 故事主要描述了住在纽约的六个好朋友，从相识到后来一起经历了10年的生活中发生的一系列的故事。</p>
+<h2 id="老友记中英文台词全集下载地址："><a href="#老友记中英文台词全集下载地址：" class="headerlink" title="老友记中英文台词全集下载地址："></a>老友记中英文台词全集下载地址：</h2><p><a href="http://t.cn/zYwrH8t" target="_blank" rel="noopener" title="http://pan.baidu.com/share/link?shareid=223453&amp;uk=100685844"></a><a href="http://t.cn/zYLhdBc" target="_blank" rel="noopener" title="http://pan.baidu.com/share/link?shareid=227620&amp;uk=100685844">http://t.cn/zYLhdBc</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">干货</a>
         		</li>
       		
 		</ul>
@@ -525,7 +649,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/posts/db9aee13.html">展开全文 >></a>
+          <a class="article-more-a" href="/posts/27acc810.html">展开全文 >></a>
         </p>
       
 
@@ -555,28 +679,46 @@
 
 
   
-    <article id="post-mac-os-x-e6-96-87-e4-bb-b6-e5-a4-b9-e6-9d-83-e9-99-90-e7-ae-a1-e7-90-86-e6-96-b9-e6-b3-95-e8-af-a6-e8-a7-a3-e9-85-8d-e5-90-88-e7-bb-88-e7-ab-afterminal-e8-af-ad-e6-b3-95-e8-af-a6-e8-bf-b0" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-e5-b7-a7-e7-94-a8-e5-b0-8f-e4-bb-a3-e7-a0-81-e8-8e-b7-e5-8f-96-e6-96-87-e4-bb-b6-e5-a4-b9-e4-b8-8b-e6-89-80-e6-9c-89-e6-96-87-e4-bb-b6-e5-a4-b9-e5-90-8d-e4-b8-batxt" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/posts/cc7808db.html">mac os x文件夹权限管理方法详解,配合终端terminal语法详述</a>
+      <a class="article-title" href="/posts/afa0ca9c.html">巧用小代码获取文件夹下所有文件夹名为txt</a>
     </h1>
   
 
         
-        <a href="/posts/cc7808db.html" class="archive-article-date">
-  	<time datetime="2013-04-16T13:53:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-04-16</time>
+        <a href="/posts/afa0ca9c.html" class="archive-article-date">
+  	<time datetime="2013-01-21T07:32:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-01-21</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>文件或目录的访问权限分为只读，只写和可执行三种。以文件为例，只读权限表示只允许读其内容，而禁止对其做任何的更改操作。可执行权限表示允许将该文件 作为一个程序执行。文件被创建时，文件所有者自动拥有对该文件的读、写和可执行权限，以便于对文件的阅读和修改。用户也可根据需要把访问权限设置为需要的 任何组合。 _　　有三种不同类型的用户可对文件或目录进行访问：文件所有者，同组用户、其他用户。所有者一般是文件的创建者。所有者可以允许同组用户有权访问文件，还可以将文件的访问权限赋予系统中的其他用户。在这种情况下，系统中每一位用户都能访问该用户拥有的文件或目录。 每一文件或目录的访问权限都有三组，每组用三位表示，分别为文件属主的读、写和执行权限；与属主同组的用户的读、写和执行权限；系统中其他用户的读、写和执行权限。当用ls -l命令显示文件或目录的详细信息时，最左边的一列为文件的访问权限。例如： ls -i 将列出目录下所有文件夹的访问权限 $ ls  -i sobsrc. tgz -rw-r–r– 1 root root 483997 Ju1 l5 17:3l sobsrc. tgz 横线代表空许可。r代表只读，w代表写，x代表可执行。注意这里共有10个位置。第一个字符指定了文件类型。在通常意义上，一个目录也是一个文件。如果第一个字符是横线，表示是一个非目录的文件。如果是d，表示是一个目录。 例如： - 　　　 rw- 　 r– 　 r– 普通文件 文件主 组用户 其他用户 是文件sobsrc.tgz 的访问权限，表示sobsrc.tgz是一个普通文件；sobsrc.tgz的属主有读写权限；与sobsrc.tgz属主同组的用户只有读权限；其他用户也只有读权限。 确定了一个文件的访问权限后，用户可以利用Linux系统提供的chmod命令来重新设定不同的访问权限。也可以利用chown命令来更改某个文件或目录的所有者。利用chgrp命令来更改某个文件或目录的用户组。 下面分别对这些命令加以介绍。_ chmod 命令 功能：chmod命令是非常重要的，用于改变文件或目录的访问权限.用户用它控制文件或目录的访问权限. 语法：该命令有两种用法。一种是包含字母和操作符表达式的文字设定法；另一种是包含数字的数字设定法。 1. 文字设定法 chmod [who] [+ | - | =] [mode] 文件名? 参数： 操作对象who可是下述字母中的任一个或者它们的组合： u 表示“用户（user）”，即文件或目录的所有者。 g 表示“同组（group）用户”，即与文件属主有相同组ID的所有用户。 o 表示“其他（others）用户”。 a 表示“所有（all）用户”。它是系统默认值。 操作符号可以是： + 添加某个权限。 - 取消某个权限。 = 赋予给定权限并取消其他所有权限（如果有的话）。 设置mode所表示的权限可用下述字母的任意组合： r 可读。 w 可写。 x 可执行。 X 只有目标文件对某些用户是可执行的或该目标文件是目录时才追加x 属性。 s 在文件执行时把进程的属主或组ID置为该文件的文件属主。方式“u＋s”设置文件的用户ID位，“g＋s”设置组ID位。 t 保存程序的文本到交换设备上。 u 与文件属主拥有一样的权限。 g 与和文件属主同组的用户拥有一样的权限。 o 与其他用户拥有一样的权限。 文件名：以空格分开的要改变权限的文件列表，支持通配符。 在一个命令行中可给出多个权限方式，其间用逗号隔开。例如：chmod g+r，o+r example 使同组和其他用户对文件example 有读权限。 2. 数字设定法 我们必须首先了解用数字表示的属性的含义：0表示没有权限，1表示可执行权限，2表示可写权限，4表示可读权限，然后将其相加。所以数字属性的格式应为3个从0到7的八进制数，其顺序是（u）（g）（o）。 例如，如果想让某个文件的属主有”读/写”二种权限，需要把4（可读）+2（可写）＝6（读/写). 数字设定法的一般形式为： chmod [mode] 文件名? 例子： （1）文字设定法： 例1：$ chmod a+x sort 即设定文件sort的属性为： 文件属主（u） 增加执行权限 与文件属主同组用户（g） 增加执行权限 其他用户（o） 增加执行权限 例2：$ chmod ug+w，o-x text 即设定文件text的属性为： 文件属主（u） 增加写权限 与文件属主同组用户（g） 增加写权限 其他用户（o） 删除执行权限 例3：$ chmod u+s a.out 假设执行chmod后a.out的权限为（可以用ls – l a.out命令来看）： –rws–x–x 1 inin users 7192 Nov 4 14:22 a.out 并且这个执行文件要用到一个文本文件shiyan1.c，其文件存取权限为“–rw——-”，即该文件只有其属主具有读写权限。 当其他用户执行a.out这个程序时，他的身份因这个程序暂时变成inin（由于chmod命令中使用了s选项），所以他就能够读取shiyan1.c这个文件（虽然这个文件被设定为其他人不具备任何权限），这就是s的功能。 因此，在整个系统中特别是root本身，最好不要过多的设置这种类型的文件（除非必要）这样可以保障系统的安全，避免因为某些程序的bug而使系统遭到入侵。 例4：$ chmod a–x mm.txt $ chmod –x mm.txt $ chmod ugo–x mm.txt 以上这三个命令都是将文件mm.txt的执行权限删除，它设定的对象为所有使用者。 （2）数字设定法： 例1： $ chmod 644 mm.txt $ ls –l 即设定文件mm.txt的属性为： -rw-r–r– 1 inin users 1155 Nov 5 11:22 mm.txt 文件属主（u）inin 拥有读、写权限 与文件属主同组人用户（g） 拥有读权限 其他人（o） 拥有读权限 例2： $ chmod 750 wch.txt 把一个文件夹的权限设置为任何用户可读可写。 ¥ chmod  777 /usres/a   $ ls –l -rwxr-x— 1 inin users 44137 Nov 12 9:22 wchtxt 即设定wchtxt这个文件的属性为： 文件主本人（u）inin 可读/可写/可执行权 与文件主同组人（g） 可读/可执行权 其他人（o） 没有任何权限 chgrp命令 功能：改变文件或目录所属的组。 语法：chgrp [选项] group filename? 该命令改变指定指定文件所属的用户组。其中group可以是用户组ID，也可以是/etc/group文件中用户组的组名。文件名是以空格分开的要改变属组的文件列表，支持通配符。如果用户不是该文件的属主或超级用户，则不能改变该文件的组。 参数： - R 递归式地改变指定目录及其下的所有子目录和文件的属组。 例1：$ chgrp - R book /opt/local /book 改变/opt/local /book/及其子目录下的所有文件的属组为book。 chown 命令 功能：更改某个文件或目录的属主和属组。这个命令也很常用。例如root用户把自己的一个文件拷贝给用户xu，为了让用户xu能够存取这个文件，root用户应该把这个文件的属主设为xu，否则，用户xu无法存取这个文件。 语法：chown [选项] 用户或组 文件 说明：chown将指定文件的拥有者改为指定的用户或组。用户可以是用户名或用户ID。组可以是组名或组ID。文件是以空格分开的要改变权限的文件列表，支持通配符。 参数： - R 递归式地改变指定目录及其下的所有子目录和文件的拥有者。 - v 显示chown命令所做的工作。 例1：把文件shiyan.c的所有者改为wang。 $ chown wang shiyan.c 例2：把目录/his及其下的所有文件和子目录的属主改成wang，属组改成users。 $ chown - R wang.users /his  </p>
-<p>注:本文摘自CSDN的nitghost,<strong><a href="http://lijunnan.com/about/" target="_blank" rel="noopener" title="关于">黑李白</a></strong>特此表示感谢</p>
+        <p>我们用edit plus可以批量复制一个文件夹下所有文件名称；但是，edit plus是没法复制一个文件夹下所有的文件夹名称，<strong>如果我们的工作中遇到需要把所有的文件夹名称整理到excle里面该怎么办？</strong> 你不需要一个一个去复制，有一段小代码帮你搞定这些问题！只需不到1分钟的时间，而且精准无误。 操作步骤: 1.桌面新建文本文件,输入以下内容：  </p>
+<p>ECHO OFF</p>
+<p>REM QBFC Project Options Begin</p>
+<p>REM HasVersionInfo: No</p>
+<p>REM Companyname:</p>
+<p>REM Productname:</p>
+<p>REM Filedescription:</p>
+<p>REM Copyrights:</p>
+<p>REM Trademarks:</p>
+<p>REM Originalname:</p>
+<p>REM Comments:</p>
+<p>REM Productversion: 0. 0. 0. 0</p>
+<p>REM Fileversion: 0. 0. 0. 0</p>
+<p>REM Internalname:</p>
+<p>REM Appicon: C:\Documents and Settings\Administrator\桌面\chuangyituxinger2_0798.ico</p>
+<p>REM Embeddedfile: 生成mp3列表文件.bat</p>
+<p>REM QBFC Project Options End</p>
+<p>ECHO ON</p>
+<p>dir *&gt;文件名列表.txt</p>
+<p>  退出并保存，更改文件后缀为savefile.bat 2.把这个文件放在你要提取的文件夹里面，双击运行。 3.大功告成，这时候你就发现你要获取的那个文件夹下有一个新的txt文档：文件名列表.txt，打开它发现里面全是该文件夹下的文件夹名称，如图: <a href="http://img2.ibolee.com/wp-blog-uploads/2013/01/tutu.jpg" target="_blank" rel="noopener"><img src="http://img2.ibolee.com/wp-blog-uploads/2013/01/tutu-300x197.jpg" alt="tutu"></a></p>
 
       
 
@@ -590,11 +732,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">电脑软硬件</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">获取文件夹名</a>
         		</li>
       		
 		</ul>
@@ -606,7 +744,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/学习笔记//" class="article-tag-list-link color5">学习笔记</a>
+        			<a href="/categories/IT相关//" class="article-tag-list-link color5">IT相关</a>
         		</li>
       		
 		</ul>
@@ -615,7 +753,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/posts/cc7808db.html">展开全文 >></a>
+          <a class="article-more-a" href="/posts/afa0ca9c.html">展开全文 >></a>
         </p>
       
 
@@ -645,27 +783,32 @@
 
 
   
-    <article id="post-outlook-e5-ae-a2-e6-88-b7-e7-ab-af-e8-ae-be-e7-bd-ae-e9-94-99-e8-af-af-e5-8f-b7-e7-9a-84-e5-90-ab-e4-b9-89-e5-a4-a7-e5-85-a8" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-e4-b8-8d-e5-8a-a8css-e5-9c-a8wordpress-e9-87-8c-e7-bc-96-e8-be-91-e6-96-87-e7-ab-a0-e7-9a-84-e5-ad-97-e4-bd-93-e3-80-81-e5-ad-97-e5-8f-b7-ef-bc-88fckeditorckeditor-ef-bc-89" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/posts/a47de1e2.html">outlook客户端设置错误号的含义大全 </a>
+      <a class="article-title" href="/posts/c7fea951.html">不动css在WordPress里编辑文章的字体、字号（FCKeditor/CKEditor）</a>
     </h1>
   
 
         
-        <a href="/posts/a47de1e2.html" class="archive-article-date">
-  	<time datetime="2013-04-09T05:16:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-04-09</time>
+        <a href="/posts/c7fea951.html" class="archive-article-date">
+  	<time datetime="2013-01-08T13:37:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-01-08</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>0x800C0131 可能是 Folders.dbx 档案属性错误或损坏.<br>0x800C013E 可能是 Folders.dbx 档案属性错误或损坏.<br>0x800CCC00 身份验证（Authentication）未载入<br>0x800CCC01 认证（Certificate）内容错误<br>0x800CCC02 认证日期错误<br>0x800CCC03 使用者已联机<br>0x800CCC05 未联机到服务器<br>0x800CCC0A 邮线下载未完成<br>0x800CCC0B 服务器忙碌中<br>0x800CCC0D 找不到主机（检查你的SMTP服务器是不是设错）<br>0x800CCC0E 联机到服务器失败，无法与主机建立联机。等一段时间再试。或者用ping 等网 络命令测试一下看看能否连的通服务器<br>0x800CCC0F 服务器结束联机（对方服务器负荷过重、网络传输壅塞易造成此现象，可以试 着增加你联机逾时的等候时间试试看，或是换一联机品质较佳的 ISP）<br>0x800CCC10 服务器无法辨认此邮件地址<br>0x800CCC11 服务器无法辨认的 Mailing list<br>0x800CCC12   无法传送 Winsock request<br>0x800CCC13   无法接收 Winsock reply<br>0x800CCC14 无法起始 Winsock<br>0x800CCC15 无法开启 Windows Socket<br>0x800CCC16 无法辨认使用者账号，使用者账号错误<br>0x800CCC17   使用者中断操作<br>0x800CCC18 登入失败<br>（例如：不需要安全密码认证登入，但却设了安全密码认证登入）<br>0x800CCC19   作业逾时<br>0x800CCC1A 无法以 SSL 建立联机<br>以上是一般的错误号，下面的是SMTP 错误<br>错误号 意义<br>0x800CCC60 不合法的回应<br>0x800CCC61 不明的错误代码<br>0x800CCC62 收到语法错误<br>0x800CCC63 语法参数不正确<br>0x800CCC64 指令不完整<br>0x800CCC65 不正确的指令序列<br>0x800CCC66 指令不完整<br>0x800CCC67 没有这个指令<br>0x800CCC68 邮件信箱被锁住或忙碌中<br>0x800CCC69 找不到邮件信箱<br>0x800CCC6A 处理要求错误<br>0x800CCC6B 邮件信箱不在此服务器上<br>0x800CCC6C 已无空间储存邮件<br>0x800CCC6D 已超过限制的储存容量上限<br>0x800CCC6E 不合法的邮件信箱名称<br>0x800CCC6F Transaction error，出现这讯息，可能是服务器不接受你的邮件，请跟 你的 ISP 联络。<br>0x800CCC78 不明的寄件者，或邮件回复（reply-to）地址不正确<br>0x800CCC79 收件者被服务器拒绝<br>0x800CCC7A 没有指定寄件者<br>0x800CCC7B 没有指定收件者<br>下面的是pop3 错误号<br>错误号 意义<br>0x800CCC90     登入邮件服务器发生错误，检查一下你是不是有使用该服务器的权限。<br>                       或者：不需要安全密码认证登入，但却设了安全密码认证登入<br>0x800CCC91     使用者名称错误或找不到此使用者<br>0x800CCC92     账号、密码错误<br>0x800CCC93    无法解释响应<br>0x800CCC94    需要指令<br>0x800CCC95    服务器上已无邮件<br>0x800CCC96    没有邮件标记为要下载<br>0x800CCC97     Message ID 超出范围<br>NNTP 错误<br>错误号 意义<br>0x800CCCA0    新闻服务器响应错误，可能你没有拥有可使用该服务器的权限。<br>0x800CCCA1   读取新闻群组失败<br>0x800CCCA2   要求服务器邮件清单失败<br>0x800CCCA3   无法显示清单<br>0x800CCCA4   无法开启群组<br>0x800CCCA5   服务器无此群组<br>0x800CCCA6   邮件不在服务器上<br>0x800CCCA7   找不到件标题<br>0x800CCCA8   找不到邮件本文<br>0x800CCCA9   无法发布到服务器上<br>0x800CCCAA   无法开启下封邮件<br>0x800CCCAB    无法显示日期<br>0x800CCCAC    无法显示标题<br>0x800CCCAD    无法显示 MIME 标题<br>0x800CCCAE    使用者名称或密码不正确<br>IMAP 错误<br>错误号 意义<br>0x800CCCD1    登入失败<br>0x800CCCD2    Message tagged<br>0x800CCCD3     Invalid response to request.<br>0x800CCCD4    语法错误<br>0x800CCCD5    不是 IMAP 服务器<br>0x800CCCD6     Buffer 已超过上限<br>0x800CCCD7    Recovery error<br>0x800CCCD8    数据不完整<br>0x800CCCD9   联机被拒<br>0x800CCCDA   不明的回应<br>0x800CCCDB   User ID 已更改<br>0x800CCCDC    User ID 指令失败<br>0x800CCCDD    Unexpected disconnect<br>0x800CCCDE    Invalid server state<br>0x800CCCDF     无法认证客户端</p>
+        <p><strong>WordPress自带的文本编辑器功能简单，我们通过安装**</strong><a href="http://wordpress.org/extend/plugins/ckeditor-for-wordpress/" target="_blank" rel="noopener">CKEditor</a>(以前叫FCKeditor)插件和修改插件来实现更加强大的文本编辑共更能** **      首先，安装一个插件—<a href="http://wordpress.org/extend/plugins/ckeditor-for-wordpress/" target="_blank" rel="noopener">CKEditor</a>，启动这个插件后，你就可以方便的编辑、美化Wordpress的文章了。** **     从下图你就可以看到，这比Wordpress自带的文本编辑器增加了好多功能** <strong><a href="https://upimg.ibolee.com/wp-blog-uploads/2013/01/3da4fd3fc35949f343ddcdd03e5fc709.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2013/01/3da4fd3fc35949f343ddcdd03e5fc709.jpg" alt="" title="CKEditor-1"></a></strong> <strong>但这个插件编辑字体选项中只有几种英文字体，这显然是不够，我们要增加更多的中文字体。</strong>  </p>
+<ul>
+<li><strong>怎么样增加更多的中文字体呢？</strong></li>
+</ul>
+<p><strong>在Wordpress后台，打开CKEditor插件的管理的”File Editor“选项，如下图</strong> <strong><a href="http://ztyhome.com/" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2013/01/fadb784b285dfd79d62b64878f99af01.jpg" alt="" title="CKEditor-2"></a></strong> **     在CKEDITOR.editorConfig = function( config ) 这句话后面的大括号内的第一行加上如下代码：** c_onfig.font_names = ‘宋体/宋体;黑体/黑体;仿宋/仿宋_GB2312;楷体/楷体_GB2312;隶书/隶书;幼圆/幼圆;微软雅黑/微软雅黑;’+ config.font_names ;_</p>
+<p><strong>这样你就成功添加了几种中文字体，你可以扩展上面这段代码来增加更多的字体。</strong></p>
 
       
 
@@ -689,7 +832,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/posts/a47de1e2.html">展开全文 >></a>
+          <a class="article-more-a" href="/posts/c7fea951.html">展开全文 >></a>
         </p>
       
 
@@ -719,164 +862,35 @@
 
 
   
-    <article id="post-e4-ba-ac-e4-b8-9c-e5-95-86-e5-9f-8e-e5-9c-a8seo-e4-b8-8a-e7-9a-84-e5-a4-a7-e8-83-86-e5-b0-9d-e8-af-95-e6-95-b4-e7-ab-99301-e9-87-8d-e5-ae-9a-e5-90-91-e5-88-b0jd-com" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-e7-94-a8excel-e4-b8-a4-e5-88-97-e5-af-b9-e6-af-94-e9-80-89-e5-87-ba-e9-87-8d-e5-a4-8d-e9-a1-b9-e7-9a-84-e5-9b-9b-e4-b8-aa-e5-ae-9e-e4-be-8b" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/posts/ccd6e966.html">京东商城在SEO上的大胆尝试整站301重定向到jd.com</a>
+      <a class="article-title" href="/posts/f6d5eca1.html">用excel两列对比选出重复项的四个实例</a>
     </h1>
   
 
         
-        <a href="/posts/ccd6e966.html" class="archive-article-date">
-  	<time datetime="2013-04-04T12:07:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-04-04</time>
+        <a href="/posts/f6d5eca1.html" class="archive-article-date">
+  	<time datetime="2013-01-06T09:14:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-01-06</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>今天忽然发现京东商城整站301重定向至jd.com,目前百度谷歌正在大批量的收录其新域名的页面,这一壮举无疑是SEO方面的巨大挑战,看得出来京东已经做好了充分准备,将整站进行301,而区别于易车网,购买了yiche.com却始终没有301新的域名,一直沿用bitauto.com,而yiche.com仅仅做为辅助解析. 有几个问题还需要关注: 1.如此大型的京东网站整站301的动荡期有多长?(理论上是60天) 2.京东为什么选择在4月开始做301,这个时间是否是京东的淡季. 3.此次301对京东的负面影响究竟有多大,解决过程是什么样的,让我们持续关注吧.   以下截图收集自2013年4月4日20:07,持续关注中…….. <a href="https://upimg.ibolee.com/wp-blog-uploads/2013/04/屏幕快照-2013-04-04-下午7.56.42.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2013/04/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7-2013-04-04-%E4%B8%8B%E5%8D%887.56.42-300x155.png" alt="屏幕快照 2013-04-04 下午7.56.42"></a> <a href="https://upimg.ibolee.com/wp-blog-uploads/2013/04/屏幕快照-2013-04-04-下午7.56.21.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2013/04/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7-2013-04-04-%E4%B8%8B%E5%8D%887.56.21-300x165.png" alt="屏幕快照 2013-04-04 下午7.56.21"></a> <a href="https://upimg.ibolee.com/wp-blog-uploads/2013/04/屏幕快照-2013-04-04-下午7.55.09.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2013/04/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7-2013-04-04-%E4%B8%8B%E5%8D%887.55.09-300x233.png" alt="屏幕快照 2013-04-04 下午7.55.09"></a> <a href="https://upimg.ibolee.com/wp-blog-uploads/2013/04/屏幕快照-2013-04-04-下午7.54.20.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2013/04/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7-2013-04-04-%E4%B8%8B%E5%8D%887.54.20-300x229.png" alt="屏幕快照 2013-04-04 下午7.54.20"></a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT相关//" class="article-tag-list-link color5">IT相关</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/posts/ccd6e966.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-excel-e4-b8-ad-e4-bd-bf-e7-94-a8vba-e8-87-aa-e5-ae-9a-e4-b9-89-e5-87-bd-e6-95-b0-e5-af-b9-e5-ad-97-e7-ac-a6-e4-b8-b2-e8-bf-9b-e8-a1-8c-e6-89-b9-e9-87-8furl-e7-bc-96-e7-a0-81" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/51280fe.html">Excel中用宏批量把文字链接转成url编码（urlencode）</a>
-    </h1>
-  
-
-        
-        <a href="/posts/51280fe.html" class="archive-article-date">
-  	<time datetime="2013-03-29T06:07:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-03-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>先来说明一下URL编码是什么,什么是URLEncode在因特网上传送URL，只能采用ASCII字符集。 但由于URL常常包含ASCII字符集以外的字符，所以我们必须对URL进行转换。URL编码要做的，就是将URL转换为有效的ASCII字符格式。</p>
-<p>通常单个转URL编码的工具有：<a href="http://tool.chinaz.com/Tools/URLEncode.aspx" target="_blank" rel="noopener">http://tool.chinaz.com/Tools/URLEncode.aspx</a></p>
-<p>但还是可以实现批量转URL编码的，这是一个SEO从业人员必备常识喔～用来做什么的谁用谁知道。</p>
-<p>Excel是个非常强大的工具，工作中因为需要用到他老完成一些表格数据的处理，所以抽空学了一点小技巧。 VBA是Visual Basic Application的全称，我们在Office的产品家族里面会经常看到它的身影。甚至SQL Server里头也有它的足迹，善于使用这些VBA函数或者自定义一些函数能够帮我们实现一些看似很强大的功能而又不用花费太大的精力。 步骤一. 打开Excel 2007中的Visual Basic编辑器<em>在Excel 2007中的开发工具菜单下，点击Visual Basic，即可弹出Visual Basic的编辑界面。默认情况下，这个开发工具在功能区是不显示的，需要在Excel设置中勾选上，如下图（点击放大）。</em> <a href="https://upimg.ibolee.com/wp-blog-uploads/2013/03/1.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2013/03/1-300x78.png" alt="1"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2013/03/2.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2013/03/2-300x148.png" alt="2"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2013/03/3.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2013/03/3-248x300.png" alt="3"></a> 步骤二. 编写自定义函数怎么搞呢？<a href="http://lijunnan.com/" target="_blank" rel="noopener" title="黑李白">黑李白</a>是这么做的。 选择菜单-&gt;插入-&gt;模块，就会弹出一个编辑窗口，在其中输入下面代码，即可定义一个UrlEncode的函数。 code———–&gt;star</p>
-<p>Public Function UrlEncode(ByRef szString As String) As String<br>       Dim szChar   As String<br>       Dim szTemp   As String<br>       Dim szCode   As String<br>       Dim szHex    As String<br>       Dim szBin    As String<br>       Dim iCount1  As Integer<br>       Dim iCount2  As Integer<br>       Dim iStrLen1 As Integer<br>       Dim iStrLen2 As Integer<br>       Dim lResult  As Long<br>       Dim lAscVal  As Long<br>       szString = Trim$(szString)<br>       iStrLen1 = Len(szString)<br>       For iCount1 = 1 To iStrLen1<br>           szChar = Mid$(szString, iCount1, 1)<br>           lAscVal = AscW(szChar)<br>           If lAscVal &gt;= &amp;H0 And lAscVal &lt;= &amp;HFF Then<br>              If (lAscVal &gt;= &amp;H30 And lAscVal &lt;= &amp;H39) Or _<br>                 (lAscVal &gt;= &amp;H41 And lAscVal &lt;= &amp;H5A) Or _<br>                 (lAscVal &gt;= &amp;H61 And lAscVal &lt;= &amp;H7A) Then<br>                 szCode = szCode &amp; szChar<br>              Else</p>
-<pre><code>          szCode = szCode &amp; &quot;%&quot; &amp; Hex(AscW(szChar))
-       End If
-    Else
-       szHex = Hex(AscW(szChar))
-       iStrLen2 = Len(szHex)
-       For iCount2 = 1 To iStrLen2
-           szChar = Mid$(szHex, iCount2, 1)
-           Select Case szChar
-                  Case Is = &quot;0&quot;
-                       szBin = szBin &amp; &quot;0000&quot;
-                  Case Is = &quot;1&quot;
-                       szBin = szBin &amp; &quot;0001&quot;
-                  Case Is = &quot;2&quot;
-                       szBin = szBin &amp; &quot;0010&quot;
-                  Case Is = &quot;3&quot;
-                       szBin = szBin &amp; &quot;0011&quot;
-                  Case Is = &quot;4&quot;
-                       szBin = szBin &amp; &quot;0100&quot;
-                  Case Is = &quot;5&quot;
-                 szBin = szBin &amp; &quot;0101&quot;
-                  Case Is = &quot;6&quot;
-                       szBin = szBin &amp; &quot;0110&quot;
-                  Case Is = &quot;7&quot;
-                       szBin = szBin &amp; &quot;0111&quot;
-                  Case Is = &quot;8&quot;
-                       szBin = szBin &amp; &quot;1000&quot;
-                  Case Is = &quot;9&quot;
-                       szBin = szBin &amp; &quot;1001&quot;
-                  Case Is = &quot;A&quot;
-                       szBin = szBin &amp; &quot;1010&quot;
-                  Case Is = &quot;B&quot;
-                       szBin = szBin &amp; &quot;1011&quot;
-                  Case Is = &quot;C&quot;
-                       szBin = szBin &amp; &quot;1100&quot;
-                  Case Is = &quot;D&quot;
-                       szBin = szBin &amp; &quot;1101&quot;
-                  Case Is = &quot;E&quot;
-                       szBin = szBin &amp; &quot;1110&quot;
-                  Case Is = &quot;F&quot;
-                       szBin = szBin &amp; &quot;1111&quot;
-                  Case Else
-           End Select
-       Next iCount2
-       szTemp = &quot;1110&quot; &amp; Left$(szBin, 4) &amp; &quot;10&quot; &amp; Mid$(szBin, 5, 6) &amp; &quot;10&quot; &amp; Right$(szBin, 6)
-       For iCount2 = 1 To 24
-           If Mid$(szTemp, iCount2, 1) = &quot;1&quot; Then
-              lResult = lResult + 1 * 2 ^ (24 - iCount2)
-           Else: lResult = lResult + 0 * 2 ^ (24 - iCount2)
-           End If
-       Next iCount2
-       szTemp = Hex(lResult)
-             szCode = szCode &amp; &quot;%&quot; &amp; Left$(szTemp, 2) &amp; &quot;%&quot; &amp; Mid$(szTemp, 3, 2) &amp; &quot;%&quot; &amp; Right$(szTemp, 2)
-    End If
-    szBin = vbNullString
-    lResult = 0
-Next iCount1
-UrlEncode = szCode</code></pre><p>End Function</p>
-<p>code—————》END 步骤三：测试 定义完之后，我们选择菜单-&gt;文件-&gt;关闭并返回Excel。然后我们就可以在Excel中测试刚才定义的这个函数了。如下图所示。 <a href="https://upimg.ibolee.com/wp-blog-uploads/2013/03/4.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2013/03/4-300x24.png" alt="4"></a> 注意，使用了VBA函数的excel文件需要在打开时启用宏，否则函数无效。使用=urlencode(单元格位置)执行，如图： <a href="https://upimg.ibolee.com/wp-blog-uploads/2013/03/6.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2013/03/6-300x175.jpg" alt="6"></a></p>
-<p><strong>本文原作者：Kevin Yang</strong></p>
+        <p><strong>excel两列对比应用一：</strong> excel分别对AB列两列数据对比，比如A2=B2，就返回相同，否则返回不相同。</p>
+<p><img src="https://upimg.ibolee.com/wp-blog-uploads/2013/01/9912ace00af9f83f51c599cc04eda6f4.gif" alt="excel两列对比"></p>
+<p>C2公式为：=IF(A2=B2,”相同”,”不同”)，这样就可以实现excel两列对比。 不过细心的朋友会发现，A5和B5实质上有大小写区分的，因此使用这个公式不是完全准确。Excel中exact函数可以完全区分大小写，请参考：<a href="http://www.ittribalwo.com/show.asp?id=1107" target="_blank" rel="noopener">《exact函数用法和实例》</a> 因此C2公式可以更改为：=IF(EXACT(A2,B2)=TRUE,”相同”,”不同”)，然后下拉复制公式，完成excel两列数据对比。 <strong>excel两列对比应用二：</strong> AB两列都是客户的姓名，需要找到两列重复的客户名称，并标示出来。</p>
+<p><img src="https://upimg.ibolee.com/wp-blog-uploads/2013/01/fce75e2bda0cbc3633e73f7efcd260d3.gif" alt="excel两列对比１"></p>
+<p>C1单元格输入公式：=IF(COUNTIF(A:A,B1)=0,”不重复”,””)，然后下拉完成excel两列数据对比。 纠错：公式是普通公式，截图有误。 <strong>excel两列对比应用三：</strong> 在 Excel 中通过比较两列中的数据来查找重复项。如果A列的数据没有在B列出现过，就保留单元格为空。如果A列的数据在B列出现过，就返回A列对应的数据。</p>
+<p><img src="https://upimg.ibolee.com/wp-blog-uploads/2013/01/c60da925d89ede8eedb7b79d1c7d6def.gif" alt="excel两列数据对比"></p>
+<p>C1输入公式：=IF(ISERROR(MATCH(A1,$B$1:$B$5,0)),””,A1)。Match部分得到的结果是#N/A或者数字，然后用ISERROR函数，将#N/A错误值进行处理，ISERROR(#N/A)得到TRUE，ISERROR(数字)得到false，最外面用IF函数来进行判断，如果第一参数是true，就执行第二参数，否则执行第三参数。这个应用是巧用excel两列对比，完成查找重复项。 <strong>excel两列对比应用四：</strong> excel中用vlookup函数来对比两列。</p>
+<p><img src="https://upimg.ibolee.com/wp-blog-uploads/2013/01/991c3d7b3475806b429284c53a9e5976.gif" alt="excel两列数据对比２"></p>
+<p>B1单元格公式为：=IF(ISNA(VLOOKUP(A1,$C$1:$C$6,1,)),”←A有C无”,”←AC共有”) D1单元格公式为：=IF(ISNA(VLOOKUP(C1,$A$1:$A$6,1,)),”←C有A无”,”←CA共有”) 然后下拉复制公式，完成excel两列对比。</p>
 
       
 
@@ -889,21 +903,9 @@ UrlEncode = szCode</code></pre><p>End Function</p>
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">IT技术</a>
-        		</li>
-      		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">excle</a>
         		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">URLEncode</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">url编码</a>
-        		</li>
       		
 		</ul>
 	</div>
@@ -916,10 +918,6 @@ UrlEncode = szCode</code></pre><p>End Function</p>
         		<li class="article-tag-list-item">
         			<a href="/categories/IT相关//" class="article-tag-list-link color5">IT相关</a>
         		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT相关/其它//" class="article-tag-list-link color3">其它</a>
-        		</li>
       		
 		</ul>
 	</div>
@@ -927,7 +925,7 @@ UrlEncode = szCode</code></pre><p>End Function</p>
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/posts/51280fe.html">展开全文 >></a>
+          <a class="article-more-a" href="/posts/f6d5eca1.html">展开全文 >></a>
         </p>
       
 
@@ -957,27 +955,27 @@ UrlEncode = szCode</code></pre><p>End Function</p>
 
 
   
-    <article id="post-excel-e4-b8-ad-e6-89-b9-e9-87-8f-e6-8f-90-e5-8f-96-e5-8d-95-e5-85-83-e6-a0-bc-e8-b6-85-e9-93-be-e6-8e-a5-e6-93-8d-e4-bd-9c-e6-ad-a5-e5-a5-8f" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-e5-8c-97-e4-ba-ac-e5-b8-82-e4-b9-92-e4-b9-93-e7-90-83-e5-9c-ba-e5-9c-b0-e7-9b-98-e7-82-b9-e6-b1-87-e6-80-bb-e9-9a-8f-e6-97-b6-e6-9b-b4-e6-96-b0-e4-bf-ae-e6-ad-a3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/posts/58d95df3.html">excel中批量提取单元格超链接操作步骤</a>
+      <a class="article-title" href="/posts/d995c649.html">北京市乒乓球场地盘点汇总(随时更新修正)</a>
     </h1>
   
 
         
-        <a href="/posts/58d95df3.html" class="archive-article-date">
-  	<time datetime="2013-03-25T08:05:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-03-25</time>
+        <a href="/posts/d995c649.html" class="archive-article-date">
+  	<time datetime="2012-12-28T07:25:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2012-12-28</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>如果Excel表格单元格中包含有许多用文本形式显示的超链接，如“给我发邮件”、“访问我的网站”等，要逐一查看所有超链接的地址，用手工的方法显得太繁琐，我们可以用自定义函数来批量提取这些超链接中的地址，将下列代码插入到标准模块中： Function GetURL(rng As Range) As String On Error Resume Next GetURL = rng.Hyperlinks(1).Address End Function     使用方法是在单元格中输入公式，假如单元格D6中含有超链接：     =geturl(D6)     还可以使用下面的代码将工作表中的所有超链接地址全部显示出来，运行代码前先备份工作簿，因为它会在含有超链接的单元格的右侧显示其地址，有可能会破坏工作表结构。 Sub ExtractHL() Dim HL As Hyperlink For Each HL In ActiveSheet.Hyperlinks HL.Range.Offset(0, 1).Value = HL.Address Next End Sub</p>
+        <p><strong>目前我打过的室外免费：</strong> 奥体中心北门进门后奔东，曲棍球场旁，20多台球案，非常洒脱。 东直门地铁，奔银座出来，从银座苹果店那个门出来后奔南100米，拐向西，有个小运动场，6个球桌。 <strong>以下信息来自网上，信息有误随时给我留言，以便修正。</strong> 1.新街口圣玛田那个二层小楼，地方不大，球台有7张左右吧，喜欢打退台的朋友会有些不爽，抡不开。没有空调，冬冷夏闷，现在去正好减肥。地板很硬。球友水平平均，人气不错。收费是会员130元1年，上午场3元，下午每场5元。55岁以上70元，上午场2元，下午每场3元。 坐车：地铁积水潭车站往南300米，路西，圣玛田南边楼上，门脸不大，写着“乒乓球馆”。 2.万泉河小学乒乓球馆(三层)。地方很大，木地板，空间足够宽敞，条件不错。有暖气，但是夏天极闷。原北京队的关姓教练水平不错，王氏父女已经不再管理此球馆。地方比较偏僻，如果没有车的话，住得远的朋友去玩就比较费劲了。收费也比较合理，100元会员费/人/年，每次5元不限时间。(经cxzj指点更正)会员凭会员证给予优惠，周末和周日下午6块随便打 万泉电话：62562917 坐车：374、307、361、367、386、704、817等万泉路站海淀万泉新新家园附近，离图书城不太远，看见新浪网的大牌子就能找到，就在一个楼。妇产医院附近见图：<a href="http://www.fishtt-bbs.com/images/upphoto/3884.jpg" target="_blank" rel="noopener">http://www.fishtt-bbs.com/images/upphoto/3884.jpg</a> 3.恩济花园俱乐部。4张球台，有空调，木板地，灯光、场地都很不错。球友水平较高，需要预约。收费不贵，办卡100元，每次10元/小时，按台收费。 坐车：万寿路地铁站出西北口往北走1公里，路西，恩济里小区内。 4.中国科学院青年公寓乒乓馆，北四环路新东方对面（路南）中关村东路80号。条件很好10个双鱼、木地板，空调，每张球台15元/小时。 大致方位图：<a href="http://img2.photo.163.com/wj01/835233/7940354.jpg" target="_blank" rel="noopener">http://img2.photo.163.com/wj01/835233/7940354.jpg</a> 5.房山燕化体育训练馆：房山中心燕山石化公司，从市内前门可坐燕化公交车直达.5元/小时 6.(1)首体网球羽毛球健身中心：环境、设施较差，没有空调，冬冷夏闷，特别是灯光问题较大，塑胶地板，25元一小时，9个球台。可加入球友会，随便打，但仅限两个台子。(2)首体训练馆，二层，复合木地板，2个球台，30元一小时。68335552(3)首体本馆，复合木地板，5个球台。 7.清华大学“西大”：双鹿球桌，灯光、场地、地面一般，高度足够。(已拆) 现有清华大学学生服务中心地下乒乓球活动大厅 8.新街口电影院地下,105、111路可到,塑胶地板，球台有13张左右吧，收费是会员50元半年，每次5元限时下午13时以后。另有80元/10小时卡，70元/月。电话：62237377。有陪练.负责人是北京乒界元老李博达 9.新街口派出所对面的新街口社区服务中心三楼，22路可到,复合木地板，球台有5张左右吧.10元一小时。电话：62270410。 10.朝阳体育馆,43路团结湖站。石头地板，球台有14张左右吧.月卡100元15次，限7－14台。1－6台20元/小时。羽毛球12块场地，30元/小时.电话:85971016 11.奥体中心，亚运村安定路1号。复合木地板，球台有5张左右吧。办年卡265，每小时5元.电话:64912233-625 12.地坛体育馆，有小乒乓队训练，外面的走廊放的台子可以打，15元/小时 13.大学生体育馆，北三环西路11号北京体育师范学院。情况不详82099320 14.石景山体育馆，京源路口石景山八角大桥南侧。电话68811669.球台5-6张，20元/小时 15.青年宫，官园与西直门之间，西直门南小街68号。二层，石头地面，球台有10张左右吧.电话66152211-2066 66187074/66152211-3005 16.什刹海体校综合训练馆地下二层，复合木地板，球台有20张左右吧，好象还有羽毛球一层。电话：66180769。坐111在北海后门站下车。大门口附乒乓球用品商店，右边另有一家乒乓球用品商店胶水才四十元一罐。向西边的厂桥站有原卓隆商店东西比以前便宜10元一张999、鞋28元、那人说好多都是85折,66533964 17.盛博乒乓球俱乐部，在牛街清真大超市对面甲40号。12个球台，据说是原北京队队员刘恒利开的。80元一个月，高手如云。王涛，马林，孔令辉，马文革,闫森都多次去那里指导球友切磋球艺(小天一板冲友情提供)。北京爱博商贸公司，北京宣武区菜市口大街平原里20号，010-63556630 18.北京林业大学的乒乓球馆。有30张乒乓球桌,收费为3元/台/小时 19.北京宽街美术馆大佛寺有1家乒乓球俱乐部。人气极旺！我就算是平常的上午时候去也是八张球案全部爆满！它那里每小时十五元全部是双鱼的球案，上午卡五十元，下午卡八十元，全天卡100元包月。(网友cz友情提供) 20.泰华联俱乐部,花园东路25号，牡丹园北站原牡丹电视机厂附近,牡丹园路口向北150米路西,原牡丹电视机厂东门向南二十米，附乒乓球用品商店(010-67181714)。单人入场二十元每小时，三十元可以打全天！包月还是120元。现在那里的业余教练越来越多，不过说实在的人多就有些乱了。共有七张球台，不过有一张是训练用台。(cz友情提供) 21.北京九十七中,朝阳区姚家园路祝平房村西口130号，坐350路可到。情况不详，联系电话85770956 学校电话65021858 22.景山社区,情况不详 23.北方交大体育馆,海淀区上园村3号.4张球台,15元/小时。电话：63240329,62256622 24.宣武区的盆儿胡同,半地下，屋顶很高！场地也不小 木质地板感觉不错。 一共八张球台还有一张是专门的训练用台,这里的教练每小时30元，管发多球。 包月100元，平时打球每小时10元人民币。自己带来的东西可以放在球案下的移动储物箱里，比较方便。人气也很旺！每天从下午到晚上基本上什么时候去人都满了。(网友cz友情提供) 25.北航新体育馆,乒乓球室有地毯、空调，全新的双鱼球台，场地宽敞.下午两点前4元/时,两点以后6元/时.北航学生活动中心，3个台子 26.首钢老山俱乐部,京源路口东站（石景山华联对面???）八角游乐园地铁往东400米路北。球台4张。可以办卡，45元/张，打30次. 27.玉泉路中铁建大院旁一个大房子，有两张台，5元一小时。双鱼，木地板，房顶很高，要买卡的话50元15小时(经实地考察只发现中铁建里有个机关文化中心，15元/小时，3个台子，木地板。联系电话51886642) 28.北京五中，东城区细管胡同13号，复合木地板，球台有10张左右吧。学校电话：64040729 29.北京翠星乒乓球厅,海淀区万寿路西街11号（609、849路西翠路即到）。15元1小时，办卡120元一张12小时。同时提供发球机训练，40元1小时，办卡360元12小时。联系电话：68241961。长安大街的寿松饭店西边有邱钟惠乒乓球用品商店 30.朝阳区二外附近定福庄的矿业大学体育馆,一层,一进门大厅是大理石地面,收费:星期一至星期五每小时十元,星期六日每小时15元,下午打球一般会贵一点,再往里面是木地板,25一小时.坐从朝阳路到通县的车都可以到815/731/419/等.　(1974442友情提供) 31. 海淀体育中心,7个台子. 电话62563336-3018,62548110 82612918-602 82612918-608 (目前已经没有乒乓球项目,还有) 32.丰台区体育馆,丰台区丰台路67号.电话：63819861.光彩体育馆乒乓球馆,300路木樨园站下，赵公口桥北300米.球台4张，30元/小时.电话：67211018 33.邮电设备总公司（普天）北京邮电电话设备厂活动中心，新外大街28号小西天。地下，水泥地面,球台10张左右吧， 34.慈云寺桥东苏宁电器城下有一俱乐部，有两张台子，不过地方小些，而且地是瓷砖的，很滑。15元/小时 办卡120元/10小时 (皮特友情提供) 35.东大桥蓝岛附近的旺市百利三楼有两个台子！！(皮特友情提供) 36.华威体育馆（华威桥东1000米左右）二楼有几个台子，20元/小时 (皮特友情提供) 37.西城区体校，月坛体育馆北侧儿童医院南侧，三层。球台20张，10元/小时 38.中科院研究生院体育馆！地铁玉泉路站下出西北口即是！5张球台，木地板，光线一般。水平一般，但大家很热心。开放时间：平时上午10：00－12：00，下午16：00－22：00，周末全天开门周三五有体育课。南边羽毛球场地2个。每周三晚上羽毛球队训练，一、三、五下午排球队训练–收费标准：FREE！(liuy8848友情提供)大楼管理中心电话88256274 39.协和体育馆去，那里只对协和医大内部开放，环境很好，2元/小时 (jorge友情提供) 东单体育馆,地下二层,10元/时 40.逸夫体育馆，民族大学院内，9张球台,10元/小时。光线一般，木地板 41.北京体育馆羽排馆，体育馆路4号。20张球台,20元/小时,联系电话： 67112266-536。(周日晚7时闭馆)马路北面有邱钟惠乒乓球用品商店,体育馆路11号，010-67142833。南面有绍发双鱼体育用品商店，北京市体育馆路4号，010-67139718 42.通县公园小学乒乓球馆。情况不详。 43.通州区大众乒乓球俱乐部,大北窑座928路或从四惠座322路到西门站下车走15分钟左右潞河中学东门.电话：69528079.10张球台,10元/小时,会员卡：60元/月 44.北京樱松俱乐部,崇文门北京新世界商城地下一层.20张球台,20元/小时, 45.北京工业大学乒乓球馆,朝阳区平乐园100号.20张球台,10元/小时.电话：67394517,67391461 46.群星国球运动宫,鼓楼外大街中轴路.电话62379141.8张球台,20元/小时, 47.解放军艺术学院乒乓球馆,海淀区魏公村，7张球台,晚上一元/次，牛吧 48.工人体育馆,情况不详.65016655 49.职工体育服务中心乒乓球馆,三里屯,情况不详.电话:65016655-乒乓球馆 50.北京大学信息中心体育馆，情况不详. 51.北邮学生活动中心，地下。4张球台，8元/时 52.北洼路华普超市二楼 12元每小时 53.人大世纪馆，每小时15元。 54.北大理科楼地下一层 55.中国青年政治学院万叶体育馆,西三环北路25号.在校学生5元每小时,外人10元,有两台发球机,20元.场馆不错.(bigsaint友情提供) 56.北京大学万柳学生公寓,三区一楼.地方在万柳东路南口,光大花园西面.十多张台子吧,免费,光线不太好,人大多是学生,水平良莠不齐.(bigsaint友情提供) 57.利生健身中心,王府井大街甲74号利升体育用品商店地下3层。80元包月，9张台。 58.广播学院体育馆,平时10元/小时,周六日15元/小时。情况不详 59.北京80中望京分校，望京花园站。20~25/h，8张案子。(.jerry友情提供) 60.北京西藏大厦,北京市北四环东路118号.64981133.情况不详</p>
 
       
 
@@ -991,7 +989,7 @@ UrlEncode = szCode</code></pre><p>End Function</p>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">IT技术</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">发现</a>
         		</li>
       		
 		</ul>
@@ -1003,11 +1001,7 @@ UrlEncode = szCode</code></pre><p>End Function</p>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/IT相关//" class="article-tag-list-link color5">IT相关</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT相关/其它//" class="article-tag-list-link color3">其它</a>
+        			<a href="/categories/其它//" class="article-tag-list-link color3">其它</a>
         		</li>
       		
 		</ul>
@@ -1016,81 +1010,7 @@ UrlEncode = szCode</code></pre><p>End Function</p>
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/posts/58d95df3.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-e6-b5-8b-e8-af-95-e7-bd-91-e7-ab-99-e9-80-9f-e5-ba-a6-e7-9a-845-e7-a7-8d-e6-96-b9-e6-b3-95-e6-b5-85-e8-b0-88-e5-a6-82-e4-bd-95-e6-b5-8b-e8-af-95-e7-bd-91-e7-ab-99-e6-89-93-e5-bc-80-e9-80-9f-e5-ba-a6" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/b5be8ec0.html">测试网站速度的5种方法,浅谈如何测试网站打开速度</a>
-    </h1>
-  
-
-        
-        <a href="/posts/b5be8ec0.html" class="archive-article-date">
-  	<time datetime="2013-03-14T07:38:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-03-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>网页载入速度对于一个网站来讲很关键，Google已经将一个网站的载入速度列入了网站关键字排名的考虑因素当中，也就是说如果你的网站有足够的内容，而且载入速度比别人的网站更快一步的话，那么你就是获得更好的排名。那么下面就赶快测试你的网站，提高网站访问速度吧。 <strong>1：用Ping命令简单测网站速度的方法</strong> Ping可以用来检查网络是否通畅或者网络连接速度，点击开始→运行 在运行中输入“cmd”回车或点击确定，输入ping www.你的网址.com 就可以了。 <a href="https://upimg.ibolee.com/wp-blog-uploads/2013/03/298.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2013/03/298-300x106.jpg" alt="298"></a> （新手只需注意本图红框里的含义即可） Ping结果属于表示，bytes表示发送多少字节，time是时间，时间越小速度越快，TTL可以判断对方操作系统，TTL=119是XP系统，但TTL一般不准，服务器可以修改注册表更改TTL类型，更详细测速的办法，请多多搜索。 新手只需看最下面一行即可，最短时间、最长时间和平均时间（时间越短越好），这样你就能大致判断出网站的速度了。 同样，站长之家的ping工具也不错，网址：<a href="http://ping.chinaz.com/" target="_blank" rel="noopener">http://ping.chinaz.com/</a> <strong>2：用tracert命令简单测网站速度的方法</strong> 测试方法和ping命令类似，只是ping换成tracert www.你的网址.com， tracert就是用来检测从终端客户到你的服务器所在机房的“跳数”和响应时间，也就是测试出服务器与全国各地客户的连接速度，当到达任何一个网关的时候,tracert会进行三次测试,并把三次测试的结果以ms为单位显示，当然time时间越短越好。 <strong>3：全方位的免费网站速度测试工具 — GTmetrix</strong> gtmetrix.com提供了丰富的详细的测量结果，它结合了Google Page Speed和Yahoo! YSlow的网页速度测试功能，并且提供可行的建议帮你改善网站速度。无需注册为会员即可使用该工具，并建议如何来优化网页中每个元素的，最重要的是会根据网站的具体情况，直接告诉你导致网站加载速度变慢的根源在哪里。 做为GTmetrix注册会员，你可以设置每天、每周或每月自动测试一次你的网站，可设置测试记录自动保存，还能够同时对4个网址进行对比测试。如果你不知道自己的载入速度到底是快还是慢，你可以输入一个名站来对比结果，比如Google.com 网址：<a href="http://gtmetrix.com/" target="_blank" rel="noopener">http://gtmetrix.com</a> <strong>4：比较哪个网站载入速度较快 — WhichLoadsFaster</strong> 2010年7月7日，FastSoft推出免费动态网站加速互动演示网站 WhichLoadsFaster.com WhichLoadsFaster是一个免费公开网速测试工具，用以促进Web网站间良性竞争让网页浏览速度更快。 它是通过你的连接，在你的浏览器里，让两个真实的网页在你面前展示出来。所以使用WhichLoadsFaster是反应当前你的网络下来对比两个站的速度的。 网址：<a href="http://whichloadsfaster.com/" target="_blank" rel="noopener">http://whichloadsfaster.com/</a> <strong>5：国内免费的网站速度测试平台 — WebKaka</strong> 这个网站是卢松松一直在用的，卡卡网是国内的一家帮你测试网站页面载入速度的免费站长工具，即时检测你的网站在全国各地访问的有效性、响应时间以及打开速度，目前在全国15个省市、美国、澳大利亚、日本等8个国家均设有检测点。此类网站速度测试工具基本都是国外的，国内的测速服务还比较少。卡卡网主要有网站速度测试、ping检测、路由追踪等功能。 网址：<a href="http://www.webkaka.com/" target="_blank" rel="noopener">http://www.webkaka.com</a> 里面的网址我已经收录到博客大全的实用工具中了，当然还有其他很不错的在线网速测试的网站，比如speedtest.cn，speedtest.net等，同时，在你选择网站空间时，能用到本文的一些小方法，相信对你选择物美价廉的空间是个不错的办法。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT相关//" class="article-tag-list-link color5">IT相关</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/posts/b5be8ec0.html">展开全文 >></a>
+          <a class="article-more-a" href="/posts/d995c649.html">展开全文 >></a>
         </p>
       
 
@@ -1122,7 +1042,7 @@ UrlEncode = szCode</code></pre><p>End Function</p>
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/7/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/9/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/7/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/9/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -1217,14 +1137,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">技术</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">电脑软硬件</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">干货</a>
               </li>
              
@@ -1234,6 +1146,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">IT技术</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">技术</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">电脑软硬件</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1349,19 +1269,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">apache</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">xampp</a>
+                <a href="javascript:void(0)" class="js-tag color1">邮件客户端</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">MAC终端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">邮件客户端</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1373,15 +1285,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">TED</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">sticky</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">template</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">TED</a>
               </li>
             
             <div class="clearfix"></div>
