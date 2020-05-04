@@ -156,322 +156,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-e7-bd-91-e7-bb-9c-e7-a1-ac-e4-bb-b6-e4-b8-89-e5-89-91-e5-ae-a2-e9-9b-86-e7-ba-bf-e5-99-a8-e3-80-81-e4-ba-a4-e6-8d-a2-e6-9c-ba-e4-b8-8e-e8-b7-af-e7-94-b1-e5-99-a8-e5-9f-ba-e7-a1-80-e7-9f-a5" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/d732a265.html">网络硬件三剑客 - 集线器、交换机与路由器基础知识</a>
-    </h1>
-  
-
-        
-        <a href="/posts/d732a265.html" class="archive-article-date">
-  	<time datetime="2015-07-28T06:10:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-07-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>号称网络硬件三剑客的集线器（Hub）、交换机（Switch）与路由器（Router）一直都是网络界的活跃分子，但让很多初入网络之门的菜鸟恼火的是，它们三者不仅外观相似，而且经常呆在一起，要想分清谁是谁，感觉有点难!就让我们一起来看看它们之间有什么区别和联系吧! 三剑客的工作原理 一、集线器 1.什么是集线器 在认识集线器之前，必须先了解一下中继器。在我们接触到的网络中，最简单的就是两台电脑通过两块网卡构成“双机互连”，两块网卡之间一般是由非屏蔽双绞线来充当信号线的。由于双绞线在传输信号时信号功率会逐渐衰减，当信号衰减到一定程度时将造成信号失真，因此在保证信号质量的前提下，双绞线的最大传输距离为 100米。当两台电脑之间的距离超过100米时，为了实现双机互连，人们便在这两台电脑之间安装一个“中继器”，它的作用就是将已经衰减得不完整的信号经过整理，重新产生出完整的信号再继续传送（图1）。</p>
-<p><a href="https://upimg.ibolee.com/wp-blog-uploads/2015/07/3771483212946493202.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/07/3771483212946493202-300x164.jpg" alt="3771483212946493202"></a>（图1）</p>
-<pre><code>中继器就是普通集线器的前身，集线器实际就是一种多端口的中继器。集线器一般有4、8、16、24、32等数量的RJ45接口，通过这些接口，集线器便能为相应数量的电脑完成“中继”功能。由于它在网络中处于一种“中心”位置，因此集线器也叫做“Hub”。</code></pre><p>2.集线器的工作原理</p>
-<pre><code>集线器的工作原理很简单，以图2为例，图中是一个具备8个端口的集线器，共连接了8台电脑。集线器处于网络的“中心”，通过集线器对信号进行转发，8台电脑之间可以互连互通。具体通信过程是这样的：假如计算机1要将一条信息发送给计算机8，当计算机1的网卡将信息通过双绞线送到集线器上时，集线器并不会直接将信息送给计算机8，它会将信息进行“广播”—— 将信息同时发送给8个端口，当8个端口上的计算机接收到这条广播信息时，会对信息进行检查，如果发现该信息是发给自己的，则接收，否则不予理睬。由于该信息是计算机1发给计算机8的，因此最终计算机8会接收该信息，而其它7台电脑看完信息后，会因为信息不是自己的而不接收该信息。</code></pre><p>3.集线器的特点</p>
-<p>1）共享带宽</p>
-<pre><code>集线器的带宽是指它通信时能够达到的最大速度。目前市面上用于中小型局域网的集线器主要有10Mbps、100Mbps和10/100Mbps自适应三种。
-
-10Mb带宽的集线器的传输速度最大为10Mbps，即使与它连接的计算机使用的是100Mbps网卡，在传输数据时速度仍然只有10Mbps。10/100Mbps自适应集线器能够根据与端口相连的网卡速度自动调整带宽，当与10Mbps的网卡相连时，其带宽为10Mb；与100Mbps的网卡相连时，其带宽为100Mb，因此这种集线器也叫做“双速集线器”。
-
-集线器是一种“共享”设备，集线器本身不能识别目的地址，当同一局域网内的A主机给B主机传输数据时，数据包在以集线器为架构的网络上是以广播方式传输的，由每一台终端通过验证数据包头的地址信息来确定是否接收。</code></pre><p>由于集线器在一个时钟周期中只能传输一组信息，如果一台集线器连接的机器数目较多，并且多台机器经常需要同时通信时，将导致集线器的工作效率很差，如发生信息堵塞、碰撞等。</p>
-<pre><code>为什么会这样呢?打给比方，以图2为例，当计算机1正在通过集线器发信息给计算机8时，如果此时计算机2也想通过集线器将信息发给计算机7，当它试图与集线器联系时，却发现集线器正在忙计算机1的事情，于是计算机2便会“带”着数据站在集线器的面前等待，并时时要求集线器停下计算机1的活来帮自己干。如果计算机2成功地将集线器“抢”过来了（由于集线器是“共享”的，因此很容易抢到手），此时正处于传输状态的计算机1的数据便会停止，于是计算机1也会去 “抢”集线器……</code></pre><p><a href="https://upimg.ibolee.com/wp-blog-uploads/2015/07/1698701484450406438.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/07/1698701484450406438-300x233.jpg" alt="1698701484450406438"></a>（图2） 可见，集线器上每个端口的真实速度除了与集线器的带宽有关外，与同时工作的设备数量也有关。比如说一个带宽为10Mb的集线器上连接了8台计算机，当这8台计算机同时工作时，则每台计算机真正所拥有的带宽是10/8=1.25Mb! 2）半双工 先说说全双工：两台设备在发送和接收数据时，通信双方都能在同一时刻进行发送或接收操作，这样的传送方式就是全双工。而处于半双工传送方式的设备，当其中一台设备在发送数据时，另一台只能接收，而不能同时将自己的数据发送出去。 由于集线器采取的是“广播”传输信息的方式，因此集线器传送数据时只能工作在半双工状态下，比如说计算机1与计算机8需要相互传送一些数据，当计算机1 在发送数据时，计算机8只能接收计算机1发过来的数据，只有等计算机1停止发送并做好了接收准备，它才能将自己的信息发送给计算机1或其它计算机。   二、交换机 1.什么是交换机   交换机也叫交换式集线器，它通过对信息进行重新生成，并经过内部处理后转发至指定端口，具备自动寻址能力和交换作用，由于交换机根据所传递信息包的目的地址，将每一信息包独立地从源端口送至目的端口，避免了和其他端口发生碰撞。广义的交换机就是一种在通信系统中完成信息交换功能的设备。 2.交换机的工作原理 在计算机网络系统中，交换机是针对共享工作模式的弱点而推出的。集线器是采用共享工作模式的代表，如果把集线器比作一个邮递员，那么这个邮递员是个不认识字的“傻瓜”——要他去送信，他不知道直接根据信件上的地址将信件送给收信人，只会拿着信分发给所有的人，然后让接收的人根据地址信息来判断是不是自己的!而交换机则是一个 “聪明”的邮递员——交换机拥有一条高带宽的背部总线和内部交换矩阵。交换机的所有的端口都挂接在这条背部总线上，当控制电路收到数据包以后，处理端口会查找内存中的地址对照表以确定目的MAC（网卡的硬件地址）的NIC（网卡）挂接在哪个端口上，通过内部交换矩阵迅速将数据包传送到目的端口。目的MAC若不存在，交换机才广播到所有的端口，接收端口回应后交换机会“学习”新的地址，并把它添加入内部地址表中。 可见，交换机在收到某个网卡发过来的“信件”时，会根据上面的地址信息，以及自己掌握的“常住居民户口簿”快速将信件送到收信人的手中。万一收信人的地址不在“户口簿”上，交换机才会像集线器一样将信分发给所有的人，然后从中找到收信人。而找到收信人之后，交换机会立刻将这个人的信息登记到“户口簿” 上，这样以后再为该客户服务时，就可以迅速将信件送达了。 3.交换机的性能特点 1）独享带宽 由于交换机能够智能化地根据地址信息将数据快速送到目的地，因此它不会像集线器那样在传输数据时“打扰”那些非收信人。这样一来，交换机在同一时刻可进行多个端口组之间的数据传输。并且每个端口都可视为是独立的网段，相互通信的双方独自享有全部的带宽，无须同其他设备竞争使用。比如说，当A主机向D主机发送数据时，B主机可同时向C主机发送数据，而且这两个传输都享有网络的全部带宽——假设此时它们使用的是10Mb的交换机，那么该交换机此时的总流通量就等于2×10Mb=20Mb。 2）全双工 当交换机上的两个端口在通信时，由于它们之间的通道是相对独立的，因此它们可以实现全双工通信。   三、集线器与交换机的区别 从两者的工作原理来看，交换机和集线器是有很大差别的。首先，从OSI体系结构来看，集线器属于OSI的第一层物理层设备，而交换机属于OSI的第二层数据链路层设备。 其次，从工作方式来看，集线器采用一种“广播”模式，因此很容易产生“广播风暴”，当网络规模较大时性能会受到很大的影响。而当交换机工作的时候，只有发出请求的端口和目的端口之间相互响应而不影响其他端口，因此交换机能够在一定程度上隔离冲突域和有效抑制“广播风暴”的产生。 另外，从带宽来看，集线器不管有多少个端口，所有端口都是共享一条带宽，在同一时刻只能有两个端口传送数据，其他端口只能等待，同时集线器只能工作在半双工模式下；而对于交换机而言，每个端口都有一条独占的带宽，当两个端口工作时并不影响其他端口的工作，同时交换机不但可以工作在半双工模式下而且可以工作在全双工模式下。 如果用最简单的语言叙述交换机与集线器的区别，那就应该是智能与非智能的区别。集线器说白了只是连接多个计算机的网络设备，它只能起到信号放大和传输的作用，不能对信号中的碎片进行处理，所以在传输过程中容易出错。而交换机则可以看作为是一种智能型的集线器，它除了拥有集线器的所有特性外，还具有自动寻址、交换、处理的功能。并且在数据传递过程中，发送端与接受端独立工作，不与其它端口发生关系，从而达到防止数据丢失和提高吞吐量的目的。   四、路由器 1.路由器的作用 通过集线器或交换机，我们可以将很多台电脑组成一个比较大的局域网（图3），但是当机器的数量达到一定数目时，问题也就来了：对于用集线器构成的局域网而言，由于采用“广播”工作模式，当网络规模较大时，信息在传输过程中出现碰撞、堵塞的情况越来越严重，即使是交换机，这种情况也同样存在。其次，这种局域网不安全，也不利于管理。</p>
-<p><a href="https://upimg.ibolee.com/wp-blog-uploads/2015/07/1438337130992819190.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/07/1438337130992819190-300x118.jpg" alt="1438337130992819190"></a>（图3）</p>
-<pre><code>为了解决这些问题，人们便将一个较大的网络划分为一个个小的子网、网段，或者直接将它们划分为多个VLAN（即虚拟局域网），在一个VLAN内，一台主机发出的信息只能发送到具有相同VLAN号的其他主机，其他VLAN的成员收不到这些信息或广播帧。采用VLAN划分网络后，可有效地抑制网络上的广播风暴，增加网络的安全性，使管理控制集中（图4）。</code></pre><p><a href="https://upimg.ibolee.com/wp-blog-uploads/2015/07/1908963292053487277.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/07/1908963292053487277-300x161.jpg" alt="1908963292053487277"></a>（图4）</p>
-<pre><code>既然是局域网，万一分别处于不同VLAN的主机需要互相通信时该怎么办呢?这时候就得通过路由器（Router，转发者）来帮忙了。路由器可以将处于不同子网、网段、VLAN的电脑连接起来，让它们自由通信。另外，我们都知道目前的网络有很多种结构类型，且不同网络所使用的协议、速度也不尽相同。当两个不同结构的网络需要互连时，也可以通过路由器来实现。路由器可以使两个相似或不同体系结构的局域网段连接到一起，以构成一个更大的局域网或一个广域网。
-
-可见，路由器是一种连接多个网络或网段的网络设备，它能将不同网络、网段或VLAN之间的数据信息进行“翻译”，以使它们能够相互“读”懂对方的数据，从而构成一个更大的网络。</code></pre><p>2.路由器的工作原理</p>
-<pre><code>所谓路由就是指通过相互连接的网络把信息从源地点移动到目标地点的活动。那么路由器具体是如何进行“翻译”工作的呢?我们平时在学习、翻译英语时，肯定会准备一本英汉字典，通过它来实现英文与中文之间的互现转换。而对于路由器而言，它也有这种用于翻译的字典——路径表。路径表（Routing Table）保存着各种传输路径的相关数据，如子网的标志信息、网上路由器的个数和下一个路由器的名字等内容。路径表可以是由系统管理员固定设置好的，也可以由系统动态修改，可以由路由器自动调整，也可以由主机控制。
-
-通过路由器可以让不同子网、网段进行互连，因此路由器与集线器、交换机不同，它一般安装在网络的“骨干”部位，而不像集线器、交换机那样工作在基层。比如说一个较大规模的企业局域网，基于管理、安全、性能的考虑，一般都会将整个网络划分为多个VLAN，如此一来，当VLAN与VLAN之间进行通讯时，就必须使用路由器。
-
-对于该企业网而言，肯定还需要与互联网相连，对于企业而言，一般都是通过租用电信的DDN专线或者利用ADSL、Cable、ISDN等方式将企业网接入互联网，而此时由于网络体系及所用协议的不同，也需要路由器来完成企业网与互联网的互连工作图5。</code></pre><p><a href="https://upimg.ibolee.com/wp-blog-uploads/2015/07/3251598930963094699.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/07/3251598930963094699-300x222.jpg" alt="3251598930963094699"></a>（图5）</p>
-<pre><code>一般来说，在路由过程中，信息至少会经过一个或多个中间节点。通常，人们会把路由和交换进行对比，这主要是因为在普通用户看来两者所实现的功能是完全一样的。其实，路由和交换之间的主要区别就是交换发生在OSI参考模型的第二层（数据链路层），而路由发生在第三层，即网络层。这一区别决定了路由和交换在移动信息的过程中需要使用不同的控制信息，所以两者实现各自功能的方式是不同的。路由器通过路由决定数据的转发。转发策略称为路由选择，这也是路由器名称的由来。</code></pre><p>三剑客的外观比较</p>
-<pre><code>前面我们已经讲解了集线器、交换机、路由器的工作原理，但是对于很多初学者来说，有时也希望能够从外观上去区分它们。当然，集线器、交换机、路由器在外观上肯定有所区别，但这些往往只能作为参考信息，毕竟现在很多集线器、交换机与路由器产品在外观上看非常相似。而这里面最难区分的就是普通桌面型的集线器与交换机，而路由器相对比较容易识别。</code></pre><p>1.集线器与交换机的外观区别</p>
-<p>1）集线器的外观 集线器的结构比较简单，因此集线器一般都比较小巧：接口面板上一般具备8个、16个、24个、32个等数量不等的RJ45接口。 由于单个集线器的最大接口数一般也就32个，如果要连接50台甚至100台主机的话该怎么办呢?集线器上的“Uplink”级联口就是为了解决这个问题而出现的——通过级联口，可以将多个集线器连接在一起，以便拓展集线器的接口数及连接距离，但最多只能级联4个集线器。 与接口对应的则是面板上标有数字的一排或两排指示灯，用来指示集线器的工作状态。其中“Power”是电源指示灯，标有数字的是“Link”（连接）与“Action”（活动）指示灯，当某个RJ45接口中有正确的信号接入时，该接口的“Link”灯呈常亮状态，当有信号传输时，则“Action”灯闪烁。现在集线器一般都将“Link”与“Action”指示灯合二为一，用一个指示灯来完成“Link”与“Action”的工作（图6）。</p>
-<p><a href="https://upimg.ibolee.com/wp-blog-uploads/2015/07/3050907272568735638.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/07/3050907272568735638-300x180.jpg" alt="3050907272568735638"></a>（图6）</p>
-<p>2）交换机的外观</p>
-<pre><code>根据应用范围不同交换机存在着多种多样的外观。例如一些用于骨干线路的交换机，往往采用的是“模块式”集成方式，用户可以通过购买、增加模块来增强交换机的功能，这类交换机一般应用在大型企业，其体积也很大。
-
-而对于那些应用在小型局域网的桌面型交换机，其外观与普通的集线器非常相似，要想在外观上区分它们，除了铭牌上“HUB”与“Switch”标志的区别外，关键是指示灯：如今的交换机大多是10/100Mbps自适应交换机，因此其面板上一般有用来表示该端口是工作在10Mbps还是100Mbps的指示灯。另外，交换机既可以工作在全双工状态下，也可以工作在半双工状态下，因此其面板上一般还有一排“FDX/COL”或“FD/COL”指示灯（图 7）。</code></pre><p><a href="https://upimg.ibolee.com/wp-blog-uploads/2015/07/890305351337689055.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/07/890305351337689055-300x147.jpg" alt="890305351337689055"></a>（图7）</p>
-<pre><code>其中“FDX”或“FD”是“Full Duplex”（全双工）的缩写，当交换机上的某个端口工作在全双工状态时，其对应的“FDX”指示灯会亮，否则该端口工作在半双工状态下；“COL”则是信息碰撞指示灯，当该端口中传输的数据出现碰撞时，则该灯会闪烁，碰撞越厉害，闪烁越厉害。
-
-对于集线器而言，虽然有些10/100Mbps自适应的集线器也有用来指示是工作在10Mbps还是100Mbps的指示灯，但绝对没有“FDX/COL”指示灯。初学者可以通过这一点来区分集线器与交换机。</code></pre><p>2.路由器的组成与外观</p>
-<p>1）路由器的组成</p>
-<pre><code>路由器作为一种高级的网络设备，并不是每个人都可以接触到的，这是因为它的普及性不如集线器、交换机高。
-
-集线器、交换机在工作时都是通过硬件直接实现信号的传输，而路由器则不同，事实上路由器是一台特殊的计算机，它有CPU、存储介质以及操作系统，只不过这些都与PC上的有点差别而已。总的说来，路由器也可分为硬件及软件两部分。软件部分主要是操作系统，普通PC的操作系统有Windows系列、 Linux/Unix等，而路由器的操作系统就是IOS（Internetwork Operating System，互联网际操作系统）。
-
-路由器的硬件主要有CPU、接口和存储介质等。路由器中的CPU和计算机中的CPU所要实现的功能都是一样的。一般来说，计算机的CPU处理能力比路由器强大，但是在一些高端路由器上也会用到频率高到300MHz的CPU。路由器中的接口是非常重要的，因为它是连接网络最直接的媒介，它的接口主要有以太网口、串口、FDDI、令牌环等。计算机中有内存和硬盘，路由器中也有，只不过它的名字不同而已；路由器中的存储介质主要有ROM（Read-Only Memory，只读储存设备）、Flash（闪存）、NVROM（非易失性随机存储器）、DRAM（动态随机存储器）等几种。
-
-路由器正是通过其特殊的软件功能来完成路由工作的，由于这种专业的路由器价格昂贵，所以现在人们也会在一些对路由器要求不高的应用环境中利用普通的 PC机来实现路由功能，比如说只要在一台PC机上安装Windows2000 Server，然后进行必要的配置，一台“路由器”就打造出来了。</code></pre><p>2）路由器的外观</p>
-<pre><code>路由器主要运行在骨干网络上，因此外观也千姿百态，比如一些应用于因特网骨干线路的千兆级别的路由器，往往也是模块化设计，体型也很庞大。
-
-而那些应用于中小型企业的路由器则相对比较小巧，这类外观看起来与集线器、交换机差不多的路由器，其最大的外观特点就是端口数量相对较少，但类型多样。图8是某种路由器背面的接口图。</code></pre><p><a href="https://upimg.ibolee.com/wp-blog-uploads/2015/07/1843379622479799914.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/07/1843379622479799914-300x212.jpg" alt="1843379622479799914"></a>（图8）</p>
-<pre><code>其实也很好理解，路由器主要是用来连接不同类型的网络，它位于网络的最高层，基于成本的考虑，其端口肯定比较少，但同时为了连接多种类型的网络，又必须具备多种类型的网络接口。</code></pre><p>三剑客的选购</p>
-<pre><code>集线器、交换机、路由器的工作原理、性能特点和价格都不同，因此在构建网络平台时，应该根据实际需要，科学地选择产品。当然，我们在这里讨论的选购主要是针对一些中小型网络而言的，对于校园网、大型企业网，由于涉及的面太多，一般都需要专业的网络工程师进行网络设计与产品选购。</code></pre><p>一、不同用户需求推荐</p>
-<p>1.普通家庭用户</p>
-<pre><code>一般一个家庭的电脑数量有限，而组网的目的一般是为了实现共享上网、玩网络游戏等。由于电脑数量少，对带宽的要求不高，因此选择一个端口数少于8个，10Mbps带宽的集线器比较合适，目前这类产品很多，价格也非常便宜，一般在80~100元之间。
-
-集线器的特点是价格便宜，但由于采用“共享带宽”的工作模式，因此集线器只适合那些对价格敏感、网络规模不大且数据传输量不大的用户使用。</code></pre><p>2.学生宿舍</p>
-<pre><code>对于学生宿舍而言，一般电脑数量比较多，再加上宿舍与宿舍之间比较近，组网非常方便。学生一般比较喜欢通过组网来实现共享上网、联网游戏、视频欣赏等，因此对带宽的要求相对较高，再加上学生作息时间都差不多，往往许多电脑会同时上网，所以最佳选择是使用交换机。交换机独享带宽的工作模式，能够满足学生对高带宽的要求，同时也可以避免许多机器同时通信所带来的网路堵塞问题。考虑到学生的经济承受能力不高，可以选择国内厂商出品的中低端10/100Mbps自适应桌面交换机，端口数要根据联网的电脑数目进行考虑，不过最好是选择16口的价廉物美的主流产品，目前这类中低端产品的价格大都在700元以下，对于学生来说也还可以承受。如果端口数不够的话，可以采取级联的方式解决。 当然，上面我们是针对一些对网络速度要求较高的学生宿舍而言的，如果联网的电脑不是很多（少于10台），并且只想共享上网或玩一些对网速要求不高的游戏的话，则也可以考虑使用10Mbps的集线器，但不推荐使用10/100Mbps自适应的集线器。如果要求高一点的话，可以到市场上找找那些迷你型的10Mbps交换机，这类产品一般端口数少，而且售价也很便宜，一般在200元左右。</code></pre><p>3.中小型办公网络</p>
-<pre><code>对于中小型的办公网络而言，如果考虑性能、稳定性及以后的扩展性，最好选择10/100Mbps自适应交换机来构建局域网，如果是小型的办公网络，也可以考虑集线器。 如今办公室一般都需要共享上网，而目前使用最多的就是共享ADSL上网。对于中小型办公网络而言，由于一般不会配备专业的服务器，因此要共享上网的话，可以通过配置一台ADSL路由器来解决共享问题，这样可以省去一台代理服务器。目前这类ADSL路由器价格比较便宜，且可供选择的产品很多。</code></pre><p>二、集线器的选购标准</p>
-<p>1.注意带宽标准</p>
-<pre><code>根据带宽的不同，目前市面上用于局域网（一般是指小型局域网）的HUB可分为10Mbps、100Mbps和10/100Mbps 自适应三种。选择哪种集线器主要取决于三个因素：a.上连设备带宽：如果上连设备支持IEEE802.3U，自然可购买100Mbps集线器，否则只有选择10Mbps的了；b.站点数：由于连在集线器上的所有电脑均争用同一个上行总线，处于同一冲突域内，所以如果电脑数目较多，最好选择带宽高的；c.应用需求。</code></pre><p>2.是否满足扩展需求</p>
-<pre><code>根据端口数目的多少HUB一般分为8口、16口和24口几种。当一个集线器提供的端口不够时，一般有以下两种方法扩展： a.堆叠：堆叠是解决单个集线器端口不足时的一种方法，但是因为堆叠在一起的多个集线器还是工作在同一环境下，所以堆叠的层数也不能太多。市面上一些集线器以其堆叠层数比其他品牌的多而作为卖点，如果遇到这种情况，要辨证认识：一方面可堆叠层数越多，一般说明集线器的稳定性越高；另一方面，可堆叠层数越多，每个用户实际可享有的带宽则越小。 b.级联：级联是在网络中增加用户数的另一种方法，但是此项功能的使用一般是有条件的，即HUB必须提供可级联的端口，此端口上常标有“Uplink”或“MDI”字样，用此端口与其他的HUB进行级联。如果没有提供专门的端口，当要进行级联时，连接两个集线器的双绞线在制作时必须要进行错线。</code></pre><p>3.是否支持网管功能</p>
-<pre><code>根据对HUB管理方式的不同可分为Damp Hub 亚集线器　和Intelligent Hub 智能集线器　两种。智能集线器改进了普通HUB的缺点，增加了网络交换功能，具有网络管理和自动检测网络端口速度的能力（类似于交换机）。而亚集线器只起到简单的信号放大和再生的作用，无法对网络性能进行优化。早期使用的共享式HUB一般为非智能型的，而现在流行的100Mbps HUB和10/100Mbps自适应HUB多为智能型的。</code></pre><p>4.注意接口类型</p>
-<pre><code>选择HUB时，还要注意信号输入口的接口类型，与双绞线连接时需要具有RJ-45接口；如果与细缆相连，需要具有BNC接口；与粗缆相连需要有AUI接口；当局域网长距离连接时，还需要具有与光纤连接的光纤接口。早期的10Mbps HUB一般具有RJ-45、BNC和AUI三种接口。100Mbps HUB和10/100Mbps HUB一般只有RJ-45接口，有的也具有光纤接口。</code></pre><p>5.注意品牌和价格</p>
-<pre><code>目前市面上的高档HUB市场主要还是由美国产品占据，如3COM、Intel等，它们在设计上比较独特，一般几个甚至是每个端口配置一个处理器，当然价格比较高。我国台湾的D-Link和Accton的产品占据了中低端市场上的主要份额，而大陆的一些公司如联想、实达也分别推出了自己的产品。中低档产品一般均采用单处理器技术，其外围电路的设计也大同小异。各个品牌在质量上差距已经不大。相对而言，大陆产品的价格要便宜很多。</code></pre><p>本文“网络硬件三剑客 - 集线器、交换机与路由器”，来自：<a href="http://lcx.cc/" target="_blank" rel="noopener">Nuclear’Atk 网络安全研究中心</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT相关//" class="article-tag-list-link color5">IT相关</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/posts/d732a265.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-e7-94-a8axure7-e5-81-9a-e5-87-ba-e8-87-aa-e9-80-82-e5-ba-94web-e9-a1-b5-e9-9d-a2-e5-8e-9f-e5-9e-8b-e6-80-9d-e8-b7-af" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/61503575.html">用Axure7做出自适应web页面原型思路</a>
-    </h1>
-  
-
-        
-        <a href="/posts/61503575.html" class="archive-article-date">
-  	<time datetime="2015-07-20T03:46:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-07-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>  自从几年前响应式技术开始应用时，创建响应式原型就成为了很多人苦恼的事情。响应式设计用一种非常优雅的方式处理为多种设备类型使用HTML和CSS编码的应用，但是提供给UX专业人士的原型工具却没有具备同样品质的可以测试或者验证的功能。不过随着最新Axure RP 7中的适应性视图功能发布后，这个情况开始改变了。 <strong>Axure RP 7的适应性视图</strong> Axure RP 7的适应性视图让不借助编码创建响应式原型成为了可能。你可以利用这个功能在Axure RP里创建一个多视图的页面，这个视图能在给定屏幕尺寸的设备里显示。 这无疑是UX专业人士的福音，将他们从HTML中解放了出来。当你不得不在设计过程中思考技术问题时，你很容易就会忽略设计思维。在某些情况下，常常是在大部分项目非常早期的时候，技术可行性和限制的考量是设计过程的必要部分。但是在初期的原型阶段，可以自由的去考虑怎样的界面、信息流和交互能最优解决用户的问题，也许对设计师更有帮助，而这些练习甚至可以暴露你没考虑到的技术限制问题。 <strong>适应性视图如何运作</strong> 适应性视图是基于在Axure里首先创建的“基础视图”，由这个视图可以拓展出其他视图，但不是必须的。在移动优先的设计中，你的基础视图应该是智能手机的竖屏界面，从这点出发，你可以创建适应更宽屏的视图，例如智能手机的横屏、平板和桌面。在使用适应性视图时我比较倾向用这个方式。 你也可以采用桌面优先的方式，从宽屏开始设计然后自上向下逐渐到手持设备。这样的好处就是你知道最大屏的所有元素是否需要在逐渐变小的屏幕里是否需要移除或者重新设计。使用哪种方式取决于你的项目和已知或者期望投入的设备的使用模式。 <strong>移动优先</strong> 我们以一个虚拟的自行车购物网站作为范例，采用移动优先的方法来设计。我们会分别在手机和平板上设计横屏和竖屏的首页视图。 第一步先建立只有一个空白页面的Axure文档，命名为”Bike Shop“。在手机视图里，我们以iPhone 5的屏幕为准，其实还可以应用到任何设备，不管是哪种屏幕大小或操作系统。我还喜欢添加页面辅助线来标记页面的边界和添加内边距。屏幕的辅助线标记在x轴320像素处和y轴568像素处。 我们也在x轴10像素和310像素的地方添加辅助线来标记边距，这样页面内容就不会紧贴在屏幕的左右两边。对于iOS的Retina显示屏，在这篇文章中所使用的屏幕宽度会自动缩放到更高的分辨率。较小的尺寸只是让我们Axure RP的文件体积更小而且在制作原型时更方便调整。 <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/07/1-adaptive-1-500px.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/07/1-adaptive-1-500px-284x300.png" alt="1-adaptive-1-500px"></a> 创建一个单一的页面，用页面辅助线标示出屏幕边缘和页面左右两边的边距。 现在我们准备好设计基础视图的页面了。我们要做的第一件事就是创建一个简单的头部，在彩色条上输入自行车商店的名称。头部创建后，右键单击，然后从菜单中选择“转换为母版”。一旦你命名并保存该头部，就会添加到工作区左栏底部的母版面板中。在Axure RP中，母版可以在一处进行设计，然后复用到原型中的其他页面里。 <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/07/2-adaptive-2-500px.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/07/2-adaptive-2-500px-300x196.png" alt="2-adaptive-2-500px"></a> 使用“转换为母版”对话框时，你可以对母版进行命名，并设置母版在页面上拖放时的行为。 添加更多的界面元素到页面后，你已经设计好手机竖屏的基本页面。现在我们将利用这个功能创建不同的视图。 <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/07/adaptive-3-500px.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/07/adaptive-3-500px-300x268.png" alt="adaptive-3-500px"></a> 我们项目的基本视图已经完成了。 <strong>创建一个新视图</strong> 通过点击Axure RP 页面标签左侧的按钮，打开“自适应视图”对话框来创建新视图（下面截图中用红色边框标示）。 <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/07/adaptive-4-500px.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/07/adaptive-4-500px-300x59.png" alt="adaptive-4-500px"></a> 点击按钮打开自适应视图对话框。 使用自适应视图非常简单：</p>
-<p>1.单击对话框左上角的绿色“＋”图标（如下所示）来添加一个新视图。</p>
-<p>2.命名该视图——在这个案例中是“Phone Landscape（手机横屏）”。</p>
-<p>3.从两个选项中，选择新视图的显示条件：“大于或等于”还是”小于或等于“一个固定的宽度。</p>
-<p>4.最后，填入屏幕宽度的数值后就可以生成视图了。</p>
-<p><a href="https://upimg.ibolee.com/wp-blog-uploads/2015/07/adaptive-5-500px.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/07/adaptive-5-500px-300x125.png" alt="adaptive-5-500px"></a></p>
-<p>给第一个子视图进行设置。</p>
-<p>完成后，命名为“Phone Landscape（手机横屏）”的视图会在屏幕大于或等于321像素时触发显示。因为我们是以iPhone 5作为我们移动端设计的载体，所以这个视图会在人们倾斜手机至横向时出现。否则，显示的则是基础视图（即使iPhone Retina屏幕的实际宽度是640像素，基础视图还是以纵向显示）。我们新添的视图也会在平板和桌面上显示，除非我们增加了特定的视图。 默认情况下，任何新视图都会继承之前的内容——在这个案例中，继承的是基本视图。当我们为一个页面添加更多的视图时，我们可以继承其他任意我们希望作为起始的视图。 下面的屏幕截图显示了我们的两个视图，基本和321。Axure RP根据你在创建时所指定的宽度自动设置视图的名称。321标签是蓝色的，表示当前编辑状态。在右侧的紫色辅助线在x轴321像素处，表示截点。  </p>
-<p><a href="https://upimg.ibolee.com/wp-blog-uploads/2015/07/adaptive-6-500px.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/07/adaptive-6-500px-275x300.png" alt="adaptive-6-500px"></a> 新视图的内容和布局和基本视图的一样，但随着设计的进行会有所改变。 <strong>继承</strong> 继承的概念是了解如何有效使用自适应视图的关键。这里有一些需要知道的关键概念：</p>
-<ul>
-<li>一个新视图是母本的完整副本，这样方便我们不用在多个视图中重新创建相同的组件。</li>
-<li>如果我们要更改基本视图主标题的文本，这个改动会同时在任何直接或者间接的子屏幕中更新。</li>
-<li>继承只会从上一级视图到下一级，而不能逆向。因此，在子视图中所做的更改不会传递回上一级视图。</li>
-<li>自适应视图中的组件会继承上级视图中该组件的位置、尺寸和样式。如果我们在子视图里加大字号，不会影响到上级视图。但是，如果我们回到基本视图进行更改，把主标题的字号调小，并不会影响到子视图，因为子视图的新文本已经被之前的更改覆盖了。</li>
-</ul>
-<p>在你为横屏的设计进行调整前，要先设置新的页面辅助线标示屏幕边缘。横屏的辅助线在x轴的568像素处和y轴的320像素处。 <strong>自适应母版</strong> 我们将通过更新头部母版来开始手机横屏的设计。在Axure RP 7里，母版和页面一样，也是自适应的，会自动继承基础视图的页面截点。 在下面的截图中可以看到，我们增加了一条辅助线，并把头部的长度扩展到568像素。 <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/07/adaptive-7-500px.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/07/adaptive-7-500px-300x64.png" alt="adaptive-7-500px"></a> 不同视图中的母版都继承了基本页面中的宽度。 现在我们可以更新手机横屏视图的设计了。在下面的截图中，我们把在竖屏视图中位于页面底部的一组标准清单列表移到了页面主图的右侧。促销标题字号更大了，在它下面的文本也扩展到与屏幕同宽，更多的页面内容会出现在屏幕上（这取决于该页面是否是全屏浏览，还是使用chrome浏览器，或者iPhone的状态栏是否有显示）。 <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/07/adaptive-8-500px.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/07/adaptive-8-500px-300x196.png" alt="adaptive-8-500px"></a> 该页面已经被重新设计过，以更好地利用手机横向屏幕。 <strong>平板视图</strong> 现在手机上两个方向的视图已经完成，让我们开始设计平板视图。我们会使用iPad的参数，但是重审一下，这个技术是适用任何屏幕尺寸和操作系统的。创建平板视图的方法和手机横屏视图的是一样的。 我们会从平板的竖屏开始设计，因为是下一级宽度的屏幕。我们设置了当屏幕超过569像素时出现这个视图，这使得手机横屏的视图宽度限制在321像素和568像素之间。正如你在下面截图中可以看到的，我们可以选择让平板视图延续手机横屏视图。根据继承的机制，在基本视图或者在手机横屏视图中的任何改动都会同步到平板视图中。 <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/07/adaptive-9-500px.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/07/adaptive-9-500px-300x125.png" alt="adaptive-9-500px"></a> 创建一个平板竖屏视图的设置对话框。 而且，正如手机横屏视图一样，平板竖屏视图也是完全复制了上级视图的内容。在下面的截图中，我在x轴768像素和y轴1024像素的地方添加了页面辅助线，这是非Retina屏的iPad竖屏尺寸。页面标签上标有“569”，表明这个视图的尺寸截点。 <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/07/adaptive-10-500px.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/07/adaptive-10-500px-300x147.png" alt="adaptive-10-500px"></a> 平板竖屏视图初始的内容与上级视图的完全一样。 在一个更大的区域里设计，我们可以完全改变图层和添加新的内容元素。 <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/07/adaptive-11-500px.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/07/adaptive-11-500px-275x300.png" alt="adaptive-11-500px"></a> 平板竖屏视图可以放入更多的内容。 我们最后创建的是平板横屏视图，由于这个视图会在屏幕超过769像素时出现，所以在台式机或者笔记本上也会显示该视图，除非添加其他视图。我们会将这个视图继承平板竖屏的视图，包括为这个设备添加的内容。 <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/07/adaptive-12-500px.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/07/adaptive-12-500px-300x125.png" alt="adaptive-12-500px"></a> 这个视图会应用在平板横屏和台式机上，除非有新的的视图添加进来。 在最后的视图里，我们在屏幕右侧有更多的空间去进行设计。 <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/07/adaptive-13-500px.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/07/adaptive-13-500px-300x245.png" alt="adaptive-13-500px"></a> 在平板横屏视图里，我们可以在竖屏的基础上简单地添加元素或者完全重新思考设计，这个取决于项目的需求和现有的内容。 这个也完成后，该项目在手机和平板的横竖屏状态下都有不同的视图。如果你有一个iPhone或者iPad，你可以打开浏览器，导航到我们的范例原型（由AxShare创办），并旋转你的设备，来查看为每个设备设计的不同视图。 <strong>局限</strong> 自适应视图有一定的局限性。首先，通过Axure RP生成的代码不能用于初始开发，除非你使用生成的网站中的模板或框架来便携HTML和CSS。 由于这个限制，自适应视图不能用于前端编码方案的验证。但这不是Axure RP或者是UX原型设计过程的目的，所以它没有那么多的限制，只是需要注意一下。 另外一个限制是会影响Axure RP共享项目的团队协作。因为这个项目中的所有视图都是基于一个页面，当某人在一个共享项目中编辑一个页面时，其他设计师就不能编辑任何的视图。这不同于Axure RP的早期版本，移动端和桌面的原型可以在单独的页面里创建，也就是说，一个设计师可以设计桌面上的版本，而另一个同时可以设计在智能手机上的版本。这只是在不同的人员进行手机和桌面的设计，而不是单独一人执行时会有所限制。 <strong>总结</strong> 如果你正在构建一个原型来演示或者测试将要在手机或平板上访问的网站的可用性，你会希望这个原型是响应式的。在过去为了产出这样的原型，我们不得不使用HTML和CSS来控制不同截点的展示。 现在，Axure RP 7的自适应视图可以让不编码的设计师在原型制作和测试响应式设计时更方便。有了这个新功能，一个用户体验设计师可以在几小时内创建一个多设备的原型。为了在给多设备设计的环境中走得更远，Axure RP的自适应视图是你值得拥有的一个强力工具。 —————————————————————– 原文作者：Will Hacker 中文翻译校对由淘宝UED团队：千夕夕夕 原文地址：<a href="http://uxdesign.smashingmagazine.com/2014/02/26/creating-responsive-prototypes-adaptive-views-axure-rp-7/" target="_blank" rel="noopener">http://uxdesign.smashingmagazine.com/2014/02/26/creating-responsive-prototypes-adaptive-views-axure-rp-7/</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">干货</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">axure</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">响应式</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">自适应</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习笔记//" class="article-tag-list-link color5">学习笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/posts/61503575.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-e3-80-90-e8-bd-ac-e3-80-91-e4-bb-8e-e8-be-93-e5-85-a5-url-e5-88-b0-e9-a1-b5-e9-9d-a2-e5-8a-a0-e8-bd-bd-e5-ae-8c-e7-9a-84-e8-bf-87-e7-a8-8b-e4-b8-ad-e9-83-bd-e5-8f-91-e7-94-9f-e4-ba-86-e4-bb-80" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/ca1eea0e.html">【转】从输入 URL 到页面加载完的过程中都发生了什么？</a>
-    </h1>
-  
-
-        
-        <a href="/posts/ca1eea0e.html" class="archive-article-date">
-  	<time datetime="2015-06-30T02:50:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-06-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>内容来自果壳网，原作者：傅里叶变黄油猫 1）把URL分割成几个部分：协议、网络地址、资源路径。其中网络地址指示该连接网络上哪一台计算机，可以是域名或者IP地址，可以包括端口号；协议是从该计算机获取资源的方式，常见的是HTTP、FTP，不同协议有不同的通讯内容格式；资源路径指示从服务器上获取哪一项资源。 例如：<a href="http://www.guokr.com/question/554991/" target="_blank" rel="noopener">http://www.guokr.com/question/554991/</a> 协议部分：http 网络地址：<a href="http://www.guokr.com/" target="_blank" rel="noopener">www.guokr.com</a> 资源路径：/question/554991/ 2）如果地址不是一个IP地址，通过DNS（域名系统）将该地址解析成IP地址。IP地址对应着网络上一台计算机，DNS服务器本身也有IP，你的网络设置包含DNS服务器的IP。 例如：<a href="http://www.guokr.com/" target="_blank" rel="noopener">www.guokr.com</a> 不是一个IP，向DNS询问请求<a href="http://www.guokr.com/" target="_blank" rel="noopener">www.guokr.com</a> 对应的IP，获得IP： 111.13.57.142。这个过程里，你的电脑直接询问的DNS服务器可能没有<a href="http://www.guokr.com/" target="_blank" rel="noopener">www.guokr.com</a> 对应的IP，就会向它的上级服务器询问，上级服务器同样可能没有，就依此一层层向上找，最高可达根节点，找到或者全部找不到为止。 3）如果地址不包含端口号，根据协议的默认端口号确定一个。端口号之于计算机就像窗口号之于银行，一家银行有多个窗口，每个窗口都有个号码，不同窗口可以负责不同的服务。端口只是一个逻辑概念，和计算机硬件没有关系。 例如：<a href="http://www.guokr.com/" target="_blank" rel="noopener">www.guokr.com</a> 不包含端口号，http协议默认端口号是80。如果你输入的url是<a href="http://www.guokr.com:8080/" target="_blank" rel="noopener">http://www.guokr.com:8080/</a>，那表示不使用默认的端口号，而使用指定的端口号8080。 4）向2和3确定的IP和端口号发起网络连接。 例如：向111.13.57.142的80端口发起连接 5）根据http协议要求，组织一个请求的数据包，里面包含大量请求信息，包括请求的资源路径、你的身份 例如：用自然语言来表达这个数据包，大概就是：请求 /question/554991/ ，我的身份是xxxxxxx。 6）服务器响应请求，将数据返回给浏览器。数据可能是根据HTML协议组织的网页，里面包含页面的布局、文字。数据也可能是图片、脚本程序等。现在你可以用浏览器的“查看源代码”功能，感受一下服务器返回的是什么东东。如果资源路径指示的资源不存在，服务器就会返回著名的404错误。 7）如果（6）返回的是一个页面，根据页面里一些外链的URL，例如图片的地址，按照（1）－（6）再次获取。 8）开始根据资源的类型，将资源组织成屏幕上显示的图像，这个过程叫渲染，网页渲染是浏览器最复杂、最核心的功能。 9）将渲染好的页面图像显示出来，并开始响应用户的操作。 以上只是最基本的步骤，实际不可能就这么简单，一些可选的步骤例如网页缓存、连接池、加载策略、加密解密、代理中转等等都没有提及。即使基本步骤本身也有很复杂的子步骤，TCP/IP、DNS、HTTP、HTML：每一个都可以展开成庞大的课题，而浏览器的基础——操作系统、编译器、硬件等更是一个比一个复杂。不是计算机专业的同学看了上面的解释完全不明白是很正常的，可能会问为什么要搞得那么复杂，但我保证这每一个步骤都经过深思熟虑和时间的考验。你输入URL即可浏览互联网，而计算机系统在背后做了无数你看不到的工作，计算机各个子领域无数工程师为此付出你难以想象的努力。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT相关//" class="article-tag-list-link color5">IT相关</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/posts/ca1eea0e.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-e5-b0-8f-e5-bd-93-e5-ae-b6-e5-b9-b2-e8-84-86-e9-9d-a2-e6-b0-b4-e6-b5-92-e4-bc-a0-e4-b8-bb-e9-a2-98-e5-8d-a1-e6-bb-a1-e6-bb-a1-e7-9a-84-e7-ab-a5-e5-b9-b4-e5-9b-9e-e5-bf-86-ef-bc-81" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1159,6 +843,397 @@ grant all privileges on *.* to test@&apos;localhost&apos; identified by &apos;te
 
 
   
+    <article id="post-mac-os-x-svn-e5-b8-b8-e7-94-a8-e8-b5-84-e6-ba-90-e5-b8-b8-e7-94-a8-e6-8c-87-e4-bb-a4" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/posts/10e23c0b.html">Mac OS X_SVN_使用_教程_及_常用指令</a>
+    </h1>
+  
+
+        
+        <a href="/posts/10e23c0b.html" class="archive-article-date">
+  	<time datetime="2015-03-27T05:11:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-03-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="在Windows环境中，我们一般使用TortoiseSVN来搭建svn环境。在Mac环境下，由于Mac自带了svn的服务器端和客户端功能，所以我们可以在不装任何第三方软件的前提下使用svn功能，不过还需做一下简单的配置。"><a href="#在Windows环境中，我们一般使用TortoiseSVN来搭建svn环境。在Mac环境下，由于Mac自带了svn的服务器端和客户端功能，所以我们可以在不装任何第三方软件的前提下使用svn功能，不过还需做一下简单的配置。" class="headerlink" title="在Windows环境中，我们一般使用TortoiseSVN来搭建svn环境。在Mac环境下，由于Mac自带了svn的服务器端和客户端功能，所以我们可以在不装任何第三方软件的前提下使用svn功能，不过还需做一下简单的配置。"></a>在Windows环境中，我们一般使用TortoiseSVN来搭建svn环境。在Mac环境下，由于Mac自带了svn的服务器端和客户端功能，所以我们可以在不装任何第三方软件的前提下使用svn功能，不过还需做一下简单的配置。</h4><h4 id="我们首先来看下，如何在Mac环境下搭建svn服务器端环境。"><a href="#我们首先来看下，如何在Mac环境下搭建svn服务器端环境。" class="headerlink" title="我们首先来看下，如何在Mac环境下搭建svn服务器端环境。"></a>我们首先来看下，如何在Mac环境下搭建svn服务器端环境。</h4><p>mac OS X SVN使用教程出处：<a href="http://www.cnblogs.com/mjios/archive/2013/03/10/2952258.html" target="_blank" rel="noopener">http://www.cnblogs.com/mjios/archive/2013/03/10/2952258.html</a></p>
+<h2 id="一、创建代码仓库，用来存储客户端所上传的代码"><a href="#一、创建代码仓库，用来存储客户端所上传的代码" class="headerlink" title="一、创建代码仓库，用来存储客户端所上传的代码"></a>一、创建代码仓库，用来存储客户端所上传的代码</h2><p>我先在/User/apple目录下新建一个svn目录，以后可以在svn目录下创建多个仓库目录 打开终端，创建一个mycode仓库，输入指令：<strong>svnadmin create /Users/apple/svn/mycode</strong> 指令执行成功后，会发现硬盘上多了个/Users/apple/svn/mycode目录，目录结构如下： <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/03/10002140-c4cf85b829bd477ea3a3779a4cd0d7fd.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/03/10002140-c4cf85b829bd477ea3a3779a4cd0d7fd.png" alt="10002140-c4cf85b829bd477ea3a3779a4cd0d7fd"></a>  </p>
+<h2 id="二、配置svn的用户权限"><a href="#二、配置svn的用户权限" class="headerlink" title="二、配置svn的用户权限"></a>二、配置svn的用户权限</h2><p>主要是修改/svn/mycode/conf目录下的三个文件</p>
+<h3 id="1-打开svnserve-conf，将下列配置项前面的-和空格都去掉"><a href="#1-打开svnserve-conf，将下列配置项前面的-和空格都去掉" class="headerlink" title="1.打开svnserve.conf，将下列配置项前面的#和空格都去掉"></a>1.打开svnserve.conf，将下列配置项前面的#和空格都去掉</h3><p># anon-access = read<br># auth-access = write</p>
+<p># password-db = passwd</p>
+<p># authz-db = authz</p>
+<p>anon-access = read代表匿名访问的时候是只读的，若改为anon-access = none代表禁止匿名访问，需要帐号密码才能访问  </p>
+<h3 id="2-打开passwd，在-users-下面添加帐号和密码"><a href="#2-打开passwd，在-users-下面添加帐号和密码" class="headerlink" title="2.打开passwd，在[users]下面添加帐号和密码"></a>2.打开passwd，在[users]下面添加帐号和密码</h3><p>[users]<br>mj=123<br>jj=456</p>
+<p>帐号是mj，密码是123  </p>
+<h3 id="3-打开authz，配置用户组和权限"><a href="#3-打开authz，配置用户组和权限" class="headerlink" title="3.打开authz，配置用户组和权限"></a>3.打开authz，配置用户组和权限</h3><p>我们可以将在passwd里添加的用户分配到不同的用户组里，以后的话，就可以对不同用户组设置不同的权限，没有必要对每个用户进行单独设置权限。 在[groups]下面添加组名和用户名，多个用户之间用逗号(,)隔开</p>
+<p>[groups]<br>topgroup=mj,jj</p>
+<p>说明mj和jj都是属于topgroup这个组的，接下来再进行权限配置。 使用[/]代表svn服务器中的所有资源库</p>
+<p>[/]<br>@topgroup=rw</p>
+<p>上面的配置说明topgroup这个组中的所有用户对所有资源库都有读写(rw)权限，组名前面要用@ 如果是用户名，不用加@，比如mj这个用户有读写权限</p>
+<p>[/]<br>mj=rw</p>
+<p>至于其他精细的权限控制，可以参考authz文件中的其他内容  </p>
+<h3 id="4-启动svn服务器"><a href="#4-启动svn服务器" class="headerlink" title="4.启动svn服务器"></a>4.启动svn服务器</h3><p>前面配置了这么多，最关键还是看能否正常启动服务器，若启动不来，前面做再多工作也是徒劳。 在终端输入下列指令：<strong>svnserve -d -r /Users/apple/svn</strong> 或者输入：<strong>svnserve -d -r /Users/apple/svn**</strong>/mycode** 没有任何提示就说明启动成功了  </p>
+<h3 id="5-关闭svn服务器"><a href="#5-关闭svn服务器" class="headerlink" title="5.关闭svn服务器"></a>5.关闭svn服务器</h3><p>如果你想要关闭svn服务器，最有效的办法是打开实用工具里面的“活动监视器”<a href="https://upimg.ibolee.com/wp-blog-uploads/2015/03/10002641-8b49f872b6cd438c80f76f098d99db93.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/03/10002641-8b49f872b6cd438c80f76f098d99db93.png" alt="10002641-8b49f872b6cd438c80f76f098d99db93"></a> <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/03/10002744-ce32c627b0b34f02a4067568bdc5e786.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/03/10002744-ce32c627b0b34f02a4067568bdc5e786-300x83.png" alt="10002744-ce32c627b0b34f02a4067568bdc5e786"></a> 综合上述，我们就可以轻松搭建svn服务器环境了</p>
+<h2 id="三、使用svn客户端功能"><a href="#三、使用svn客户端功能" class="headerlink" title="三、使用svn客户端功能"></a>三、使用svn客户端功能</h2><h3 id="1-从本地导入代码到服务器-第一次初始化导入"><a href="#1-从本地导入代码到服务器-第一次初始化导入" class="headerlink" title="1.从本地导入代码到服务器(第一次初始化导入)"></a>1.从本地导入代码到服务器(第一次初始化导入)</h3><p>在终端中输入 <strong>svn import /Users/apple/Documents/eclipse_workspace/weibo svn://localhost/mycode/weibo –username=mj –password=123 -m “初始化导入”</strong> 我解释下指令的意思：将/Users/apple/Documents/eclipse_workspace/weibo中的所有内容，上传到服务器mycode仓库的weibo目录下，后面双引号中的”初始化导入”是注释  </p>
+<h3 id="2-从服务器端下载代码到客户端本地"><a href="#2-从服务器端下载代码到客户端本地" class="headerlink" title="2.从服务器端下载代码到客户端本地"></a>2.从服务器端下载代码到客户端本地</h3><p>在终端中输入<strong>svn checkout svn://localhost/mycode –username=mj –password=123 /Users/apple/Documents/code</strong> 我解释下指令的意思：将服务器中mycode仓库的内容下载到/Users/apple/Documents/code目录中  </p>
+<h3 id="3-提交更改过的代码到服务器"><a href="#3-提交更改过的代码到服务器" class="headerlink" title="3.提交更改过的代码到服务器"></a>3.提交更改过的代码到服务器</h3><p>在步骤2中已经将服务器端的代码都下载到/Users/apple/Documents/code目录中，现在修改下里面的一些代码，然后提交这些修改到服务器 1&gt; 打开终端，先定位到/Users/apple/Documents/code目录，输入：<strong>cd /Users/apple/Documents/code</strong> 2&gt; 输入提交指令：<strong>svn commit -m “修改了main.m文件”</strong> 这个指令会将/Users/apple/Documents/code下的所有修改都同步到服务器端，假如这次我只修改了main.文件 可以看到终端的打印信息：</p>
+<p>Sending        weibo/weibo/main.m<br>Transmitting file data .<br>Committed revision 2.</p>
+<h3 id="4-更新服务器端的代码到客户端"><a href="#4-更新服务器端的代码到客户端" class="headerlink" title="4.更新服务器端的代码到客户端"></a>4.更新服务器端的代码到客户端</h3><p>这个应该是最简单的指令了，在终端中定位到客户端代码目录后，比如上面的/Users/apple/Documents/code目录，然后再输入指令：<strong>svn update</strong>  </p>
+<h3 id="5-至于svn的其他用法，可以在终端输入：svn-help"><a href="#5-至于svn的其他用法，可以在终端输入：svn-help" class="headerlink" title="5.至于svn的其他用法，可以在终端输入：svn help"></a>5.至于svn的其他用法，可以在终端输入：<strong>svn help</strong></h3><p><strong><a href="https://upimg.ibolee.com/wp-blog-uploads/2015/03/10010442-37644dc2b0d54f7b8b421ede25d2f749.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/03/10010442-37644dc2b0d54f7b8b421ede25d2f749-300x183.png" alt="10010442-37644dc2b0d54f7b8b421ede25d2f749"></a></strong> 这里列出一大堆svn指令，后面括号中的内容的一般代表着指令的简称，比如我们可以用svn ci代替svn commit，用svn co代替svn checkout </p>
+<h3 id="以下是SVN常见指令："><a href="#以下是SVN常见指令：" class="headerlink" title="以下是SVN常见指令："></a>以下是SVN常见指令：</h3><h3 id="将文件checkout到本地目录"><a href="#将文件checkout到本地目录" class="headerlink" title="将文件checkout到本地目录"></a>将文件checkout到本地目录</h3><pre><code>svn checkout path（path是服务器上的目录）
+svn checkout svn://192.168.1.1/pro/domain
+svn co</code></pre><h3 id="往版本库中添加新的文件"><a href="#往版本库中添加新的文件" class="headerlink" title="往版本库中添加新的文件"></a>往版本库中添加新的文件</h3><pre><code>svn add file
+svn add test.php(添加test.php)
+svn add *.php(添加当前目录下所有的php文件)
+svn add *.php --force(增加所有文件)</code></pre><h3 id="将改动的文件提交到版本库"><a href="#将改动的文件提交到版本库" class="headerlink" title="将改动的文件提交到版本库"></a>将改动的文件提交到版本库</h3><pre><code>svn commit -m “LogMessage“ [-N] [--no-unlock] PATH(如果选择了保持锁，就使用–no-unlock开关)
+svn commit -m “add test file for my test“ test.php
+svn ci</code></pre><h3 id="加锁-解锁"><a href="#加锁-解锁" class="headerlink" title="加锁/解锁"></a>加锁/解锁</h3><pre><code>svn lock -m “LockMessage“ [--force] PATH
+svn lock -m “lock test file“ test.php
+svn unlock PATH</code></pre><h3 id="更新到某个版本"><a href="#更新到某个版本" class="headerlink" title="更新到某个版本"></a>更新到某个版本</h3><pre><code>svn update -r m path
+svn update 如果后面没有目录，默认将当前目录以及子目录下的所有文件都更新到最新版本。
+svn update -r 200 test.php(将版本库中的文件test.php还原到版本200)
+
+svn update test.php(更新，于版本库同步。如果在提交的时候提示过期的话，是因为冲突，需要先update，修改文件，然后清除svn resolved，最后再提交commit)
+
+svn up</code></pre><h3 id="查看文件或者目录状态"><a href="#查看文件或者目录状态" class="headerlink" title="查看文件或者目录状态"></a>查看文件或者目录状态</h3><pre><code>svn status path（目录下的文件和子目录的状态，正常状态不显示）
+【?：不在svn的控制中；M：内容被修改；C：发生冲突；A：预定加入到版本库；K：被锁定】
+
+svn status -v path(显示文件和子目录状态)
+第一列保持相同，第二列显示工作版本号，第三和第四列显示最后一次修改的版本号和修改人。
+
+注：svn status、svn diff和 svn revert这三条命令在没有网络的情况下也可以执行的，原因是svn在本地的.svn中保留了本地版本的原始拷贝。
+
+svn st</code></pre><h3 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h3><pre><code>svn delete path -m “delete test fle“
+svn delete svn://192.168.1.1/pro/domain/test.php -m “delete test file”
+或者直接svn delete test.php 然后再svn ci -m ‘delete test file‘，推荐使用这种
+svn (del, remove, rm)</code></pre><h3 id="查看日志"><a href="#查看日志" class="headerlink" title="查看日志"></a>查看日志</h3><pre><code>svn log path 
+svn log test.php 显示这个文件的所有修改记录，及其版本号的变化</code></pre><h3 id="查看文件详细信息"><a href="#查看文件详细信息" class="headerlink" title="查看文件详细信息"></a>查看文件详细信息</h3><pre><code>svn info path
+svn info test.php</code></pre><h3 id="比较差异"><a href="#比较差异" class="headerlink" title="比较差异"></a>比较差异</h3><pre><code>svn diff path(将修改的文件与基础版本比较)
+svn diff test.php
+svn diff -r m:n path(对版本m和版本n比较差异)
+svn diff -r 200:201 test.php
+svn di</code></pre><h3 id="将两个版本之间的差异合并到当前文件"><a href="#将两个版本之间的差异合并到当前文件" class="headerlink" title="将两个版本之间的差异合并到当前文件"></a>将两个版本之间的差异合并到当前文件</h3><pre><code>svn merge -r m:n path
+svn merge -r 200:205 test.php（将版本200与205之间的差异合并到当前文件，但是一般都会产生冲突，需要处理一下）</code></pre><h3 id="SVN-帮助"><a href="#SVN-帮助" class="headerlink" title="SVN 帮助"></a>SVN 帮助</h3><pre><code>svn help
+svn help ci</code></pre><h3 id="版本库下的文件和目录列表"><a href="#版本库下的文件和目录列表" class="headerlink" title="版本库下的文件和目录列表"></a>版本库下的文件和目录列表</h3><pre><code>svn list path 
+svn ls</code></pre><h3 id="创建纳入版本控制下的新目录"><a href="#创建纳入版本控制下的新目录" class="headerlink" title="创建纳入版本控制下的新目录"></a>创建纳入版本控制下的新目录</h3><pre><code>svn mkdir: 创建纳入版本控制下的新目录。
+mkdir PATH…
+mkdir URL…
+
+创建版本控制的目录。
+
+1、每一个以工作副本 PATH 指定的目录，都会创建在本地端，并且加入新增调度，以待下一次的提交。
+2、每个以URL指定的目录，都会透过立即提交于仓库中创建.在这两个情况下，所有的中间目录都必须事先存在。</code></pre><h3 id="恢复本地修改"><a href="#恢复本地修改" class="headerlink" title="恢复本地修改"></a>恢复本地修改</h3><pre><code>svn revert: 恢复原始未改变的工作副本文件 (恢复大部份的本地修改)。revert:
+用法: revert PATH…
+注意: 本子命令不会存取网络，并且会解除冲突的状况。但是它不会恢复被删除的目录</code></pre><h3 id="代码库URL变更"><a href="#代码库URL变更" class="headerlink" title="代码库URL变更"></a>代码库URL变更</h3><pre><code>svn switch (sw): 更新工作副本至不同的URL。 
+
+1、switch URL [PATH]
+2、switch –relocate FROM TO [PATH...]
+1、更新你的工作副本，映射到一个新的URL，其行为跟“svn update”很像，也会将服务器上文件与本地文件合并。这是将工作副本对应到同一仓库中某个分支或者标记的方法。
+
+2、改写工作副本的URL元数据，以反映单纯的URL上的改变。当仓库的根URL变动(比如方案名或是主机名称变动)，但是工作副本仍旧对映到同一仓库的同一目录时使用这个命令更新工作副本与仓库的对应关系。</code></pre><h3 id="解决冲突"><a href="#解决冲突" class="headerlink" title="解决冲突"></a>解决冲突</h3><pre><code>svn resolved: 移除工作副本的目录或文件的“冲突”状态。 java设计模式之——策略模式
+用法: resolved PATH…
+注意: 本子命令不会依语法来解决冲突或是移除冲突标记；它只是移除冲突的相关文件，然后让 PATH 可以再次提交。</code></pre><h3 id="输出指定文件或URL的内容。"><a href="#输出指定文件或URL的内容。" class="headerlink" title="输出指定文件或URL的内容。"></a>输出指定文件或URL的内容。</h3><pre><code>svn cat 目标[@版本]…如果指定了版本，将从指定的版本开始查找。
+svn cat -r PREV filename &gt; filename (PREV 是上一版本,也可以写具体版本号,这样输出结果是可以提交的)</code></pre><p>原文出处：<a href="http://yansu.org/2014/01/15/general-svn-resources.html" target="_blank" rel="noopener">http://yansu.org/2014/01/15/general-svn-resources.html</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/学习笔记//" class="article-tag-list-link color5">学习笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/posts/10e23c0b.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-homebrew-e6-89-93-e5-8c-85-e6-90-ad-e5-bb-bamac-osx-e7-9a-84php-e3-80-81mysql-e3-80-81nginx-e7-8e-af-e5-a2-83" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/posts/63e71cfb.html">HomeBrew_打包搭建Mac osx的php、mysql、nginx环境</a>
+    </h1>
+  
+
+        
+        <a href="/posts/63e71cfb.html" class="archive-article-date">
+  	<time datetime="2015-03-26T04:27:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-03-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Homebrew 并不是什么软件包都能装，它只是能装一些系统缺省的软件包，例如：wget、nginx、mysql等等。不过随着 <a href="https://github.com/mxcl/homebrew/wiki/Homebrew-0.9" target="_blank" rel="noopener" title="Homebrew0.9版">homebrew0.9版</a> 新加了 tap 操作，支持安装第三方数据源的软件包，以后支持安装的软件包会更多、更丰富。 <strong>Homebrew安装</strong> 安装 Homebrew 很简单，只需在终端上输入一行 <a href="https://www.ruby-lang.org/" target="_blank" rel="noopener" title="Ruby">Ruby</a> 脚本（所以要先搭建 Ruby 运行环境，Mac 下已经预装了 Ruby）就行：</p>
+<p>1</p>
+<p>ruby -e “$(curl -fsSL <a href="https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;" target="_blank" rel="noopener">https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</a></p>
+<p><strong>Homebrew使用</strong> Homebrew 跟 Ubuntu 的里的 apt-get 一样，update是更新软件包列表，install是安装软件包，uninstall是卸载软件包，用法都差不多，熟悉 apt-get 使用的话是很容易上手。 下面是 Homebrew 的一些常用操作（package替换成你想安装的软件名，例如：nginx、mysql，就能正常安装你想要安装的软件）： 显示帮助信息</p>
+<p>1</p>
+<p><code>brew -h</code></p>
+<p>Homebrew的版本</p>
+<p>1</p>
+<p><code>brew -``v</code></p>
+<p>列出Homebrew的建议或警告信息</p>
+<p>1</p>
+<p><code>brew doctor</code></p>
+<p>列出已安装的软件包</p>
+<p>1</p>
+<p><code>brew list</code></p>
+<p>更新Homebrew软件包</p>
+<p>1</p>
+<p><code>brew update(up)</code></p>
+<p>用浏览器打开package主页（package 为空则打开 Homebrew 主页）</p>
+<p>1</p>
+<p><code>brew home package</code></p>
+<p>显示软件包内容信息</p>
+<p>1</p>
+<p><code>brew info package</code></p>
+<p>显示包依赖</p>
+<p>1</p>
+<p><code>brew deps package</code></p>
+<p>查找有没有想要安装的软件包（支持模糊查找）</p>
+<p>1</p>
+<p><code>brew search package</code></p>
+<p>查看软件包的信息</p>
+<p>1</p>
+<p><code>brew info package</code></p>
+<p>软件包的安装选项</p>
+<p>1</p>
+<p><code>brew options package</code></p>
+<p>安装软件包</p>
+<p>1</p>
+<p><code>brew</code> <code>install</code> <code>package</code></p>
+<p>如果想查看安装过程中执行的命令或者是编译信息，可以在 “install” 后面加一个 “-v” 参数：</p>
+<p>1</p>
+<p><code>brew</code> <code>install</code> <code>-``v</code> <code>package</code></p>
+<p>卸载软件包</p>
+<p>1</p>
+<p><code>brew uninstall(remove) package</code></p>
+<p>用 Homebrew 安装第三方工具软件包，例如用 homebrew 安装官方缺省的php</p>
+<p>1</p>
+<p><code>brew tap josegonzalez``/php</code></p>
+<p>如果软件包出了新版本，可以用 upgrade 更新过时的软件包（缺省 package 参数，则为全部更新）：</p>
+<p>1</p>
+<p><code>brew upgrade package</code></p>
+<p>清理之前安装的旧版本数据：</p>
+<p>1</p>
+<p>2</p>
+<p><code>brew cleanup --force -s</code></p>
+<p><code>rm</code> <code>-rf $(brew --cache)</code></p>
+<p>更多详细的用法说明可以在终端输入”man brew”查看。 PS：Mac 下类似 Homebrew 的软件管理工具还有 <a href="http://www.macports.org/" target="_blank" rel="noopener" title="macports">MacPorts</a>、<a href="http://fink.thetis.ig42.org/" target="_blank" rel="noopener" title="Fink">Fink</a>。 Homebrew 的一些配置目录：</p>
+<ul>
+<li>/Library/Caches/Homebrew: 安装所下载文件的存放的位置</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/学习笔记//" class="article-tag-list-link color5">学习笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/posts/63e71cfb.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-e8-bf-9f-e5-88-b0-e5-a4-aa-e4-b9-85-ef-bc-8c-e5-b0-b1-e4-b8-8d-e5-bf-85-e5-88-b0-e4-ba-86-e3-80-82" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/posts/dfb99f8e.html">迟到太久，就不必到了。</a>
+    </h1>
+  
+
+        
+        <a href="/posts/dfb99f8e.html" class="archive-article-date">
+  	<time datetime="2015-03-12T03:51:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-03-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://upimg.ibolee.com/wp-blog-uploads/2015/03/2012042010233672410.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/03/2012042010233672410.jpg" alt="2012042010233672410"></a> <strong>辉姑娘/文</strong> 当年参加高考，见过触目惊心的一幕。 那天下午答完卷子出考场时，发现一位考生晕在地上，父母在旁边呼天抢地。问过路人才知道，原来是这位考生迟到了半个小时，哀求监考老师让他进去，监考老师却不为所动，说了一句：“迟了太久，就不必到了。”考生最后扑通一声跪在地上，连连磕头，磕到头都破了，老师仍坚称绝不破例，拒不放行。考生最终晕倒在地，父母指责老师不通人情，痛哭大骂不已。 那一次迟到虽不至改变那位磕头考生的命运，却也必然影响甚大。不知道这一场教训，是否让他铭记终生。 后来工作，“迟到”寻常无比。我不算苛刻的人，每次哪怕自己早到也愿意多等一会儿并无怨言。 只有一种情况我会变身成“绝不通融”的铁面人——应聘的迟到。 曾有一位各方面条件都不错的应聘者，却比约定好的时间整整迟到了一个小时。那天我微笑着听他讲完他的工作经历，然后把他送走，在简历上打了个大大的叉。我给人事部门的反馈是：连自己最重要的事情都可以迟到，公司无法把工作放心交给他。 明知今天是关键行程，交通可能会出现拥堵，就该做好准备，早早出门。临到最后才发现时间晚了，气喘吁吁地奔跑，不停道歉……对不起，这不会得到同情。 如果分不清轻重缓急，说明你根本还没有成熟到可以合理分配自己的时间，更难以在这个残酷社会立足。迟到与否，不仅仅体现一个人细心与认真的程度，更重要的是体现一个人的责任感。 电影《肖申克的救赎》中，老犯人布鲁克斯在监狱中被关押了50年，一直担任图书管理员。然而，当他得知自己马上要刑满释放时，不但没有欣喜若狂，却开始惊慌失措，因为他已经完全习惯了监狱体制化的生活，他对于外面的世界一无所知，充满恐惧。 为了不离开监狱，老布举刀杀人，以求得在监狱中继续服刑，然而最终他依然被放出监狱。 他入狱时只见过一两辆汽车，出狱时却满大街都是汽车，他在一家小超市工作，老板看不起他，他也做不好。他怀念在监狱里的生活，受人尊敬，生活稳定。最终他写了封信给狱友们，说宁可拿枪打劫也希望回到监狱，可是自己太老了，已经做不了这种事了。 最后他写：希望监狱不要再放出像我这么老的人。 他最终选择在小旅馆里自尽。 自由来得太迟了，迟得已经没有来临的必要，强制性的来临，只会带来崩溃的结局。 某天看电视，看到一位弃婴在孤儿院长大成人后与亲生父母相见。亲生父母接受访问时声泪俱下，称当年是因为家境贫寒，万般无奈才放弃了孩子，现在经济条件好了，希望可以找回孩子，补偿孩子。 镜头一转，那位已经生出青色胡茬儿的小伙子一脸漠然。记者问他：你愿意与父母相认吗？他点点头：愿意。记者又问：那你愿意跟他们回家吗？他说：不愿意。 记者问他为什么，他说：好多年以前我期待过跟他们相认，有一个属于自己的家。这个念头在我的心里想了太久太久，几乎每天都要想一遍，想起来就想哭。可是特别奇怪，想着想着，这个念头居然就渐渐淡了，而且越来越麻木。到最后，我自己也不觉得这是多大个事了。 他摇摇头：我现在觉得自己就这么自由自在，没爹妈管着，也挺好的。如果他们再来照顾我，我还真不习惯，所以还是算了吧。 记者追问：那你是在恨他们吗？他笑了一下：以前有过，现在确实是没有了。没有爱哪来的恨？我就是觉得，有些东西来得太晚了，并不一定没有它存在的意义，只是，我不想要了。 一杯热腾腾的茶，放到凉透，再喝已没有必要，只会伤身。一件加厚的外衣，穿得太晚，寒气已经侵入体内，感冒无法避免。儿女的孝顺，在父母去世以后才表现，那是失德与伪善。朋友的关怀，在事过境迁后再开口，只会得到礼貌的回应，很难得到知己的情谊、交心的温暖。爱情的表白，在罗敷有夫之后再开口，要么是甘当见不得光的小三，要么也只能留下“恨不相逢未嫁时”的遗憾。 当年监考老师的一句话道出了真理：迟得太久，不必到了。迟到，本身就说明了缘分的不足与付出的欠缺，无论是前者还是后者，都不该再续前缘。你若真在乎，必然早早追求，早早拥有，怎会等到对方心已死，情已逝，才迟迟到来。 在某场人生约会时，如果迟到，只能说明从未重视。即使“到”了，也无法抵消“迟”的负作用。请问问自己的心，是真的需要这场相逢吗？还是下一次才值得严阵以待，准时出现？ 不曾重视的相约，失去时莫道遗憾。 <strong>本文摘自畅销书《一切都是最好的安排》</strong></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">干货</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/转载-amp-分享//" class="article-tag-list-link color5">转载&amp;分享</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/posts/dfb99f8e.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
@@ -1388,11 +1463,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">邮件客户端</a>
+                <a href="javascript:void(0)" class="js-tag color1">MAC终端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MAC终端</a>
+                <a href="javascript:void(0)" class="js-tag color1">邮件客户端</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1404,15 +1479,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">TED</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">sticky</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">template</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">TED</a>
               </li>
             
             <div class="clearfix"></div>

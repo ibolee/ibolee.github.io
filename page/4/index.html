@@ -156,397 +156,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-mac-os-x-svn-e5-b8-b8-e7-94-a8-e8-b5-84-e6-ba-90-e5-b8-b8-e7-94-a8-e6-8c-87-e4-bb-a4" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/10e23c0b.html">Mac OS X_SVN_使用_教程_及_常用指令</a>
-    </h1>
-  
-
-        
-        <a href="/posts/10e23c0b.html" class="archive-article-date">
-  	<time datetime="2015-03-27T05:11:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-03-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="在Windows环境中，我们一般使用TortoiseSVN来搭建svn环境。在Mac环境下，由于Mac自带了svn的服务器端和客户端功能，所以我们可以在不装任何第三方软件的前提下使用svn功能，不过还需做一下简单的配置。"><a href="#在Windows环境中，我们一般使用TortoiseSVN来搭建svn环境。在Mac环境下，由于Mac自带了svn的服务器端和客户端功能，所以我们可以在不装任何第三方软件的前提下使用svn功能，不过还需做一下简单的配置。" class="headerlink" title="在Windows环境中，我们一般使用TortoiseSVN来搭建svn环境。在Mac环境下，由于Mac自带了svn的服务器端和客户端功能，所以我们可以在不装任何第三方软件的前提下使用svn功能，不过还需做一下简单的配置。"></a>在Windows环境中，我们一般使用TortoiseSVN来搭建svn环境。在Mac环境下，由于Mac自带了svn的服务器端和客户端功能，所以我们可以在不装任何第三方软件的前提下使用svn功能，不过还需做一下简单的配置。</h4><h4 id="我们首先来看下，如何在Mac环境下搭建svn服务器端环境。"><a href="#我们首先来看下，如何在Mac环境下搭建svn服务器端环境。" class="headerlink" title="我们首先来看下，如何在Mac环境下搭建svn服务器端环境。"></a>我们首先来看下，如何在Mac环境下搭建svn服务器端环境。</h4><p>mac OS X SVN使用教程出处：<a href="http://www.cnblogs.com/mjios/archive/2013/03/10/2952258.html" target="_blank" rel="noopener">http://www.cnblogs.com/mjios/archive/2013/03/10/2952258.html</a></p>
-<h2 id="一、创建代码仓库，用来存储客户端所上传的代码"><a href="#一、创建代码仓库，用来存储客户端所上传的代码" class="headerlink" title="一、创建代码仓库，用来存储客户端所上传的代码"></a>一、创建代码仓库，用来存储客户端所上传的代码</h2><p>我先在/User/apple目录下新建一个svn目录，以后可以在svn目录下创建多个仓库目录 打开终端，创建一个mycode仓库，输入指令：<strong>svnadmin create /Users/apple/svn/mycode</strong> 指令执行成功后，会发现硬盘上多了个/Users/apple/svn/mycode目录，目录结构如下： <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/03/10002140-c4cf85b829bd477ea3a3779a4cd0d7fd.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/03/10002140-c4cf85b829bd477ea3a3779a4cd0d7fd.png" alt="10002140-c4cf85b829bd477ea3a3779a4cd0d7fd"></a>  </p>
-<h2 id="二、配置svn的用户权限"><a href="#二、配置svn的用户权限" class="headerlink" title="二、配置svn的用户权限"></a>二、配置svn的用户权限</h2><p>主要是修改/svn/mycode/conf目录下的三个文件</p>
-<h3 id="1-打开svnserve-conf，将下列配置项前面的-和空格都去掉"><a href="#1-打开svnserve-conf，将下列配置项前面的-和空格都去掉" class="headerlink" title="1.打开svnserve.conf，将下列配置项前面的#和空格都去掉"></a>1.打开svnserve.conf，将下列配置项前面的#和空格都去掉</h3><p># anon-access = read<br># auth-access = write</p>
-<p># password-db = passwd</p>
-<p># authz-db = authz</p>
-<p>anon-access = read代表匿名访问的时候是只读的，若改为anon-access = none代表禁止匿名访问，需要帐号密码才能访问  </p>
-<h3 id="2-打开passwd，在-users-下面添加帐号和密码"><a href="#2-打开passwd，在-users-下面添加帐号和密码" class="headerlink" title="2.打开passwd，在[users]下面添加帐号和密码"></a>2.打开passwd，在[users]下面添加帐号和密码</h3><p>[users]<br>mj=123<br>jj=456</p>
-<p>帐号是mj，密码是123  </p>
-<h3 id="3-打开authz，配置用户组和权限"><a href="#3-打开authz，配置用户组和权限" class="headerlink" title="3.打开authz，配置用户组和权限"></a>3.打开authz，配置用户组和权限</h3><p>我们可以将在passwd里添加的用户分配到不同的用户组里，以后的话，就可以对不同用户组设置不同的权限，没有必要对每个用户进行单独设置权限。 在[groups]下面添加组名和用户名，多个用户之间用逗号(,)隔开</p>
-<p>[groups]<br>topgroup=mj,jj</p>
-<p>说明mj和jj都是属于topgroup这个组的，接下来再进行权限配置。 使用[/]代表svn服务器中的所有资源库</p>
-<p>[/]<br>@topgroup=rw</p>
-<p>上面的配置说明topgroup这个组中的所有用户对所有资源库都有读写(rw)权限，组名前面要用@ 如果是用户名，不用加@，比如mj这个用户有读写权限</p>
-<p>[/]<br>mj=rw</p>
-<p>至于其他精细的权限控制，可以参考authz文件中的其他内容  </p>
-<h3 id="4-启动svn服务器"><a href="#4-启动svn服务器" class="headerlink" title="4.启动svn服务器"></a>4.启动svn服务器</h3><p>前面配置了这么多，最关键还是看能否正常启动服务器，若启动不来，前面做再多工作也是徒劳。 在终端输入下列指令：<strong>svnserve -d -r /Users/apple/svn</strong> 或者输入：<strong>svnserve -d -r /Users/apple/svn**</strong>/mycode** 没有任何提示就说明启动成功了  </p>
-<h3 id="5-关闭svn服务器"><a href="#5-关闭svn服务器" class="headerlink" title="5.关闭svn服务器"></a>5.关闭svn服务器</h3><p>如果你想要关闭svn服务器，最有效的办法是打开实用工具里面的“活动监视器”<a href="https://upimg.ibolee.com/wp-blog-uploads/2015/03/10002641-8b49f872b6cd438c80f76f098d99db93.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/03/10002641-8b49f872b6cd438c80f76f098d99db93.png" alt="10002641-8b49f872b6cd438c80f76f098d99db93"></a> <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/03/10002744-ce32c627b0b34f02a4067568bdc5e786.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/03/10002744-ce32c627b0b34f02a4067568bdc5e786-300x83.png" alt="10002744-ce32c627b0b34f02a4067568bdc5e786"></a> 综合上述，我们就可以轻松搭建svn服务器环境了</p>
-<h2 id="三、使用svn客户端功能"><a href="#三、使用svn客户端功能" class="headerlink" title="三、使用svn客户端功能"></a>三、使用svn客户端功能</h2><h3 id="1-从本地导入代码到服务器-第一次初始化导入"><a href="#1-从本地导入代码到服务器-第一次初始化导入" class="headerlink" title="1.从本地导入代码到服务器(第一次初始化导入)"></a>1.从本地导入代码到服务器(第一次初始化导入)</h3><p>在终端中输入 <strong>svn import /Users/apple/Documents/eclipse_workspace/weibo svn://localhost/mycode/weibo –username=mj –password=123 -m “初始化导入”</strong> 我解释下指令的意思：将/Users/apple/Documents/eclipse_workspace/weibo中的所有内容，上传到服务器mycode仓库的weibo目录下，后面双引号中的”初始化导入”是注释  </p>
-<h3 id="2-从服务器端下载代码到客户端本地"><a href="#2-从服务器端下载代码到客户端本地" class="headerlink" title="2.从服务器端下载代码到客户端本地"></a>2.从服务器端下载代码到客户端本地</h3><p>在终端中输入<strong>svn checkout svn://localhost/mycode –username=mj –password=123 /Users/apple/Documents/code</strong> 我解释下指令的意思：将服务器中mycode仓库的内容下载到/Users/apple/Documents/code目录中  </p>
-<h3 id="3-提交更改过的代码到服务器"><a href="#3-提交更改过的代码到服务器" class="headerlink" title="3.提交更改过的代码到服务器"></a>3.提交更改过的代码到服务器</h3><p>在步骤2中已经将服务器端的代码都下载到/Users/apple/Documents/code目录中，现在修改下里面的一些代码，然后提交这些修改到服务器 1&gt; 打开终端，先定位到/Users/apple/Documents/code目录，输入：<strong>cd /Users/apple/Documents/code</strong> 2&gt; 输入提交指令：<strong>svn commit -m “修改了main.m文件”</strong> 这个指令会将/Users/apple/Documents/code下的所有修改都同步到服务器端，假如这次我只修改了main.文件 可以看到终端的打印信息：</p>
-<p>Sending        weibo/weibo/main.m<br>Transmitting file data .<br>Committed revision 2.</p>
-<h3 id="4-更新服务器端的代码到客户端"><a href="#4-更新服务器端的代码到客户端" class="headerlink" title="4.更新服务器端的代码到客户端"></a>4.更新服务器端的代码到客户端</h3><p>这个应该是最简单的指令了，在终端中定位到客户端代码目录后，比如上面的/Users/apple/Documents/code目录，然后再输入指令：<strong>svn update</strong>  </p>
-<h3 id="5-至于svn的其他用法，可以在终端输入：svn-help"><a href="#5-至于svn的其他用法，可以在终端输入：svn-help" class="headerlink" title="5.至于svn的其他用法，可以在终端输入：svn help"></a>5.至于svn的其他用法，可以在终端输入：<strong>svn help</strong></h3><p><strong><a href="https://upimg.ibolee.com/wp-blog-uploads/2015/03/10010442-37644dc2b0d54f7b8b421ede25d2f749.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/03/10010442-37644dc2b0d54f7b8b421ede25d2f749-300x183.png" alt="10010442-37644dc2b0d54f7b8b421ede25d2f749"></a></strong> 这里列出一大堆svn指令，后面括号中的内容的一般代表着指令的简称，比如我们可以用svn ci代替svn commit，用svn co代替svn checkout </p>
-<h3 id="以下是SVN常见指令："><a href="#以下是SVN常见指令：" class="headerlink" title="以下是SVN常见指令："></a>以下是SVN常见指令：</h3><h3 id="将文件checkout到本地目录"><a href="#将文件checkout到本地目录" class="headerlink" title="将文件checkout到本地目录"></a>将文件checkout到本地目录</h3><pre><code>svn checkout path（path是服务器上的目录）
-svn checkout svn://192.168.1.1/pro/domain
-svn co</code></pre><h3 id="往版本库中添加新的文件"><a href="#往版本库中添加新的文件" class="headerlink" title="往版本库中添加新的文件"></a>往版本库中添加新的文件</h3><pre><code>svn add file
-svn add test.php(添加test.php)
-svn add *.php(添加当前目录下所有的php文件)
-svn add *.php --force(增加所有文件)</code></pre><h3 id="将改动的文件提交到版本库"><a href="#将改动的文件提交到版本库" class="headerlink" title="将改动的文件提交到版本库"></a>将改动的文件提交到版本库</h3><pre><code>svn commit -m “LogMessage“ [-N] [--no-unlock] PATH(如果选择了保持锁，就使用–no-unlock开关)
-svn commit -m “add test file for my test“ test.php
-svn ci</code></pre><h3 id="加锁-解锁"><a href="#加锁-解锁" class="headerlink" title="加锁/解锁"></a>加锁/解锁</h3><pre><code>svn lock -m “LockMessage“ [--force] PATH
-svn lock -m “lock test file“ test.php
-svn unlock PATH</code></pre><h3 id="更新到某个版本"><a href="#更新到某个版本" class="headerlink" title="更新到某个版本"></a>更新到某个版本</h3><pre><code>svn update -r m path
-svn update 如果后面没有目录，默认将当前目录以及子目录下的所有文件都更新到最新版本。
-svn update -r 200 test.php(将版本库中的文件test.php还原到版本200)
-
-svn update test.php(更新，于版本库同步。如果在提交的时候提示过期的话，是因为冲突，需要先update，修改文件，然后清除svn resolved，最后再提交commit)
-
-svn up</code></pre><h3 id="查看文件或者目录状态"><a href="#查看文件或者目录状态" class="headerlink" title="查看文件或者目录状态"></a>查看文件或者目录状态</h3><pre><code>svn status path（目录下的文件和子目录的状态，正常状态不显示）
-【?：不在svn的控制中；M：内容被修改；C：发生冲突；A：预定加入到版本库；K：被锁定】
-
-svn status -v path(显示文件和子目录状态)
-第一列保持相同，第二列显示工作版本号，第三和第四列显示最后一次修改的版本号和修改人。
-
-注：svn status、svn diff和 svn revert这三条命令在没有网络的情况下也可以执行的，原因是svn在本地的.svn中保留了本地版本的原始拷贝。
-
-svn st</code></pre><h3 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h3><pre><code>svn delete path -m “delete test fle“
-svn delete svn://192.168.1.1/pro/domain/test.php -m “delete test file”
-或者直接svn delete test.php 然后再svn ci -m ‘delete test file‘，推荐使用这种
-svn (del, remove, rm)</code></pre><h3 id="查看日志"><a href="#查看日志" class="headerlink" title="查看日志"></a>查看日志</h3><pre><code>svn log path 
-svn log test.php 显示这个文件的所有修改记录，及其版本号的变化</code></pre><h3 id="查看文件详细信息"><a href="#查看文件详细信息" class="headerlink" title="查看文件详细信息"></a>查看文件详细信息</h3><pre><code>svn info path
-svn info test.php</code></pre><h3 id="比较差异"><a href="#比较差异" class="headerlink" title="比较差异"></a>比较差异</h3><pre><code>svn diff path(将修改的文件与基础版本比较)
-svn diff test.php
-svn diff -r m:n path(对版本m和版本n比较差异)
-svn diff -r 200:201 test.php
-svn di</code></pre><h3 id="将两个版本之间的差异合并到当前文件"><a href="#将两个版本之间的差异合并到当前文件" class="headerlink" title="将两个版本之间的差异合并到当前文件"></a>将两个版本之间的差异合并到当前文件</h3><pre><code>svn merge -r m:n path
-svn merge -r 200:205 test.php（将版本200与205之间的差异合并到当前文件，但是一般都会产生冲突，需要处理一下）</code></pre><h3 id="SVN-帮助"><a href="#SVN-帮助" class="headerlink" title="SVN 帮助"></a>SVN 帮助</h3><pre><code>svn help
-svn help ci</code></pre><h3 id="版本库下的文件和目录列表"><a href="#版本库下的文件和目录列表" class="headerlink" title="版本库下的文件和目录列表"></a>版本库下的文件和目录列表</h3><pre><code>svn list path 
-svn ls</code></pre><h3 id="创建纳入版本控制下的新目录"><a href="#创建纳入版本控制下的新目录" class="headerlink" title="创建纳入版本控制下的新目录"></a>创建纳入版本控制下的新目录</h3><pre><code>svn mkdir: 创建纳入版本控制下的新目录。
-mkdir PATH…
-mkdir URL…
-
-创建版本控制的目录。
-
-1、每一个以工作副本 PATH 指定的目录，都会创建在本地端，并且加入新增调度，以待下一次的提交。
-2、每个以URL指定的目录，都会透过立即提交于仓库中创建.在这两个情况下，所有的中间目录都必须事先存在。</code></pre><h3 id="恢复本地修改"><a href="#恢复本地修改" class="headerlink" title="恢复本地修改"></a>恢复本地修改</h3><pre><code>svn revert: 恢复原始未改变的工作副本文件 (恢复大部份的本地修改)。revert:
-用法: revert PATH…
-注意: 本子命令不会存取网络，并且会解除冲突的状况。但是它不会恢复被删除的目录</code></pre><h3 id="代码库URL变更"><a href="#代码库URL变更" class="headerlink" title="代码库URL变更"></a>代码库URL变更</h3><pre><code>svn switch (sw): 更新工作副本至不同的URL。 
-
-1、switch URL [PATH]
-2、switch –relocate FROM TO [PATH...]
-1、更新你的工作副本，映射到一个新的URL，其行为跟“svn update”很像，也会将服务器上文件与本地文件合并。这是将工作副本对应到同一仓库中某个分支或者标记的方法。
-
-2、改写工作副本的URL元数据，以反映单纯的URL上的改变。当仓库的根URL变动(比如方案名或是主机名称变动)，但是工作副本仍旧对映到同一仓库的同一目录时使用这个命令更新工作副本与仓库的对应关系。</code></pre><h3 id="解决冲突"><a href="#解决冲突" class="headerlink" title="解决冲突"></a>解决冲突</h3><pre><code>svn resolved: 移除工作副本的目录或文件的“冲突”状态。 java设计模式之——策略模式
-用法: resolved PATH…
-注意: 本子命令不会依语法来解决冲突或是移除冲突标记；它只是移除冲突的相关文件，然后让 PATH 可以再次提交。</code></pre><h3 id="输出指定文件或URL的内容。"><a href="#输出指定文件或URL的内容。" class="headerlink" title="输出指定文件或URL的内容。"></a>输出指定文件或URL的内容。</h3><pre><code>svn cat 目标[@版本]…如果指定了版本，将从指定的版本开始查找。
-svn cat -r PREV filename &gt; filename (PREV 是上一版本,也可以写具体版本号,这样输出结果是可以提交的)</code></pre><p>原文出处：<a href="http://yansu.org/2014/01/15/general-svn-resources.html" target="_blank" rel="noopener">http://yansu.org/2014/01/15/general-svn-resources.html</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习笔记//" class="article-tag-list-link color5">学习笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/posts/10e23c0b.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-homebrew-e6-89-93-e5-8c-85-e6-90-ad-e5-bb-bamac-osx-e7-9a-84php-e3-80-81mysql-e3-80-81nginx-e7-8e-af-e5-a2-83" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/63e71cfb.html">HomeBrew_打包搭建Mac osx的php、mysql、nginx环境</a>
-    </h1>
-  
-
-        
-        <a href="/posts/63e71cfb.html" class="archive-article-date">
-  	<time datetime="2015-03-26T04:27:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-03-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Homebrew 并不是什么软件包都能装，它只是能装一些系统缺省的软件包，例如：wget、nginx、mysql等等。不过随着 <a href="https://github.com/mxcl/homebrew/wiki/Homebrew-0.9" target="_blank" rel="noopener" title="Homebrew0.9版">homebrew0.9版</a> 新加了 tap 操作，支持安装第三方数据源的软件包，以后支持安装的软件包会更多、更丰富。 <strong>Homebrew安装</strong> 安装 Homebrew 很简单，只需在终端上输入一行 <a href="https://www.ruby-lang.org/" target="_blank" rel="noopener" title="Ruby">Ruby</a> 脚本（所以要先搭建 Ruby 运行环境，Mac 下已经预装了 Ruby）就行：</p>
-<p>1</p>
-<p>ruby -e “$(curl -fsSL <a href="https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;" target="_blank" rel="noopener">https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</a></p>
-<p><strong>Homebrew使用</strong> Homebrew 跟 Ubuntu 的里的 apt-get 一样，update是更新软件包列表，install是安装软件包，uninstall是卸载软件包，用法都差不多，熟悉 apt-get 使用的话是很容易上手。 下面是 Homebrew 的一些常用操作（package替换成你想安装的软件名，例如：nginx、mysql，就能正常安装你想要安装的软件）： 显示帮助信息</p>
-<p>1</p>
-<p><code>brew -h</code></p>
-<p>Homebrew的版本</p>
-<p>1</p>
-<p><code>brew -``v</code></p>
-<p>列出Homebrew的建议或警告信息</p>
-<p>1</p>
-<p><code>brew doctor</code></p>
-<p>列出已安装的软件包</p>
-<p>1</p>
-<p><code>brew list</code></p>
-<p>更新Homebrew软件包</p>
-<p>1</p>
-<p><code>brew update(up)</code></p>
-<p>用浏览器打开package主页（package 为空则打开 Homebrew 主页）</p>
-<p>1</p>
-<p><code>brew home package</code></p>
-<p>显示软件包内容信息</p>
-<p>1</p>
-<p><code>brew info package</code></p>
-<p>显示包依赖</p>
-<p>1</p>
-<p><code>brew deps package</code></p>
-<p>查找有没有想要安装的软件包（支持模糊查找）</p>
-<p>1</p>
-<p><code>brew search package</code></p>
-<p>查看软件包的信息</p>
-<p>1</p>
-<p><code>brew info package</code></p>
-<p>软件包的安装选项</p>
-<p>1</p>
-<p><code>brew options package</code></p>
-<p>安装软件包</p>
-<p>1</p>
-<p><code>brew</code> <code>install</code> <code>package</code></p>
-<p>如果想查看安装过程中执行的命令或者是编译信息，可以在 “install” 后面加一个 “-v” 参数：</p>
-<p>1</p>
-<p><code>brew</code> <code>install</code> <code>-``v</code> <code>package</code></p>
-<p>卸载软件包</p>
-<p>1</p>
-<p><code>brew uninstall(remove) package</code></p>
-<p>用 Homebrew 安装第三方工具软件包，例如用 homebrew 安装官方缺省的php</p>
-<p>1</p>
-<p><code>brew tap josegonzalez``/php</code></p>
-<p>如果软件包出了新版本，可以用 upgrade 更新过时的软件包（缺省 package 参数，则为全部更新）：</p>
-<p>1</p>
-<p><code>brew upgrade package</code></p>
-<p>清理之前安装的旧版本数据：</p>
-<p>1</p>
-<p>2</p>
-<p><code>brew cleanup --force -s</code></p>
-<p><code>rm</code> <code>-rf $(brew --cache)</code></p>
-<p>更多详细的用法说明可以在终端输入”man brew”查看。 PS：Mac 下类似 Homebrew 的软件管理工具还有 <a href="http://www.macports.org/" target="_blank" rel="noopener" title="macports">MacPorts</a>、<a href="http://fink.thetis.ig42.org/" target="_blank" rel="noopener" title="Fink">Fink</a>。 Homebrew 的一些配置目录：</p>
-<ul>
-<li>/Library/Caches/Homebrew: 安装所下载文件的存放的位置</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习笔记//" class="article-tag-list-link color5">学习笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/posts/63e71cfb.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-e8-bf-9f-e5-88-b0-e5-a4-aa-e4-b9-85-ef-bc-8c-e5-b0-b1-e4-b8-8d-e5-bf-85-e5-88-b0-e4-ba-86-e3-80-82" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/dfb99f8e.html">迟到太久，就不必到了。</a>
-    </h1>
-  
-
-        
-        <a href="/posts/dfb99f8e.html" class="archive-article-date">
-  	<time datetime="2015-03-12T03:51:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-03-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="https://upimg.ibolee.com/wp-blog-uploads/2015/03/2012042010233672410.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/03/2012042010233672410.jpg" alt="2012042010233672410"></a> <strong>辉姑娘/文</strong> 当年参加高考，见过触目惊心的一幕。 那天下午答完卷子出考场时，发现一位考生晕在地上，父母在旁边呼天抢地。问过路人才知道，原来是这位考生迟到了半个小时，哀求监考老师让他进去，监考老师却不为所动，说了一句：“迟了太久，就不必到了。”考生最后扑通一声跪在地上，连连磕头，磕到头都破了，老师仍坚称绝不破例，拒不放行。考生最终晕倒在地，父母指责老师不通人情，痛哭大骂不已。 那一次迟到虽不至改变那位磕头考生的命运，却也必然影响甚大。不知道这一场教训，是否让他铭记终生。 后来工作，“迟到”寻常无比。我不算苛刻的人，每次哪怕自己早到也愿意多等一会儿并无怨言。 只有一种情况我会变身成“绝不通融”的铁面人——应聘的迟到。 曾有一位各方面条件都不错的应聘者，却比约定好的时间整整迟到了一个小时。那天我微笑着听他讲完他的工作经历，然后把他送走，在简历上打了个大大的叉。我给人事部门的反馈是：连自己最重要的事情都可以迟到，公司无法把工作放心交给他。 明知今天是关键行程，交通可能会出现拥堵，就该做好准备，早早出门。临到最后才发现时间晚了，气喘吁吁地奔跑，不停道歉……对不起，这不会得到同情。 如果分不清轻重缓急，说明你根本还没有成熟到可以合理分配自己的时间，更难以在这个残酷社会立足。迟到与否，不仅仅体现一个人细心与认真的程度，更重要的是体现一个人的责任感。 电影《肖申克的救赎》中，老犯人布鲁克斯在监狱中被关押了50年，一直担任图书管理员。然而，当他得知自己马上要刑满释放时，不但没有欣喜若狂，却开始惊慌失措，因为他已经完全习惯了监狱体制化的生活，他对于外面的世界一无所知，充满恐惧。 为了不离开监狱，老布举刀杀人，以求得在监狱中继续服刑，然而最终他依然被放出监狱。 他入狱时只见过一两辆汽车，出狱时却满大街都是汽车，他在一家小超市工作，老板看不起他，他也做不好。他怀念在监狱里的生活，受人尊敬，生活稳定。最终他写了封信给狱友们，说宁可拿枪打劫也希望回到监狱，可是自己太老了，已经做不了这种事了。 最后他写：希望监狱不要再放出像我这么老的人。 他最终选择在小旅馆里自尽。 自由来得太迟了，迟得已经没有来临的必要，强制性的来临，只会带来崩溃的结局。 某天看电视，看到一位弃婴在孤儿院长大成人后与亲生父母相见。亲生父母接受访问时声泪俱下，称当年是因为家境贫寒，万般无奈才放弃了孩子，现在经济条件好了，希望可以找回孩子，补偿孩子。 镜头一转，那位已经生出青色胡茬儿的小伙子一脸漠然。记者问他：你愿意与父母相认吗？他点点头：愿意。记者又问：那你愿意跟他们回家吗？他说：不愿意。 记者问他为什么，他说：好多年以前我期待过跟他们相认，有一个属于自己的家。这个念头在我的心里想了太久太久，几乎每天都要想一遍，想起来就想哭。可是特别奇怪，想着想着，这个念头居然就渐渐淡了，而且越来越麻木。到最后，我自己也不觉得这是多大个事了。 他摇摇头：我现在觉得自己就这么自由自在，没爹妈管着，也挺好的。如果他们再来照顾我，我还真不习惯，所以还是算了吧。 记者追问：那你是在恨他们吗？他笑了一下：以前有过，现在确实是没有了。没有爱哪来的恨？我就是觉得，有些东西来得太晚了，并不一定没有它存在的意义，只是，我不想要了。 一杯热腾腾的茶，放到凉透，再喝已没有必要，只会伤身。一件加厚的外衣，穿得太晚，寒气已经侵入体内，感冒无法避免。儿女的孝顺，在父母去世以后才表现，那是失德与伪善。朋友的关怀，在事过境迁后再开口，只会得到礼貌的回应，很难得到知己的情谊、交心的温暖。爱情的表白，在罗敷有夫之后再开口，要么是甘当见不得光的小三，要么也只能留下“恨不相逢未嫁时”的遗憾。 当年监考老师的一句话道出了真理：迟得太久，不必到了。迟到，本身就说明了缘分的不足与付出的欠缺，无论是前者还是后者，都不该再续前缘。你若真在乎，必然早早追求，早早拥有，怎会等到对方心已死，情已逝，才迟迟到来。 在某场人生约会时，如果迟到，只能说明从未重视。即使“到”了，也无法抵消“迟”的负作用。请问问自己的心，是真的需要这场相逢吗？还是下一次才值得严阵以待，准时出现？ 不曾重视的相约，失去时莫道遗憾。 <strong>本文摘自畅销书《一切都是最好的安排》</strong></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">干货</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/转载-amp-分享//" class="article-tag-list-link color5">转载&amp;分享</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/posts/dfb99f8e.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-y-e6-9c-89-e5-92-8c-e6-88-91-e4-b8-80-e6-a0-b7-e7-9d-a1-e4-b8-8d-e7-9d-80-e7-9a-84-e5-90-97-ef-bc-9f" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1144,6 +753,352 @@ svn cat -r PREV filename &gt; filename (PREV 是上一版本,也可以写具体�
 
 
   
+    <article id="post-e5-a6-82-e4-bd-95-e5-88-a9-e7-94-a8-e4-b8-8a-e4-b8-8b-e7-8f-ad-e7-9a-84-e7-a2-8e-e7-89-87-e6-97-b6-e9-97-b4-e5-85-8d-e8-b4-b9-e8-80-8c-e5-8f-88-e6-ac-a2-e4-b9-90-e7-9a-84-e5-ad-a6-e8-8b-b1-e8-af-ad" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/posts/de6584e8.html">如何利用上下班的碎片时间免费而又欢乐的学英语?丨APP英语魔方秀</a>
+    </h1>
+  
+
+        
+        <a href="/posts/de6584e8.html" class="archive-article-date">
+  	<time datetime="2014-09-03T01:04:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-09-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>题记：现在大家都很忙，整段时间非常少。包括黑李白在写这篇文章的时候，利用的也是碎片时间。当我们工作、生活、旅行需要用到英语的时候，又会觉得没时间去学，吃了亏。时间就是牛奶，你不挤就它还真没有。今天君南和大家分享一下利用碎片化时间学欢乐的学英语的方法。</p>
+<p>——————————————-正文分割线———————————————-</p>
+<p>好友 <a href="http://weibo.com/lj514460287" target="_blank" rel="noopener">@辐射兔</a> 推荐我使用：英语魔方秀 以后，用了一年了吧，整个人都精神了。</p>
+<p>英语魔方秀下载地址：<a href="http://www.mofunenglish.com/app.html" target="_blank" rel="noopener">http://www.mofunenglish.com/app.html</a>（支持android、ios）</p>
+<p>有个朋友A，现在在一家不错的外贸公司工作，公司是做全球矿产经济的，经常往返于巴西与中国，他的英语很不错，但从未听说过他报过什么班儿学英语什么的，</p>
+<p>有一次我问他：唉，你英语那么好，是不是之前就是*东方的老主顾啊』</p>
+<p>这货弹了弹烟灰，说：『《阿甘正传》你看过吧？』</p>
+<p>我：『看过！』</p>
+<p><a href="https://upimg.ibolee.com/wp-blog-uploads/2014/09/hello－gump.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2014/09/hello%EF%BC%8Dgump-576x1024.png" alt="hello－gump"></a></p>
+<p><strong>【功能：用英语魔方秀学习《阿甘正传》，句式可快可慢，可录音上传与网友分享】</strong></p>
+<p>A哥：『我也看过，不过我忘了我看了多少遍《阿甘正传》了，当时非常喜欢汤姆 克鲁斯的声音，于是就在自己的笔记本电脑前跟着他学，把台词背的烂熟为止。单词，语法什么的也无师自通了。到现在看这部电影的时候，台词我出口就能接下几句才罢休』</p>
+<p>我『然后呢』</p>
+<p>A哥：然后我到了现在这家公司，口语有点浊，但是很快就可以融入了，学到的感兴趣的东西与实践衔接需要一个过程。现在想起，挺感谢那部电影的，也非常感谢汤姆 克鲁斯</p>
+<p>听完他的话，我没再说话。</p>
+<p><a href="https://upimg.ibolee.com/wp-blog-uploads/2014/09/hello－gump.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2014/09/hello%EF%BC%8Dgump-576x1024.png" alt="hello－gump"></a></p>
+<p>【功能：不懂的单词可查询，但是需要wifi或者移动网络的支持】</p>
+<p>那么：</p>
+<p>会英语有一份更好的工作，有一个更好的人脉圈，即使是我们搞技术的，顶级的技术都要和老外去学，有时候看一些工作中会用到的open source code（开源代码)，不会英语连说明都看不懂，更别谈学了。。。。</p>
+<p>英语魔方秀门槛低，只要你拥有一台智能手机，就可以免费的使用它。</p>
+<p><a href="https://upimg.ibolee.com/wp-blog-uploads/2014/09/软件主界面.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2014/09/%E8%BD%AF%E4%BB%B6%E4%B8%BB%E7%95%8C%E9%9D%A2-576x1024.png" alt="软件主界面"></a></p>
+<p>【功能：英语魔方秀的教材分类】</p>
+<p>学英语性价比？</p>
+<pre><code>11年底的时候，我去崇文门一家*联英语咨询报班事宜，在跟着老师做了一番测评之后，对方告诉我，如果你的英语想学到听说读写没有障碍的话，需要3W6的学费，你考虑一下。鉴于lz不是土豪，听完价格渐渐的有些灰心。3W6能买3台macbook了。。英语魔方秀是非常经济实惠的自学英语的选择，目前它是免费的。</code></pre><p>晚上回家看了一下老罗的讲座视频，血脉喷张，我要免费学英语。。。还要免费学会英语！！！！</p>
+<p><a href="https://upimg.ibolee.com/wp-blog-uploads/2014/09/千与千寻.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2014/09/%E5%8D%83%E4%B8%8E%E5%8D%83%E5%AF%BB-576x1024.png" alt="千与千寻"></a></p>
+<p>【英语魔方秀的首页展示的动漫，可按照动漫台词学习英语】</p>
+<pre><code>怎样保持好学英语的毅力？（老罗用的是不停的自我激励）</code></pre><p>简述一下老罗是怎么免费学英语的，自己天天背单词，然后想放弃的时候（心血来潮的耐心最多不过三天）随手拿起俩本励志书籍，读上俩句。然后红尘滚滚的心就停止了。</p>
+<p><a href="https://upimg.ibolee.com/wp-blog-uploads/2014/09/离线缓存.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2014/09/%E7%A6%BB%E7%BA%BF%E7%BC%93%E5%AD%98-576x1024.png" alt="离线缓存"></a></p>
+<p>【功能：离线缓存，在上班路上之前，用家里的wifi缓存好要学的内容，路上带上耳机学习】</p>
+<p><a href="https://upimg.ibolee.com/wp-blog-uploads/2014/09/some-one-for-you.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2014/09/some-one-for-you-576x1024.png" alt="some one for you"></a></p>
+<p> 【在英语魔方秀学习英文歌曲，图为听网友唱阿黛尔的《some one like you》】</p>
+<p><a href="https://upimg.ibolee.com/wp-blog-uploads/2014/09/小江啦.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2014/09/%E5%B0%8F%E6%B1%9F%E5%95%A6-576x1024.png" alt="小江啦"></a></p>
+<p>【图为黑李白在英语魔方秀的好友：小江啦，英语学的非常好，我们互相激励，互相打气喔~】</p>
+<pre><code>最后，方法总结如下：</code></pre><p>1.用一个靠谱免费的学英语app； 2.与网友互相激励互相学习； 3.像老罗一样准备很多精神食粮，打算放弃的时候，围观一下。</p>
+<pre><code>黑李白希望大家一起坚持，学好英语，走出自己职业晋升瓶颈。有打算的朋友，可在本文下方留言，我们一起坚持，互相监督。</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">干货</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">碎片时间利用</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/学习笔记//" class="article-tag-list-link color5">学习笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/posts/de6584e8.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-e7-8e-a9-e5-9d-8f-e4-ba-86-e7-9a-84-e4-bd-93-e8-b4-a8-e5-a6-82-e4-bd-95-e4-bb-8e-e5-a4-b4-e5-bc-80-e5-a7-8b-e6-81-a2-e5-a4-8d-e8-ba-ab-e4-bd-93-e7-b4-a0-e8-b4-a8-ef-bc-9f" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/posts/aefbf9bc.html">玩坏了的体质如何从头开始恢复身体素质？</a>
+    </h1>
+  
+
+        
+        <a href="/posts/aefbf9bc.html" class="archive-article-date">
+  	<time datetime="2014-08-15T07:46:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-08-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>首先，这不是如何健身的建议，只是一个快要把自己玩死的边缘，把自己拉回来的综合路程。</strong><br>一个吸烟9年，喝酒，作息不规律，熬夜，爱吃重口味油盐等等..的人，一次改变的路程。<br>曾我真的以为我还能呼吸就真的能多活一天似的。  </p>
+<p><strong>大学毕业后的数年里，持续不断的，一个不拉的，坚持不懈的干了如下事：（真特么想抽死自己） 相信很多毕业之后身材走样的人没少干以下的事，其实都是自己的错，怪不得别人。</strong><br><strong>抽烟 ：</strong><br>一天至少一包半，前后抽了9年。以至于，后来只要稍微跑动，肺部整个一片灼烧感，有时候有即使不跑动也是灼烧甚至有血味（感觉这尼玛要死了差不多了）..<br><strong>喝酒：</strong><br>有一定程度借酒消愁的行为…<br><strong>作息不规律：</strong><br>4，5年没好好规律生活过了。<br><strong>熬夜：</strong><br>这不是家常便饭麽？顺便抽着烟喝着酒，吃着地沟油烧烤。打两盘DOTA…不极度疲劳不睡..持之以恒坚持不懈的干这事。  </p>
+<p><strong>重油重盐辛辣油腻，大口吃肥肉：</strong><br>一天没一斤肉，加上肥肉..怎么可能。而且全是油腻腻的。而且都是在晚上吃.. 吃很多。坚持不懈持之以恒的吃。 吃完了还加餐出去吃的。还来薯条，喝各种饮料…<br><strong>还特么不运动：</strong><br>我觉得很长一段时间我最大的运动就是下楼走一圈。  </p>
+<p><strong>过度的XXOO （捂脸跑走…）：</strong><br>那会年轻没见过女人，跟种马似的….就算体质很差了，还是乐此不疲，战个痛快。不知不觉..人还是会被抽干的。<br>大概就是上个楼都喘，各种失眠盗汗，一天到晚犯困，萎靡。要么昏睡不醒，然后醒来2小时就犯困。虚成这样子！  </p>
+<p><strong>以上都要我一个不拉占全了.. 坚持了好多年…（羞愧难当.我这么糟蹋自己）</strong><br>你们谁能同时把以上全做到了，而且坚持不懈很多年还没挂了…  </p>
+<p><strong>我现在回想起来，那时候的体质虚弱的和快死了没啥区别。却浑然不自知！！</strong>  </p>
+<p><strong>后来3件事刺激到我了。</strong><br>第一件：EX嫌弃我20多岁人，30多岁发福的身体。感觉奇耻大辱。我也不知道为毛觉得奇耻大辱。<br><a href="https://upimg.ibolee.com/wp-blog-uploads/2014/08/129ce89a00b13dc14782e807dd96e83f_b.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2014/08/129ce89a00b13dc14782e807dd96e83f_b.jpg" alt="129ce89a00b13dc14782e807dd96e83f_b"></a><br>体脂图，哥们我的身材当时就冲着 这个20-22%的造型去了，<strong>还是没肌肉的那种。</strong>再这么下去就是30%。（我想我没病，很肥的时候不会玩自拍的…我拍的下去麽我…不然真是可以给你们看看）  </p>
+<p><strong>咳咳再强调一次 ，这不是如何健答..只是一个综合过程.. 作为给题主的参考。</strong>  </p>
+<p>第二件事：<br>被EX甩了之后，我的身体好虚弱，几天没合眼，睡不着啊。整个精神神经处于应激状态，关在一个小屋子里闷着抽烟，一包接一包。（想象一下那种乌烟瘴气里被熏几天的感觉吧）  </p>
+<p>然后摸鼠标键盘的时候，肌肉都在抖…<br>后来才垂死的睡着，醒来的时候汗把床被子全打湿了。  </p>
+<p><strong>我当时要是挂了。我一点都不意外。</strong>  </p>
+<p>此时还发生了一件事，一个快递大哥来送快递，她老婆正好也在，她用一种惊诧的眼睛瞪圆了看着我。<br>（和快递大哥认识住一个院子，自此之后比较熟了，这大约是昏死睡之后一周的事，还不是当天..）<br><strong>之后我才知道她在惊讶，怎么一年轻小伙子，憔悴成这个样子…</strong>  </p>
+<p>第三件事：<br>等我缓过来之后，终于垂死的睡过去。<br>一身湿透的盗汗醒来，有了一点力气，挣扎着爬起来，面对这一切，我觉得我需要锻炼了。   </p>
+<p>（这已经是那次盗汗昏睡 2周以后了.. 觉得有点力气了才去..）<br>在跑步机上，跑了2公里，很慢的速度，和小姑娘差不多，将近20分钟。<br>下跑步机的那一刻：<br><strong>天旋地转！差点没晕过去，肺里全是血的味道。眼前发黑。（现在想起来都后怕）</strong><br><strong>我当时要是挂了。我还是一点都不意外。</strong>  </p>
+<p><strong>在这三件事的综合刺激下，我开始决定改变一些什么：</strong><br><strong>只是为了活下去，对好好的活下去。</strong>  </p>
+<p><strong>题目主可以做个参考。做做修改，以适应你自己的方法。</strong><br><strong>我详细的记录过程是想告诉LZ，一切的改变是环环相扣的。不是一步到位的。</strong><br><strong>我也是无意之间环环相扣影响着做了一个综合改变。希望给你参考借鉴。</strong>  </p>
+<p><strong>我做的第一件事就是跑步：</strong>  </p>
+<p>从2公里发晕到跑完5公里无压力。这个过程我用了2个月。一开始多么的缓慢。<br>真的很累，我每次去健身房的时间，大约是7点，要工作学习啊。然后锻炼要各种等，跑步机满。然后9点才能练完洗完。 还没吃的，要走半小时到地铁站再坐一小时地铁回家。回家后再做吃的睡觉。  </p>
+<p>可能那会神经真的受刺激了，居然要我坚持下来了，差不多一周3-4次。  </p>
+<p><strong>如果你觉得跑步很无聊，我觉得你需要一个很好的耳机，我就靠着这个撑过很多无聊的时候。</strong><br><strong>别再扯着耳机线了。晃啊晃啊你不难受麽！真的很蛋疼好麽。</strong><br><strong>拥有这个：你就会觉得自己飞起来： 跑步很欢乐了！音乐自选，就激情一点吧：</strong>  </p>
+<p><a href="http://item.jd.com/1116035.html" target="_blank" rel="noopener">【索尼NWZ-W273S】索尼（SONY） NWZ-W273S 防滴溅运动式MP3 游泳时可佩戴的Walkman 4G 黑色【行情 报价 价格 评测】</a>  </p>
+<p><a href="http://item.jd.com/643273.html" target="_blank" rel="noopener">【飞利浦SA4ACT04KN/93】飞利浦（PHILIPS）SA4ACT04KN/93 头戴式运动MP3 4G 专利“FullSound”音效 黑色【行情 报价 价格 评测】</a>  </p>
+<p>这两款运动耳机我都有，而且我都用了很久。… 综合下来推荐索尼的。<br><strong>这时候跑步终于变得有趣多了！不用烦耳机线了！重要的是，你是听歌还是听英语还是听电影随便你，然后一切就在你的 ‘似魔鬼的步伐’中 ，一步两步…摩擦摩擦….咳咳</strong><br>(神曲移步：<a href="http://www.xiami.com/song/1773110382?spm=a1z1s.6928797.1561534521.260.2iTucX" target="_blank" rel="noopener">我的滑板鞋-约瑟翰 庞麦郎, 我的滑板鞋MP3下载,歌词下载</a>）  </p>
+<p>这个时候气色开始恢复，以前都是面色发黑的，后来熟人说，最近你气色好多了，脸红润了，终于有色泽了，之前你那憔悴的样子。（看来每个人都看得出，就我自己不知道- -）  </p>
+<p><strong>第二件事就是戒烟戒酒：</strong><br>我觉得跑步这件事简直是一切的基础：<br>希腊：如果你想强壮,跑步吧!如果你想健美,跑步吧!如果你想聪明,跑步吧!  </p>
+<p>无意之间，锻炼的习惯与跑步要我打下了戒烟戒酒的基础。<br>虽然坚持锻炼，但是烟酒不断也不是什么好体质。  </p>
+<p>终于在第三个月的时候，我把烟戒了。 在猛抽了3包烟之后，掐灭了我人生最后的一根烟。<br>然后无痛苦的戒掉了，一点念想头没。 9年的烟民，仅仅4-5天我就把体瘾收拾干净了。如果要给戒烟的人什么建议。我可以另开一贴了。<br>但是第一步一定是锻炼，第二步破心瘾，好好想清楚吸烟你得到了什么。<br><strong>我巧合的完成了第一步，在其他书籍的帮助下猛抽烟看完想清楚。</strong><br><strong>书籍： 这本书能让你戒烟</strong><br><strong>豆瓣评价：</strong><a href="http://book.douban.com/subject/3318174/" target="_blank" rel="noopener">这书能让你戒烟 (豆瓣)</a><br><strong>（真想个给作者32个赞）</strong>  </p>
+<p>如果LZ有什么不良嗜好抽烟喝酒。<br>先从跑步开始，再怒攻心戒之。 跑步会为戒烟打下很好基础。<br>我一个抽的肺部成天灼热，一嘴的血丝味道的人，都能开心 ‘无痛苦’的戒了。<br><strong>对戒的每一秒我都是快乐的，舒服的。所有的戒断反应都是挣脱枷锁的赏赐。</strong>  </p>
+<p><strong>之后戒烟至今，一点念想都没！最重要的是：我很开心！戒烟很爽！一点也不痛苦！包括过程！</strong><br><strong>相信我，一根接一根的烟接着抽，简直没有比这个更无聊和愚蠢的事了。</strong><br>完成了戒烟，戒酒就更简单了。这个我本来就没瘾的。  </p>
+<p><strong>第三件事改变作息：</strong><br>当我完成跑步与戒烟这种习惯之后，心肺有了一定恢复，起码我能睡着不大肆出虚汗了。<br>但是这还远远不够。<br>我还有个大问题！作息不规律，到点睡不着…. 这也是健康的大硬伤吧！<br>如果这个不改，其他一切都是白搭。  </p>
+<p><strong>我无意之间看到一句话：</strong><br><strong>你之所以即使疲劳了，也不肯睡觉，是因为你没有勇气结束这一天，也没有勇气迎接新的一天。</strong><br><strong>参考</strong> <a href="http://lijunnan.com/1096/" target="_blank" rel="noopener" title="如何改掉晚睡强迫症，让睡眠规律起来。">如何改掉晚睡的坏习惯？</a>  </p>
+<p>一下我脑洞打开，我颇花费了一些日子，告诉自己这一天无论自己做的如何，有没有拖拖拉拉。有没有完成这件事。我都要结束它了，如果想要自己睡的安心，那么白天就积极点。<br>但是！还是有问题的，虽然我努力转变了观点，但是到点还是多少有点睡不着。不过这又开启了第四件事。  </p>
+<p><strong>第四件事打坐，冥想：</strong><br>我觉得是白天的自制力不够，不能好好完成事情，才让自己晚上安心睡着。于是我转而研究了一下自制力，确定它是一种‘肌肉’ 是一种能量，你需要刻意锻炼它，也需要它休息。一旦它疲劳了。你的行为就崩溃了。 所以，我们会发现当我们疲劳的时候，会更加容易暴饮暴食，更加容易的发怒等。<br>参考书籍：<br><a href="http://book.douban.com/subject/10786473/" target="_blank" rel="noopener">自控力 (豆瓣)</a><br><strong>（我一开始以为是励志鸡汤文，一直嗤之以鼻，后来无意看到，才发现这本书是斯坦福一门课程。有理有据，我其中借鉴了不少有效的经验…干嘛取个如此鸡汤的名字，叫什么 “前额皮层操作术” 多牛掰.）</strong>  </p>
+<p>随着我的实践一路走来。<br>其实对于以下观点不能同意更多：<br><strong>很多问题，不是‘意志力’解决的，其实就是个体力问题。</strong><br><strong>我们中国人，太注重想通了，好像想通了就什么都解决了。其实不然，道理那么多，我们还是过不好一生。别说一生，连个觉都睡不好其实。 **<br>**很多都是身体问题其实，我觉得这点西方就很务实。</strong><br><strong>锻炼它的第一步就是冥想，打坐。专注于呼吸之间。</strong>  </p>
+<p>一开始专注于呼吸之间，坐3分钟我都坐不住。但是我知道自制力是需要锻炼的。<br>专注于呼吸之间的冥想就是最好的打基础，不但可以提高注意力也能提高自制力。<br>于是<br>我每天睡前都进行练习，带着耳机。听很清淡的曲子，但是尽力不跟着调子跑了。<br>慢慢放松，专注呼吸之间。<br>过去谁能想象，我这个坐着就要狂抖腿的人，能像现在一样安安静静的坐着打坐。<br>随着时间的推移与累积。<br>你会在中间学会很多。  </p>
+<p><strong>很重要的一个附带就是，你会意识到你的很多情绪，观点，一股一股往脑中冒的想法都是那么的多，不过你将学会的是，不用刻意压抑什么，任由他们生，也任由他们灭。你只要专注于你的呼吸之间，哪怕你意识各种想法无论是惊涛骇浪 还是 香艳无比 你只要默默的专注于你的呼吸之间，看着他们起看着他们灭。</strong>  </p>
+<p><strong>由于这件事，我无意之间加上第三件事的观点：只是你没有勇气结束这一天。</strong><br><strong>有了一个很好的结合。 **<br>**冥想之后，我觉得这一天我给它画了一个句号。于是我能安安静静睡着了。</strong><br><strong>即使偶尔睡不着，我也会告诉自己，这一天结束了，即使我没睡着，我也休息着。特别坦然。结果是..必须睡的着啊！</strong>  </p>
+<p>于是我的作息能够保证了，这还是不够把身体变好，只是叫做正常，叫做恢复。<br>于是水到渠成的第五步有了  </p>
+<p><strong>第五件事，健身：</strong><br>一段日子后，我觉得这样算是稳定了，起码和正常人差不多生活了。再也没那么虚弱的要死了。也没有肺里的血气，但是里强壮和强大差的远呢。<br>于是有了个新的想法；我要强壮。  </p>
+<p><strong>当一个男人发自内心的有了我要强壮的念头之后，一切都好办了。</strong><br>这里请参考：知乎，硬派健身系列。 我都跟哪学的。<br>不过我个人从此不往健身房跑了， 没那时间，也不喜欢对着一堆金属吭哧吭哧的。<strong>我个人比较喜欢无器械，囚徒健身等。</strong><br><strong>因为相对自由，个人喜好。 殊途同归。不要争好坏。都挺好。</strong>  </p>
+<p>书籍：<br><a href="http://book.douban.com/subject/25717097/" target="_blank" rel="noopener">囚徒健身 (豆瓣)</a><br><strong>用失传的技艺练就强大的生存实力</strong><br>优酷：<br><a href="http://www.soku.com/search_video/q_%E5%9B%9A%E5%BE%92%E5%81%A5%E8%BA%AB?f=1&kb=0412000000000__" target="_blank" rel="noopener">囚徒健身 搜库</a> 动作参考。  </p>
+<p>很多训练的动作和基础：可以在知乎上的硬派健身多做了解：<br><strong><a href="http://zhuanlan.zhihu.com/oh-hard" target="_blank" rel="noopener">硬派健身 - 知乎专栏</a> （那些要减肥，健身的看这里好吗！你们想要的一切都在这.我可不专业噢， 非常感谢 <a href="http://www.zhihu.com/people/d3207a7746afbd84017ea6b05b2f1be3" target="_blank" rel="noopener">@斌卡</a> 你的文我全部拜读.受益匪浅）</strong>  </p>
+<p><strong>再此我不得不再次强调，这不是一个健身贴，这是一个从颓废走向健康的心路贴。</strong><br><strong>专业知识，这里水平不够没法提供- -，**</strong>也不做任何误人子弟的指点。**  </p>
+<p>OK继续，所以后来慢慢的从跑步，转向了无氧与HIIT锻炼。<br>insanity08 地址：<br><a href="http://v.youku.com/v_show/id_XNjgyNTQ2ODAw.html" target="_blank" rel="noopener">insanity08 Max Interval Circuit 极限间歇循环 中文</a>  </p>
+<p>从一开始10分钟跪地上，到现在无氧完了还能跳30分钟。 如果只是做做核心肌肉的话，我能跳完全成。 这是一个对我而言很好的进步。  </p>
+<p>尤其是你早上起来之后，发现，额，我胳膊上怎么这里突起一块肌肉，额过几天又发现， 额原来这个部分是有肌肉的，原来这一块是几块肌肉组成的… 你看着自己身材的变化觉得惊喜不已。是我目前最大的快乐之一。相信也会给你带来快乐。  </p>
+<p>我主要是在家里练的，这一路要我意志力有了巨大的磨练。 无论刮风下雨，多晚回家。我肯定2小时锻炼妥妥的。最晚一次我记得练到夜里1点，虽然不科学，但是只是偶尔，<strong>有时候坚持的意义比偶尔的不科学重要。</strong>  </p>
+<p>随着体质渐渐的增强。慢慢就开始注重减肥与长肉了。<br>一个曾经毫无自制力的，虚弱的走上发福道路的人都能这么练。<br>50个仰卧起坐就嚷嚷腹肌为何不来…还是退下吧。<br>为了继续加强锻炼，我开始用一个旧书包装了一点铁，注意，这并不一定科学，不要随便模仿，但是一定要做到自己瞧得起自己，尽自己最大努力。<br><a href="https://upimg.ibolee.com/wp-blog-uploads/2014/08/b2a374198f104ddb58f8b5d74c71cb84_b.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2014/08/b2a374198f104ddb58f8b5d74c71cb84_b-300x168.jpg" alt="b2a374198f104ddb58f8b5d74c71cb84_b"></a><br>然后背上它：完成200个俯卧撑。<br>然后脱掉….然后100多个卷腹，加上10-30分钟HIIT。<br>这是某一天内容。每天我的的运动内容不同。但是无论多晚2小时，无氧+HIIT。<br>这特么才叫减肥…别50个仰卧起坐就嚷嚷腹肌怎么还不来。  </p>
+<p><a href="https://upimg.ibolee.com/wp-blog-uploads/2014/08/f5e8071ca6ed8cbc46ac0df0e847167a_b.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2014/08/f5e8071ca6ed8cbc46ac0df0e847167a_b-300x147.jpg" alt="f5e8071ca6ed8cbc46ac0df0e847167a_b"></a>  </p>
+<p>你们觉得已经走到今天的我，还是个虚弱的胖子吗…<br>咳咳，不过我是暂时比不了腹肌男们。<br>第一我条件不够。第二我基础薄弱。TAT<br>臣妾也不是神啊…还不得脚踏实地一点点去坚持去做吗 TAT  </p>
+<p>加油吧，痛苦只在一瞬间。它顶多一分钟，一小时，甚至顶多一年。<br>我用这个和志同道合者打气：<br><a href="https://upimg.ibolee.com/wp-blog-uploads/2014/08/7d966670f7ec795ad08494c9f6882e94_b.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2014/08/7d966670f7ec795ad08494c9f6882e94_b-300x153.jpg" alt="7d966670f7ec795ad08494c9f6882e94_b"></a>  </p>
+<p><a href="https://upimg.ibolee.com/wp-blog-uploads/2014/08/15ac9586ef84f162c7957207588b3688_b.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2014/08/15ac9586ef84f162c7957207588b3688_b-300x162.jpg" alt="15ac9586ef84f162c7957207588b3688_b"></a>  </p>
+<p><a href="https://upimg.ibolee.com/wp-blog-uploads/2014/08/2dbf4f86011957159ca55268f358dc09_b.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2014/08/2dbf4f86011957159ca55268f358dc09_b-300x122.jpg" alt="2dbf4f86011957159ca55268f358dc09_b"></a>  </p>
+<p>PS:<br>送上一些我锻炼时候，累的不行的时候用来打气的视频：<br><a href="http://v.youku.com/v_show/id_XNzI4NTg0MjA0.html" target="_blank" rel="noopener">智利矿工世界杯前振臂高呼：死神来了又如何？死亡之组又怎么样？</a><br><a href="http://v.youku.com/v_show/id_XNTM3MjQyMDI4.html" target="_blank" rel="noopener">1分钟让你知道你身上最宝贵的是什么</a><br><a href="http://v.youku.com/v_show/id_XNTE1NjE5MDI4.html" target="_blank" rel="noopener">励志：痛苦只在瞬间</a><br><a href="http://v.youku.com/v_show/id_XNjUwMDUzMDcy.html" target="_blank" rel="noopener">【牛男励志】2014终极励志视频：该起床了（牛男字幕）</a>  </p>
+<p><strong>第六件事，饮食： 当前5件事养成习惯后。这件事就水到渠成的来了。</strong><br>作为一个重油重盐，吃辣，无肉不欢的人。<br><strong>我也不认为我的饮食也可以做一个转变。</strong><br><strong>我也干过半夜突然受不了馋死了跑出去大吃一通。</strong>  </p>
+<p>但是<br>如今，蛋奶蔬菜粗粮为主。  </p>
+<p>早餐：香蕉脱脂牛奶燕麦葡萄干 是铁定的<br>晚餐同早餐。  </p>
+<p>午餐：绿豆粥黑米粥各种粗粮蔬菜。   </p>
+<p>肉：.<br>当然还是吃的，但是无油无盐<br>（不放油盐，白水煮，或者放点萝卜土豆吧，其实挺香单纯的肉味啊，土味啊）<br>定量，在健身后，吃100-200g （还不是每次，大约2-3天才吃一次）；<br>想起以前晚上一顿吃2斤油腻腻的肉就恐怖。  </p>
+<p>喝：杜绝了饮料， 只喝牛奶和水，绝大部分时候。 顶多偶尔锻炼完会喝一点功能性饮料。<br>水是过滤过后的水，和自来水直接烧开了喝伟大很有差别。 <strong>要尽量注重水的品质。</strong><br>现在有很多过滤饮水机，LZ买的这个：<br><a href="http://item.jd.com/407009.html" target="_blank" rel="noopener">【飞利浦WP3864/00】飞利浦（Philips）WP3864/00 一体式 净水机 饮水机【行情 报价 价格 评测】</a><br>感觉比自来水烧开强多了。  </p>
+<p>EX可以见证我家冰箱简直是各大饮料厂展览。只喝饮料不喝水的。<br>我曾经一度觉得，不喝饮料怎么活的下去。<br>悲剧的EX，我又把你拎粗来了。<br>提起她，<br>在无亲无故的这座城市里，独自经历了这一场之后。<br>如今，我只能坦诚的说，爱过。<br>看客们请淡定，咳咳。<br>我找到了真爱：<strong>自爱. TAT</strong>  </p>
+<p><strong>饮食调整的经验就是：</strong><br>1.如果你突然特别渴望高热量的食物，比如KFC啊 大肉 油腻腻的食物。 那就是很可能你体内需求热量不足了。<br><strong>你可千万别委屈自己</strong>，忍着不吃啊，那会让你吃的更多。该吃就吃！<br><strong>但是更好的做法是</strong>：<br>摄入蛋白质与有碳水化物的食物：<br>我一般就是 香蕉 葡萄干 牛奶 蛋白 等。 只要一小会之后，你就不会对这些油腻腻的高热食物非常渴望了。甚至吃不吃无所谓了。** 因为你成功的把大脑给‘忽悠’过去了。它获得满足了之后就不会折磨你了。你只要给他足够的蛋白质和碳水。**<br><strong>（果然讲科学 讲人性才是硬道理）</strong>  </p>
+<p><strong>高蛋白，低脂肪，高碳水化物，高纤维素 是你更好的选择：</strong><br><strong>食物热量查询：</strong><br><a href="http://www.boohee.com/food/" target="_blank" rel="noopener">食物热量查询，食物卡路里大全</a>  </p>
+<p>参考：<a href="http://v.163.com/movie/2013/5/E/1/M8TBLASMF_M8TBLJSE1.html" target="_blank" rel="noopener">BBC：关于减肥你应该知道的十件事</a><br><a href="http://zhuanlan.zhihu.com/oh-hard/19780207" target="_blank" rel="noopener">【硬派健身·减肥篇】电子书硬派开售 知乎盐系列 - 硬派健身 - 知乎专栏</a>  </p>
+<p><strong>2.你会渴望吃肉的</strong>，<br>但是你知道知道，你需要的是肉，而不是加满佐料各种奇怪的食物。<br>（这不科学，有调料才是美味，我只是怕自己重口味复发，刻意的尽量淡。 完全不用学我，不过少油少盐对身体很好）  </p>
+<p>我大量锻炼后的土豆牛肉：就是土豆+牛肉+一点料酒去腥味。 生炖。 无油无盐。<br>你这时候才会知道，<strong>你其实只是需要肉，不是一堆油腻腻的配料。（大概就是，你饿了3天，干馒头你都觉得香，所以..对我而言这时候没什么油盐我也吃的很香）</strong>  </p>
+<p><strong>一个重口味，食肉动物主食现在的样子：</strong><br><strong>脱脂奶粉+桂格燕麦+葡萄干： （其他若干香蕉， 黑米，绿豆,黄豆等…就不拍了..</strong><br><strong>总之几乎就素为主。素中我又偏好以 黄豆绿豆黑米土豆萝卜白菜空心菜西兰花这些…尤其是豆类 蛋白质很高，碳水化物丰富，热量并不高，纤维素丰富，个人喜好，非专业推荐。</strong><br><strong>仅供参考试试）</strong>  </p>
+<p><a href="https://upimg.ibolee.com/wp-blog-uploads/2014/08/3929b404c91abbf8e148c847b926c649_b.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2014/08/3929b404c91abbf8e148c847b926c649_b.jpg" alt="3929b404c91abbf8e148c847b926c649_b"></a>  </p>
+<p><strong>若是加餐嘛：比如牛肉炖土豆： （就直接炖..加了点料酒去腥味，我自己反正是觉得很满足了）</strong><a href="https://upimg.ibolee.com/wp-blog-uploads/2014/08/88f215fb88667dbcc751074daa8ce0cd_b.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2014/08/88f215fb88667dbcc751074daa8ce0cd_b.jpg" alt="88f215fb88667dbcc751074daa8ce0cd_b"></a><br><strong>（补充：很多人误以为我完全油盐不进..怎么可能，臣妾做不到啊…我还活不活了。土豆和香蕉有大量的K+， 其次作为一个人类，肯定下意识的缺什么会去补充什么的。很多食物里都有一定的盐和脂肪含量的。）</strong>  </p>
+<p>如今，你要问我痛苦吗？一点都不。一开始有点不习惯，但是慢慢你会觉得浑身清爽。<br><strong>你要永远记得，**</strong>你要改变体质，也同时意味着要与过去的生活方式做一个诀别。**  </p>
+<p>以上。如今的我每天吃的好，睡的好。精神很好，肺里每天都很舒畅，每天醒来浑身都充满着能量。<br>我在呼吸，我的心脏在有力的跳动。<br>健康很重要，我很幸福。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/日记//" class="article-tag-list-link color3">日记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/posts/aefbf9bc.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-e5-a6-82-e4-bd-95-e6-94-b9-e6-8e-89-e6-99-9a-e7-9d-a1-e5-bc-ba-e8-bf-ab-e7-97-87-ef-bc-8c-e8-ae-a9-e7-9d-a1-e7-9c-a0-e8-a7-84-e5-be-8b-e8-b5-b7-e6-9d-a5-e3-80-82" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/posts/ac5bacc2.html">如何改掉晚睡强迫症，让睡眠规律起来。</a>
+    </h1>
+  
+
+        
+        <a href="/posts/ac5bacc2.html" class="archive-article-date">
+  	<time datetime="2014-08-15T07:38:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-08-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>我怎么感觉很多关于如何训练自己提前入睡，分成几个步骤操作的答案对我来说都像是一种精神凌虐。  </p>
+<p>那些睡前训练对我来说更像是一种反人性的行为，你要让我睡前不说话，不上网，光躺床上做傻兮兮的放松运动，我一定会觉得，God!~,I’m crazy！何必要强迫自己做不愿做的事情呢？安然舒适的入睡是一件多么惬意且重要的事情啊，我不相信一个无法控制自己入睡时间的人能够通过这些方法，把它变成习惯，真正改变睡眠时间。我想问一下，之前看过类似方法后现在真正坚持下来的人有多少？  </p>
+<p><strong>与其控制人性，改变人性，倒不如顺应人性，安抚人性。</strong>以下方法，亲测有效。  </p>
+<p>其实我们之所以很晚还不想睡去，只是因为我们的潜意识里认为，入睡意味着结束，我们迟迟不愿入睡只是因为我们迟迟不愿放下手边的娱乐，和今天的自己说再见，我们的心是浮躁的，还没有得到那个”恩，够了“的满足。<strong>但偏偏很多人在睡前的焦虑中会试图通过刷微博，刷知乎，不停的在信息流中漫游来找寻自己的满足感，殊不知，这种做法是大错特错的。这样做只会让心变得更加浮躁。</strong>  </p>
+<p><strong>其实我们心里需要的只是一个仪式，一个完整的带有仪式感的行为来让自己的心得到满足感</strong>，来告诉自己，今天已经结束了，我从这件事情上得到了满足感，可以心甘情愿的睡去。记住这个仪式不可以是碎片化的浏览和查看，一定要是一个完整的观看或者聆听。  </p>
+<p>比如可以听一段完整的抒情文字，有时我在不愿入睡的时候会让自己听一段类似”陌声人广播“或者私人电台这种文艺电台的呢喃，因为我向往这种夜晚的自省与反思，然后心就会得到满足，安静入睡。  </p>
+<p>比如读一段完整的文字，让自己在流畅完整的阅读中得到满足，你潜意识里会告诉自己，我看完了一段自己喜欢的文字，我已经得到了自己想要的，我做完了，于是心不再焦虑，可以甘愿睡去。再比如听一张完整的专辑或者是看一段完整的视频。  </p>
+<p>总之这件事情要是一件<strong>流畅的，完整的，让你心里感到满足</strong>的事情而不能是碎片的，零散的。这样做完，内心多半都会感到安静和舒适，同时大脑也会告诉你：“恩，我可以去睡了。”   文：苏杨（致谢）</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/日记//" class="article-tag-list-link color3">日记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/posts/ac5bacc2.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/5/">Next &amp;raquo;</a>
@@ -1373,11 +1328,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">邮件客户端</a>
+                <a href="javascript:void(0)" class="js-tag color1">MAC终端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MAC终端</a>
+                <a href="javascript:void(0)" class="js-tag color1">邮件客户端</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1389,15 +1344,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">TED</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">sticky</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">template</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">TED</a>
               </li>
             
             <div class="clearfix"></div>

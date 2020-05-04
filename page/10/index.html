@@ -156,253 +156,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-excle-copy" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/e57ef673.html">excle如何进行多行,单列,复制,获取单元格超链接地址</a>
-    </h1>
-  
-
-        
-        <a href="/posts/e57ef673.html" class="archive-article-date">
-  	<time datetime="2012-06-18T03:18:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2012-06-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1.如何一步到位实现多行复制呢？例如从B列的第4行一直复制到B列的200行，目前只知道多列的复制，却不会多行的复制，仍然是小心谨慎的选中复制的落后办法。 答:在名称框输入　B4:B200,回车后复制即可 2.要删除的数据比较多，有几万行，现在只知道用鼠标往下拉，选择速度太慢，请问有什么办法快速的选择多行？ 答: ctrl+shift+右方向键 ctrl+shift+下方向键 ctrl+shift+end 3.要按照列字数排序列 答: 如果要排序A列，则（A列）的旁边插入一行B列，在B列第一行写入“=LEN（A1）”回车，得到A1的字符数，然后向下刷到底。然后选则B列，点数据-排序-扩展选定区域然后确定-确定就好了。 获取单元格超链接地址如下 excel文档插入代码： Sub ExtractHL() Dim HL As Hyperlink For Each HL In ActiveSheet.Hyperlinks HL.Range.Offset(0, 1).Value = HL.Address Next End Sub 将代码插入后，点运行即可。word文档会将超链接的URL显示在光标所在处，excel会将URL显示在含超链接的单元格的右侧单元格内。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">excle</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT相关//" class="article-tag-list-link color5">IT相关</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/posts/e57ef673.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-e6-91-87-e7-af-ae-e8-ae-ba-e5-9d-9bseo-e4-bc-98-e5-8c-96-e6-97-a5-e5-bf-97" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/95db9abe.html">千万级页面的育儿论坛SEO优化日志</a>
-    </h1>
-  
-
-        
-        <a href="/posts/95db9abe.html" class="archive-article-date">
-  	<time datetime="2012-06-15T02:48:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2012-06-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习笔记//" class="article-tag-list-link color5">学习笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/posts/95db9abe.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-mac-need-ping" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/41eeb130.html">MAC下怎么使用ping？</a>
-    </h1>
-  
-
-        
-        <a href="/posts/41eeb130.html" class="archive-article-date">
-  	<time datetime="2012-05-17T13:47:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2012-05-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>拿我用的系统10.7.3（狮子）来说，应用程序里的“网络实用程序”里有ping的功能，建议选10次ping，多次ping的话按control+c停止。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">电脑软硬件</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT相关//" class="article-tag-list-link color5">IT相关</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/posts/41eeb130.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-site-log-syntax-meaning" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -448,80 +201,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/posts/e0fe5371.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-cloudpronto" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/fcfccbd1.html">还算比较靠谱的免费主机CloudPronto</a>
-    </h1>
-  
-
-        
-        <a href="/posts/fcfccbd1.html" class="archive-article-date">
-  	<time datetime="2012-05-09T20:21:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2012-05-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>原文:<a href="http://www.nealmi.com/2011/03/serverpronto-free-hosting/" target="_blank" rel="noopener">http://www.nealmi.com/2011/03/serverpronto-free-hosting/</a> 几经波折，我申请的 ServerPronto Cloud Hosting （<a href="http://www.cloudpronto.com/）终于可以使用了。下面是配置详细信息：" target="_blank" rel="noopener">http://www.cloudpronto.com/）终于可以使用了。下面是配置详细信息：</a> Disk Space Usage 5.04 / 1500 MB Monthly Bandwidth Transfer 0 / 200000 MB Email Accounts 0 / 5 FTP Accounts 1 / 1 SQL Databases 0 / 1 Hosting package CloudHosting-Starter cPanel Version 11.28.83 Apache version 2.0.63 PHP version 5.2.9 MySQL version 5.0.91-community Architecture x86_64 Operating system linux Shared IP Address 64.251.28.43 Path to sendmail /usr/sbin/sendmail Path to Perl /usr/bin/perl Perl version 5.8.8 Kernel version 2.6.18-194.26.1.el5 cPanel Pro 1.0 (RC1) 限制： 只能绑定一个主域名，不支持子域名。 FTP只能用主动模式连接。 其他的对于免费的来说还算不错了。 CPanel管理界面：</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT相关//" class="article-tag-list-link color5">IT相关</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/posts/fcfccbd1.html">展开全文 >></a>
         </p>
       
 
@@ -962,6 +641,346 @@
 
 
   
+    <article id="post-e3-80-8a-e8-94-a1-e5-ba-b7-e6-b0-b8-e7-9a-84-e8-af-b4-e8-af-9d-e4-b9-8b-e9-81-93-e3-80-8b-e8-af-bb-e4-b9-a6-e7-ac-94-e8-ae-b0-e6-a6-82-e8-a6-8131-ef-bc-8d40-e8-8a-82" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/posts/e235d769.html">《蔡康永的说话之道》读书笔记概要31－40节</a>
+    </h1>
+  
+
+        
+        <a href="/posts/e235d769.html" class="archive-article-date">
+  	<time datetime="2012-01-03T08:41:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2012-01-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>31.开口找人帮忙，要大事化小，从很简单的步骤很简明的提及，把要帮忙的事，换个角度说成是共事，对方更容易接受；小事寻求合作后，才能慢慢变为寻求对方大事的帮忙。 32.道歉的时候，把自己的过错，造成的麻烦，现在脑子里过一遍，然后想一下大概有哪些可以补救的措施，接下来就是勇敢的告诉对方自己犯了什么错，有多清楚自己的错给对方带来多大的麻烦，添了多少困扰，然后就是等着挨骂，对方骂的差不多的时候，自己再附上补救措施，这样比较好；另一种比较严重的错误是道歉中要表达对方是“最体谅的”“最宽厚的”然后在切入道歉正题。 33.问对方意见的时候，对方字面上的意见很可能不是真实的原因，真实的原因可以用少选择性的问题或替对方解决的难言之隐的反馈来进一步摸索对方的真实原因，从而促使事情谈成。意义在于字面的回答给你线索，你用你能猜到的，对方有可能的难言之隐给对方“解套”。 34.别人赞美你一句，你回敬一句赞美，很有可能让气氛变的热络，彼此赞美是社交，赞美的范围要自己观察，因人而异。 35.人一般最喜欢的字，是自己名字里的字，提及对方的名字，对方注意力会大幅提升，发信息祝福对方，要附上对方名字，罐头短信是没有生产力的。 36.环境会告诉你一段谈话的线索，与你谈话的人，往往把最容易被人发现的东西暴露出来，那也是这个人最愿意与你聊的方面。 37.炒热气氛，需要练习，如果你不太会组织大家的活动气氛的话，那就简明直接的配合就是了。在自己也能玩的很好的前提下，如果能照顾大家也玩得很好，量力而行，其它情况另议。 38.与朋友相处，别只用钱不用心，如果是请他们吃饭，好朋友不会在乎你请他们吃的有多贵，只要好吃，而且给对方倾诉的空间，他要说什么，你就三五不时的给他倾诉的机会，这样的待客就很好,在于一个用心。 39.讲话要用自己说话的感觉讲出来，多废些字词没关系，不要拷贝别人的说话方式去说话。如果是在讲自己业内的问题时，尽量少用术语，用很简单，明了的大白话告诉对方意思即可；如果是你业内的人，给业外的人讲具体的事即可，而不是抽象的道理，道理会听的对方感觉很烦很疲惫。 40.说的多，或者一直说，都比不上说的准，做得到。真心与人沟通，用词要具体，不要抽象。“生命含量”很高的话，更能打动人。人跟人沟通常有障碍，有时候对方就是跟你不同世界，怎么说都说不通，那也就职能尽力而为了。人生就是这样，尝试的越多，才越可能完成。语言最美的时候，就是我们透过语言，感受到彼此最需要的时候。靠语言确认了彼此的存在，此时语言最美。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">干货</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/学习笔记//" class="article-tag-list-link color5">学习笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/posts/e235d769.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-e3-80-8a-e8-94-a1-e5-ba-b7-e6-b0-b8-e7-9a-84-e8-af-b4-e8-af-9d-e4-b9-8b-e9-81-93-e3-80-8b-e8-af-bb-e4-b9-a6-e7-ac-94-e8-ae-b0-e6-a6-82-e8-a6-8121-ef-bc-8d30-e8-8a-82" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/posts/bfd76047.html">《蔡康永的说话之道》读书笔记概要21－30节</a>
+    </h1>
+  
+
+        
+        <a href="/posts/bfd76047.html" class="archive-article-date">
+  	<time datetime="2012-01-01T21:55:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2012-01-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>21.交谈不是有奖金的竞赛，别急着回答，急着回答会让对方感觉你很不礼貌，抢着说的多了，话说话者也不厌其烦，制止话题会让旁人反感。 22.初次与人见面，如果对方自报姓名，必须回敬对方自己的称呼，如果不方便说就编个理由，比如说我妈说，随便告诉对方我的姓名会被鬼抓走，不同的场合，选择不同的话，不要盲目的给初次见面制定规则。 23.赞赏时，要观察对方最渴望被赞赏的部分，对方能让你随意看到的东西，应该也是对方最愿意被赞赏的部分。赞赏的角度不能太离谱，观赏对方的特点加以赞赏，比较容易给对方留下深刻的印象。 24.自问自答可以让自己站在对方的立场上来想问题，谈判之前也要考虑对方的立场，为达目的，有时不给对方留余地，可能也不会攒到交情，每个人心中的那本帐不同。 25.人能够集中精神“听事情”的时间是15分钟，其余的时间用在逗听众开心，调动他们的兴趣，或者与听众互动，一个非常好的演讲，就是要给听众乐趣，以及让听众能吸收的几样事情。 26.凑趣要乐在其中，做到宾主尽欢。如果能调整好心态，做主人，以宾客的欢乐为欢乐，做晚辈，以长辈的快乐为快乐，那自己也能乐在其中，乐在其中是凑趣的难点所在。 27.给对方推心置腹的感觉，比较容易交到朋友。与对方站在同一一战线，比较容易获得信任感；比如：疏导爱憎分明的人的情绪，切勿讲别人的坏话，因为你要给对方的只是这种感觉。 28.不想聊的话题，不必抓住不放，也不必追根问底，大家面带微笑，让它自动消失就好；不想多聊的人，可以引荐别人，或用要做的事代过要聊的人，不管多么想摆脱对方，眼中千万不要露出冷淡的神色，怎样都要表现出“等下次机会再跟你好好聊”的热情。世间多变化，谁知下一回合，此人扮演什么角色。敌人使最恐怖的资产，拥有越多，死的越快。 29.参加partty，来时示意主人你来了，如果有礼物，说一声就好，要体谅主人有很多事要忙，走的时候要与重要的朋友和主人说一声就好，不要把自己的位置摆的很高，以为自己使英国女王，礼仪应用在不扫别人兴致的前提下。 30.别人向你倾诉时，要换位思考对方的情感使怎样的，有时候对方只是希望你能倾听，或者你给一点小建议，而不能说：“我懂你的苦，我完全明白你的感受。”这类话。对方会觉得自己的苦是无可替代的，你却表示使可替代的，因此，你这样讲，安慰不了对方。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">干货</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/学习笔记//" class="article-tag-list-link color5">学习笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/posts/bfd76047.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-e3-80-8a-e8-94-a1-e5-ba-b7-e6-b0-b8-e7-9a-84-e8-af-b4-e8-af-9d-e4-b9-8b-e9-81-93-e3-80-8b-e8-af-bb-e4-b9-a6-e7-ac-94-e8-ae-b0-e6-a6-82-e8-a6-8111-ef-bc-8d20-e8-8a-82" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/posts/6980f2f4.html">《蔡康永的说话之道》读书笔记概要11－20节</a>
+    </h1>
+  
+
+        
+        <a href="/posts/6980f2f4.html" class="archive-article-date">
+  	<time datetime="2012-01-01T08:02:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2012-01-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>11.遇到尖锐的问题，可以退回去俩三步去想问题，然后提问；还可以借助“第三方势力”来提问，或者以陈述事实的形式提问，引导对方就事论事。 12.谈话中，适度的挑衅，可以让谈话变的更热络，有趣的话题可以对对方的兴趣点，个性，价值观有个了解。 13.与人交流忌讳交浅言深，在社交时，交浅的情况下忌讳以下话题：1:对方很容易有苦衷的,不方便对不熟的人说的；2.对方很容易有强硬立场的。 14.与对方交流一些你希望被记住的信息，比如数字，最好带上简明扼要的修饰语，比如我来北京那年，奥运会刚开完，这样对方容易有比较深刻的记忆，另外遇到一些不太熟的人发问，问比较尖刻的问题，也可以用形象比喻的回答，给出不算隐瞒，也不太具体的答案。 15.打麻将，打牌，吃饭中谈事的空当很重要，与人沟通，因注意说话节奏与空当，说出的话要给对方时间消化，口才好不代表就要喋喋不休，要让对方很好的接受很重要。 16.悬疑式的文化引导对方的谈话的兴趣，谈话中的空当，可以暂作停顿，试探对方的兴趣点。 17.把故事的靓点放在前头讲，更容易引起听众的兴趣，悬疑式谈话的靓点安排顺序因事而定。类似于微博，网站流量的标题，对读者的兴趣引导很重要。 18.讲笑话有一定的危险系数，笑话像翻跟头，幽默像是走路好看，讲笑话，讲影片剧情要注意带动众人参与谈话的兴趣。 19.接话时，适当的，没深度的发问对方，比如说：“真的吗？怎么会这样？”或者问一些关键词眼。会给对方一些谈话鼓励，另外不必假装自己有深度，欣赏别人的深度也是种美德了。 20.讲话有时候也需要“博出位”，一段有意思，有特点的谈话，会给对方留下较深的印象，说这段话的时候要注意不是一个令人讨厌的讲话方式。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">干货</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/学习笔记//" class="article-tag-list-link color5">学习笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/posts/6980f2f4.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-e3-80-8a-e8-94-a1-e5-ba-b7-e6-b0-b8-e7-9a-84-e8-af-b4-e8-af-9d-e4-b9-8b-e9-81-93-e3-80-8b-e8-af-bb-e4-b9-a6-e7-ac-94-e8-ae-b0-e6-a6-82-e8-a6-811-ef-bc-8d10-e8-8a-82" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/posts/e262f13a.html">《蔡康永的说话之道》读书笔记概要1－10节</a>
+    </h1>
+  
+
+        
+        <a href="/posts/e262f13a.html" class="archive-article-date">
+  	<time datetime="2011-12-28T06:47:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2011-12-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.转达可行的通的赞美，别人会更喜欢你，让赞美帮助你获得别人的好感。 2.遇事说什么样的话，你就是什么样的人，遇事不骄不躁，沉着冷静的说出符合自己扮演的角色的话。 3.讨人喜欢，容易相处是做事的决胜点，如果你变的讨人喜欢，别人与你在一起会很轻松；遇到自己不喜欢的事情不要扫了大家的兴致，换个角度想想解决办法比较好。 4.适当的应用沉默，沉默在有兴趣点的事情面前比老说话管用。 5.每个人都喜欢别人同意自己，当你不同意对方看法的时候，不要过多的争夺无谓的第一，把胜利让给对方，自己语带保留，迂回提醒对方，要么就一笑了之。 6.与人见面谈事的时候要察言观色，谈论内容与主题要与这个人为尊，而不是以你的长项业务为尊，对自己一点好处都没有，要让对方有被重视的感觉。 7.遇到你不感兴趣的话题，发散性思维思考第二第三延伸话题，让谈话继续下去；发现别人不感兴趣的话题，立即转变话题。 8.遇到话题卡住，就马上换话题，不要恋战，如果对方很难沟通，礼貌的说完自己要说的话走人；遇到一定要谈的人，尝试不断切换兴趣点，尽量逗乐对方。 9.问对方越具体，回答越省力。发问可以先问几个选择题或者判断题，把对方的兴趣点摸索出来，人都想找到知己，都想被了解。好的谈话，就是灵魂的按摩。 10.聊天时，每个人都想聊自己，拒绝自我的办法就是说话不要带“我”字。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">干货</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/学习笔记//" class="article-tag-list-link color5">学习笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/posts/e262f13a.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/9/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/11/">Next &amp;raquo;</a>
@@ -1191,11 +1210,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">邮件客户端</a>
+                <a href="javascript:void(0)" class="js-tag color1">MAC终端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MAC终端</a>
+                <a href="javascript:void(0)" class="js-tag color1">邮件客户端</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1207,15 +1226,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">TED</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">sticky</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">template</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">TED</a>
               </li>
             
             <div class="clearfix"></div>

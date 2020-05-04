@@ -156,316 +156,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-e5-85-8d-e5-af-86-e7-a0-81-e7-99-bb-e9-99-86-e9-98-bf-e9-87-8c-e4-ba-91-e3-80-81linode-linux-e6-96-b9-e6-b3-95-e8-af-a6-e8-a7-a3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/ec4a2052.html">免密码登陆阿里云、linode for linux方法详解</a>
-    </h1>
-  
-
-        
-        <a href="/posts/ec4a2052.html" class="archive-article-date">
-  	<time datetime="2013-05-20T14:00:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-05-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>服务器环境：阿里云云服务器，Linux版本 - CentOS 客户端环境：Mac OSX Terminal 在Terminal中用ssh命令登录服务器每次都要输入密码，虽然可以复制/粘贴密码，但登录后一段时间不操作，服务器会自动断开连接，连接时又要复制/粘贴密码，还是有些不方便。 有没有办法实现登录时不用输入密码呢？有办法，这篇博文分享的就是解决方法。 不输入密码，服务器如何验证客户端呢？通过证书，证书就像你进办公室门时的门卡。客户端登录时，拿门卡（证书）在服务器上刷一下（证书验证），服务器会检查这张门卡能不能开门。 那如何制作门卡，如何把门卡信息告诉服务器呢？用下面的操作步骤来回答这个问题。 1. 打开你放门卡的皮夹</p>
-<p>cd ~/.ssh/</p>
-<p>如果没有皮夹，去买一个：</p>
-<p>mkdir ~/.ssh</p>
-<p>2. 制作门卡</p>
-<p>ssh-keygen -t rsa</p>
-<p>默认门卡文件名：id_rsa.pub 3. 将门卡复制一个并放至服务器的皮夹</p>
-<p>scp id_rsa.pub username@server:~/.ssh/id_rsa.pub</p>
-<p>注：如果服务器上没有.ssh文件夹，需要先登录服务器进行创建。 4. 登录到服务器（需要输入密码），从服务器皮夹中拿出门卡，取出其中的信息，放到专用的夹层</p>
-<p>ssh username@server</p>
-<p>cd ~/.ssh<br>cat id_rsa.pub &gt;&gt; authorized_keys</p>
-<p>5. 销毁服务器皮夹中的门卡</p>
-<p>rm id_rsa.pub</p>
-<p>6. 退出服务器</p>
-<p>exit</p>
-<p>7. 再次登录时就无需输入密码</p>
-<p>ssh username@server</p>
-<p>Welcome Houyi VM System ! </p>
-<p>[root@aliyun-cnblogs ~]#</p>
-<p>无密码ssh登录就这么简单！ 参考文章： <a href="http://www.finiteloops.com/weblog/?p=259" target="_blank" rel="noopener">How to SSH into Terminals without entering the password?</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">IT技术</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT相关//" class="article-tag-list-link color5">IT相关</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT相关/其它//" class="article-tag-list-link color3">其它</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/posts/ec4a2052.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-e9-98-bf-e9-87-8c-e4-ba-91-e3-80-81linode-e7-ad-89vps-e4-b9-8blinux-e4-b8-8bssh-e5-b8-b8-e7-94-a8-e5-91-bd-e4-bb-a4" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/11b405ad.html">阿里云、linode等VPS之linux下SSH常用命令</a>
-    </h1>
-  
-
-        
-        <a href="/posts/11b405ad.html" class="archive-article-date">
-  	<time datetime="2013-05-09T06:32:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-05-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>目录操作：</strong> rm -rf mydir /<em>删除mydir目录</em>/ mkdir dirname /<em>创建名为dirname的目录</em>/ cd mydir /<em>进入mydir目录</em>/ cd - /<em>回上一级目录</em>/ cd .. /<em>回父目录，中间有空格</em>/ cd ~ /<em>回根目录</em>/ mv tools tool /<em>把tools目录改名为tool <em>/ ln -s tool bac /</em>给tool目录创建名为bac的符号链接,最熟悉的应该就是FTP中www链接到public_html目录了</em>/ cp -a tool /home/vpser/www /<em>把tool目录下所有文件复制到www目录下 <em>/ *</em>文件操作：** rm go.tar        /</em> 删除go.tar文件 <em>/ find mt.cgi    /</em> 查找文件名为mt.cgi的文件 <em>/ df –h              /</em> 查看磁盘剩余空间,好像没这个必要，除非你太那个了 <em>/ <strong>解压缩：</strong> tar xvf wordpress.tar       /</em> 解压tar格式的文件 <em>/ tar -tvf myfile.tar     /</em> 查看tar文件中包含的文件 <em>/ tar cf toole.tar tool /</em> 把tool目录打包为toole.tar文件 <em>/ tar cfz vpser.tar.gz tool /</em> 把tool目录打包且压缩为vpser.tar.gz文件，因为.tar文件几乎是没有压缩过的，MT的.tar.gz文件解压成.tar文件后差不多是10MB <em>/ tar jcvf  /var/bak/<a href="http://www.tar.bz2" target="_blank" rel="noopener">www.tar.bz2</a> /var/www/    /*创建.tar.bz2文件，压缩率高</em>/ tar xjf <a href="http://www.tar.bz2" target="_blank" rel="noopener">www.tar.bz2</a> /<em>解压tar.bz2格式</em>/ gzip -d ge.tar.gz        /* 解压.tar.gz文件为.tar文件 <em>/ unzip phpbb.zip      /</em> 解压zip文件，windows下要压缩出一个.tar.gz格式的文件还是有点麻烦的 <em>/ <strong>下载：</strong> wget <a href="http://soft.vpser.net/web/nginx/nginx-0.8.0.tar.gz" target="_blank" rel="noopener">http://soft.vpser.net/web/nginx/nginx-0.8.0.tar.gz</a> /*下载远程服务器上的文件到自己的服务器，连上传都省了，服务器不是100M就是1000M的带宽，下载一个2-3兆的MT还不是几十秒的事 */ wget -c <a href="http://soft.vpser.net/web/nginx/nginx-0.8.0.tar.gz" target="_blank" rel="noopener">http://soft.vpser.net/web/nginx/nginx-0.8.0.tar.gz</a> /</em> 继续下载上次未下载完的文件 <em>/ <strong>进程管理：</strong> ps -aux   /*ps 进程状态查询命令\</em>/ ps命令输出字段的含义： [list] [<em>]USER，进程所有者的用户名。 [<em>]PID，进程号，可以唯一标识该进程。 [</em>]%CPU，进程自最近一次刷新以来所占用的CPU时间和总时间的百分比。 [<em>]%MEM，进程使用内存的百分比。 [</em>]VSZ，进程使用的虚拟内存大小，以K为单位。 [<em>]RSS，进程占用的物理内存的总数量，以K为单位。 [</em>]TTY，进程相关的终端名。 [<em>]STAT，进程状态，用(R–运行或准备运行；S–睡眠状态；I–空闲；Z–冻结；D–不间断睡眠；W-进程没有驻留页；T停止或跟踪。)这些字母来表示。 [</em>]START，进程开始运行时间。 [<em>]TIME，进程使用的总CPU时间。 [</em>]COMMAND，被执行的命令行。 [/list] ps -aux | grep nginx  /*在所有进程中，查找nginx的进程</em>/ kill 1234    /*1234为进程ID，即ps -aux 中的PID*/ killall nginx /*killall 通过程序的名字，直接杀死所有进程，nginx为进程名*/ <strong>Vim操作：</strong> 移动类的： h/j/k/l: 左/下/上/右　移一格 w : 向后词移动　（前面加数字移动多少个词） b : 向前词移动　（前面加数字移动多少个词） e : 向后移到词末 ge : 向前移到词末 $ <End> : 行末 0 <Home> : 行首 tx : 向右查找本行的x并移到那儿（大写时向左） 33G : 移到文件的第33行 gg : 文件首行 G : 文件尾行 33% : 文件的33%处 H/M/L : 屏幕的首/中/尾行 zt/zz/zb : 当前行移到屏幕的首/中/底部 跳转： “  : 回到跳转来的地方 CTRL-O : 跳到一个 “较老” 的地方 CTRL-I <Tab> : 则跳到一个 “较新” 的地方 查找： / : 向下查找（后加关键字） ? : 向上查找（后加关键字） n : 下一条符合的记录 编辑： i : 转换到插入模式 x : 删除当前字符 . : 重复最后一次的修改操作(同PS里ctrl+f执行滤镜) u : 撤销操作 CTRL-R : 重做 p : 将删除的字符插入到当前位置(put) 退出保存： :q : 退出 :q! : 不保存退出 ZZ : 保存后退出 :e! : 放弃修改重新编辑 掌握这些基本命令，Linux下的基本使用已经掌握，只要多加练习，多遇到问题，解决问题，能力就会不断的提升。 转自：VPS侦探 <a href="http://www.vpser.net/" target="_blank" rel="noopener"></a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">电脑软硬件</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">aliyun</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">linode</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vps</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">阿里云</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT相关//" class="article-tag-list-link color5">IT相关</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/posts/11b405ad.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-mac-e9-bb-98-e8-ae-a4mail-e9-82-ae-e4-bb-b6-e5-ae-a2-e6-88-b7-e7-ab-af-e5-87-ba-e7-8e-b0-e4-b8-8d-e8-83-bd-e4-bd-bf-e7-94-a8-e5-8f-91-e4-bb-b6-e6-9c-8d-e5-8a-a1-e5-99-a8-e7-9a-84-e8-a7-a3-e5-86-b3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/db9aee13.html">mac默认mail邮件客户端出现:&#34;不能使用发件服务器&#34;的解决方法</a>
-    </h1>
-  
-
-        
-        <a href="/posts/db9aee13.html" class="archive-article-date">
-  	<time datetime="2013-04-28T14:37:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-04-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>mac默认mail邮件客户端出现:”不能使用发件服务器”的解决方法，提及如何设置<a href="http://lijunnan.com/828/" target="_blank" rel="noopener" title="黑李白">mac</a>下的mail的接收邮件相信大家都可以，今天找到一个如何设置发送的贴子解决了我的问题，拿来和大家分享！ 希望对新同志们有帮助 <img src="https://upimg.ibolee.com/wp-blog-uploads/2013/04/4877a94ff79e0fb3bab9b945870bd9ab.jpg" alt="1.jpg" title="1.jpg"> <img src="https://upimg.ibolee.com/wp-blog-uploads/2013/04/b393148c3c737aa3c556837690b1357c.jpg" alt="2.jpg" title="2.jpg"> <img src="https://upimg.ibolee.com/wp-blog-uploads/2013/04/cc04bec6557d7b50f85c780d9aef08d1.jpg" alt="3.jpg" title="3.jpg"> <img src="https://upimg.ibolee.com/wp-blog-uploads/2013/04/69fbab01bae86cbbe88c90c5465efa2b.jpg" alt="4.jpg" title="4.jpg"> <img src="https://upimg.ibolee.com/wp-blog-uploads/2013/04/d98f99a817489b3f170487905609efc3.jpg" alt="5.jpg" title="5.jpg"></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">电脑软硬件</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">mac</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">邮件客户端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习笔记//" class="article-tag-list-link color5">学习笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/posts/db9aee13.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-mac-os-x-e6-96-87-e4-bb-b6-e5-a4-b9-e6-9d-83-e9-99-90-e7-ae-a1-e7-90-86-e6-96-b9-e6-b3-95-e8-af-a6-e8-a7-a3-e9-85-8d-e5-90-88-e7-bb-88-e7-ab-afterminal-e8-af-ad-e6-b3-95-e8-af-a6-e8-bf-b0" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1117,6 +807,263 @@ UrlEncode = szCode</code></pre><p>End Function</p>
 
 
   
+    <article id="post-e9-81-87-e5-88-b0-e6-97-a0-e7-ba-bf-e7-bd-91-e7-bb-9c-e5-8f-97-e9-99-90-e5-88-b6-e6-88-96-e6-97-a0-e8-bf-9e-e6-8e-a5-e7-9a-843-e7-a7-8d-e8-a7-a3-e5-86-b3-e6-96-b9-e6-b3-95" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/posts/616999e9.html">遇到“无线网络受限制或无连接”的3种解决方法</a>
+    </h1>
+  
+
+        
+        <a href="/posts/616999e9.html" class="archive-article-date">
+  	<time datetime="2013-02-24T07:00:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-02-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>如果你碰到如图所示无线网络受限制或无连接的问题，试着从以下3方面着手 <em><img src="https://upimg.ibolee.com/wp-blog-uploads/2013/02/aa90718a7e944a01607abc4c970722bd.jpg" alt="null"> 一、查看无线网卡端配置是否与前端路由器配置一致（密码、加密方式）；操作如下（以Windows XP为例）：</em> 1. 右击“网上邻居”属性 <img src="https://upimg.ibolee.com/wp-blog-uploads/2013/02/a1331986823ff3703cf38230e903c637.jpg" alt="null"> 2.右击“无线网络连接”属性 <img src="https://upimg.ibolee.com/wp-blog-uploads/2013/02/0d067211345953c1e2181f98de7eacc6.jpg" alt="null"> 3.点击——无线网络配置——首选网络——属性 <img src="https://upimg.ibolee.com/wp-blog-uploads/2013/02/e847491629df57bd9e5e91843b1a3af0.jpg" alt="null"> 4.出现以下页面，网络身份验证、数据加密、网络密钥选择与路由器一致——确定；如下图： <img src="https://upimg.ibolee.com/wp-blog-uploads/2013/02/d6f221554f6113837fcf78257f82256c.jpg" alt="null"> 二、是否关闭了路由器的DHCP服务器，用有线连接路由器，本地连接的IP地址用自动获取，看是否能获取到IP地址，如果获取得到，那就没关闭DHCP服务器，如果获取不到，提示受限制，那就是关闭了DHCP服务器，需要教用户开启DHCP服务器；操作如下（以Windows XP为例），如下图： 1.右击——“网上邻居”属性 <img src="https://upimg.ibolee.com/wp-blog-uploads/2013/02/d37533f7341142c200da1f31a48a4101.jpg" alt="null"> 2.（1）右击——“本地连接”状态——点击——支持，查看是否是通过DHCP指派（图1）： <img src="https://upimg.ibolee.com/wp-blog-uploads/2013/02/024911f6978ecda3ccca110d2baf368f.jpg" alt="null"> （图1） （2）如果显示“连接受限制”，点击——“常规”属性——“Internet协议（TCP/IP）”属性，点击——“使用下面的IP地址（手动分配IP地址）”——确定，如图（2）： <img src="https://upimg.ibolee.com/wp-blog-uploads/2013/02/c5058489495ef8b658a029d6ee9c187c.jpg" alt="null"> 3.进入路由器首页，高级设置——网络设置——局域网（“DHCP类型”选择（服务器））；如下图： <img src="https://upimg.ibolee.com/wp-blog-uploads/2013/02/a30e4d715852a0c5b8f14889e3c4b76a.jpg" alt="null"> 三、IP地址是否已分配完，进入路由器首页——高级设置——网络设置——局域网——起始IP地址、结束IP地址（看分配到你电脑的IP地址是否在该区域内）；如下图： <img src="https://upimg.ibolee.com/wp-blog-uploads/2013/02/af7674fe75c464a709308818d0bcb630.jpg" alt=""> 好了，通过这几个设置就可以解决“连接受限制”的问题了，你可以尽情的享受网络带来的快乐与自由。  </p>
+<p><strong>原文来自:猫理会</strong></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">电脑软硬件</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/IT相关//" class="article-tag-list-link color5">IT相关</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/posts/616999e9.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-e7-94-b5-e5-ad-90-e4-b9-a6-e7-9a-84-e5-af-bb-e6-89-be-e6-96-b9-e6-b3-95-e3-80-90-e6-b1-87-e6-80-bb-e7-af-87-e3-80-91" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/posts/966f1cd0.html">电子书的寻找方法【汇总篇】</a>
+    </h1>
+  
+
+        
+        <a href="/posts/966f1cd0.html" class="archive-article-date">
+  	<time datetime="2013-02-12T14:13:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-02-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>昨天的文章中分享的是寻找方法，今天的文章分享一些具体地址，文章中总结基本上比较全了，很多都是我平时经常用的，可以自己看去。 这篇文章应该是在论坛里看到的，应该是HiPDA论坛或是多看，没找到原始链接，有知道的请告知一下，我把会加入原始链接。 【推荐】爱问共享资料 （<a href="http://ishare.iask.sina.com.cn/）新浪旗下的在线资料分享站，电子书资源丰富，可以按格式搜索。注册即赠送积分，部分电子书下载需要积分，也有很多电子书是骗下载赚积分的，可能只是几个章节，可以先看评论再选择是否下载。搜索kindle电子书的时候可以用“6寸”、“mobi”这样的关键词。" target="_blank" rel="noopener">http://ishare.iask.sina.com.cn/）新浪旗下的在线资料分享站，电子书资源丰富，可以按格式搜索。注册即赠送积分，部分电子书下载需要积分，也有很多电子书是骗下载赚积分的，可能只是几个章节，可以先看评论再选择是否下载。搜索kindle电子书的时候可以用“6寸”、“mobi”这样的关键词。</a> 【推荐】子午书简 （<a href="http://book.zi5.me/）" target="_blank" rel="noopener">http://book.zi5.me/）</a> 适合kindle用户，是一个站长为分享kindle电子书专门建立的网站，可在线阅读，也可下载epub或mobi格式，亦可推送至kindle。 【推荐】亿年书海 （<a href="http://www.inien.com/）" target="_blank" rel="noopener">http://www.inien.com/）</a> 据说是上海某强人做的，可在线阅读及下载，下载可以选择不同的尺寸及格式，还可自定义格式，功能十分强大。注意下载按钮在导航栏登录注册右边。 【推荐】Kindle电子书搜索 （<a href="http://forfrigg.com/）" target="_blank" rel="noopener">http://forfrigg.com/）</a> Kindle电子书搜索引擎，用google自定义搜索制作，这里介绍的网站基本上都有收录，电子书、电子杂志等资源很丰富，可以分格式搜索，很好用。 【推荐】完美文库（<a href="http://www.wmwk.org/）" target="_blank" rel="noopener">http://www.wmwk.org/）</a> 可在线阅读及下载，可下载txt,mobi,epub格式，亦可投递到kindle。而且移动版可免积分阅读所有内容。积分规则比较复杂。 【推荐】COAY （<a href="http://coay.com/）" target="_blank" rel="noopener">http://coay.com/）</a> 提供ePub、mobi格式电子书下载，支持iBooks，Kindle，Stanza等阅读器。 【推荐】掌上书苑 （<a href="http://www.cnepub.com）" target="_blank" rel="noopener">http://www.cnepub.com）</a> 下载电子书需要书币，提供epub和mobi格式下载，还可以推送到kindle。 【推荐】书仓网 （<a href="http://shucang.com/）" target="_blank" rel="noopener">http://shucang.com/）</a> 可在线阅读，提供epub,mobi,pdf等多种格式下载。 【推荐】皮皮书屋（<a href="http://www.ppurl.com/）" target="_blank" rel="noopener">http://www.ppurl.com/）</a> 收集的书籍专攻计算机科学以及相关延伸学科。大部分是pdf和chm格式，需注册才能查看书籍。注册需要编程基础。可在线浏览及下载（国外IP需申请加入白名单）。 【推荐】七彩英语 （<a href="http://www.qcenglish.com/）" target="_blank" rel="noopener">http://www.qcenglish.com/）</a> 提供英文原版电子书下载，大多为pdf格式，注意有解压密码。 【推荐】原版图书下载（<a href="http://www.cnshare.org/）" target="_blank" rel="noopener">http://www.cnshare.org/）</a> 英文图书杂志，以计算机及经管励志类书籍为主，其次是原版杂志期刊，大部分书籍是pdf格式。 【推荐】dogear（<a href="http://dogear.mobi/）Kindle看新闻，可下载mobi和epub格式。" target="_blank" rel="noopener">http://dogear.mobi/）Kindle看新闻，可下载mobi和epub格式。</a> 【推荐】ikindle （<a href="http://ikindle.mobi/）" target="_blank" rel="noopener">http://ikindle.mobi/）</a> 每天投递新鲜的报纸和杂志到你的kindle。 【推荐】kindle4rss （<a href="http://kindle4rss.com/）" target="_blank" rel="noopener">http://kindle4rss.com/）</a> Kindle4RSS是一个让你订阅RSS Feed并定时递送到Kindle的服务。 ———————- 其它简体电子书网站 ———————- 苦瓜书盘 （<a href="http://kgbook.com/），主要提供6寸pdf以及少量mobi的下载，目前网站因备案问题被关闭。" target="_blank" rel="noopener">http://kgbook.com/），主要提供6寸pdf以及少量mobi的下载，目前网站因备案问题被关闭。</a> 苹果电子书 （<a href="http://ibook.178.com/）" target="_blank" rel="noopener">http://ibook.178.com/）</a> 178旗下网站，提供epub格式电子书下载，适合苹果设备，下载方式比较奇特，点击“找[ta]借阅”即可下载，被借阅次数即下载次数最多的会排在前面。 书朋网 （<a href="http://www.shupeng.com/）" target="_blank" rel="noopener">http://www.shupeng.com/）</a> 下载链接综合索引自其他网站，如爱问共享资料等。多为txt格式。 西东网 （<a href="http://xidong.net/）" target="_blank" rel="noopener">http://xidong.net/）</a> 学习资料共享，主要提供教育方面的电子书及其他资料，大多为pdf格式，电驴下载。 ———————- 其它繁体电子书网站 ———————- 古登堡计划（中文书籍） （<a href="http://www.gutenberg.org/browse/languages/zh）" target="_blank" rel="noopener">http://www.gutenberg.org/browse/languages/zh）</a> 英文书籍为主，也有部分中文书籍，繁体。 好读网站 （<a href="http://haodoo.net/）" target="_blank" rel="noopener">http://haodoo.net/）</a> 免费的线上繁体中文图书馆，可在线阅读及下载，可下载的格式有：updb，pdb，prc，epub。 百年千书 （<a href="http://1000ebooks.tw/）" target="_blank" rel="noopener">http://1000ebooks.tw/）</a> 百年千书计划，详细介绍请看该网站的“关于我们”或“Q&amp;A”页面。 ———————- 其它英文电子书网站 ———————- feedbooks （<a href="http://www.feedbooks.com/）" target="_blank" rel="noopener">http://www.feedbooks.com/）</a> 除了付费书籍外，也提供public domain的书籍和一些新作家免费开放的orginal books，如果想下载免费图书。可点击“Free Public Domain Books”浏览或直接搜索。 library.nu （<a href="http://library.nu/）著名英文电子书下载网站，书籍大部分是pd格式。提供多种网盘下载链接，注意部分文件下载后需要解压密码。" target="_blank" rel="noopener">http://library.nu/）著名英文电子书下载网站，书籍大部分是pd格式。提供多种网盘下载链接，注意部分文件下载后需要解压密码。</a> 再分享几个国外电子书网站，不一一介绍了： <a href="http://avaxhome.ws/ebooks" target="_blank" rel="noopener">http://avaxhome.ws/ebooks</a> <a href="http://www.wowebook.com/" target="_blank" rel="noopener">http://www.wowebook.com/</a> <a href="http://www.ebookee.net/" target="_blank" rel="noopener">http://www.ebookee.net/</a> <a href="http://ebook3000.com/" target="_blank" rel="noopener">http://ebook3000.com/</a> <a href="http://www.ebookshare.net/" target="_blank" rel="noopener">http://www.ebookshare.net/</a> ————————- Kindle电子书书目分享 ————————- 【推荐】Dropbox之Kindle中文电子书 （<a href="https://www.dropbox.com/s/b44t0swhzsdlaof）" target="_blank" rel="noopener">https://www.dropbox.com/s/b44t0swhzsdlaof）</a> 网友在dropbox中分享的适合kindle阅读的电子书，大部分为mobi格式，部分PRC格式和PDF格式，电子书目录可以下载word版（<a href="https://www.dropbox.com/s/b44t0swhzsdlaof/Book%20index%EF%BC%88%E8%AE%BF%E9%97%AE%20irising.me%2C%20%E4%B8%80%E8%B5%B7%E6%B3%A8%E8%A7%A3%E6%95%B0%E5%AD%97%E7%94%9F%E6%B4%BB%EF%BC%89.docx）或者看网页版目录（http://irising.me/2011/05/930/）" target="_blank" rel="noopener">https://www.dropbox.com/s/b44t0swhzsdlaof/Book%20index%EF%BC%88%E8%AE%BF%E9%97%AE%20irising.me%2C%20%E4%B8%80%E8%B5%B7%E6%B3%A8%E8%A7%A3%E6%95%B0%E5%AD%97%E7%94%9F%E6%B4%BB%EF%BC%89.docx）或者看网页版目录（http://irising.me/2011/05/930/）</a> 【推荐】skydrive （by young seakye）（<a href="https://skydrive.live.com/?cid=ab536aff86b227d2）资源异常丰富，多为pdf格式，分类有CFA、CPA、Economics、Finance、Hacker、IT、Law、psychology、三联哈佛燕京学术丛书、全美经典学习指导系列丛书、剑桥史等等。" target="_blank" rel="noopener">https://skydrive.live.com/?cid=ab536aff86b227d2）资源异常丰富，多为pdf格式，分类有CFA、CPA、Economics、Finance、Hacker、IT、Law、psychology、三联哈佛燕京学术丛书、全美经典学习指导系列丛书、剑桥史等等。</a> 【推荐】txt精排版资源（<a href="http://www.hi-pda.com/forum/viewthread.php?tid=569396&amp;extra=page%3D1）" target="_blank" rel="noopener">http://www.hi-pda.com/forum/viewthread.php?tid=569396&amp;extra=page%3D1）</a> 【推荐】skydrive （by chan jingstone）（<a href="https://skydrive.live.com/?cid=65c27572e1ef52ba&amp;id=65C27572E1EF52BA%21125）" target="_blank" rel="noopener">https://skydrive.live.com/?cid=65c27572e1ef52ba&amp;id=65C27572E1EF52BA%21125）</a> 同上，资源很丰富，txt精排版。 【推荐】6寸pdf资源 （<a href="http://www.hi-pda.com/forum/viewthread.php?tid=483779&amp;extra=page%3D1）" target="_blank" rel="noopener">http://www.hi-pda.com/forum/viewthread.php?tid=483779&amp;extra=page%3D1）</a> 6寸pdf资源汇总。 ————- 经验及技巧 ————- 【推荐】HiPDA论坛-Amazon Kindle论坛资源汇总检索帖（<a href="http://www.hi-pda.com/forum/viewthread.php?tid=526444&amp;extra=page%3D1&amp;sid=bTuoBx）" target="_blank" rel="noopener">http://www.hi-pda.com/forum/viewthread.php?tid=526444&amp;extra=page%3D1&amp;sid=bTuoBx）</a> HiPDA论坛中与Amazon Kindle有关的知识和资源汇总。 【推荐】Kindle 博文概览（<a href="http://irising.me/2011/09/10389/）" target="_blank" rel="noopener">http://irising.me/2011/09/10389/）</a> 一个多人博客，写了很多Kindle方面的博文，文章分为：入手前准备，到手初使用，阅读，上网，折腾，其它等栏目。 【推荐】kindle 3经验技巧收集汇总（<a href="http://www.douban.com/group/topic/19630427/）" target="_blank" rel="noopener">http://www.douban.com/group/topic/19630427/）</a> kindle 3 经验技巧收集汇总。 ———————- 论坛 ———————- HiPDA E-INK论坛 （<a href="http://www.hi-pda.com/forum/forumdisplay.php?fid=59）" target="_blank" rel="noopener">http://www.hi-pda.com/forum/forumdisplay.php?fid=59）</a> HiPDA论坛的e-ink讨论区，置顶帖里都是精华。 多看电子书交流 （<a href="http://www.duokan.com/forum/forum-16-1.html）" target="_blank" rel="noopener">http://www.duokan.com/forum/forum-16-1.html）</a> Kindle中文系统多看网的电子书交流频道。 威锋电子书分享 （<a href="http://bbs.weiphone.com/thread-htm-fid-224.html）" target="_blank" rel="noopener">http://bbs.weiphone.com/thread-htm-fid-224.html）</a> 威锋论坛电子书分享频道，多为epub和pdf格式。 ———————————– 最后再献上几个电子杂志下载站 ———————————– VeryCD（<a href="http://www.verycd.com/sto/datum/magazine/）" target="_blank" rel="noopener">http://www.verycd.com/sto/datum/magazine/）</a> 提供国内外中英文杂志、报纸下载，定期更新，资源丰富。下载方式为电驴。 Bucee雜誌館（<a href="http://bucee.net/）" target="_blank" rel="noopener">http://bucee.net/）</a> 提供最新简体及繁体中文杂志下载，下载方式为网盘。 QMAG免費雜誌（<a href="http://qmag.org/）" target="_blank" rel="noopener">http://qmag.org/）</a> 提供最新香港、台灣中文電子雜誌下載，下载方式为网盘。 原版电子杂志免费下载（<a href="http://www.cnrser.com/）" target="_blank" rel="noopener">http://www.cnrser.com/）</a> 提供最新原版英文杂志下载，下载方式为网盘。 杂志虫（<a href="http://zineworm.com/）外文原版杂志网" target="_blank" rel="noopener">http://zineworm.com/）外文原版杂志网</a> ，提供最新原版英文杂志下载，下载方式为网盘。 媛诺诺时尚杂志馆（<a href="http://ynono.com/）" target="_blank" rel="noopener">http://ynono.com/）</a> 提供日本、韩国、欧美地区原版时尚杂志下载，下载方式为网盘。 麦根 （<a href="http://www.nmag.cn/）" target="_blank" rel="noopener">http://www.nmag.cn/）</a> 主要提供国内外时尚设计类电子杂志下载。 免費鏈 （<a href="http://freelian.com/）" target="_blank" rel="noopener">http://freelian.com/）</a> 是一个电子杂志链接收集平台，提供PDF电子杂志下载。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">发现</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">kindle</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">电子书</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/其它//" class="article-tag-list-link color3">其它</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/posts/966f1cd0.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-e7-bd-91-e5-9d-80-e5-89-8d-e5-a4-b4-e7-9a-84https-e5-8d-8f-e8-ae-ae-e6-98-af-e4-bb-80-e4-b9-88-e6-84-8f-e6-80-9d-e5-9b-be-e8-a7-a3https-e5-8d-8f-e8-ae-ae-e8-af-a6-e7-bb-86-e7-89-88" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/posts/c07399be.html">网址前头的https协议是什么意思,图解https协议详细版</a>
+    </h1>
+  
+
+        
+        <a href="/posts/c07399be.html" class="archive-article-date">
+  	<time datetime="2013-02-03T10:46:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-02-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>我们都知道HTTPS能够加密信息，以免敏感信息被第三方获取。所以很多银行网站或电子邮箱等等安全级别较高的服务都会采用HTTPS协议。 HTTPS简介 HTTPS其实是有两部分组成：HTTP + SSL / TLS，也就是在HTTP上又加了一层处理加密信息的模块。服务端和客户端的信息传输都会通过TLS进行加密，所以传输的数据都是加密后的数据。具体是如何进行加密，解密，验证的，且看下图。 <a href="https://upimg.ibolee.com/wp-blog-uploads/2013/02/图片1.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2013/02/%E5%9B%BE%E7%89%871-300x259.png" alt="图片1"></a> 1. 客户端发起HTTPS请求 这个没什么好说的，就是用户在浏览器里输入一个https网址，然后连接到server的443端口。 2. 服务端的配置 采用HTTPS协议的服务器必须要有一套数字证书，可以自己制作，也可以向组织申请。区别就是自己颁发的证书需要客户端验证通过，才可以继续访问，而使用受信任的公司申请的证书则不会弹出提示页面(startssl就是个不错的选择，有1年的免费服务)。这套证书其实就是一对公钥和私钥。如果对公钥和私钥不太理解，可以想象成一把钥匙和一个锁头，只是全世界只有你一个人有这把钥匙，你可以把锁头给别人，别人可以用这个锁把重要的东西锁起来，然后发给你，因为只有你一个人有这把钥匙，所以只有你才能看到被这把锁锁起来的东西。 3. 传送证书 这个证书其实就是公钥，只是包含了很多信息，如证书的颁发机构，过期时间等等。 4. 客户端解析证书 这部分工作是有客户端的TLS来完成的，首先会验证公钥是否有效，比如颁发机构，过期时间等等，如果发现异常，则会弹出一个警告框，提示证书存在问题。如果证书没有问题，那么就生成一个随机值。然后用证书对该随机值进行加密。就好像上面说的，把随机值用锁头锁起来，这样除非有钥匙，不然看不到被锁住的内容。 5. 传送加密信息 这部分传送的是用证书加密后的随机值，目的就是让服务端得到这个随机值，以后客户端和服务端的通信就可以通过这个随机值来进行加密解密了。 6. 服务段解密信息 服务端用私钥解密后，得到了客户端传过来的随机值(私钥)，然后把内容通过该值进行对称加密。所谓对称加密就是，将信息和私钥通过某种算法混合在一起，这样除非知道私钥，不然无法获取内容，而正好客户端和服务端都知道这个私钥，所以只要加密算法够彪悍，私钥够复杂，数据就够安全。 7. 传输加密后的信息 这部分信息是服务段用私钥加密后的信息，可以在客户端被还原。 8. 客户端解密信息 客户端用之前生成的私钥解密服务段传过来的信息，于是获取了解密后的内容。整个过程第三方即使监听到了数据，也束手无策。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/IT相关//" class="article-tag-list-link color5">IT相关</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/posts/c07399be.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/6/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/8/">Next &amp;raquo;</a>
@@ -1346,11 +1293,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">邮件客户端</a>
+                <a href="javascript:void(0)" class="js-tag color1">MAC终端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MAC终端</a>
+                <a href="javascript:void(0)" class="js-tag color1">邮件客户端</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1362,15 +1309,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">TED</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">sticky</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">template</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">TED</a>
               </li>
             
             <div class="clearfix"></div>
