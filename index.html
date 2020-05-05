@@ -634,182 +634,62 @@
 
 
   
-    <article id="post-e4-b8-83-e7-89-9b-e5-91-bd-e4-bb-a4-e8-a1-8c-e5-b7-a5-e5-85-b7qshell-e5-9c-a8mac-e7-8e-af-e5-a2-83-e4-b8-8b-e4-bd-bf-e7-94-a8-e6-96-b9-e6-b3-95" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-mac-e4-bd-bf-e7-94-a8-e7-bb-88-e7-ab-af-e7-ae-a1-e7-90-86-e5-af-86-e5-8c-99-e7-b1-bb-e4-ba-91-e6-9c-8d-e5-8a-a1-e5-99-a8" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/posts/b90af952.html">七牛命令行工具qshell在Mac环境下使用方法</a>
+      <a class="article-title" href="/posts/b6474d35.html">Mac使用终端管理密匙类云服务器</a>
     </h1>
   
 
         
-        <a href="/posts/b90af952.html" class="archive-article-date">
-  	<time datetime="2016-07-06T11:04:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-07-06</time>
+        <a href="/posts/b6474d35.html" class="archive-article-date">
+  	<time datetime="2016-01-21T02:47:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-01-21</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <pre><code>最近在围观七牛云存储的官方工具，其中看到qshell，帮助文档中也没有具体的说mac环境下如何使用，以下把</code></pre><p>在mac中的使用过程贴出来，希望能帮到大家：</p>
-<h3 id="1-安装命令行同步工具-qshell"><a href="#1-安装命令行同步工具-qshell" class="headerlink" title="1.安装命令行同步工具 qshell"></a>1.安装命令行同步工具 qshell</h3><p>目的：能在 终端 直接调用 qshell 命令 <a href="https://upimg.ibolee.com/wp-blog-uploads/qshell图1.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/qshell%E5%9B%BE1.jpg" alt="qshell图1"></a></p>
-<ul>
-<li><p>下载好<a href="http://developer.qiniu.com/code/v6/tool/qshell.html" target="_blank" rel="noopener">qshell 命令行同步工具</a>，得出名为 qrsync 的压缩包，解压，我是把qshell_darwin_amd64改名为：qshell（各位网友可以根据自己的实际情况选用其它版本）</p>
-</li>
-<li><p>方法：将qshell 文件放入 <code>/usr/local/bin/</code></p>
-<ul>
-<li>知识点：在<code>/usr/local/bin/</code>出现的 字符 都是可以直接在终端直接调用的命令行</li>
-</ul>
-</li>
-<li><p>实现方法一：</p>
-<ul>
-<li>复制qshell 文件</li>
-<li>快捷键 Shift+Command+G 打开 <code>/usr/local/bin/</code></li>
-<li>粘贴qshell 文件</li>
-</ul>
-</li>
-<li><p>实现方法二：</p>
-<ul>
-<li>直接用复制命令行 <code>cp</code></li>
-<li>打开 终端</li>
-<li>输入 <code>cp /Users/administrator（这里是我的电脑名称）/Downloads/qshell-v1.8.0/qshell /usr/local/bin/</code></li>
-<li>意思是复制 Downloads 位置的 <code>qshell</code> 文件 到 <code>/usr/local/bin/</code></li>
-<li><a href="http://www.ituring.com.cn/article/123180" target="_blank" rel="noopener">Linux基本命令学习之二—Linux基本命令</a></li>
-</ul>
-<h3 id=""><a href="#" class="headerlink" title=""></a><a href="https://upimg.ibolee.com/wp-blog-uploads/qshell2.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/qshell2.jpg" alt="qshell2"></a></h3><h3 id="2-配置-account"><a href="#2-配置-account" class="headerlink" title="2.配置 account"></a>2.配置 account</h3></li>
-</ul>
-<p>调用七牛的API需要一对AccessKey和SecretKey，AccessKey 和 SecretKey 需要在七牛开发者平台上申请。步骤如下：</p>
-<ol>
-<li>开通<a href="https://portal.qiniu.com/signup" target="_blank" rel="noopener">七牛开发者帐号</a>。</li>
-<li>登录七牛开发者平台，查看 <a href="https://portal.qiniu.com/user/key" target="_blank" rel="noopener">Access Key</a> 和 <a href="https://portal.qiniu.com/user/key" target="_blank" rel="noopener">Secret Key</a>。</li>
-</ol>
-<p>首先要使用七牛的API，必须先设置 AccessKey 和 SecretKey 。命令如下：</p>
-<pre><code>qshell account ELUs327kxVP8888888888880xYZyrIpbM6Wh6o LVzZY2SqOQ_I_k8888888888BArDvOWtiLkDtKi_</code></pre><p>上面的 ELUs327kxVP8888888888880xYZyrIpbM6Wh6o 就是你的AccessKey，而LVzZY2SqOQ_I_k8888888888BArDvOWtiLkDtKi_就是你的SecretKey。如果你想查看当前的 AccessKey 和 SecretKey 设置，使用命令：</p>
-<pre><code>qshell account</code></pre><p>上面的命令会输出当前你设置好的 AccessKey 和 SecretKey 。 接下来，我们就可以放心地使用七牛的API功能了。</p>
-<h1 id="使用详解"><a href="#使用详解" class="headerlink" title="使用详解"></a>使用详解</h1><p>命令</p>
-<p>描述</p>
-<p>详细</p>
-<p>account</p>
-<p>设置或显示当前用户的 AccessKey 和 SecretKey</p>
-<p><a href="http://github.com/jemygraw/qshell/wiki/account" target="_blank" rel="noopener">文档</a></p>
-<p>dircache</p>
-<p>输出本地指定路径下所有的文件列表</p>
-<p><a href="http://github.com/jemygraw/qshell/wiki/dircache" target="_blank" rel="noopener">文档</a></p>
-<p>listbucket</p>
-<p>列举七牛空间里面的所有文件</p>
-<p><a href="http://github.com/jemygraw/qshell/wiki/listbucket" target="_blank" rel="noopener">文档</a></p>
-<p>prefop</p>
-<p>查询七牛数据处理的结果</p>
-<p><a href="http://github.com/jemygraw/qshell/wiki/prefop" target="_blank" rel="noopener">文档</a></p>
-<p>fput</p>
-<p>以文件表单的方式上传一个文件</p>
-<p><a href="http://github.com/jemygraw/qshell/wiki/fput" target="_blank" rel="noopener">文档</a></p>
-<p>rput</p>
-<p>以分片上传的方式上传一个文件</p>
-<p><a href="http://github.com/jemygraw/qshell/wiki/rput" target="_blank" rel="noopener">文档</a></p>
-<p>qupload</p>
-<p>同步数据到七牛空间， 带同步进度信息和数据上传完整性检查</p>
-<p><a href="http://github.com/jemygraw/qshell/wiki/qupload" target="_blank" rel="noopener">文档</a></p>
-<p>qdownload</p>
-<p>从七牛空间同步数据到本地，只支持同步某些前缀的文件和增量同步</p>
-<p><a href="http://github.com/jemygraw/qshell/wiki/qdownload" target="_blank" rel="noopener">文档</a></p>
-<p>stat</p>
-<p>查询七牛空间中一个文件的基本信息</p>
-<p><a href="http://github.com/jemygraw/qshell/wiki/stat" target="_blank" rel="noopener">文档</a></p>
-<p>delete</p>
-<p>删除七牛空间中的一个文件</p>
-<p><a href="http://github.com/jemygraw/qshell/wiki/delete" target="_blank" rel="noopener">文档</a></p>
-<p>move</p>
-<p>移动或重命名七牛空间中的一个文件</p>
-<p><a href="http://github.com/jemygraw/qshell/wiki/move" target="_blank" rel="noopener">文档</a></p>
-<p>copy</p>
-<p>复制七牛空间中的一个文件</p>
-<p><a href="http://github.com/jemygraw/qshell/wiki/copy" target="_blank" rel="noopener">文档</a></p>
-<p>chgm</p>
-<p>修改七牛空间中的一个文件的MimeType</p>
-<p><a href="http://github.com/jemygraw/qshell/wiki/chgm" target="_blank" rel="noopener">文档</a></p>
-<p>fetch</p>
-<p>从Internet上抓取一个资源到七牛空间中</p>
-<p><a href="http://github.com/jemygraw/qshell/wiki/fetch" target="_blank" rel="noopener">文档</a></p>
-<p>prefetch</p>
-<p>更新七牛空间中从源站镜像过来的文件</p>
-<p><a href="http://github.com/jemygraw/qshell/wiki/prefetch" target="_blank" rel="noopener">文档</a></p>
-<p>batchdelete</p>
-<p>批量删除七牛空间中的文件，可以直接根据<code>listbucket</code>的结果来删除。</p>
-<p><a href="http://github.com/jemygraw/qshell/wiki/batchdelete" target="_blank" rel="noopener">文档</a></p>
-<p>batchchgm</p>
-<p>批量修改七牛空间中文件的MimeType</p>
-<p><a href="http://github.com/jemygraw/qshell/wiki/batchchgm" target="_blank" rel="noopener">文档</a></p>
-<p>batchcopy</p>
-<p>批量复制七牛空间中的文件到另一个空间</p>
-<p><a href="http://github.com/jemygraw/qshell/wiki/batchcopy" target="_blank" rel="noopener">文档</a></p>
-<p>batchmove</p>
-<p>批量移动七牛空间中的文件到另一个空间</p>
-<p><a href="http://github.com/jemygraw/qshell/wiki/batchmove" target="_blank" rel="noopener">文档</a></p>
-<p>batchrename</p>
-<p>批量重命名七牛空间中的文件</p>
-<p><a href="http://github.com/jemygraw/qshell/wiki/batchrename" target="_blank" rel="noopener">文档</a></p>
-<p>checkqrsync</p>
-<p>检查 qrsync 的同步结果，主要通过比对<code>dircache</code>和<code>listbucket</code>的结果。</p>
-<p><a href="http://github.com/jemygraw/qshell/wiki/checkqrsync" target="_blank" rel="noopener">文档</a></p>
-<p>b64encode</p>
-<p>base64编码工具，可选是否使用UrlSafe方式，默认UrlSafe。</p>
-<p><a href="http://github.com/jemygraw/qshell/wiki/b64encode" target="_blank" rel="noopener">文档</a></p>
-<p>b64decode</p>
-<p>base64解码工具，可选是否使用UrlSafe方式，默认UrlSafe。</p>
-<p><a href="http://github.com/jemygraw/qshell/wiki/b64decode" target="_blank" rel="noopener">文档</a></p>
-<p>urlencode</p>
-<p>url编码工具</p>
-<p><a href="http://github.com/jemygraw/qshell/wiki/urlencode" target="_blank" rel="noopener">文档</a></p>
-<p>urldecode</p>
-<p>url解码工具</p>
-<p><a href="http://github.com/jemygraw/qshell/wiki/urldecode" target="_blank" rel="noopener">文档</a></p>
-<p>ts2d</p>
-<p>将 timestamp（单位秒）转为UTC+8:00中国日期，主要用来检查上传策略的<code>deadline</code>参数。</p>
-<p><a href="http://github.com/jemygraw/qshell/wiki/ts2d" target="_blank" rel="noopener">文档</a></p>
-<p>tms2d</p>
-<p>将 timestamp（单位毫秒）转为UTC+8:00中国日期</p>
-<p><a href="http://github.com/jemygraw/qshell/wiki/tms2d" target="_blank" rel="noopener">文档</a></p>
-<p>tns2d</p>
-<p>将 timestamp（单位100纳秒）转为UTC+8:00中国日期</p>
-<p><a href="http://github.com/jemygraw/qshell/wiki/tns2d" target="_blank" rel="noopener">文档</a></p>
-<p>d2ts</p>
-<p>将日期转为 timestamp（单位秒）</p>
-<p><a href="http://github.com/jemygraw/qshell/wiki/d2ts" target="_blank" rel="noopener">文档</a></p>
-<p>ip</p>
-<p>根据淘宝的公开API查询ip地址的地理位置</p>
-<p><a href="http://github.com/jemygraw/qshell/wiki/ip" target="_blank" rel="noopener">文档</a></p>
-<p>qetag</p>
-<p>根据七牛的<code>qetag</code>算法来计算文件的<code>hash</code></p>
-<p><a href="http://github.com/jemygraw/qshell/wiki/qetag" target="_blank" rel="noopener">文档</a></p>
-<p>unzip</p>
-<p>解压zip文件，支持UTF-8编码和GBK编码</p>
-<p><a href="http://github.com/jemygraw/qshell/wiki/unzip" target="_blank" rel="noopener">文档</a></p>
-<p>privateurl</p>
-<p>生成私有空间资源的访问外链</p>
-<p><a href="http://github.com/jemygraw/qshell/wiki/privateurl" target="_blank" rel="noopener">文档</a></p>
-<p>saveas</p>
-<p>实时处理的<code>saveas</code>链接快捷生成工具</p>
-<p><a href="http://github.com/jemygraw/qshell/wiki/saveas" target="_blank" rel="noopener">文档</a></p>
-<p>reqid</p>
-<p>七牛自定义头部<code>X-Reqid</code>解码工具</p>
-<p><a href="http://github.com/jemygraw/qshell/wiki/reqid" target="_blank" rel="noopener">文档</a></p>
-<p>m3u8delete</p>
-<p>根据流媒体播放列表文件删除七牛空间中的流媒体切片</p>
-<p><a href="http://github.com/jemygraw/qshell/wiki/m3u8delete" target="_blank" rel="noopener">文档</a></p>
-<p>buckets</p>
-<p>获取当前账号下所有的空间名称</p>
-<p><a href="http://github.com/jemygraw/qshell/wiki/buckets" target="_blank" rel="noopener">文档</a></p>
-<p>domains</p>
-<p>获取指定空间的所有关联域名</p>
-<p><a href="http://github.com/jemygraw/qshell/wiki/domains" target="_blank" rel="noopener">文档</a></p>
-<h1 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h1><ul>
-<li>如果是编译本地平台的可执行程序，使用<code>src</code>目录下面的<code>build.sh</code>脚本即可。</li>
-<li>如果是编译跨平台的可执行程序，使用<code>src</code>目录下面的<code>gox_build.sh</code>脚本即可。该脚本使用了<a href="https://github.com/mitchellh/gox" target="_blank" rel="noopener">gox</a>工具，请 使用<code>go get github.com/mitchellh/gox</code>安装。</li>
-</ul>
+        <p>首先创建下载腾讯云服务器的SSH密钥，创建地址如下： <a href="https://upimg.ibolee.com/wp-blog-uploads/201510181.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/201510181.png" alt="201510181"></a> 将下载下来的SSH密钥保存在 <strong>Finder</strong> 的 <strong>~/.ssh</strong> 目录下，如果没有这个目录，可以通过终端创建一个：</p>
+<p>1</p>
+<p>2</p>
+<p><code>cd</code> <code>~</code></p>
+<p><code>mkdir</code> <code>.``ssh</code></p>
+<p>然后通过 Finder 的「<strong>前往</strong>」功能，或者快捷键 <strong>Shift + Command + G</strong> 来进入 <strong>~/.ssh</strong> 目录。将下载下来的密钥文件复制粘贴到这个目录里，并修改密钥文件的权限，修改权限也通过终端进行：</p>
+<p>1</p>
+<p>2</p>
+<p><code>cd</code> <code>~/.``ssh</code></p>
+<p><code>chmod</code> <code>400 密钥文件名</code></p>
+<p>接下来就可以通过终端输入命令来以SSH的方式连接上腾讯云服务器了：</p>
+<p>1</p>
+<p><code>ssh</code> <code>-i ~/.``ssh``/id_rsa</code> <code>root@192.168.1.1</code></p>
+<blockquote>
+<p><strong>~/.ssh</strong> 是你存放密钥文件的目录 <strong>id_rsa</strong> 是你自定义的密钥文件名 <strong>root</strong> 是你腾讯云服务器的系统管理员帐号 <strong>192.168.1.1</strong> 是你腾讯云服务器的公网IP地址</p>
+</blockquote>
+<p>如果觉得每次都要通过输入一长句命令来SSH服务器比较麻烦的话，也可以借助客户端来一键SSH，这里我用的是 <a href="https://www.iterm2.com/" target="_blank" rel="noopener">iTerm2.app</a> 来实现的： <strong>第一种方法用到的命令是：</strong></p>
+<p>1</p>
+<p><code>ssh</code> <code>-i ~/.``ssh``/id_rsa</code> <code>root@192.168.1.1</code></p>
+<p><a href="https://upimg.ibolee.com/wp-blog-uploads/201510183-600x378.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/201510183-600x378.png" alt="201510183-600x378"></a> 效果如下（虽然有错误提示，但不影响正常操作使用，我也 Google 了相关信息，暂时没找到适当的解决方法）： <a href="https://upimg.ibolee.com/wp-blog-uploads/201510211-600x563.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/201510211-600x563-599x562.png" alt="201510211-600x563"></a> <strong>第二种方法用到的命令是（推荐）：</strong></p>
+<p><code>ssh</code> <code>-l root -p 22 192.168.1.1</code></p>
+<p><a href="https://upimg.ibolee.com/wp-blog-uploads/201510212-600x378.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/201510212-600x378.png" alt="201510212-600x378"></a> 效果如下： <a href="https://upimg.ibolee.com/wp-blog-uploads/201510213-600x563.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/201510213-600x563-599x562.png" alt="201510213-600x563"></a> 第一次登录会询问：</p>
+<blockquote>
+<p>Are you sure you want to continue connecting（yes/no）? 输入 “yes”</p>
+</blockquote>
+<p>然后会要求输入密码。密码由系统随机分配，在你刚购买完云服务器后会发送到你邮箱，建议修改成自己习惯记忆的密码。 命令中的每个变量意思应该很好懂，就不另外说明了。需要注意的是，第一种方式连接用到的密钥名称可以自定义，第二种需要把密钥名称设置为 id_rsa。 如果你通过以上方式还不能成功SSH到服务器的话，可以看看是否符合下面几种错误情况： <strong>错误一：</strong> permission denied( publickey.gssapi-with-mic.password) <strong>解决方案：</strong> 修改 <strong>/etc/ssh/sshd_config</strong> 文件，将其中的 PermitRootLogin <strong>no</strong> 修改为 <strong>yes</strong> PubkeyAuthentication <strong>yes</strong> 修改为 <strong>no</strong> AuthorizedKeysFile .ssh/authorized_keys 前面加上井号 <strong>#</strong> 屏蔽掉 PasswordAuthentication <strong>no</strong> 修改为 <strong>yes</strong> 然后重启 ssh 服务：</p>
+<p>1</p>
+<p><code>service sshd restart</code></p>
+<p><strong>错误二：</strong> Permission denied, please try again. <strong>解决方案：</strong> 检查用户名部分是否填写正确，SSH到腾讯云服务器的时候，用户名不是指的网页管理中心登录的用户名（即QQ号），而是 Linux 服务器的管理员帐号</p>
+<blockquote>
+<p>服务器的操作系统不同，管理员帐号也会不一样： SUSE/CentOS/Debian：<strong>root</strong> Windows：<strong>Administrator</strong> ubuntu：<strong>ubuntu</strong></p>
+</blockquote>
+<p>如果不是帐号问题，则尝试修改管理员帐号的 ssh 权限，即修改 <strong>/etc/ssh/sshd_config</strong> 文件中： PermitRootLogin <strong>no</strong> 修改为 <strong>yes</strong> 然后重启 ssh 服务：</p>
+<p>1</p>
+<p><code>service sshd restart</code></p>
+<p>原文作者：老柴的宅</p>
 
       
 
@@ -818,91 +698,6 @@
     <div class="article-info article-info-index">
       
       
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/其它//" class="article-tag-list-link color3">其它</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/posts/b90af952.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-e7-ae-a1-e7-90-86-e8-80-85-e9-83-a8-e7-bd-b2-e4-bb-bb-e5-8a-a1-e7-bb-99-e4-b8-8b-e5-b1-9e-ef-bc-8c-e4-ba-94-e9-81-8d-e5-98-b1-e5-92-90-e3-80-82" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/526bb3db.html">管理者部署任务给下属，五遍嘱咐。</a>
-    </h1>
-  
-
-        
-        <a href="/posts/526bb3db.html" class="archive-article-date">
-  	<time datetime="2016-06-29T16:12:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-06-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>很多工作中的低效率是因为管理者没有传达好工作任务需求，导致下属没有很好的执行，执行不好会遭到管理者的抱怨，渐渐的就形成恶性循环了。如何避免这种问题就是要在部署任务的时候做到嘱咐五遍。 这么嘱咐: 1.要陈述这件事 2.要求对方复述这件事 3.什么样的情况向我汇报，什么样的情况下属自己做决定？ 4.你对做好这件事有什么想法？ 5.</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">管理</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
@@ -918,7 +713,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/posts/526bb3db.html">展开全文 >></a>
+          <a class="article-more-a" href="/posts/b6474d35.html">展开全文 >></a>
         </p>
       
 
@@ -948,83 +743,69 @@
 
 
   
-    <article id="post-e4-b9-b0-e8-bd-a6-ef-bc-8c-e9-aa-8c-e8-bd-a6-e6-b3-a8-e6-84-8f-e4-ba-8b-e9-a1-b9" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-e8-ba-ab-e5-a4-84it-e8-a1-8c-e4-b8-9a-ef-bc-8c-e5-a6-82-e4-bd-95-e5-81-9a-e5-88-b0-e4-b8-8d-e5-8a-a0-e7-8f-ad-ef-bc-9f" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/posts/49e49119.html">买车，验车注意事项</a>
+      <a class="article-title" href="/posts/471bf6bf.html">身处IT行业，如何做到不加班？</a>
     </h1>
   
 
         
-        <a href="/posts/49e49119.html" class="archive-article-date">
-  	<time datetime="2016-06-23T12:02:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-06-23</time>
+        <a href="/posts/471bf6bf.html" class="archive-article-date">
+  	<time datetime="2016-01-02T08:18:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-01-02</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><a href="https://upimg.ibolee.com/wp-blog-uploads/68281464321627.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/68281464321627.jpg" alt="68281464321627"></a> <strong>确认新车：</strong> **　　出厂日期(必须是一个月内生产的) 车架号 产品合格证(号码与车架号，发动机号一致) 产品说明书 总里程数&lt;50km 保修单（保修单上必须有4S的印章）** <strong>外观及轮胎：</strong>  **　　顺光、逆光检查车漆，看有无划痕、小坑、异色、斑点 门缝、前后车灯缝隙是不是均匀、对称，尤其重点查看四个角** <strong>前大灯与前盖缝隙是否过大</strong> <strong>发动机舱左右前端、大灯部位金属板和尾箱后端左右金属板有无扳金的痕迹(褶皱)</strong>  <strong>刹车盘磨损：如前刹车盘已磨出明显沟槽印，不能要 看车门踏板和门框、水槽的外观　** **车门开启是否灵活，开门锁时不应太吃力，门轴转动时不应有杂音 检查4个门的内外拉手(共8个)，都应该顺滑、干脆且无杂音 车门密封胶条严不严 行李箱盖密封严不严 检查4个轮胎和备胎的胎压、胎纹，螺栓和螺帽的扭力，气帽嘴在否</strong> <strong>玻璃：</strong>  **　 玻璃是不是原配的(看玻璃下脚的标记) 各块玻璃是不是平整、透亮 前风挡必须特别平整，从各个角度看外部景物都无形变 用手轻敲后风挡和车门玻璃，不应炸裂** <strong>四个电动窗的升降，反复多次试： a)升降是否顺畅,玻璃到底后位置正不正，是否冲底</strong> <strong>b)**</strong>左前窗玻璃能不能一次升到顶，玻璃与胶条是否较劲** <strong>防夹手功能,矿泉水瓶子</strong> <strong>后备箱：</strong>  <strong>后备箱下面的缝隙是否均匀，不均匀会使其受力不均，卡口易裂 充电器规格及检查，线的借口是否裸露，查看插头是否有使用痕迹</strong> <strong>检查随车配件是否齐全，千斤顶、工具包</strong> <strong>后备箱的灯光</strong> <strong>中控及方向盘：</strong>  **　　试中控门锁、儿童锁是否起作用 调节方向盘上下角度 晃动助力转向方向盘，上下不应有间隙，左右自由行程不应过大 打开空调，试A/C开关，冷热都要试，时间长些 按汽车喇叭，听鸣笛声 试雨刷：喷水角度对不对，测不同档的速度是否明显、顺滑，是否刮干净，噪音** <strong>雨刷能不能回到底 天窗开关控制有无问题，试验各项功能</strong> <strong>查看点烟器工作是否正常 查看车内各种灯：前后阅读灯、开门灯、前门槛灯、行李箱灯</strong> <strong>查看仪表盘指示灯、开门报警、安全带灯、手刹灯和其它告警指示灯是否正常、调节仪表盘夜光灯、指示灯亮度以及大灯俯仰角度 查看真皮座椅有无开裂(小口子)，核对座椅生产日期，电动调节的各个位置以及按比例放倒功能</strong> <strong>试验安全带功能，快速拉动安全带，应该会卡死拉不动 两侧电动后视镜：各个方向调整测试，手动折叠功能 试听CD音响和收音机功能：换碟、AM/FM、选台、音量、各个按钮 用手掌轻轻拍打中控台，听是否有由于安装不好而产生的松旷震动声音，门板与内饰板之间是用卡子连接的，用手指轻轻往外拉内饰板的边缘，看卡子是否安装好了。同样的方法检查下A,B,C柱上的内饰板。</strong> <strong>车外部灯光</strong>  **　　按住四个轮子上方的车身向下压几下，看四个角的反弹能力。可用手大力按动车身一角，松开后，看其弹动次数，在1－2次之间为好。把车停住按一下车前角，如果减震会响可能是弹簧上边的胶垫坏了** <strong>大灯(远光、近光)，左右前照灯灯光强度、角度是否一致 方向灯、故障警告灯：6个都看(前、后、左、右、两侧后视镜) 前、后雾灯 刹车灯，包括高位刹车灯 <a href="https://upimg.ibolee.com/wp-blog-uploads/屏幕快照-2016-07-06-下午4.01.04.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7-2016-07-06-%E4%B8%8B%E5%8D%884.01.04.png" alt="屏幕快照 2016-07-06 下午4.01.04"></a></strong>   购车结束后先要办理保险（一般新车在4S店办理较为便捷），先要拿到交强险的正本，然后可以办理新车手续，此时4S店已交付给购车者手里的材料和票据主要有：</p>
+        <p>作家格拉德威尔在《异类》一书中指出：</p>
+<blockquote>
+<p>人们眼中的天才之所以卓越非凡，并非天资超人一等，而是付出了持续不断的努力。1万小时的锤炼是任何人从平凡变成超凡的必要条件。</p>
+</blockquote>
+<p>他将此称为「一万小时定律」。</p>
+<blockquote>
+<p>要成为某个领域的专家，需要10000小时，按比例计算就是：如果每天工作八个小时，一周工作五天，那么成为一个领域的专家至少需要五年。这就是一万小时定律。</p>
+</blockquote>
+<h2 id="如何打破无休止的加班？"><a href="#如何打破无休止的加班？" class="headerlink" title="如何打破无休止的加班？"></a>如何打破无休止的加班？</h2><p>在中国，IT 行业普遍加班严重，先不说行业特征与企业文化。 就我最近面试的经验来看，很多程序员的开发效率实在是低到不忍直视。 所以「效率」是一个导致加班的重要因素。 如果你效率高，但迫于企业有加班的文化，你完全可以用加班的时间来学习一些新的技术，进一步提高自己的效率。 效率低会引起下图的怪圈：</p>
+<p><a href="https://upimg.ibolee.com/wp-blog-uploads/f9937b6468269b1a642f936260355427.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/f9937b6468269b1a642f936260355427-750x489.png" alt="f9937b6468269b1a642f936260355427"></a></p>
+<p>效率低 -&gt; 无法按时完成工作 -&gt; 加班 -&gt; 没有时间练习 -&gt; 效率越来越低。 要打破怪圈，有效的办法就是「刻意练习」，从此进入一个正向循环：</p>
+<p><a href="https://upimg.ibolee.com/wp-blog-uploads/8eca10f78add82331efb1001220e5e59.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/8eca10f78add82331efb1001220e5e59-750x512.png" alt="8eca10f78add82331efb1001220e5e59"></a></p>
+<p>效率高 -&gt; 提前完成工作 -&gt; 练习提升 -&gt; 效率越来越高。</p>
+<h2 id="别把工作当练习"><a href="#别把工作当练习" class="headerlink" title="别把工作当练习"></a>别把工作当练习</h2><p>演员在台上的表演算是练习吗？球员在比赛场上算练习吗？不算。 那么对程序员而言，工作上做项目算刻意练习吗？ 我以前以「能边学边做」为荣，API、语法之类的没必要看，反正我们有 Google 和 Stack Overflow 嘛。 直到我参加了 Hackthon 之后改变了这个观点。在极短的时间内，要把一个创新的想法，用技术手段实现出来。 这个时候如果你还在查某个接口应该怎么用，某个语法应该怎么写，能竞争得过别人吗？ 现实工作中何尝不是如此？商业竞争如此激烈，假设你要做个推荐系统，你是找做过的来做，还是边学边做？ 所以我认为练习应当发生在工作之外，一旦上了战场，不是你死就是我活。</p>
+<h2 id="怎样练习才有效？"><a href="#怎样练习才有效？" class="headerlink" title="怎样练习才有效？"></a>怎样练习才有效？</h2><p>并不是所有的练习都是有效的，没找准地方，只是在浪费时间。 比如，我用吉他弹一首曲子时，某个小节老是弹不好，我就会单独把这一个小节拿出来重复练习，而不是把整首曲子一遍一遍地重复练。</p>
+<p><a href="https://upimg.ibolee.com/wp-blog-uploads/43585382d403d3096ddb2afab334b004.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/43585382d403d3096ddb2afab334b004-562x562.png" alt="43585382d403d3096ddb2afab334b004"></a></p>
+<p>专家研究表明，只有在【学习区】练习才最有成效。 我们应当走出舒适区，多在学习区练习，将其变成舒适区； 接触恐慌区，将其慢慢变成学习区。 这样才能避免原地踏步，持续提高。</p>
+<h2 id="程序员怎么练习"><a href="#程序员怎么练习" class="headerlink" title="程序员怎么练习"></a>程序员怎么练习</h2><h3 id="走出自己的舒适区"><a href="#走出自己的舒适区" class="headerlink" title="走出自己的舒适区"></a>走出自己的舒适区</h3><p>首先要走出自己的舒适区，接触一些不熟悉的技术领域。比如后端很熟悉了，去写写前端试试。Web 很熟悉了，去写移动端试试。 业务开发很熟悉了，去研究一下搜索，推荐系统，大数据试试。FTP推代码很熟悉了，玩 GIT推送试试。 老守着自己会的那点儿东西，总有一天会坐吃山空。</p>
+<h3 id="发现自己的不足"><a href="#发现自己的不足" class="headerlink" title="发现自己的不足"></a>发现自己的不足</h3><p>有以下方式：</p>
 <ul>
-<li><strong>发票</strong>：</li>
+<li>录视频</li>
+<li>Code Review</li>
+<li>结对编程</li>
+<li>参加编程道场</li>
 </ul>
-<p>共有发票联，报税联,注册登记联共三联，有的店也会将最后的抵扣联也交给客户，一共就是四联。这个是最重要的票据，丢了就没法上牌照了，补办很费劲，所以务必保管好。</p>
+<p>没有对比，很难发现自己的不足，所以把自己的代码和编码过程展示出来，一定会发现许多可以改进的地方。 只有菜鸟才会觉得自己特别牛，因为物以类聚，他的圈子里全是菜鸟。 你越牛，接触的圈子也越牛，你越会觉得自己渺小。</p>
+<h3 id="程序员练什么？"><a href="#程序员练什么？" class="headerlink" title="程序员练什么？"></a>程序员练什么？</h3><p>程序员要练习东西很多，一些基本功如下：</p>
 <ul>
-<li><strong>车辆信息表</strong>：</li>
+<li>打字</li>
+<li>编程语言</li>
+<li>编程范式</li>
+<li>编辑器</li>
+<li>快捷键</li>
+<li>TDD</li>
+<li>Clean Code</li>
+<li>重构</li>
+<li>…</li>
 </ul>
-<p>信息表为A4纸打印，右上角会有二维码，切记不要把二维码污染，更不能折叠。 车辆信息表是和发票一并开出，如果出了问题，需要重新开发票而且会很麻烦。</p>
-<ul>
-<li><strong>车辆合格证原件</strong>：</li>
-</ul>
-<p>有可能有些4S店的车辆合格证被抵押在银行，可能当时拿不到，此时需要复印件。但最好尽快取得该证。</p>
-<ul>
-<li><strong>车辆一致性证书：</strong></li>
-</ul>
-<p>核对铭牌上的排气量、出厂年月、车架号、发动机号等内容，合格证上的号码必须要与车上的发动机号、车架号一致</p>
-<ul>
-<li><strong>保险单（尤其是交强险副本）</strong>：</li>
-</ul>
-<p>办理保险需要发票复印件，身份证复印件，合格证复印件。保单（交强险副本）是上牌必备材料。</p>
-<ul>
-<li><strong>车主手册：</strong></li>
-</ul>
-<p>一般有车辆使用手册（说明书）、车辆保养及保修服务手册两本。说明书可帮助你快速熟悉车辆的各项操作。保养及保修手册内一般有大保养和小保养的单据，保修期内定期保养时用得着，需要妥善保管。</p>
-<ul>
-<li><strong>工具包：</strong></li>
-</ul>
-<p>车内随车工具一般包括灭火器、三角警示牌、备胎及备胎内所附的简易工具箱。有些新手车主开一两年的车，不知道车内有备胎和工具，就是此时不好好学习所致。</p>
-<ul>
-<li><strong>其他物件：</strong></li>
-</ul>
-<p>其他物件包括备用钥匙这样的重要物品，也包括4S店赠送给你的各种装饰用品等。需要注意的是销售顾问常口头承诺又延迟赠送礼品，较真的你，最好留下字据 </p>
-<h2 id="检查步骤"><a href="#检查步骤" class="headerlink" title="检查步骤"></a>检查步骤</h2><ol>
-<li>检查车辆外观。</li>
-</ol>
-<p>1、首先慢慢的绕着车走一圈看车身有没有明显的漆面外伤，车辆在数千公里的运输途中免不了会沾染上一些脏东西，有的新车车头车侧就有很多飞虫的尸体，这些位置你一定要仔细检查，确保这些地方没有剐蹭，漆面没有问题，同时看看防撞条粘贴，安装是否平整，挡泥板安装是不是牢固。 2、然后蹲下让眼睛与检查面在一个平面上，仔细看看有没有小坑，打开车门推拉几个角度让光线从不同的角度照射来检查板金是否平整。因为车体钢板轻微的凹陷近距离是不容易发现的，因为凹陷的地方反光有别于其他地方，所以用这种方法这些小凹陷很容易发现。</p>
-<ol start="2">
-<li>检查各车门。</li>
-</ol>
-<p>1、分别拉开四个车门，检查对应的左右两个车门开门力度是否相同，各阻尼段的阻力是否相同，然后观察车门看是否有下垂现象，将车门慢慢打开到推不动的位置，感觉限位开关是否起作用。 2、我们把车门拉开一个很小的角度，然后轻轻的关车门(注意一定要轻)听关门声音是否有尖锐的撞击声，有撞击声说明阻尼和密封不好。 3、检查完车门的漆面和钣金后，我们检查下各车门的密封条。用手顺着密封条方向滑动，稍微用点力，看密封条是否均匀，粘贴是否平整，每一块手感是否一样，按在上面是否有弹性。上面这张是同事用了两年的车的密封条，虽然没有破损但是和新车相比你明显能看到老车上的密封条已经没有什么光泽了，对比很明显。 4、检查的最后后备箱门别忘了，看看开合是否顺畅，特别是锁止是不是正常，里面的照明灯是否能正常工作。 5、打开后备箱就顺便检查下备胎，看看备胎是否完好，气压是否正常。备胎和随车工具一般都在一起，检查工具的同时自己也可以熟悉下这些工具怎么使用。</p>
-<ol start="3">
-<li>检查钣金接缝和轮胎。</li>
-</ol>
-<p>1、检查车身各个部分接缝是否均匀，每个车门，机器盖，后箱都打开关闭几次检查机构运转，观察玻璃，大灯，塑料件有没有裂纹。特别是车体两侧对应的缝隙一定要均匀。 2、各灯组与车体的接缝是检查的一个重点，一定要用手摸摸，装配良好的车这样的接缝很均匀、紧密，对应位置给人的感觉完全是一样的。一些低档车如果车体钣金不是特别好的话，这里的接缝都能暴露出钣金质量问题。 3、轮胎的检查，先看看看胎面有没有磨损，轮胎上的毛刺是否完整，如果不能确定，你可以将轮胎和备胎进行对比。</p>
-<ol start="4">
-<li>灯光系统检查。</li>
-</ol>
-<p>1、下面我们进入车内对新车的车灯进行检查，打开点火开关，首先先看看车的里程表，你提车时如果有的挑选，一定要选择行驶里程少，出厂日期短的车。因为时间、里程越长，车存在问题的风险就越大。 2、打开各种灯组，看看远光，近光、雾灯，双闪灯，转向灯等是否正常，检查左右灯的亮度，闪烁频率是否是一样。 3、尾灯的检查和前面各灯组一样，除了转向灯、双闪灯，一定要记得检查刹车灯、高位刹车灯、倒车灯和后雾灯。</p>
-<ol start="5">
-<li>电气系统检查。</li>
-</ol>
-<p>1、首先喷一些玻璃水，检查雨刮是否正常，各种档位的下的速度是否有变化，雨刮运行是否流畅。 2、然后逐一检查下每个车窗，升起，落下，注意听有没有不顺畅的声音，检查一键升降，防夹手功能。检查车窗防夹手功能可以把一个矿泉水瓶放在窗框上沿进行实验，正常的话水瓶被压缩一部分后车窗马上回向下运行。有天窗的车一定别忘记检查天窗。 3、音响的检查我们首先看CD、收音机、AUX接口等音源能否正常工作，音量调节，各种音效调节是否正常，最后把声音开大，听喇叭是否有破音。 4、检查空调和暖风时，主要保证空调和暖气工作(发动机工作时)时出风口没有风扇振动的嗒嗒声，特别是冷风开启时继电器吸合的声音是不是很大，对发动机怠速影响如何。 其他的电气系统像电动后视镜等，也要检查确保其能正常的工作。</p>
-<ol start="6">
-<li>座椅内饰检查。</li>
-</ol>
-<p>1、检查座椅，折叠推拉，用力往下坐一下，前后晃悠一下，听听有没有松动的声音。如果是电动座椅，看看电机工作是否平稳，有没有异响。检查完后关闭车窗，用力关下车门，听声音，有沉重感的说明密封很好。 2、打开所有车门，看仪表台上下结合是否正常，接缝是否均匀，接缝的地方用手压压看有没有松动，用手掌轻轻拍打中控台，听是否有由于安装不好而产生的松旷震动声音。门板与内饰板之间是用卡子连接的，用手指轻轻往外拉内饰板的边缘，看卡子是否安装好了。同样的方法检查下A,B,C柱上的内饰板。 3、车内的各储物格、手套箱、遮阳板等也都开合几次，看是否工作正常。 发动机舱检查。 1、打开发动机盖，首先看整个机舱是否干净整洁，如果很脏，而且有油污渗漏，这辆车肯定是以前频繁使用过的车。 2、听听发动机怠速的声音，用大拇指按住发动机上塑料盖子，用力压住，感受发动机传到你的胳膊上的震动是否平稳，是否有固定的频率，确保不要有凌乱的震动。让车上的人踩下油门，听发动机加速运转的声音是否平滑，有没有凌乱的感觉，加速是否灵敏。 3、最后别忘记看看发动机机舱里的各种液面是否在正常的位置，机油的颜色是否正常。 到这里一辆新车的静态检查就算完成了，一般情况下车辆这时车辆基本上没有什么问题了。最后我们可以简单的试开一圈，看看发动机变速箱的响应是否正常，左右打方向，有意的过几个减速带，看看车辆的悬架方向机构是否正常。一般新车在这个环节都不会出现问题的。</p>
+<h3 id="没时间不是借口"><a href="#没时间不是借口" class="headerlink" title="没时间不是借口"></a>没时间不是借口</h3><p>我第一次组织 Code Retreat 的时候，到 QQ 群里宣传活动，结果得到的是嘲讽：</p>
+<blockquote>
+<p>周末还在写代码，肯定是屌丝。</p>
+</blockquote>
+<p>很多人没有时间练习，却有大把的时间打 LOL，大把时间在群里吹水，大把时间讨论楼市股市。 当然，人都有选择自己生活方式的权利，并没有谁对谁错。 说这么多，只是希望真正热爱编程的同学们知道，只有通过刻意练习，才有可能成为顶尖的程序员！ 原文作者：Seaborn Lee（致谢）</p>
 
       
 
@@ -1033,24 +814,13 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">汽车</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/其它//" class="article-tag-list-link color3">其它</a>
+        			<a href="/categories/IT相关//" class="article-tag-list-link color5">IT相关</a>
         		</li>
       		
 		</ul>
@@ -1059,7 +829,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/posts/49e49119.html">展开全文 >></a>
+          <a class="article-more-a" href="/posts/471bf6bf.html">展开全文 >></a>
         </p>
       
 
@@ -1089,27 +859,27 @@
 
 
   
-    <article id="post-e5-be-ae-e9-b2-b843-e5-af-b84k-e7-94-b5-e8-a7-86-e4-b8-8d-e9-94-99-ef-bc-8c-e6-af-94-e5-b0-8f-e7-b1-b340-e5-af-b8-e5-88-92-e7-ae-97-e5-a4-9a-e4-ba-86" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-e6-9b-be-e7-bb-8f-e7-9a-84-e5-a8-b1-e4-b9-90-e5-9c-ba-ef-bc-8c-e7-8e-b0-e5-b7-b2-e5-8f-98-e5-be-97-e5-a6-82-e6-ad-a4-e4-b8-8d-e5-a0-aa-ef-bc-8c-e4-b8-9c-e4-b8-ad-e8-a1-97-e4-b9-92-e4-b9-93-e7-90-83" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/posts/fadf0aa1.html">微鲸43寸4K电视不错，比小米40寸划算多了</a>
+      <a class="article-title" href="/posts/a5b93b79.html">曾经的娱乐场，现已变得如此不堪，东中街乒乓球场。</a>
     </h1>
   
 
         
-        <a href="/posts/fadf0aa1.html" class="archive-article-date">
-  	<time datetime="2016-03-22T05:36:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-03-22</time>
+        <a href="/posts/a5b93b79.html" class="archive-article-date">
+  	<time datetime="2015-11-30T02:57:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-11-30</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><a href="http://s.click.taobao.com/t?e=m%3D2%26s%3DpeKc612J%2BP0cQipKwQzePOeEDrYVVa64K7Vc7tFgwiFRAdhuF14FMW5gSFkRTdUNt4hWD5k2kjNusN0th2HDUH7Z1djBiK7TdVaZCOnlQMZh6iTLyD1Ip5Vq51V%2FMZ2Mg6lkYfu%2Bkhuzg31%2BGd33YCGFCzYOOqAQ&pvid=50_113.47.247.96_1946690_1458624748789" target="_blank" rel="noopener">点击购买</a></p>
+        <p> <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/11/IMG_1253.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/11/IMG_1253.jpg" alt=""></a></p>
 
       
 
@@ -1124,7 +894,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/转载-amp-分享//" class="article-tag-list-link color5">转载&amp;分享</a>
+        			<a href="/categories/日记//" class="article-tag-list-link color3">日记</a>
         		</li>
       		
 		</ul>
@@ -1133,7 +903,104 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/posts/fadf0aa1.html">展开全文 >></a>
+          <a class="article-more-a" href="/posts/a5b93b79.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-e7-8e-a9-e8-bd-acwp-super-cache-e4-b8-ba-e7-ab-99-e7-82-b9-e6-8f-90-e9-80-9f-e6-97-a5-e5-bf-97" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/posts/936d8061.html">玩转wp-super-cache,为站点提速</a>
+    </h1>
+  
+
+        
+        <a href="/posts/936d8061.html" class="archive-article-date">
+  	<time datetime="2015-09-08T06:21:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-09-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-配置"><a href="#1-配置" class="headerlink" title="1.配置"></a>1.配置</h2><p>wordpress 的插件越来越多,速度也越来越慢,咋整?（原文出处：<a href="http://bigc.at/wp-super-cache.orz）" target="_blank" rel="noopener">http://bigc.at/wp-super-cache.orz）</a> 静态化! 今天主要是把流程 Step by Step 一下,不用理解为啥这么设置, 只需要知道设置后会变的很快 所谓提前优化是万恶之源的意思就是说,之前网站做的越烂,优化的空间就越多 和老板说看,之前多烂多烂,俺给你省了多少多少钱,一般都能拿奖金 静态化也一样,之前一大堆插件,开个页面上百次MYSQL查询,或烂人写的没效率SQL会让人不禁抓栏杆撕床单 WP Super Cache 并不是100%静态化,不过这个不重要,他把最卡的部分搞定了即可 WP Super Cache 他唯一的缺点就是如果你在改主题或搞啥插件,后台设置了前台看不出变化,为毛?下面有解决方案 OK, let’s gou</p>
+<ol>
+<li>首先，永久连接不能使用默认格式</li>
+<li>修改永久链接格式,中文推荐采用 /%post_id%.html (这下你知道我的.orz哪里来了吧) 如果你和我一样蛋疼愿意为每篇文章写一个英语的post slug 建议采用这样的格式：/%postname%.html (百分号外面的随意写)</li>
+</ol>
+<p><a href="https://upimg.ibolee.com/wp-blog-uploads/2015/09/supercache1.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/09/supercache1-292x300.png" alt="supercache1"></a> 这里我一二三四五六七都标注了就不介绍了吧,常规装插件也是这个套路 那些个神马ftp时代都已经过去鸟过去鸟 <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/09/supercache2.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/09/supercache2-300x86.png" alt="supercache2"></a> 装完后激活一下 <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/09/supercache3.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/09/supercache3-300x87.png" alt="supercache3"></a> 激活了,但他说还需要去设置一把, Rock it <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/09/supercache4.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/09/supercache4-242x300.png" alt="supercache4"></a> 凡是推荐的都打钩,无脑输出嘛   <strong>需要注意的是</strong>Don’t cache for known users的意思是对已经登录的用户不缓存 这就解决的后台改主题无法更新的缺点 也就是说,平时的时候这个选项不打钩,当你需要改主题或调试插件什么时候就打他,改完了再去掉 <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/09/supercache5.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/09/supercache5-169x300.png" alt="supercache5"></a> 因为我们选择了最快的mod_rewrite 方式,所以继续往下拉,会看到一坨螺旋状大黄色的容器,点里头的update mod_rewrite rules <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/09/supercache6.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/09/supercache6-300x95.png" alt="supercache6"></a> 不出意外会给个绿色的确认,某某.htaccess被插了… <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/09/supercache7.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/09/supercache7-300x205.png" alt="supercache7"></a> 有个激动人心的功能上几个版本才加进来的叫Preload,具体有兴趣可以看我写过的<a href="http://bigc.at/preload-cache-wp-super-cache.orz" target="_blank" rel="noopener">Preload</a> 就不累赘再说一次了 <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/09/supercache8.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/09/supercache8-300x42.png" alt="supercache8"></a> 全都搞定后去前台页面,右键查看源代码,拉到最下面,会有三行状态告诉你已经搞定鸟 FAQ: Q: 我流量那么小,有必要搞这个么? A: 搞这个纯粹为了自High,和流量没关系,例如打开自己的网站快个两三秒不是一键很爽的事咩? Q: 那个过期时间我能改咩? A: 建议用默认的</p>
+<blockquote>
+<p>Preload 模式下更改过期时间,会导致全站文件一遍遍的重新生成,这是完全没必要的 普通模式下更改过期时间,太短或太长都会导致CPU飙升,得不偿失,除非你流量大一个月五六千才有必要</p>
+</blockquote>
+<p>Q: 我发表新日志,或访客留言后他会全站再静态化一次么? A:不用担心,使用起来和没有装是一样的,有内容更新它会重新生成对应的页面的静态文件,没有更新的就没必要再去重新生成一次 Q: 这个对SEO有没有影响? A: 有,SEO里爬虫对页面打开速度比较敏感,</p>
+<blockquote>
+<p>常规模式下第一次访问才生成,到期后回收掉,也就是说第一次比较慢 Preload模式先给你都静态了,不管何时访问都快,对SEO更好</p>
+</blockquote>
+<p>Q: 乱码啦乱死人啦～～～ A: 关掉 Compress pages so they’re served more quickly to visitors. (Recommended)</p>
+<h2 id="2-预缓存"><a href="#2-预缓存" class="headerlink" title="2.预缓存"></a>2.预缓存</h2><p>下面是翻译自官方blog的预缓存(Preload cache) 介绍 <a href="http://ocaoimh.ie/preload-cache-wp-super-cache/" target="_blank" rel="noopener">Preload the cache in WP Super Cache</a> <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/09/cpu.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/09/cpu-300x124.png" alt="cpu"></a> 看到本周帅气的下垂了么? 我上周日启用了 WP Super Cache 的预缓存(preload cache),这玩意儿明显的降低了服务器的负载,创建缓存时会有个峰值,很黄很暴力 我一直不鼓励用户使用预缓存,主要是因为文件数量会导致一些问题,如果你有几千个缓存文件,硬盘挂了会需要很长时间才能恢复. (注: 有些主机商会限制文件数) 但反过来说,Google把速度作为一个网站的衡量标准之一.在过去,这个插件会忽略爬虫,因为爬虫每次只访问每个页面一次,缓存相对它们是毫无意义的.所有的页面都应该在 Google 还没开始爬过来之前就缓存好 (注: WP Super Cache 工作流程是第一次请求页面时把PHP+MySQL处理结果生成静态页面,再次访问时甚至都不用执行一行代码 ) <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/09/preload-screenshot.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/09/preload-screenshot-300x245.png" alt="preload-screenshot"></a> 如图所示,一旦你启动预缓存,它会挂载在 wp-cron 去获取100 个帖子, 过10秒后再去获取100个帖子 直到读完所有帖子. 它同时会禁止掉老帖子的垃圾回收机制,但有评论和新帖子的时候还是会干掉一些适当的缓存文件 目前它只缓存 文章页 (注:is_single()那种,中文差不知道咋翻译),貌似没啥必要去缓存 archive 或 tag 页,因为很多站已经写了 robots.txt去忽略这些页面 这次 WP Super Cache 的更新包括了</p>
+<ol>
+<li>更好的支持移动设备插件,例如 MobilePress (注:之前会有电脑访问出现手机界面的bug,不知道现在如何,有遇到问题的朋友请留言)</li>
+<li>增加了缓存测试功能(注:之前只能通过查看页面源代码最底下的注释了解情况)</li>
+<li>可设置只在评论更新的时候更新缓存,而不是前台或相关页面</li>
+<li>Works in WordPress 3.0.</li>
+</ol>
+<p>它还有一堆 bug 要修, 和其他功能要增加 愿意当小白鼠的可以尝试开发版本 from <a href="http://wordpress.org/extend/plugins/wp-super-cache/download/" target="_blank" rel="noopener">the download page</a> ,有问题就反馈到 <a href="http://wordpress.org/tags/wp-super-cache?forum_id=10" target="_blank" rel="noopener">support forum</a> =====补刀====================== 如何安装 WP Super Cache ? 答: 进入后台,选择左侧 plugins -&gt; Add New -&gt;输入 WP Super Cache 点 Search Plugs -&gt; Install Now 小博客很适合开启全站预缓存 个人觉得没必要设置定时重新生成全站缓存,如果你老帖子变动不频繁的话 因为即使老帖子变动了,对应的也会自动生成 有同学问,我网站规模太小,是不是不需要缓存? 答: 缓存是为了自己爽, 提速不是一个段位</p>
+<h2 id="3-结合七牛云存储，进行CDN加速；"><a href="#3-结合七牛云存储，进行CDN加速；" class="headerlink" title="3.结合七牛云存储，进行CDN加速；"></a>3.结合七牛云存储，进行CDN加速；</h2><p>如果你的博客使用 WP Super Cache 进行静态缓存加速的话，我们也可以使用 WP Super Cache 后台自带的 CDN 功能，更加完美实现博客整站的静态文件 CDN 加速。</p>
+<h2 id="在-WP-Super-Cache-中使用七牛镜像存储"><a href="#在-WP-Super-Cache-中使用七牛镜像存储" class="headerlink" title="在 WP Super Cache 中使用七牛镜像存储"></a>在 WP Super Cache 中使用七牛镜像存储</h2><p>在 WP Super Cache 中使用七牛云存储的前面三步都是一样的： 1. 登陆七牛，选择你的空间，然后点击 <strong>空间设置</strong> &gt; <strong>域名绑定</strong>，输入自定义的域名，或者直接使用七牛提供的域名： <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/09/600" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/09/600-300x155." alt="60"></a> 2. 然后点击 <strong>镜像存储</strong> 菜单，点击一键加速按钮： <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/09/6001" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/09/6001-300x107." alt="600"></a> 3. 输入源站的地址，点击确定加速： <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/09/6003" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/09/6003-300x157." alt="600"></a> 4. 最后登陆 WordPress 后台，点击 设置 &gt; WP Super Cache，选择 CDN Tab，在 off-site url 里面输入前面第一步获取的 url（注意要带 http://），如果你的 WordPress 安装子目录，这里还要带上子目录，并且实际测试下，其他设置如下图： <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/09/6002" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/09/6002-290x300." alt="600"></a> 关于在 WP Super Cache 中使用七牛云存储就介绍这么多，需要强调的是七牛是有免费套餐的，每个月 10G 流量，总空间 10GB，所以你可以来先体验下七牛加速之后的博客速度</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/学习笔记//" class="article-tag-list-link color5">学习笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/posts/936d8061.html">展开全文 >></a>
         </p>
       
 
@@ -1165,7 +1032,7 @@
   
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -1264,23 +1131,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">技术</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">电脑软硬件</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">IT技术</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">发现</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">汽车</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1288,15 +1139,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">获取文件夹名</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">曾国藩</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">外链</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1304,11 +1147,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">mac</a>
+                <a href="javascript:void(0)" class="js-tag color1">excle</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">excle</a>
+                <a href="javascript:void(0)" class="js-tag color4">mac</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1324,6 +1167,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">IT技术</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">kindle</a>
               </li>
              
@@ -1332,23 +1179,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">管理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">LAMP</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">互联网</a>
+                <a href="javascript:void(0)" class="js-tag color3">技术</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">开放</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">模式</a>
+                <a href="javascript:void(0)" class="js-tag color1">电脑软硬件</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1365,6 +1204,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">阿里云</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">互联网</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">开放</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">模式</a>
               </li>
              
               <li class="article-tag-list-item">
