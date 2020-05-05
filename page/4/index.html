@@ -156,27 +156,93 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-mysql-e5-a6-82-e4-bd-95-e5-af-bc-e5-85-a5-e5-a4-a7-e5-ae-b9-e9-87-8fsql-e6-96-87-e4-bb-b610m100m-e7-94-9a-e8-87-b31g" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-e7-94-a8mysql-e8-af-ad-e5-8f-a5-e6-89-b9-e9-87-8f-e4-bf-ae-e6-94-b9wordpress-e6-95-b0-e6-8d-ae-e5-ba-93-e6-96-87-e7-ab-a0-e5-86-85-e5-ae-b9" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/posts/37146966.html">MySQL如何导入大容量SQL文件,10M,100M甚至1G</a>
+      <a class="article-title" href="/posts/a0dc1822.html">用mysql语句批量修改wordpress数据库文章内容</a>
     </h1>
   
 
         
-        <a href="/posts/37146966.html" class="archive-article-date">
-  	<time datetime="2014-11-04T04:00:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-11-04</time>
+        <a href="/posts/a0dc1822.html" class="archive-article-date">
+  	<time datetime="2013-06-13T08:53:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-06-13</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>有服务器权限的。直接COPY文件。WIN一般是MYSQL安装目录的data下你的用户名。LINUX是安装目录下的var,其他系统不清楚。   2，如果是SQL格式的。有的可能上100M之类的。用source导入。source 文件名 解释：在导入之前先要选择好那个用户。 cd /mysql目录 cd bin mysql -u root -p(LINUX基本要加上路径的。比如/usr/local/mysql/bin/mysql这样) –密码 use 用户名 source 文件名（如果把文件放到MYSQL安装目录的bin下边的话。就直接加文件名就行了。否则要加上路径。比如source /home/www/test.sql） ——— 今天正好有空，前几天infofast.cn的数据库被dreamhost给删了，不过在删之前，它还是帮我将数据库备份到了ftp上，始终没有想通为什么infofast占了dreamhost很多cpu… 今天下午下载下来后，猛然发现我的mysql数据库竟然有200多M,杂办呢？？随后baidu,google一番，找到方法： 修改PHP.ini文件的以下参数： upload_max_filesize memory_limit post_max_size 这三个值设置的都要比数据库文件大，，比如你的数据库大小是300M，那么upload_max_filesize = 500M..还有一点是在英文的帮助中看到的”One user also said that post_max_size and memory_limit need to be larger than upload_max_filesize.”.它的意思是有人建议post_max_size和memory_limit的配置值要大于upload_max_file的配置值。。 好了后，重起下php和mysql,应该就可以了。。。 ——- MySQL的mysqldump工具导入导出数据库！ 1.导出整个数据库(Dos下) mysqldump -u 用户名 -p 数据库名 &gt; 导出的文件名 mysqldump -u chai -p smgp_apps_wcnc &gt; chai.sql 2.导出一个表 mysqldump -u 用户名 -p 数据库名 表名&gt; 导出的文件名 mysqldump -u chai   -p smgp_apps_wcnc users&gt;chai.sql 3.导出一个数据库结构 mysqldump -u chai -p -d –add-drop-table smgp_apps_wcnc &gt;d:\chai.sql -d 没有数据 –add-drop-table 在每个create语句之前增加一个drop table 4.导入数据库 常用source 命令 进入mysql数据库控制台， 如mysql -u root -p   mysql&gt;use 数据库 然后使用source命令，后面参数为脚本文件（如这里用到的.sql） mysql&gt;source d:\chai.sql ——————- MySQL导入大SQL文件 五一放个假都不安心，一个库有1.4G，在从服务器上导出只有一半，主服务器上登陆不了，用PM也只能导出一半，想了两天法子了，要ROOT密码要不到，没办法了，只有跳过ROOT密码，然后再更改为只有自己知道的密码。 1. 關閉 MySQL 伺服器。 2. 用以下指令啟動 MySQL，以跳過檢查權限的資料表 mysqld_safe –skip-grant-tables &amp;&lt; 3. 現在己經可以用空密碼進入 MySQL mysql -u root 4. 進入 MySQL 後執行以下指令更改 mysql root 密碼： mysql&gt; update mysql.user set password=PASSWORD(”new_password”) where User=’root’; mysql&gt; flush privileges; mysql&gt; quit 5. 最後只需重新啟動 MySQL，便可以用新設定的密碼進入了。 mysql -uroot -pyourpassword yourdatabasename &lt; /paths/sqlfile.sql (文件太大可在后面加个&amp;)========================================================================================== 出现非ROOT帐户本地不能登陆的情况，提示use password yes，可能需要先用ROOT登陆后重新设定非ROOT用户，包括删除重建 ============================================================================================ 1.导入数据库 常用source 命令 进入mysql数据库控制台， 如mysql -u atyu -p mysql&gt;use 数据库 然后使用source命令，后面参数为脚本文件(如这里用到的.sql) mysql&gt;source /data/atyu30_db.sql 2.导出整个数据库 mysqldump -u 用户名 -p 数据库名 &gt; 导出的文件名 mysqldump -u atyu -p atyu_bbs &gt; atyu_bbs.back.sql 3.导出一个表 mysqldump -u 用户名 -p 数据库名 表名&gt; 导出的文件名 mysqldump -u atyu -p bbs users&gt; atyu_users.sql 4.导出一个数据库结构 mysqldump -u atyu -p -d –add-drop-table bbs &gt;/data/atyu_bbs.sql -d 没有数据 –add-drop-table 在每个create语句之前增加一个drop table —- 今天的这篇文章用来讨论如何解决导入mysql大数据文件的问题，其实说的简单了就是一条SQL语句，而如果你是一名SQL高手，那完全可以略过此文。 对于经常使用MYSQL的人来说，phpmyadmin是一个必备的工具。这个工具非常强大，几乎可以完成所有的数据库操作，但是它也有一个弱点，对于往远程服务器上导入较大的数据文件的时候会速度奇慢，甚至出现长期没有响应的情况。 为什么会出现这样的情况呢？当我们选择一个sql数据文件并提交的时候，服务器首先要先把文件上传到服务器，然后才会执行导入代码把数据导入到数据库。我们知道phpmyadmin是通过web方式上传的数据文件，而web方式上传是很不稳定的，尤其是网速慢的时候，这就是为什么我们会有那么多次在电脑前面苦苦等待而最终却没有结果的原因。 通过上面的分析，我们知道这个问题是出在web上传而非导入程序，所以如果能避免通过web上传这个问题就好办了。我们可能会想到那功能强大的ftp上传工具，可是phpmyadmin无法选择远程路服务器上的文件，这是很郁闷的。 这里我们要放弃phpmysqladmin，通过mysql语句来导入数据库。很多人会纳闷怎么来执行SQL语句，这是一个关键的问题，这需要你的空间支持SSH（Secure Shell Protocol），并且你还得会一些linux命令。 首先通过SSH登录到服务器（我用putty登录工具），通过一些简单的linux命令找到我们的sql文件，然后运行下面的代码： mysql db_name &lt; data_file.sql 执行完命令之后如果没有任何提示，则说明我们的数据已经导入成功了(注意文件格式是date_file.sql, sql.gz在中文下会出错) 。 这是一个很好的办法，但是也不是所有的人都可以用这个方法的，因为前提是你的空间必须支持SSH登录，而支持SSH登录的空间还是比较少的，这真是挺让人遗憾的。 还有一个办法就是把phpmyadmin里面的import那个功能模块提取出来，稍微改动一下也可以达到相同的效果。当然如果你是一个PHP高手，也可以自己写一个导入的程序，可以直接选择一个服务器的路径。   <strong>原文作者：紫月冰河  （来自：博客园）</strong></p>
+        <p>开始之前，先介绍以下如何执行SQL语句，进行批量操作。现在一般的空间都是用phpmyadmin来管理数据库，这里将以phpmyadmin为例来介绍如何执行SQL语句：</p>
+<ol>
+<li>进入你的phpmyadmin管理页面，然后进入你的博客对应的数据库</li>
+<li>菜单栏有个 <strong>SQL</strong> 选项，点击进去</li>
+<li>出现一个SQL语句的输入框，现在你就可以在里面输入SQL语句了</li>
+<li>输入完毕，点击 <strong>执行</strong> ，将执行你刚才输入的SQL语句</li>
+<li>SQL语句执行完毕，你的文章也被批量修改了，现在去看看你的文章是否都被更改了</li>
+<li>最后提个醒：以下介绍的SQL语句都在我的博客上做过测试，但是尽管如此，操作数据库之前都要先备份一下你的数据库；定期备份你的数据库是好习惯</li>
+</ol>
+<p>SQL命令执行窗口：</p>
+<p><img src="https://upimg.ibolee.com/wp-blog-uploads/2013/06/ac5c74b64b4b8352ef2f181affb5ac2a.gif" alt="SQL命令执行窗口"></p>
+<h4 id="1、批量修改文章内容："><a href="#1、批量修改文章内容：" class="headerlink" title="1、批量修改文章内容："></a>1、批量修改文章内容：</h4><p>如果你想替换之前写过的所有文章中的某些内容，如更换博客的名称，更换博客的网址，更换文章配图的链接等等，你可以使用以下SQL语句：</p>
+<p>1 2</p>
+<p>UPDATE wp_posts SET post_content = REPLACE( post_content, ‘露兜博客’, ‘露兜中文博客’ );</p>
+<p>该语句的功能是将所有文章中的 <strong>露兜博客</strong> 字眼，全部替换成 <strong>露兜中文博客</strong>，你可以根据需要做一些更改。因为文章内容在数据库中是以HTML代码形式存储的，所以以上SQL语句同样可以替换HTML代码。 如果你只是想更改文章插图的链接，而不想影响其他的链接，可以使用以下SQL语句，所有src=”oldurl.com被替换成了src=”newurl.com</p>
+<p>1 2 3</p>
+<p>UPDATE wp_posts SET post_content = REPLACE (post_content, ‘src=”oldurl.com’, ‘src=”newurl.com’);</p>
+<p>如果你是以图片附件形式上传的话，需要更改图片附件的GUID</p>
+<p>1 2 3</p>
+<p>UPDATE wp_posts SET  guid = REPLACE (guid, ‘oldsiteurl.com’, ‘newsiteurl.com’) WHERE post_type = ‘attachment’;</p>
+<h4 id="2、批量修改文章摘要："><a href="#2、批量修改文章摘要：" class="headerlink" title="2、批量修改文章摘要："></a>2、批量修改文章摘要：</h4><p>文章摘要就是你在WordPress后台编辑文章时，”摘要”框中输入的内容，如果你想批量更改文章摘要，可以使用以下语句：</p>
+<p>1 2</p>
+<p>UPDATE wp_posts SET post_excerpt = REPLACE( post_excerpt, ‘露兜博客’, ‘露兜中文博客’ );</p>
+<p>该语句的功能是将所有文章摘要中的 <strong>露兜博客</strong> 字眼，全部替换成 <strong>露兜中文博客</strong>。  </p>
+<h4 id="3、批量修改文章的作者："><a href="#3、批量修改文章的作者：" class="headerlink" title="3、批量修改文章的作者："></a>3、批量修改文章的作者：</h4><p>假设你的博客有两名注册用户，张三和李四，你想将张三的所有文章划归到李四名下，这时候该怎么办呢？你可以执行以下语句：</p>
+<p>1 2 3</p>
+<p>UPDATE wp_posts SET post_author = 李四用户id WHERE post_author = 张三用户id;</p>
+<p>那如何获得 李四的用户id 和 张三的用户id 呢？你可以执行以下SQL语句：</p>
+<p>1</p>
+<p>SELECT ID, user_nicename, display_name FROM wp_users;</p>
+<p>这时将列出你博客上所有的注册用户的ID，昵称和公开显示的名称，你现在就可以找到对应用户的ID了，如下图，zhangsan的ID为2，lisi的ID为5：</p>
+<p><img src="https://upimg.ibolee.com/wp-blog-uploads/2013/06/ea8f538c94b6e352418254ed6474a81f.jpg" alt="用户id"></p>
+<p>你的SQL就可以这样写了：</p>
+<p>1 2 3</p>
+<p>UPDATE wp_posts SET post_author = 5 WHERE post_author = 2;</p>
+<h4 id="4、批量修改文章评论者的网站URL："><a href="#4、批量修改文章评论者的网站URL：" class="headerlink" title="4、批量修改文章评论者的网站URL："></a>4、批量修改文章评论者的网站URL：</h4><p>假设，你的博客有个非常忠实的读者，给你的博客文章留下很多有用的评论，同时他的评论都填写了留言者的网站URL，但是有一天他的博客域名换了，并请求你更新他留言中的网站URL，那你怎么办？手动一个一个帮他改，这不太现实。你可以使用以下SQL语句：</p>
+<p>1 2 3</p>
+<p>UPDATE wp_comments SET comment_author_url = REPLACE( comment_author_url, ‘oldurl.com’, ‘newurl.com’ )</p>
+<p>以上语句，将留言者所有旧的网站链接oldurl.com，更改为新的网址newurl.com  </p>
+<h4 id="5、禁用所有文章的pingback功能："><a href="#5、禁用所有文章的pingback功能：" class="headerlink" title="5、禁用所有文章的pingback功能："></a>5、禁用所有文章的pingback功能：</h4><p>开启pingback功能，可以在别人引用你的文章链接的情况下，给你发送通知，但是该功能似乎对我们的文章没多大帮助，那为何不把pingback给禁止了呢？在WordPress后台 – 设置 – 讨论，取消勾选”接收来自外部博客的引用通告(pingbacks 和 trackbacks)”，这样以后的文章都不开启pingback，但是该选项不会对之前的已发布的文章起作用，还是要用到SQL:</p>
+<p>1 2</p>
+<p>UPDATE wp_posts SET ping_status = ‘closed’;</p>
+<h4 id="6、删除所有文章的修订版："><a href="#6、删除所有文章的修订版：" class="headerlink" title="6、删除所有文章的修订版："></a>6、删除所有文章的修订版：</h4><p>在通常情况下，文章的修订版对大多数人来说没多大意义，而且修订版的数量会随着你修改文章的次数不断增长，这会增加数据库的查询速度，这并不是什么好事。互联网上有很多教你如何禁止修订版的文章，还有很多插件可以删除文章修订版，你可以自己搜索看看。这里教你如何使用SQL语句，删除所有已产生的文章修订版数据：</p>
+<p>1 2 3 4 5</p>
+<p>DELETE a,b,c FROM wp_posts a LEFT JOIN wp_term_relationships b ON (a.ID = b.object_id) LEFT JOIN wp_postmeta c ON (a.ID = c.post_id) WHERE a.post_type = ‘revision’;</p>
+<h4 id="7、删除某个评论者的所有评论："><a href="#7、删除某个评论者的所有评论：" class="headerlink" title="7、删除某个评论者的所有评论："></a>7、删除某个评论者的所有评论：</h4><p>如果你的博客想要封杀某人，并删除其在你博客的所有留言，可以使用以下SQL语句。 (1)根据留言者的博客URL进行删除，以下SQL语句将删除所有URL为 <strong><a href="http://www.example.com" target="_blank" rel="noopener">www.example.com</a></strong> 的评论</p>
+<p>1 2</p>
+<p>DELETE FROM wp_comments WHERE comment_author_url LIKE ‘%<a href="http://www.example.com%&#39;">www.example.com%&#39;</a>;</p>
+<p>(2)根据留言者的昵称进行删除，以下语句将删除所有昵称为 <strong>example</strong> 的评论</p>
+<p>1 2</p>
+<p>DELETE FROM wp_comments WHERE comment_author = ‘example’;</p>
+<p>(2)根据留言者的Email进行删除，以下语句将删除所有Email为 <strong><a href="mailto:example@example.com">example@example.com</a></strong> 的评论</p>
+<p>1 2</p>
+<p>DELETE FROM wp_comments WHERE comment_author_email = ‘example@example.com’;</p>
+<h4 id="8、替换所有评论中的敏感词汇："><a href="#8、替换所有评论中的敏感词汇：" class="headerlink" title="8、替换所有评论中的敏感词汇："></a>8、替换所有评论中的敏感词汇：</h4><p>国内的互联网监控力度表现出了不断加强的趋势，如果你的博客评论中出现了大量的敏感词汇，很可能离被墙也不远了。最好的做法是，替换相关的敏感词汇，以保证你的博客安全，以下SQL语句将所有评论中的 <strong>fuck</strong>，替换成 **，替换内容根据你的需要来。</p>
+<p>1 2</p>
+<p>UPDATE wp_comments SET comment_content = REPLACE( comment_content, ‘fuck’, ‘**’ );</p>
+<h4 id="9、关闭文章评论功能"><a href="#9、关闭文章评论功能" class="headerlink" title="9、关闭文章评论功能"></a>9、关闭文章评论功能</h4><p>有时候你的博客可能会因为某种原因，需要关闭文章的评论。在WordPress后台 – 设置 – 讨论，那里取消勾选”允许人们发表新文章的评论”，以后发表的文章默认是关闭评论的。但是之前已经发表的文章，若想关闭评论需要你一篇一篇地去修改评论设置，这是一件比较痛苦的事情。以下SQL语句可以帮助你轻松地批量关闭文章评论： (1) 关闭所有旧文章的评论： 通常情况下，一篇旧文章就很少会有人发表评论了，一般访问旧文章的访客大都来自搜索引擎，这是好事，但是这部分访客还会提出一些新问题，尤其是技术问题，但是可能文章中提到的技术细节你已经淡忘，这时候会让你很难办。最好的做法还是还是禁用旧文章的评论，以下SQL将禁止2009-01-01之前发表的所有文章的评论，你可以根据需要修改日期：</p>
+<p>1 2 3</p>
+<p>UPDATE wp_posts SET comment_status = ‘closed’ WHERE post_date &lt; ‘2009-01-01’ AND post_status = ‘publish’;</p>
+<p>(2) 关闭所有文章的评论： 有时候很不幸，在不可抗力的威胁下，你不得不关闭所有文章的评论，可以使用以下SQL语句：</p>
+<p>1 2</p>
+<p>UPDATE wp_posts SET comment_status = ‘closed’ WHERE post_status = ‘publish’;</p>
+<p>批量发布文章 UPDATE wp_posts SET post_status = ‘value’ WHERE (post_type =’post’ and post_status = ‘value’) ;</p>
+<p>其中value的值包括draft，pending和publish。</p>
+<p>SQL实例</p>
+<p>将所有状态为draft的文章改为publish。SQL语句如下：</p>
 
       
 
@@ -185,6 +251,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数据</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
@@ -193,6 +270,10 @@
         		<li class="article-tag-list-item">
         			<a href="/categories/IT相关//" class="article-tag-list-link color5">IT相关</a>
         		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/IT相关/其它//" class="article-tag-list-link color3">其它</a>
+        		</li>
       		
 		</ul>
 	</div>
@@ -200,7 +281,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/posts/37146966.html">展开全文 >></a>
+          <a class="article-more-a" href="/posts/a0dc1822.html">展开全文 >></a>
         </p>
       
 
@@ -230,60 +311,28 @@
 
 
   
-    <article id="post-e5-a6-82-e4-bd-95-e5-88-a9-e7-94-a8-e4-b8-8a-e4-b8-8b-e7-8f-ad-e7-9a-84-e7-a2-8e-e7-89-87-e6-97-b6-e9-97-b4-e5-85-8d-e8-b4-b9-e8-80-8c-e5-8f-88-e6-ac-a2-e4-b9-90-e7-9a-84-e5-ad-a6-e8-8b-b1-e8-af-ad" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-mac-e9-bb-98-e8-ae-a4mail-e9-82-ae-e4-bb-b6-e5-ae-a2-e6-88-b7-e7-ab-af-e5-87-ba-e7-8e-b0-e4-b8-8d-e8-83-bd-e4-bd-bf-e7-94-a8-e5-8f-91-e4-bb-b6-e6-9c-8d-e5-8a-a1-e5-99-a8-e7-9a-84-e8-a7-a3-e5-86-b3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/posts/de6584e8.html">如何利用上下班的碎片时间免费而又欢乐的学英语?丨APP英语魔方秀</a>
+      <a class="article-title" href="/posts/db9aee13.html">mac默认mail邮件客户端出现:&#34;不能使用发件服务器&#34;的解决方法</a>
     </h1>
   
 
         
-        <a href="/posts/de6584e8.html" class="archive-article-date">
-  	<time datetime="2014-09-03T01:04:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-09-03</time>
+        <a href="/posts/db9aee13.html" class="archive-article-date">
+  	<time datetime="2013-04-28T14:37:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-04-28</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>题记：现在大家都很忙，整段时间非常少。包括黑李白在写这篇文章的时候，利用的也是碎片时间。当我们工作、生活、旅行需要用到英语的时候，又会觉得没时间去学，吃了亏。时间就是牛奶，你不挤就它还真没有。今天君南和大家分享一下利用碎片化时间学欢乐的学英语的方法。</p>
-<p>——————————————-正文分割线———————————————-</p>
-<p>好友 <a href="http://weibo.com/lj514460287" target="_blank" rel="noopener">@辐射兔</a> 推荐我使用：英语魔方秀 以后，用了一年了吧，整个人都精神了。</p>
-<p>英语魔方秀下载地址：<a href="http://www.mofunenglish.com/app.html" target="_blank" rel="noopener">http://www.mofunenglish.com/app.html</a>（支持android、ios）</p>
-<p>有个朋友A，现在在一家不错的外贸公司工作，公司是做全球矿产经济的，经常往返于巴西与中国，他的英语很不错，但从未听说过他报过什么班儿学英语什么的，</p>
-<p>有一次我问他：唉，你英语那么好，是不是之前就是*东方的老主顾啊』</p>
-<p>这货弹了弹烟灰，说：『《阿甘正传》你看过吧？』</p>
-<p>我：『看过！』</p>
-<p><a href="https://upimg.ibolee.com/wp-blog-uploads/2014/09/hello－gump.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2014/09/hello%EF%BC%8Dgump-576x1024.png" alt="hello－gump"></a></p>
-<p><strong>【功能：用英语魔方秀学习《阿甘正传》，句式可快可慢，可录音上传与网友分享】</strong></p>
-<p>A哥：『我也看过，不过我忘了我看了多少遍《阿甘正传》了，当时非常喜欢汤姆 克鲁斯的声音，于是就在自己的笔记本电脑前跟着他学，把台词背的烂熟为止。单词，语法什么的也无师自通了。到现在看这部电影的时候，台词我出口就能接下几句才罢休』</p>
-<p>我『然后呢』</p>
-<p>A哥：然后我到了现在这家公司，口语有点浊，但是很快就可以融入了，学到的感兴趣的东西与实践衔接需要一个过程。现在想起，挺感谢那部电影的，也非常感谢汤姆 克鲁斯</p>
-<p>听完他的话，我没再说话。</p>
-<p><a href="https://upimg.ibolee.com/wp-blog-uploads/2014/09/hello－gump.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2014/09/hello%EF%BC%8Dgump-576x1024.png" alt="hello－gump"></a></p>
-<p>【功能：不懂的单词可查询，但是需要wifi或者移动网络的支持】</p>
-<p>那么：</p>
-<p>会英语有一份更好的工作，有一个更好的人脉圈，即使是我们搞技术的，顶级的技术都要和老外去学，有时候看一些工作中会用到的open source code（开源代码)，不会英语连说明都看不懂，更别谈学了。。。。</p>
-<p>英语魔方秀门槛低，只要你拥有一台智能手机，就可以免费的使用它。</p>
-<p><a href="https://upimg.ibolee.com/wp-blog-uploads/2014/09/软件主界面.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2014/09/%E8%BD%AF%E4%BB%B6%E4%B8%BB%E7%95%8C%E9%9D%A2-576x1024.png" alt="软件主界面"></a></p>
-<p>【功能：英语魔方秀的教材分类】</p>
-<p>学英语性价比？</p>
-<pre><code>11年底的时候，我去崇文门一家*联英语咨询报班事宜，在跟着老师做了一番测评之后，对方告诉我，如果你的英语想学到听说读写没有障碍的话，需要3W6的学费，你考虑一下。鉴于lz不是土豪，听完价格渐渐的有些灰心。3W6能买3台macbook了。。英语魔方秀是非常经济实惠的自学英语的选择，目前它是免费的。</code></pre><p>晚上回家看了一下老罗的讲座视频，血脉喷张，我要免费学英语。。。还要免费学会英语！！！！</p>
-<p><a href="https://upimg.ibolee.com/wp-blog-uploads/2014/09/千与千寻.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2014/09/%E5%8D%83%E4%B8%8E%E5%8D%83%E5%AF%BB-576x1024.png" alt="千与千寻"></a></p>
-<p>【英语魔方秀的首页展示的动漫，可按照动漫台词学习英语】</p>
-<pre><code>怎样保持好学英语的毅力？（老罗用的是不停的自我激励）</code></pre><p>简述一下老罗是怎么免费学英语的，自己天天背单词，然后想放弃的时候（心血来潮的耐心最多不过三天）随手拿起俩本励志书籍，读上俩句。然后红尘滚滚的心就停止了。</p>
-<p><a href="https://upimg.ibolee.com/wp-blog-uploads/2014/09/离线缓存.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2014/09/%E7%A6%BB%E7%BA%BF%E7%BC%93%E5%AD%98-576x1024.png" alt="离线缓存"></a></p>
-<p>【功能：离线缓存，在上班路上之前，用家里的wifi缓存好要学的内容，路上带上耳机学习】</p>
-<p><a href="https://upimg.ibolee.com/wp-blog-uploads/2014/09/some-one-for-you.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2014/09/some-one-for-you-576x1024.png" alt="some one for you"></a></p>
-<p> 【在英语魔方秀学习英文歌曲，图为听网友唱阿黛尔的《some one like you》】</p>
-<p><a href="https://upimg.ibolee.com/wp-blog-uploads/2014/09/小江啦.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2014/09/%E5%B0%8F%E6%B1%9F%E5%95%A6-576x1024.png" alt="小江啦"></a></p>
-<p>【图为黑李白在英语魔方秀的好友：小江啦，英语学的非常好，我们互相激励，互相打气喔~】</p>
-<pre><code>最后，方法总结如下：</code></pre><p>1.用一个靠谱免费的学英语app； 2.与网友互相激励互相学习； 3.像老罗一样准备很多精神食粮，打算放弃的时候，围观一下。</p>
-<pre><code>黑李白希望大家一起坚持，学好英语，走出自己职业晋升瓶颈。有打算的朋友，可在本文下方留言，我们一起坚持，互相监督。</code></pre>
+        <p>mac默认mail邮件客户端出现:”不能使用发件服务器”的解决方法，提及如何设置<a href="http://lijunnan.com/828/" target="_blank" rel="noopener" title="黑李白">mac</a>下的mail的接收邮件相信大家都可以，今天找到一个如何设置发送的贴子解决了我的问题，拿来和大家分享！ 希望对新同志们有帮助 <img src="https://upimg.ibolee.com/wp-blog-uploads/2013/04/4877a94ff79e0fb3bab9b945870bd9ab.jpg" alt="1.jpg" title="1.jpg"> <img src="https://upimg.ibolee.com/wp-blog-uploads/2013/04/b393148c3c737aa3c556837690b1357c.jpg" alt="2.jpg" title="2.jpg"> <img src="https://upimg.ibolee.com/wp-blog-uploads/2013/04/cc04bec6557d7b50f85c780d9aef08d1.jpg" alt="3.jpg" title="3.jpg"> <img src="https://upimg.ibolee.com/wp-blog-uploads/2013/04/69fbab01bae86cbbe88c90c5465efa2b.jpg" alt="4.jpg" title="4.jpg"> <img src="https://upimg.ibolee.com/wp-blog-uploads/2013/04/d98f99a817489b3f170487905609efc3.jpg" alt="5.jpg" title="5.jpg"></p>
+
       
 
       
@@ -296,11 +345,19 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">干货</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">碎片时间利用</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">电脑软硬件</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">mac</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">邮件客户端</a>
         		</li>
       		
 		</ul>
@@ -321,7 +378,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/posts/de6584e8.html">展开全文 >></a>
+          <a class="article-more-a" href="/posts/db9aee13.html">展开全文 >></a>
         </p>
       
 
@@ -351,681 +408,28 @@
 
 
   
-    <article id="post-e7-8e-a9-e5-9d-8f-e4-ba-86-e7-9a-84-e4-bd-93-e8-b4-a8-e5-a6-82-e4-bd-95-e4-bb-8e-e5-a4-b4-e5-bc-80-e5-a7-8b-e6-81-a2-e5-a4-8d-e8-ba-ab-e4-bd-93-e7-b4-a0-e8-b4-a8-ef-bc-9f" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-mac-os-x-e6-96-87-e4-bb-b6-e5-a4-b9-e6-9d-83-e9-99-90-e7-ae-a1-e7-90-86-e6-96-b9-e6-b3-95-e8-af-a6-e8-a7-a3-e9-85-8d-e5-90-88-e7-bb-88-e7-ab-afterminal-e8-af-ad-e6-b3-95-e8-af-a6-e8-bf-b0" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/posts/aefbf9bc.html">玩坏了的体质如何从头开始恢复身体素质？</a>
+      <a class="article-title" href="/posts/cc7808db.html">mac os x文件夹权限管理方法详解,配合终端terminal语法详述</a>
     </h1>
   
 
         
-        <a href="/posts/aefbf9bc.html" class="archive-article-date">
-  	<time datetime="2014-08-15T07:46:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-08-15</time>
+        <a href="/posts/cc7808db.html" class="archive-article-date">
+  	<time datetime="2013-04-16T13:53:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-04-16</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>首先，这不是如何健身的建议，只是一个快要把自己玩死的边缘，把自己拉回来的综合路程。</strong><br>一个吸烟9年，喝酒，作息不规律，熬夜，爱吃重口味油盐等等..的人，一次改变的路程。<br>曾我真的以为我还能呼吸就真的能多活一天似的。  </p>
-<p><strong>大学毕业后的数年里，持续不断的，一个不拉的，坚持不懈的干了如下事：（真特么想抽死自己） 相信很多毕业之后身材走样的人没少干以下的事，其实都是自己的错，怪不得别人。</strong><br><strong>抽烟 ：</strong><br>一天至少一包半，前后抽了9年。以至于，后来只要稍微跑动，肺部整个一片灼烧感，有时候有即使不跑动也是灼烧甚至有血味（感觉这尼玛要死了差不多了）..<br><strong>喝酒：</strong><br>有一定程度借酒消愁的行为…<br><strong>作息不规律：</strong><br>4，5年没好好规律生活过了。<br><strong>熬夜：</strong><br>这不是家常便饭麽？顺便抽着烟喝着酒，吃着地沟油烧烤。打两盘DOTA…不极度疲劳不睡..持之以恒坚持不懈的干这事。  </p>
-<p><strong>重油重盐辛辣油腻，大口吃肥肉：</strong><br>一天没一斤肉，加上肥肉..怎么可能。而且全是油腻腻的。而且都是在晚上吃.. 吃很多。坚持不懈持之以恒的吃。 吃完了还加餐出去吃的。还来薯条，喝各种饮料…<br><strong>还特么不运动：</strong><br>我觉得很长一段时间我最大的运动就是下楼走一圈。  </p>
-<p><strong>过度的XXOO （捂脸跑走…）：</strong><br>那会年轻没见过女人，跟种马似的….就算体质很差了，还是乐此不疲，战个痛快。不知不觉..人还是会被抽干的。<br>大概就是上个楼都喘，各种失眠盗汗，一天到晚犯困，萎靡。要么昏睡不醒，然后醒来2小时就犯困。虚成这样子！  </p>
-<p><strong>以上都要我一个不拉占全了.. 坚持了好多年…（羞愧难当.我这么糟蹋自己）</strong><br>你们谁能同时把以上全做到了，而且坚持不懈很多年还没挂了…  </p>
-<p><strong>我现在回想起来，那时候的体质虚弱的和快死了没啥区别。却浑然不自知！！</strong>  </p>
-<p><strong>后来3件事刺激到我了。</strong><br>第一件：EX嫌弃我20多岁人，30多岁发福的身体。感觉奇耻大辱。我也不知道为毛觉得奇耻大辱。<br><a href="https://upimg.ibolee.com/wp-blog-uploads/2014/08/129ce89a00b13dc14782e807dd96e83f_b.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2014/08/129ce89a00b13dc14782e807dd96e83f_b.jpg" alt="129ce89a00b13dc14782e807dd96e83f_b"></a><br>体脂图，哥们我的身材当时就冲着 这个20-22%的造型去了，<strong>还是没肌肉的那种。</strong>再这么下去就是30%。（我想我没病，很肥的时候不会玩自拍的…我拍的下去麽我…不然真是可以给你们看看）  </p>
-<p><strong>咳咳再强调一次 ，这不是如何健答..只是一个综合过程.. 作为给题主的参考。</strong>  </p>
-<p>第二件事：<br>被EX甩了之后，我的身体好虚弱，几天没合眼，睡不着啊。整个精神神经处于应激状态，关在一个小屋子里闷着抽烟，一包接一包。（想象一下那种乌烟瘴气里被熏几天的感觉吧）  </p>
-<p>然后摸鼠标键盘的时候，肌肉都在抖…<br>后来才垂死的睡着，醒来的时候汗把床被子全打湿了。  </p>
-<p><strong>我当时要是挂了。我一点都不意外。</strong>  </p>
-<p>此时还发生了一件事，一个快递大哥来送快递，她老婆正好也在，她用一种惊诧的眼睛瞪圆了看着我。<br>（和快递大哥认识住一个院子，自此之后比较熟了，这大约是昏死睡之后一周的事，还不是当天..）<br><strong>之后我才知道她在惊讶，怎么一年轻小伙子，憔悴成这个样子…</strong>  </p>
-<p>第三件事：<br>等我缓过来之后，终于垂死的睡过去。<br>一身湿透的盗汗醒来，有了一点力气，挣扎着爬起来，面对这一切，我觉得我需要锻炼了。   </p>
-<p>（这已经是那次盗汗昏睡 2周以后了.. 觉得有点力气了才去..）<br>在跑步机上，跑了2公里，很慢的速度，和小姑娘差不多，将近20分钟。<br>下跑步机的那一刻：<br><strong>天旋地转！差点没晕过去，肺里全是血的味道。眼前发黑。（现在想起来都后怕）</strong><br><strong>我当时要是挂了。我还是一点都不意外。</strong>  </p>
-<p><strong>在这三件事的综合刺激下，我开始决定改变一些什么：</strong><br><strong>只是为了活下去，对好好的活下去。</strong>  </p>
-<p><strong>题目主可以做个参考。做做修改，以适应你自己的方法。</strong><br><strong>我详细的记录过程是想告诉LZ，一切的改变是环环相扣的。不是一步到位的。</strong><br><strong>我也是无意之间环环相扣影响着做了一个综合改变。希望给你参考借鉴。</strong>  </p>
-<p><strong>我做的第一件事就是跑步：</strong>  </p>
-<p>从2公里发晕到跑完5公里无压力。这个过程我用了2个月。一开始多么的缓慢。<br>真的很累，我每次去健身房的时间，大约是7点，要工作学习啊。然后锻炼要各种等，跑步机满。然后9点才能练完洗完。 还没吃的，要走半小时到地铁站再坐一小时地铁回家。回家后再做吃的睡觉。  </p>
-<p>可能那会神经真的受刺激了，居然要我坚持下来了，差不多一周3-4次。  </p>
-<p><strong>如果你觉得跑步很无聊，我觉得你需要一个很好的耳机，我就靠着这个撑过很多无聊的时候。</strong><br><strong>别再扯着耳机线了。晃啊晃啊你不难受麽！真的很蛋疼好麽。</strong><br><strong>拥有这个：你就会觉得自己飞起来： 跑步很欢乐了！音乐自选，就激情一点吧：</strong>  </p>
-<p><a href="http://item.jd.com/1116035.html" target="_blank" rel="noopener">【索尼NWZ-W273S】索尼（SONY） NWZ-W273S 防滴溅运动式MP3 游泳时可佩戴的Walkman 4G 黑色【行情 报价 价格 评测】</a>  </p>
-<p><a href="http://item.jd.com/643273.html" target="_blank" rel="noopener">【飞利浦SA4ACT04KN/93】飞利浦（PHILIPS）SA4ACT04KN/93 头戴式运动MP3 4G 专利“FullSound”音效 黑色【行情 报价 价格 评测】</a>  </p>
-<p>这两款运动耳机我都有，而且我都用了很久。… 综合下来推荐索尼的。<br><strong>这时候跑步终于变得有趣多了！不用烦耳机线了！重要的是，你是听歌还是听英语还是听电影随便你，然后一切就在你的 ‘似魔鬼的步伐’中 ，一步两步…摩擦摩擦….咳咳</strong><br>(神曲移步：<a href="http://www.xiami.com/song/1773110382?spm=a1z1s.6928797.1561534521.260.2iTucX" target="_blank" rel="noopener">我的滑板鞋-约瑟翰 庞麦郎, 我的滑板鞋MP3下载,歌词下载</a>）  </p>
-<p>这个时候气色开始恢复，以前都是面色发黑的，后来熟人说，最近你气色好多了，脸红润了，终于有色泽了，之前你那憔悴的样子。（看来每个人都看得出，就我自己不知道- -）  </p>
-<p><strong>第二件事就是戒烟戒酒：</strong><br>我觉得跑步这件事简直是一切的基础：<br>希腊：如果你想强壮,跑步吧!如果你想健美,跑步吧!如果你想聪明,跑步吧!  </p>
-<p>无意之间，锻炼的习惯与跑步要我打下了戒烟戒酒的基础。<br>虽然坚持锻炼，但是烟酒不断也不是什么好体质。  </p>
-<p>终于在第三个月的时候，我把烟戒了。 在猛抽了3包烟之后，掐灭了我人生最后的一根烟。<br>然后无痛苦的戒掉了，一点念想头没。 9年的烟民，仅仅4-5天我就把体瘾收拾干净了。如果要给戒烟的人什么建议。我可以另开一贴了。<br>但是第一步一定是锻炼，第二步破心瘾，好好想清楚吸烟你得到了什么。<br><strong>我巧合的完成了第一步，在其他书籍的帮助下猛抽烟看完想清楚。</strong><br><strong>书籍： 这本书能让你戒烟</strong><br><strong>豆瓣评价：</strong><a href="http://book.douban.com/subject/3318174/" target="_blank" rel="noopener">这书能让你戒烟 (豆瓣)</a><br><strong>（真想个给作者32个赞）</strong>  </p>
-<p>如果LZ有什么不良嗜好抽烟喝酒。<br>先从跑步开始，再怒攻心戒之。 跑步会为戒烟打下很好基础。<br>我一个抽的肺部成天灼热，一嘴的血丝味道的人，都能开心 ‘无痛苦’的戒了。<br><strong>对戒的每一秒我都是快乐的，舒服的。所有的戒断反应都是挣脱枷锁的赏赐。</strong>  </p>
-<p><strong>之后戒烟至今，一点念想都没！最重要的是：我很开心！戒烟很爽！一点也不痛苦！包括过程！</strong><br><strong>相信我，一根接一根的烟接着抽，简直没有比这个更无聊和愚蠢的事了。</strong><br>完成了戒烟，戒酒就更简单了。这个我本来就没瘾的。  </p>
-<p><strong>第三件事改变作息：</strong><br>当我完成跑步与戒烟这种习惯之后，心肺有了一定恢复，起码我能睡着不大肆出虚汗了。<br>但是这还远远不够。<br>我还有个大问题！作息不规律，到点睡不着…. 这也是健康的大硬伤吧！<br>如果这个不改，其他一切都是白搭。  </p>
-<p><strong>我无意之间看到一句话：</strong><br><strong>你之所以即使疲劳了，也不肯睡觉，是因为你没有勇气结束这一天，也没有勇气迎接新的一天。</strong><br><strong>参考</strong> <a href="http://lijunnan.com/1096/" target="_blank" rel="noopener" title="如何改掉晚睡强迫症，让睡眠规律起来。">如何改掉晚睡的坏习惯？</a>  </p>
-<p>一下我脑洞打开，我颇花费了一些日子，告诉自己这一天无论自己做的如何，有没有拖拖拉拉。有没有完成这件事。我都要结束它了，如果想要自己睡的安心，那么白天就积极点。<br>但是！还是有问题的，虽然我努力转变了观点，但是到点还是多少有点睡不着。不过这又开启了第四件事。  </p>
-<p><strong>第四件事打坐，冥想：</strong><br>我觉得是白天的自制力不够，不能好好完成事情，才让自己晚上安心睡着。于是我转而研究了一下自制力，确定它是一种‘肌肉’ 是一种能量，你需要刻意锻炼它，也需要它休息。一旦它疲劳了。你的行为就崩溃了。 所以，我们会发现当我们疲劳的时候，会更加容易暴饮暴食，更加容易的发怒等。<br>参考书籍：<br><a href="http://book.douban.com/subject/10786473/" target="_blank" rel="noopener">自控力 (豆瓣)</a><br><strong>（我一开始以为是励志鸡汤文，一直嗤之以鼻，后来无意看到，才发现这本书是斯坦福一门课程。有理有据，我其中借鉴了不少有效的经验…干嘛取个如此鸡汤的名字，叫什么 “前额皮层操作术” 多牛掰.）</strong>  </p>
-<p>随着我的实践一路走来。<br>其实对于以下观点不能同意更多：<br><strong>很多问题，不是‘意志力’解决的，其实就是个体力问题。</strong><br><strong>我们中国人，太注重想通了，好像想通了就什么都解决了。其实不然，道理那么多，我们还是过不好一生。别说一生，连个觉都睡不好其实。 **<br>**很多都是身体问题其实，我觉得这点西方就很务实。</strong><br><strong>锻炼它的第一步就是冥想，打坐。专注于呼吸之间。</strong>  </p>
-<p>一开始专注于呼吸之间，坐3分钟我都坐不住。但是我知道自制力是需要锻炼的。<br>专注于呼吸之间的冥想就是最好的打基础，不但可以提高注意力也能提高自制力。<br>于是<br>我每天睡前都进行练习，带着耳机。听很清淡的曲子，但是尽力不跟着调子跑了。<br>慢慢放松，专注呼吸之间。<br>过去谁能想象，我这个坐着就要狂抖腿的人，能像现在一样安安静静的坐着打坐。<br>随着时间的推移与累积。<br>你会在中间学会很多。  </p>
-<p><strong>很重要的一个附带就是，你会意识到你的很多情绪，观点，一股一股往脑中冒的想法都是那么的多，不过你将学会的是，不用刻意压抑什么，任由他们生，也任由他们灭。你只要专注于你的呼吸之间，哪怕你意识各种想法无论是惊涛骇浪 还是 香艳无比 你只要默默的专注于你的呼吸之间，看着他们起看着他们灭。</strong>  </p>
-<p><strong>由于这件事，我无意之间加上第三件事的观点：只是你没有勇气结束这一天。</strong><br><strong>有了一个很好的结合。 **<br>**冥想之后，我觉得这一天我给它画了一个句号。于是我能安安静静睡着了。</strong><br><strong>即使偶尔睡不着，我也会告诉自己，这一天结束了，即使我没睡着，我也休息着。特别坦然。结果是..必须睡的着啊！</strong>  </p>
-<p>于是我的作息能够保证了，这还是不够把身体变好，只是叫做正常，叫做恢复。<br>于是水到渠成的第五步有了  </p>
-<p><strong>第五件事，健身：</strong><br>一段日子后，我觉得这样算是稳定了，起码和正常人差不多生活了。再也没那么虚弱的要死了。也没有肺里的血气，但是里强壮和强大差的远呢。<br>于是有了个新的想法；我要强壮。  </p>
-<p><strong>当一个男人发自内心的有了我要强壮的念头之后，一切都好办了。</strong><br>这里请参考：知乎，硬派健身系列。 我都跟哪学的。<br>不过我个人从此不往健身房跑了， 没那时间，也不喜欢对着一堆金属吭哧吭哧的。<strong>我个人比较喜欢无器械，囚徒健身等。</strong><br><strong>因为相对自由，个人喜好。 殊途同归。不要争好坏。都挺好。</strong>  </p>
-<p>书籍：<br><a href="http://book.douban.com/subject/25717097/" target="_blank" rel="noopener">囚徒健身 (豆瓣)</a><br><strong>用失传的技艺练就强大的生存实力</strong><br>优酷：<br><a href="http://www.soku.com/search_video/q_%E5%9B%9A%E5%BE%92%E5%81%A5%E8%BA%AB?f=1&kb=0412000000000__" target="_blank" rel="noopener">囚徒健身 搜库</a> 动作参考。  </p>
-<p>很多训练的动作和基础：可以在知乎上的硬派健身多做了解：<br><strong><a href="http://zhuanlan.zhihu.com/oh-hard" target="_blank" rel="noopener">硬派健身 - 知乎专栏</a> （那些要减肥，健身的看这里好吗！你们想要的一切都在这.我可不专业噢， 非常感谢 <a href="http://www.zhihu.com/people/d3207a7746afbd84017ea6b05b2f1be3" target="_blank" rel="noopener">@斌卡</a> 你的文我全部拜读.受益匪浅）</strong>  </p>
-<p><strong>再此我不得不再次强调，这不是一个健身贴，这是一个从颓废走向健康的心路贴。</strong><br><strong>专业知识，这里水平不够没法提供- -，**</strong>也不做任何误人子弟的指点。**  </p>
-<p>OK继续，所以后来慢慢的从跑步，转向了无氧与HIIT锻炼。<br>insanity08 地址：<br><a href="http://v.youku.com/v_show/id_XNjgyNTQ2ODAw.html" target="_blank" rel="noopener">insanity08 Max Interval Circuit 极限间歇循环 中文</a>  </p>
-<p>从一开始10分钟跪地上，到现在无氧完了还能跳30分钟。 如果只是做做核心肌肉的话，我能跳完全成。 这是一个对我而言很好的进步。  </p>
-<p>尤其是你早上起来之后，发现，额，我胳膊上怎么这里突起一块肌肉，额过几天又发现， 额原来这个部分是有肌肉的，原来这一块是几块肌肉组成的… 你看着自己身材的变化觉得惊喜不已。是我目前最大的快乐之一。相信也会给你带来快乐。  </p>
-<p>我主要是在家里练的，这一路要我意志力有了巨大的磨练。 无论刮风下雨，多晚回家。我肯定2小时锻炼妥妥的。最晚一次我记得练到夜里1点，虽然不科学，但是只是偶尔，<strong>有时候坚持的意义比偶尔的不科学重要。</strong>  </p>
-<p>随着体质渐渐的增强。慢慢就开始注重减肥与长肉了。<br>一个曾经毫无自制力的，虚弱的走上发福道路的人都能这么练。<br>50个仰卧起坐就嚷嚷腹肌为何不来…还是退下吧。<br>为了继续加强锻炼，我开始用一个旧书包装了一点铁，注意，这并不一定科学，不要随便模仿，但是一定要做到自己瞧得起自己，尽自己最大努力。<br><a href="https://upimg.ibolee.com/wp-blog-uploads/2014/08/b2a374198f104ddb58f8b5d74c71cb84_b.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2014/08/b2a374198f104ddb58f8b5d74c71cb84_b-300x168.jpg" alt="b2a374198f104ddb58f8b5d74c71cb84_b"></a><br>然后背上它：完成200个俯卧撑。<br>然后脱掉….然后100多个卷腹，加上10-30分钟HIIT。<br>这是某一天内容。每天我的的运动内容不同。但是无论多晚2小时，无氧+HIIT。<br>这特么才叫减肥…别50个仰卧起坐就嚷嚷腹肌怎么还不来。  </p>
-<p><a href="https://upimg.ibolee.com/wp-blog-uploads/2014/08/f5e8071ca6ed8cbc46ac0df0e847167a_b.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2014/08/f5e8071ca6ed8cbc46ac0df0e847167a_b-300x147.jpg" alt="f5e8071ca6ed8cbc46ac0df0e847167a_b"></a>  </p>
-<p>你们觉得已经走到今天的我，还是个虚弱的胖子吗…<br>咳咳，不过我是暂时比不了腹肌男们。<br>第一我条件不够。第二我基础薄弱。TAT<br>臣妾也不是神啊…还不得脚踏实地一点点去坚持去做吗 TAT  </p>
-<p>加油吧，痛苦只在一瞬间。它顶多一分钟，一小时，甚至顶多一年。<br>我用这个和志同道合者打气：<br><a href="https://upimg.ibolee.com/wp-blog-uploads/2014/08/7d966670f7ec795ad08494c9f6882e94_b.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2014/08/7d966670f7ec795ad08494c9f6882e94_b-300x153.jpg" alt="7d966670f7ec795ad08494c9f6882e94_b"></a>  </p>
-<p><a href="https://upimg.ibolee.com/wp-blog-uploads/2014/08/15ac9586ef84f162c7957207588b3688_b.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2014/08/15ac9586ef84f162c7957207588b3688_b-300x162.jpg" alt="15ac9586ef84f162c7957207588b3688_b"></a>  </p>
-<p><a href="https://upimg.ibolee.com/wp-blog-uploads/2014/08/2dbf4f86011957159ca55268f358dc09_b.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2014/08/2dbf4f86011957159ca55268f358dc09_b-300x122.jpg" alt="2dbf4f86011957159ca55268f358dc09_b"></a>  </p>
-<p>PS:<br>送上一些我锻炼时候，累的不行的时候用来打气的视频：<br><a href="http://v.youku.com/v_show/id_XNzI4NTg0MjA0.html" target="_blank" rel="noopener">智利矿工世界杯前振臂高呼：死神来了又如何？死亡之组又怎么样？</a><br><a href="http://v.youku.com/v_show/id_XNTM3MjQyMDI4.html" target="_blank" rel="noopener">1分钟让你知道你身上最宝贵的是什么</a><br><a href="http://v.youku.com/v_show/id_XNTE1NjE5MDI4.html" target="_blank" rel="noopener">励志：痛苦只在瞬间</a><br><a href="http://v.youku.com/v_show/id_XNjUwMDUzMDcy.html" target="_blank" rel="noopener">【牛男励志】2014终极励志视频：该起床了（牛男字幕）</a>  </p>
-<p><strong>第六件事，饮食： 当前5件事养成习惯后。这件事就水到渠成的来了。</strong><br>作为一个重油重盐，吃辣，无肉不欢的人。<br><strong>我也不认为我的饮食也可以做一个转变。</strong><br><strong>我也干过半夜突然受不了馋死了跑出去大吃一通。</strong>  </p>
-<p>但是<br>如今，蛋奶蔬菜粗粮为主。  </p>
-<p>早餐：香蕉脱脂牛奶燕麦葡萄干 是铁定的<br>晚餐同早餐。  </p>
-<p>午餐：绿豆粥黑米粥各种粗粮蔬菜。   </p>
-<p>肉：.<br>当然还是吃的，但是无油无盐<br>（不放油盐，白水煮，或者放点萝卜土豆吧，其实挺香单纯的肉味啊，土味啊）<br>定量，在健身后，吃100-200g （还不是每次，大约2-3天才吃一次）；<br>想起以前晚上一顿吃2斤油腻腻的肉就恐怖。  </p>
-<p>喝：杜绝了饮料， 只喝牛奶和水，绝大部分时候。 顶多偶尔锻炼完会喝一点功能性饮料。<br>水是过滤过后的水，和自来水直接烧开了喝伟大很有差别。 <strong>要尽量注重水的品质。</strong><br>现在有很多过滤饮水机，LZ买的这个：<br><a href="http://item.jd.com/407009.html" target="_blank" rel="noopener">【飞利浦WP3864/00】飞利浦（Philips）WP3864/00 一体式 净水机 饮水机【行情 报价 价格 评测】</a><br>感觉比自来水烧开强多了。  </p>
-<p>EX可以见证我家冰箱简直是各大饮料厂展览。只喝饮料不喝水的。<br>我曾经一度觉得，不喝饮料怎么活的下去。<br>悲剧的EX，我又把你拎粗来了。<br>提起她，<br>在无亲无故的这座城市里，独自经历了这一场之后。<br>如今，我只能坦诚的说，爱过。<br>看客们请淡定，咳咳。<br>我找到了真爱：<strong>自爱. TAT</strong>  </p>
-<p><strong>饮食调整的经验就是：</strong><br>1.如果你突然特别渴望高热量的食物，比如KFC啊 大肉 油腻腻的食物。 那就是很可能你体内需求热量不足了。<br><strong>你可千万别委屈自己</strong>，忍着不吃啊，那会让你吃的更多。该吃就吃！<br><strong>但是更好的做法是</strong>：<br>摄入蛋白质与有碳水化物的食物：<br>我一般就是 香蕉 葡萄干 牛奶 蛋白 等。 只要一小会之后，你就不会对这些油腻腻的高热食物非常渴望了。甚至吃不吃无所谓了。** 因为你成功的把大脑给‘忽悠’过去了。它获得满足了之后就不会折磨你了。你只要给他足够的蛋白质和碳水。**<br><strong>（果然讲科学 讲人性才是硬道理）</strong>  </p>
-<p><strong>高蛋白，低脂肪，高碳水化物，高纤维素 是你更好的选择：</strong><br><strong>食物热量查询：</strong><br><a href="http://www.boohee.com/food/" target="_blank" rel="noopener">食物热量查询，食物卡路里大全</a>  </p>
-<p>参考：<a href="http://v.163.com/movie/2013/5/E/1/M8TBLASMF_M8TBLJSE1.html" target="_blank" rel="noopener">BBC：关于减肥你应该知道的十件事</a><br><a href="http://zhuanlan.zhihu.com/oh-hard/19780207" target="_blank" rel="noopener">【硬派健身·减肥篇】电子书硬派开售 知乎盐系列 - 硬派健身 - 知乎专栏</a>  </p>
-<p><strong>2.你会渴望吃肉的</strong>，<br>但是你知道知道，你需要的是肉，而不是加满佐料各种奇怪的食物。<br>（这不科学，有调料才是美味，我只是怕自己重口味复发，刻意的尽量淡。 完全不用学我，不过少油少盐对身体很好）  </p>
-<p>我大量锻炼后的土豆牛肉：就是土豆+牛肉+一点料酒去腥味。 生炖。 无油无盐。<br>你这时候才会知道，<strong>你其实只是需要肉，不是一堆油腻腻的配料。（大概就是，你饿了3天，干馒头你都觉得香，所以..对我而言这时候没什么油盐我也吃的很香）</strong>  </p>
-<p><strong>一个重口味，食肉动物主食现在的样子：</strong><br><strong>脱脂奶粉+桂格燕麦+葡萄干： （其他若干香蕉， 黑米，绿豆,黄豆等…就不拍了..</strong><br><strong>总之几乎就素为主。素中我又偏好以 黄豆绿豆黑米土豆萝卜白菜空心菜西兰花这些…尤其是豆类 蛋白质很高，碳水化物丰富，热量并不高，纤维素丰富，个人喜好，非专业推荐。</strong><br><strong>仅供参考试试）</strong>  </p>
-<p><a href="https://upimg.ibolee.com/wp-blog-uploads/2014/08/3929b404c91abbf8e148c847b926c649_b.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2014/08/3929b404c91abbf8e148c847b926c649_b.jpg" alt="3929b404c91abbf8e148c847b926c649_b"></a>  </p>
-<p><strong>若是加餐嘛：比如牛肉炖土豆： （就直接炖..加了点料酒去腥味，我自己反正是觉得很满足了）</strong><a href="https://upimg.ibolee.com/wp-blog-uploads/2014/08/88f215fb88667dbcc751074daa8ce0cd_b.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2014/08/88f215fb88667dbcc751074daa8ce0cd_b.jpg" alt="88f215fb88667dbcc751074daa8ce0cd_b"></a><br><strong>（补充：很多人误以为我完全油盐不进..怎么可能，臣妾做不到啊…我还活不活了。土豆和香蕉有大量的K+， 其次作为一个人类，肯定下意识的缺什么会去补充什么的。很多食物里都有一定的盐和脂肪含量的。）</strong>  </p>
-<p>如今，你要问我痛苦吗？一点都不。一开始有点不习惯，但是慢慢你会觉得浑身清爽。<br><strong>你要永远记得，**</strong>你要改变体质，也同时意味着要与过去的生活方式做一个诀别。**  </p>
-<p>以上。如今的我每天吃的好，睡的好。精神很好，肺里每天都很舒畅，每天醒来浑身都充满着能量。<br>我在呼吸，我的心脏在有力的跳动。<br>健康很重要，我很幸福。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/日记//" class="article-tag-list-link color3">日记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/posts/aefbf9bc.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-e5-a6-82-e4-bd-95-e6-94-b9-e6-8e-89-e6-99-9a-e7-9d-a1-e5-bc-ba-e8-bf-ab-e7-97-87-ef-bc-8c-e8-ae-a9-e7-9d-a1-e7-9c-a0-e8-a7-84-e5-be-8b-e8-b5-b7-e6-9d-a5-e3-80-82" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/ac5bacc2.html">如何改掉晚睡强迫症，让睡眠规律起来。</a>
-    </h1>
-  
-
-        
-        <a href="/posts/ac5bacc2.html" class="archive-article-date">
-  	<time datetime="2014-08-15T07:38:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-08-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>我怎么感觉很多关于如何训练自己提前入睡，分成几个步骤操作的答案对我来说都像是一种精神凌虐。  </p>
-<p>那些睡前训练对我来说更像是一种反人性的行为，你要让我睡前不说话，不上网，光躺床上做傻兮兮的放松运动，我一定会觉得，God!~,I’m crazy！何必要强迫自己做不愿做的事情呢？安然舒适的入睡是一件多么惬意且重要的事情啊，我不相信一个无法控制自己入睡时间的人能够通过这些方法，把它变成习惯，真正改变睡眠时间。我想问一下，之前看过类似方法后现在真正坚持下来的人有多少？  </p>
-<p><strong>与其控制人性，改变人性，倒不如顺应人性，安抚人性。</strong>以下方法，亲测有效。  </p>
-<p>其实我们之所以很晚还不想睡去，只是因为我们的潜意识里认为，入睡意味着结束，我们迟迟不愿入睡只是因为我们迟迟不愿放下手边的娱乐，和今天的自己说再见，我们的心是浮躁的，还没有得到那个”恩，够了“的满足。<strong>但偏偏很多人在睡前的焦虑中会试图通过刷微博，刷知乎，不停的在信息流中漫游来找寻自己的满足感，殊不知，这种做法是大错特错的。这样做只会让心变得更加浮躁。</strong>  </p>
-<p><strong>其实我们心里需要的只是一个仪式，一个完整的带有仪式感的行为来让自己的心得到满足感</strong>，来告诉自己，今天已经结束了，我从这件事情上得到了满足感，可以心甘情愿的睡去。记住这个仪式不可以是碎片化的浏览和查看，一定要是一个完整的观看或者聆听。  </p>
-<p>比如可以听一段完整的抒情文字，有时我在不愿入睡的时候会让自己听一段类似”陌声人广播“或者私人电台这种文艺电台的呢喃，因为我向往这种夜晚的自省与反思，然后心就会得到满足，安静入睡。  </p>
-<p>比如读一段完整的文字，让自己在流畅完整的阅读中得到满足，你潜意识里会告诉自己，我看完了一段自己喜欢的文字，我已经得到了自己想要的，我做完了，于是心不再焦虑，可以甘愿睡去。再比如听一张完整的专辑或者是看一段完整的视频。  </p>
-<p>总之这件事情要是一件<strong>流畅的，完整的，让你心里感到满足</strong>的事情而不能是碎片的，零散的。这样做完，内心多半都会感到安静和舒适，同时大脑也会告诉你：“恩，我可以去睡了。”   文：苏杨（致谢）</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/日记//" class="article-tag-list-link color3">日记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/posts/ac5bacc2.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-e6-b2-b3-e5-a5-97-e5-90-83-e6-b3-95-ef-bc-8c-e8-85-8c-e8-8a-8b-e5-a4-b4-e7-9a-84-e5-81-9a-e6-b3-95-ef-bc-8c-e7-ba-af-e6-ad-a3-e5-b7-b4-e7-9b-9f-e5-91-b3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/e3502119.html">西北口味，腌芋头的做法，纯正巴盟味</a>
-    </h1>
-  
-
-        
-        <a href="/posts/e3502119.html" class="archive-article-date">
-  	<time datetime="2014-08-02T13:21:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-08-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>今天街上遇到卖芋头的，2元一斤。想想自己还有一个咸菜罐子是闲置的。得腌点芋头吧。北京的泡菜南方口味居多，泡菜里放糖和大量味精，吃不惯还是自己做吧。 配料：芋头，胡萝卜，盐，花椒。还需要买个泡菜罐和捡个合适的石头。 说明一下这个泡菜腌制这是第一期。还会有第二期，希望各吃客持续关注。 <a href="https://upimg.ibolee.com/wp-blog-uploads/2014/08/wpid-wp-1406985110354.jpeg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2014/08/wpid-wp-1406985110354.jpeg" alt="image" title="wp-1406985110354"></a> 芋头先去皮。 <a href="https://upimg.ibolee.com/wp-blog-uploads/2014/08/wpid-wp-1406985137222.jpeg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2014/08/wpid-wp-1406985137222.jpeg" alt="image" title="wp-1406985137222"></a> 这货就是芋头。 <a href="https://upimg.ibolee.com/wp-blog-uploads/2014/08/wpid-wp-1406985155966.jpeg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2014/08/wpid-wp-1406985155966.jpeg" alt="image" title="wp-1406985155966"></a> 介绍下我的多功能重菜刀，刀身重480g，淘宝55元包邮。比起线下买的轻薄铁片菜刀好用多了，需要购买链接请留言。 <a href="https://upimg.ibolee.com/wp-blog-uploads/2014/08/wpid-wp-1406985312487.jpeg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2014/08/wpid-wp-1406985312487.jpeg" alt="image" title="wp-1406985312487"></a> 切块，芋头切块成一寸方圆的大小，具体得看泡菜罐能吃多少量。 <a href="https://upimg.ibolee.com/wp-blog-uploads/2014/08/wpid-wp-1406985360073.jpeg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2014/08/wpid-wp-1406985360073.jpeg" alt="image" title="wp-1406985360073"></a> 腌好了，过程是把芋头块撒一层到泡菜罐里，然后是胡萝卜片，狂撒盐，撒点整花椒，然后一层一层到罐子满后压那块可爱的石头。不要放水。腌制过程要保持清洁，罐子中不能进任何油。如果你有吃辣的喜好，可以加点辣椒进去。 done,完成。非常简单吧。欢迎交流腌菜经验心得。 ps有的外地朋友看不明白巴盟是哪儿，解释一下巴盟是我的老家内蒙古巴彦淖尔的简称。巴盟味儿泛指西北口味儿。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/其它//" class="article-tag-list-link color3">其它</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/posts/e3502119.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-mac-os-x-e4-b8-ad-e5-ae-89-e8-a3-85mysqlphpmyadmin-e7-9a-84-e6-96-b9-e6-b3-95-e8-ae-b0-e5-bd-95" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/fe133b2b.html">mac os x中安装mysql+phpmyadmin的方法记录</a>
-    </h1>
-  
-
-        
-        <a href="/posts/fe133b2b.html" class="archive-article-date">
-  	<time datetime="2014-08-01T08:32:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-08-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>1.安装MySQL</strong> 由于Mac OS X中并没有预装MySQL，所以需要自己手动安装，我装的是：mysql-5.6.19-osx10.7-x86_64.dmg，具体版本依个人喜好，到mysql官网上选。</p>
-<ul>
-<li>下载MySQL，选择你的版本。</li>
-<li>运行下载的dmg文件：首先运行mysql-5.6.19-osx10.7-x86_64.dmg，这是MySQL的主安装包，一路默认安装完毕即可。</li>
-<li>点击安装第2个文件MySQLStartupItem.pkg，这样MySQL就会自动在开机时自动启动了。</li>
-<li>点击安装第3个文件MySQL.prefPane，这样就会在“系统设置偏好”中看到MySQL的设置选项。</li>
-</ul>
-<p><strong>使用phpMyAdmin</strong> phpMyAdmin是用PHP开发的管理MySQL的程序，非常的流行和实用。</p>
-<ul>
-<li><p>下载phpMyAdmin,选择最新的版本。</p>
-</li>
-<li><p>解压下载的phpMyAdmin复制到web目录去。</p>
-</li>
-<li><p>将phpMyAdmin跟目录的config.sample.inc.php命名为config.inc.php</p>
-</li>
-<li><p>打开config.inc.php,做如下修改：</p>
-<p>$cfg[‘blowfish_secret’] = ‘’;//用于Cookie加密，随意的长字符串 $cfg[‘Servers’][$i][‘host’] = ‘127.0.0.1’;//MySQL守护程序做了IP绑定 $cfg[‘Servers’][$i][‘AllowNoPassword’] = false;//可以访问无密码的MySQL</p>
-</li>
-<li><p>mysql的默认用户名是root，密码为空，新版的phpmyadmin支持空密码可能会麻烦些。解决方法是：在偏好设置中启动mysql，然后打开终端输入：</p>
-<p>mysqladmin -u root -p password lijunnanwebsite<br>输入这个命令后，需要输入root的原密码，然后root的密码将改为lijunnanwebsite。</p>
-</li>
-<li><p>从web访问phpMyAdmin，用root为用户名，密码：lijunnanwebsite登录mysql，至此，mysql+phpmyadmin安装完成，可以与mac默认的apache+php进行混合使用了。</p>
-</li>
-</ul>
-<p>如果出现“无法加载 mcrypt (外链，英语) 扩展，请检查您的 PHP 配置。”请参考《<a href="http://www.ccvita.com/400.html" target="_blank" rel="noopener">让Mac OS X中的PHP支持mcrypt</a>》来解决。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT相关//" class="article-tag-list-link color5">IT相关</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/posts/fe133b2b.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-excle-e4-b8-a4-e5-88-97-e4-ba-a4-e5-8f-89-e7-bb-84-e5-90-88-e4-b8-a4-e5-88-97-e5-88-86-e5-88-ab-e7-bb-84-e5-90-88-e6-96-b9-e6-b3-95" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/afd1e63f.html">excle两列交叉组合,两列分别组合方法</a>
-    </h1>
-  
-
-        
-        <a href="/posts/afd1e63f.html" class="archive-article-date">
-  	<time datetime="2014-07-18T02:52:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-07-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>经常碰到需要将excel中 两列数据 相互交叉组合，类似排列组合的全排  就是a列的每一个数据去和b列每一个组合</p>
-<p>现在把函数写下来 很方便  向下填充就行了  里面的数字 5 就是代表a列有多少行 其他的不用理会</p>
-<p>自用把函数写到c列 就行了</p>
-<p><img src="https://upimg.ibolee.com/wp-blog-uploads/2014/07/0380a86c6a4defef1c36cded50867aa2.jpg" alt="excel A列 B列互相组合的方法"></p>
-<p>=INDEX(A:A,MOD(ROW(A5),5)+1)&amp;INDEX(B:B,INT(ROW(A5)/5))</p>
-<p> 来分析下这个函数</p>
-<p>可以从图片中看出c列是由 2字符组成  前半边是<strong>不断的顺序读取 a1到a5的值</strong>   半边是1重复 a到e的个数  次 例如这里就是重复5次</p>
-<p>先看左边的函数  从里往外看 row(a5)这个很简单  得到一个数字5， row函数是返回元素的行号，</p>
-<pre><code>再看外面那个**mod（row（5），5） 这个就是比较经典的地方了** mod是取余数
-
-因为公式向下填充的时候 row（a5）的数字是逐步增加一的，再除以一个5那么余数就是 从1变化到5 再回到1 循环下去  这就是为什么c行的左边从来都是a循环到e的原因 不断的顺序读取 a1到a5的值</code></pre><p>右边的比较简单 就是把每行的数重复 a列的行数 听起来拗口 其实很简单</p>
-<p>先用了一个row（a5）获得一个逐步增加的自然数（公式向下填充的时候 a5会变a6） 然年后 再除以5 再用个int 就变成了重复5次才变化一次的函数</p>
-<p>最后总结下 2个组合函数的用法  想获得一个a列的的  n个 元素不断循环的 函数是 mod(row(an),n)</p>
-<p>获得一个重复n次 再读取下一个数字的函数是 int(row(an)/n)</p>
-<p>okay就这么简单 以后再碰到 excel中 2列 数 相互交叉 组合 就用这个函数把 复制 到c列 向下自填充 改下函数里的数字就可以解决了</p>
-<p>实例演示：</p>
-<p>比如我a列有163个关键词B列有20个，=INDEX(A:A,MOD(ROW(A163),163)+1)&amp;INDEX(B:B,INT(ROW(A163)/163))</p>
-<p>这样得到的词应该是3260个词，分别叠加总数是：a列数<em>B列数=c列数 *</em>excel快速下拉函数到指定的位置:** 1.在名称框（编辑栏最左边的框）里输入要填充公式的区域B1:B3260,然后回车 2.输入公式 =A1*2 按CTRL+ENTER</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT相关//" class="article-tag-list-link color5">IT相关</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/posts/afd1e63f.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-linux-e5-ae-9e-e7-94-a8-e6-93-8d-e4-bd-9c-e6-97-a5-e5-bf-97" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/f1acb3fd.html">linux实用操作日志</a>
-    </h1>
-  
-
-        
-        <a href="/posts/f1acb3fd.html" class="archive-article-date">
-  	<time datetime="2014-06-08T08:44:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-06-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>mv /home/phpwind/htdocs/wp-trackback.php /home/phpwind  移动A文件到指定目录，中间用空格分割。</p>
-<p>rm 删除某某</p>
-<p>rm -rf 删除默默全部目录</p>
-<p>查看 access.Log 文件ip统计  </p>
-<p><code>1</code></p>
-<p><code>cat access.log |awk &#39;{print $1}&#39;|uniq -c |sort -k1,1nr</code></p>
-<p>  去掉r则从高到低</p>
-<p><code>1</code></p>
-<p><code>cat access.log |awk &#39;{print $3}&#39;|sort|uniq -c|sort -rn|wc -l</code></p>
-<p>以前用过简单的统计下IP，似乎不怎么准确，后来已经用 awstats 就没用过他了</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/其它//" class="article-tag-list-link color3">其它</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/posts/f1acb3fd.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-mac-e7-bb-88-e7-ab-afssh-e4-b8-adhost-key-verification-failed-e7-9a-84-e8-a7-a3-e5-86-b3-e6-96-b9-e6-b3-95" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/f7743c20.html">Mac终端ssh中“Host key verification failed.“的解决方法</a>
-    </h1>
-  
-
-        
-        <a href="/posts/f7743c20.html" class="archive-article-date">
-  	<time datetime="2014-06-08T06:05:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-06-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>我们使用<strong>ssh</strong>链接<strong>linux</strong>主机时，可能出现“<strong>Host**</strong>key** verification failed.“的提示，ssh连接不成功。<br>可能的提示信息如下:</p>
-<p>@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@<br>@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @<br>@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@<br>IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!<br>Someone could be eavesdropping on you right now (man-in-the-middle attack)!<br>It is also possible that the RSA host key has just been changed.<br>The fingerprint for the RSA key sent by the remote host is<br>23:00:20:83:de:02:95:f1:e3:34:be:57:3f:cf:2c:e7.<br>Please contact your system administrator.<br>Add correct host key in /home/xahria/.ssh/known_hosts to get rid of this message.<br>Offending key in /home/xahria/.ssh/known_hosts:8<br>RSA host key for localhost has changed and you have requested strict checking.<br>Host key verification failed.</p>
-<p>网上很多的解决方案是：vi <del>/.ssh/known_hosts 删除与想要连接的主机相关的行；或者直接删除known_hosts这个文件。 当然这个方案也是可行的，但并非解决问题的根本办法，因为继续使用，今后还会出现这样的情况，还得再删除。<br>下面简单讲一下这个问题的原理和比较长久的解决方案。<br>用OpenSSH的人都知ssh会把你每个你访问过计算机的公钥(public key)都记录在</del>/.ssh/known_hosts。当下次访问相同计算机时，OpenSSH会核对公钥。如果公钥不同，OpenSSH会发出警告，避免你受到DNS Hijack之类的攻击。<br>SSH对主机的public_key的检查等级是根据<code>StrictHostKeyChecking变量来配置的。默认情况下，``StrictHostKeyChecking=ask。简单所下它的三种配置值： 1.``StrictHostKeyChecking=no #最不安全的级别，当然也没有那么多烦人的提示了，相对安全的内网**测试**时建议使用。如果连接**server**的key在本地不存在，那么就自动添加到文件中（默认是known_hosts），并且给出一个警告。 2.``StrictHostKeyChecking=ask  #默认的级别，就是出现刚才的提示了。如果连接和key不匹配，给出提示，并拒绝登录。 3.``StrictHostKeyChecking=yes  #</code>最安全的级别，如果连接与key不匹配，就拒绝连接，不会提示详细信息。  </p>
-<p>对于我来说，在内网的进行的一些测试，为了方便，选择最低的安全级别。在.ssh/config（或者/etc/ssh/ssh_config）中配置：</p>
-<p>StrictHostKeyChecking no UserKnownHostsFile /dev/null</p>
-<p>（注：这里为了简便，将knownhostfile设为/dev/null，就不保存在known_hosts中了）  </p>
-<p>参考资料：<a href="http://www.symantec.com/connect/articles/ssh-host-key-protection" target="_blank" rel="noopener">http://www.symantec.com/connect/articles/ssh-host-key-protection</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT相关//" class="article-tag-list-link color5">IT相关</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/posts/f7743c20.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-e8-80-81-e5-8c-97-e4-ba-ac-e9-85-b1-e7-8c-aa-e8-b9-84-e7-9a-84-e5-81-9a-e6-b3-95" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/3b5d0487.html">表达爱：除了玫瑰，唯有【酱猪蹄】代表我的心。</a>
-    </h1>
-  
-
-        
-        <a href="/posts/3b5d0487.html" class="archive-article-date">
-  	<time datetime="2014-06-08T05:12:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-06-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>玫瑰与猪蹄，这是个纠结的话题。七夕送玫瑰，贵！七夕正是一年鲜花消费旺季之一，玫瑰当然不会便宜。俗！七夕满大街鲜花，没有新意（不过对于交浅情侣送猪蹄带来的效果可能是最好也可能是最差，这全凭把握。） 猪蹄中含有丰富的胶原蛋白，对未婚女子来说是美容解馋的上好佳品，美容这个神圣的理由绝对能抵消妹子要减肥的决心。对已婚女子来说是老公体贴的证明。对于已婚有子的那就意义更重大了：下奶神器啊。不光老婆会谢你，儿子也嗷嗷的啊。如果是一锅排骨，妹子可能会怕胖；但要是一只酱猪蹄，告诉她还有美容的功效，妹子会由内而外对你抛来感激的媚眼。再加上猪蹄补内，面膜补外，混合使用，打造冰清玉面。一只自己炖好的猪蹄或者买来的猪蹄，加上一个漂亮的包装（包装自行淘宝5块、10块搞定。）<a href="https://upimg.ibolee.com/wp-blog-uploads/2014/06/49003758__4232044.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2014/06/49003758__4232044-300x182.jpg" alt="__49003758__4232044"></a> <strong>说到这里，玫瑰还能比得上猪蹄吗？</strong> 这里介绍俩个方法获得上好的老北京猪蹄，方法1：买！ 买猪蹄当然得去好地儿啊，这里推荐好友 @铉断谁人听 和她的小伙伴们开的：【<strong>就酱肘子】</strong>，费用30元。地点：北京市东城区交道口东大街133号。就酱肘子目前除了肘子，还有猪蹄卖，要买赶早，每天买的人也别多，手慢无啊。</p>
-<p><strong>地铁：距北新桥站约652米</strong></p>
-<p><strong>预约电话：13601137927</strong></p>
-<p>购买链接：<a href="http://bj.meituan.com/deal/25586162.html" target="_blank" rel="noopener">http://bj.meituan.com/deal/25586162.html</a> <a href="https://upimg.ibolee.com/wp-blog-uploads/2014/06/49003764__9958885.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2014/06/49003764__9958885-224x300.jpg" alt="__49003764__9958885"></a> 黑李白点评：酱这个猪蹄用的酱油是李锦记酱油，会做饭的人都清楚。用李锦记酱油酱出来的猪蹄、肘子一斤只卖30元那可是亲民价格喔。 2.自己做猪蹄； 那么，除了买熟猪蹄之外，也可以自己去做，以下的制作工艺经过黑李白亲测多次，老北京传统做法，采于民间高手，不是网上某处抄来的喔。 <a href="https://upimg.ibolee.com/wp-blog-uploads/2014/06/53c3dbc868b13.jpg_v3.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2014/06/53c3dbc868b13.jpg_v3.jpg" alt="53c3dbc868b13.jpg_v3"></a>食材推荐进口有机猪蹄，<strong><a href="http://c.duomai.com/track.php?site_id=128502&aid=447&euid=lijunnan&t=http%3A%2F%2Fwww.tootoo.cn%2F" target="_blank" rel="noopener">点此进入沱沱工社选购</a></strong>（价格和市场里差不太多啦） 正宗老北京酱猪蹄做法如下： 1.先把猪蹄用凉水浸泡解冻，解冻完后还要浸泡半个小时甚至以上。（去腥第一步） 2.放入锅中加入凉水煮，水温提升的过程中让腥味儿不断的排出来。锅中同时要有八角1个，葱叶切段10克，姜片10克，料酒一勺。料酒没有的话可以用牛二代替。 3.锅里煮10-20分钟。煮到猪蹄变色发白，水升温5分钟猪蹄颜色开始发白，煮到十分钟猪蹄捞出，水倒掉。 去腥环节就此完毕，接下来开始炖猪蹄 1.锅中倒油，温火化冰糖，5g冰糖(一定要是冰糖块，白砂糖什么的没法给肉上色) 2.冰糖化开加姜，蒜，葱炒香，加入八角，桂皮后将水添加到没过猪蹄。水最好用温水，加入生花生米慢火炖。 此时可以加入砂锅慢火炖熟软硬随时用筷子戳着试软硬。 提示：炖锅猪蹄的汤叫大汤，最好不要倒掉，滤净调料渣后冻到冰箱里，下次循环使用，口味更佳。如果过程中遇到什么问题，欢迎留言讨论。</p>
+        <p>文件或目录的访问权限分为只读，只写和可执行三种。以文件为例，只读权限表示只允许读其内容，而禁止对其做任何的更改操作。可执行权限表示允许将该文件 作为一个程序执行。文件被创建时，文件所有者自动拥有对该文件的读、写和可执行权限，以便于对文件的阅读和修改。用户也可根据需要把访问权限设置为需要的 任何组合。 _　　有三种不同类型的用户可对文件或目录进行访问：文件所有者，同组用户、其他用户。所有者一般是文件的创建者。所有者可以允许同组用户有权访问文件，还可以将文件的访问权限赋予系统中的其他用户。在这种情况下，系统中每一位用户都能访问该用户拥有的文件或目录。 每一文件或目录的访问权限都有三组，每组用三位表示，分别为文件属主的读、写和执行权限；与属主同组的用户的读、写和执行权限；系统中其他用户的读、写和执行权限。当用ls -l命令显示文件或目录的详细信息时，最左边的一列为文件的访问权限。例如： ls -i 将列出目录下所有文件夹的访问权限 $ ls  -i sobsrc. tgz -rw-r–r– 1 root root 483997 Ju1 l5 17:3l sobsrc. tgz 横线代表空许可。r代表只读，w代表写，x代表可执行。注意这里共有10个位置。第一个字符指定了文件类型。在通常意义上，一个目录也是一个文件。如果第一个字符是横线，表示是一个非目录的文件。如果是d，表示是一个目录。 例如： - 　　　 rw- 　 r– 　 r– 普通文件 文件主 组用户 其他用户 是文件sobsrc.tgz 的访问权限，表示sobsrc.tgz是一个普通文件；sobsrc.tgz的属主有读写权限；与sobsrc.tgz属主同组的用户只有读权限；其他用户也只有读权限。 确定了一个文件的访问权限后，用户可以利用Linux系统提供的chmod命令来重新设定不同的访问权限。也可以利用chown命令来更改某个文件或目录的所有者。利用chgrp命令来更改某个文件或目录的用户组。 下面分别对这些命令加以介绍。_ chmod 命令 功能：chmod命令是非常重要的，用于改变文件或目录的访问权限.用户用它控制文件或目录的访问权限. 语法：该命令有两种用法。一种是包含字母和操作符表达式的文字设定法；另一种是包含数字的数字设定法。 1. 文字设定法 chmod [who] [+ | - | =] [mode] 文件名? 参数： 操作对象who可是下述字母中的任一个或者它们的组合： u 表示“用户（user）”，即文件或目录的所有者。 g 表示“同组（group）用户”，即与文件属主有相同组ID的所有用户。 o 表示“其他（others）用户”。 a 表示“所有（all）用户”。它是系统默认值。 操作符号可以是： + 添加某个权限。 - 取消某个权限。 = 赋予给定权限并取消其他所有权限（如果有的话）。 设置mode所表示的权限可用下述字母的任意组合： r 可读。 w 可写。 x 可执行。 X 只有目标文件对某些用户是可执行的或该目标文件是目录时才追加x 属性。 s 在文件执行时把进程的属主或组ID置为该文件的文件属主。方式“u＋s”设置文件的用户ID位，“g＋s”设置组ID位。 t 保存程序的文本到交换设备上。 u 与文件属主拥有一样的权限。 g 与和文件属主同组的用户拥有一样的权限。 o 与其他用户拥有一样的权限。 文件名：以空格分开的要改变权限的文件列表，支持通配符。 在一个命令行中可给出多个权限方式，其间用逗号隔开。例如：chmod g+r，o+r example 使同组和其他用户对文件example 有读权限。 2. 数字设定法 我们必须首先了解用数字表示的属性的含义：0表示没有权限，1表示可执行权限，2表示可写权限，4表示可读权限，然后将其相加。所以数字属性的格式应为3个从0到7的八进制数，其顺序是（u）（g）（o）。 例如，如果想让某个文件的属主有”读/写”二种权限，需要把4（可读）+2（可写）＝6（读/写). 数字设定法的一般形式为： chmod [mode] 文件名? 例子： （1）文字设定法： 例1：$ chmod a+x sort 即设定文件sort的属性为： 文件属主（u） 增加执行权限 与文件属主同组用户（g） 增加执行权限 其他用户（o） 增加执行权限 例2：$ chmod ug+w，o-x text 即设定文件text的属性为： 文件属主（u） 增加写权限 与文件属主同组用户（g） 增加写权限 其他用户（o） 删除执行权限 例3：$ chmod u+s a.out 假设执行chmod后a.out的权限为（可以用ls – l a.out命令来看）： –rws–x–x 1 inin users 7192 Nov 4 14:22 a.out 并且这个执行文件要用到一个文本文件shiyan1.c，其文件存取权限为“–rw——-”，即该文件只有其属主具有读写权限。 当其他用户执行a.out这个程序时，他的身份因这个程序暂时变成inin（由于chmod命令中使用了s选项），所以他就能够读取shiyan1.c这个文件（虽然这个文件被设定为其他人不具备任何权限），这就是s的功能。 因此，在整个系统中特别是root本身，最好不要过多的设置这种类型的文件（除非必要）这样可以保障系统的安全，避免因为某些程序的bug而使系统遭到入侵。 例4：$ chmod a–x mm.txt $ chmod –x mm.txt $ chmod ugo–x mm.txt 以上这三个命令都是将文件mm.txt的执行权限删除，它设定的对象为所有使用者。 （2）数字设定法： 例1： $ chmod 644 mm.txt $ ls –l 即设定文件mm.txt的属性为： -rw-r–r– 1 inin users 1155 Nov 5 11:22 mm.txt 文件属主（u）inin 拥有读、写权限 与文件属主同组人用户（g） 拥有读权限 其他人（o） 拥有读权限 例2： $ chmod 750 wch.txt 把一个文件夹的权限设置为任何用户可读可写。 ¥ chmod  777 /usres/a   $ ls –l -rwxr-x— 1 inin users 44137 Nov 12 9:22 wchtxt 即设定wchtxt这个文件的属性为： 文件主本人（u）inin 可读/可写/可执行权 与文件主同组人（g） 可读/可执行权 其他人（o） 没有任何权限 chgrp命令 功能：改变文件或目录所属的组。 语法：chgrp [选项] group filename? 该命令改变指定指定文件所属的用户组。其中group可以是用户组ID，也可以是/etc/group文件中用户组的组名。文件名是以空格分开的要改变属组的文件列表，支持通配符。如果用户不是该文件的属主或超级用户，则不能改变该文件的组。 参数： - R 递归式地改变指定目录及其下的所有子目录和文件的属组。 例1：$ chgrp - R book /opt/local /book 改变/opt/local /book/及其子目录下的所有文件的属组为book。 chown 命令 功能：更改某个文件或目录的属主和属组。这个命令也很常用。例如root用户把自己的一个文件拷贝给用户xu，为了让用户xu能够存取这个文件，root用户应该把这个文件的属主设为xu，否则，用户xu无法存取这个文件。 语法：chown [选项] 用户或组 文件 说明：chown将指定文件的拥有者改为指定的用户或组。用户可以是用户名或用户ID。组可以是组名或组ID。文件是以空格分开的要改变权限的文件列表，支持通配符。 参数： - R 递归式地改变指定目录及其下的所有子目录和文件的拥有者。 - v 显示chown命令所做的工作。 例1：把文件shiyan.c的所有者改为wang。 $ chown wang shiyan.c 例2：把目录/his及其下的所有文件和子目录的属主改成wang，属组改成users。 $ chown - R wang.users /his  </p>
+<p>注:本文摘自CSDN的nitghost,<strong><a href="http://lijunnan.com/about/" target="_blank" rel="noopener" title="关于">黑李白</a></strong>特此表示感谢</p>
 
       
 
@@ -1039,7 +443,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">美食</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">电脑软硬件</a>
         		</li>
       		
 		</ul>
@@ -1051,7 +459,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/其它//" class="article-tag-list-link color3">其它</a>
+        			<a href="/categories/学习笔记//" class="article-tag-list-link color5">学习笔记</a>
         		</li>
       		
 		</ul>
@@ -1060,7 +468,658 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/posts/3b5d0487.html">展开全文 >></a>
+          <a class="article-more-a" href="/posts/cc7808db.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-e4-ba-ac-e4-b8-9c-e5-95-86-e5-9f-8e-e5-9c-a8seo-e4-b8-8a-e7-9a-84-e5-a4-a7-e8-83-86-e5-b0-9d-e8-af-95-e6-95-b4-e7-ab-99301-e9-87-8d-e5-ae-9a-e5-90-91-e5-88-b0jd-com" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/posts/ccd6e966.html">京东商城在SEO上的大胆尝试整站301重定向到jd.com</a>
+    </h1>
+  
+
+        
+        <a href="/posts/ccd6e966.html" class="archive-article-date">
+  	<time datetime="2013-04-04T12:07:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-04-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天忽然发现京东商城整站301重定向至jd.com,目前百度谷歌正在大批量的收录其新域名的页面,这一壮举无疑是SEO方面的巨大挑战,看得出来京东已经做好了充分准备,将整站进行301,而区别于易车网,购买了yiche.com却始终没有301新的域名,一直沿用bitauto.com,而yiche.com仅仅做为辅助解析. 有几个问题还需要关注: 1.如此大型的京东网站整站301的动荡期有多长?(理论上是60天) 2.京东为什么选择在4月开始做301,这个时间是否是京东的淡季. 3.此次301对京东的负面影响究竟有多大,解决过程是什么样的,让我们持续关注吧.   以下截图收集自2013年4月4日20:07,持续关注中…….. <a href="https://upimg.ibolee.com/wp-blog-uploads/2013/04/屏幕快照-2013-04-04-下午7.56.42.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2013/04/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7-2013-04-04-%E4%B8%8B%E5%8D%887.56.42-300x155.png" alt="屏幕快照 2013-04-04 下午7.56.42"></a> <a href="https://upimg.ibolee.com/wp-blog-uploads/2013/04/屏幕快照-2013-04-04-下午7.56.21.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2013/04/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7-2013-04-04-%E4%B8%8B%E5%8D%887.56.21-300x165.png" alt="屏幕快照 2013-04-04 下午7.56.21"></a> <a href="https://upimg.ibolee.com/wp-blog-uploads/2013/04/屏幕快照-2013-04-04-下午7.55.09.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2013/04/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7-2013-04-04-%E4%B8%8B%E5%8D%887.55.09-300x233.png" alt="屏幕快照 2013-04-04 下午7.55.09"></a> <a href="https://upimg.ibolee.com/wp-blog-uploads/2013/04/屏幕快照-2013-04-04-下午7.54.20.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2013/04/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7-2013-04-04-%E4%B8%8B%E5%8D%887.54.20-300x229.png" alt="屏幕快照 2013-04-04 下午7.54.20"></a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/IT相关//" class="article-tag-list-link color5">IT相关</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/posts/ccd6e966.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-excel-e4-b8-ad-e4-bd-bf-e7-94-a8vba-e8-87-aa-e5-ae-9a-e4-b9-89-e5-87-bd-e6-95-b0-e5-af-b9-e5-ad-97-e7-ac-a6-e4-b8-b2-e8-bf-9b-e8-a1-8c-e6-89-b9-e9-87-8furl-e7-bc-96-e7-a0-81" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/posts/51280fe.html">Excel中用宏批量把文字链接转成url编码（urlencode）</a>
+    </h1>
+  
+
+        
+        <a href="/posts/51280fe.html" class="archive-article-date">
+  	<time datetime="2013-03-29T06:07:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-03-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>先来说明一下URL编码是什么,什么是URLEncode在因特网上传送URL，只能采用ASCII字符集。 但由于URL常常包含ASCII字符集以外的字符，所以我们必须对URL进行转换。URL编码要做的，就是将URL转换为有效的ASCII字符格式。</p>
+<p>通常单个转URL编码的工具有：<a href="http://tool.chinaz.com/Tools/URLEncode.aspx" target="_blank" rel="noopener">http://tool.chinaz.com/Tools/URLEncode.aspx</a></p>
+<p>但还是可以实现批量转URL编码的，这是一个SEO从业人员必备常识喔～用来做什么的谁用谁知道。</p>
+<p>Excel是个非常强大的工具，工作中因为需要用到他老完成一些表格数据的处理，所以抽空学了一点小技巧。 VBA是Visual Basic Application的全称，我们在Office的产品家族里面会经常看到它的身影。甚至SQL Server里头也有它的足迹，善于使用这些VBA函数或者自定义一些函数能够帮我们实现一些看似很强大的功能而又不用花费太大的精力。 步骤一. 打开Excel 2007中的Visual Basic编辑器<em>在Excel 2007中的开发工具菜单下，点击Visual Basic，即可弹出Visual Basic的编辑界面。默认情况下，这个开发工具在功能区是不显示的，需要在Excel设置中勾选上，如下图（点击放大）。</em> <a href="https://upimg.ibolee.com/wp-blog-uploads/2013/03/1.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2013/03/1-300x78.png" alt="1"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2013/03/2.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2013/03/2-300x148.png" alt="2"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2013/03/3.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2013/03/3-248x300.png" alt="3"></a> 步骤二. 编写自定义函数怎么搞呢？<a href="http://lijunnan.com/" target="_blank" rel="noopener" title="黑李白">黑李白</a>是这么做的。 选择菜单-&gt;插入-&gt;模块，就会弹出一个编辑窗口，在其中输入下面代码，即可定义一个UrlEncode的函数。 code———–&gt;star</p>
+<p>Public Function UrlEncode(ByRef szString As String) As String<br>       Dim szChar   As String<br>       Dim szTemp   As String<br>       Dim szCode   As String<br>       Dim szHex    As String<br>       Dim szBin    As String<br>       Dim iCount1  As Integer<br>       Dim iCount2  As Integer<br>       Dim iStrLen1 As Integer<br>       Dim iStrLen2 As Integer<br>       Dim lResult  As Long<br>       Dim lAscVal  As Long<br>       szString = Trim$(szString)<br>       iStrLen1 = Len(szString)<br>       For iCount1 = 1 To iStrLen1<br>           szChar = Mid$(szString, iCount1, 1)<br>           lAscVal = AscW(szChar)<br>           If lAscVal &gt;= &amp;H0 And lAscVal &lt;= &amp;HFF Then<br>              If (lAscVal &gt;= &amp;H30 And lAscVal &lt;= &amp;H39) Or _<br>                 (lAscVal &gt;= &amp;H41 And lAscVal &lt;= &amp;H5A) Or _<br>                 (lAscVal &gt;= &amp;H61 And lAscVal &lt;= &amp;H7A) Then<br>                 szCode = szCode &amp; szChar<br>              Else</p>
+<pre><code>          szCode = szCode &amp; &quot;%&quot; &amp; Hex(AscW(szChar))
+       End If
+    Else
+       szHex = Hex(AscW(szChar))
+       iStrLen2 = Len(szHex)
+       For iCount2 = 1 To iStrLen2
+           szChar = Mid$(szHex, iCount2, 1)
+           Select Case szChar
+                  Case Is = &quot;0&quot;
+                       szBin = szBin &amp; &quot;0000&quot;
+                  Case Is = &quot;1&quot;
+                       szBin = szBin &amp; &quot;0001&quot;
+                  Case Is = &quot;2&quot;
+                       szBin = szBin &amp; &quot;0010&quot;
+                  Case Is = &quot;3&quot;
+                       szBin = szBin &amp; &quot;0011&quot;
+                  Case Is = &quot;4&quot;
+                       szBin = szBin &amp; &quot;0100&quot;
+                  Case Is = &quot;5&quot;
+                 szBin = szBin &amp; &quot;0101&quot;
+                  Case Is = &quot;6&quot;
+                       szBin = szBin &amp; &quot;0110&quot;
+                  Case Is = &quot;7&quot;
+                       szBin = szBin &amp; &quot;0111&quot;
+                  Case Is = &quot;8&quot;
+                       szBin = szBin &amp; &quot;1000&quot;
+                  Case Is = &quot;9&quot;
+                       szBin = szBin &amp; &quot;1001&quot;
+                  Case Is = &quot;A&quot;
+                       szBin = szBin &amp; &quot;1010&quot;
+                  Case Is = &quot;B&quot;
+                       szBin = szBin &amp; &quot;1011&quot;
+                  Case Is = &quot;C&quot;
+                       szBin = szBin &amp; &quot;1100&quot;
+                  Case Is = &quot;D&quot;
+                       szBin = szBin &amp; &quot;1101&quot;
+                  Case Is = &quot;E&quot;
+                       szBin = szBin &amp; &quot;1110&quot;
+                  Case Is = &quot;F&quot;
+                       szBin = szBin &amp; &quot;1111&quot;
+                  Case Else
+           End Select
+       Next iCount2
+       szTemp = &quot;1110&quot; &amp; Left$(szBin, 4) &amp; &quot;10&quot; &amp; Mid$(szBin, 5, 6) &amp; &quot;10&quot; &amp; Right$(szBin, 6)
+       For iCount2 = 1 To 24
+           If Mid$(szTemp, iCount2, 1) = &quot;1&quot; Then
+              lResult = lResult + 1 * 2 ^ (24 - iCount2)
+           Else: lResult = lResult + 0 * 2 ^ (24 - iCount2)
+           End If
+       Next iCount2
+       szTemp = Hex(lResult)
+             szCode = szCode &amp; &quot;%&quot; &amp; Left$(szTemp, 2) &amp; &quot;%&quot; &amp; Mid$(szTemp, 3, 2) &amp; &quot;%&quot; &amp; Right$(szTemp, 2)
+    End If
+    szBin = vbNullString
+    lResult = 0
+Next iCount1
+UrlEncode = szCode</code></pre><p>End Function</p>
+<p>code—————》END 步骤三：测试 定义完之后，我们选择菜单-&gt;文件-&gt;关闭并返回Excel。然后我们就可以在Excel中测试刚才定义的这个函数了。如下图所示。 <a href="https://upimg.ibolee.com/wp-blog-uploads/2013/03/4.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2013/03/4-300x24.png" alt="4"></a> 注意，使用了VBA函数的excel文件需要在打开时启用宏，否则函数无效。使用=urlencode(单元格位置)执行，如图： <a href="https://upimg.ibolee.com/wp-blog-uploads/2013/03/6.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2013/03/6-300x175.jpg" alt="6"></a></p>
+<p><strong>本文原作者：Kevin Yang</strong></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数据</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">IT技术</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">URLEncode</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">url编码</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/IT相关//" class="article-tag-list-link color5">IT相关</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/IT相关/其它//" class="article-tag-list-link color3">其它</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/posts/51280fe.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-excel-e4-b8-ad-e6-89-b9-e9-87-8f-e6-8f-90-e5-8f-96-e5-8d-95-e5-85-83-e6-a0-bc-e8-b6-85-e9-93-be-e6-8e-a5-e6-93-8d-e4-bd-9c-e6-ad-a5-e5-a5-8f" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/posts/58d95df3.html">excel中批量提取单元格超链接操作步骤</a>
+    </h1>
+  
+
+        
+        <a href="/posts/58d95df3.html" class="archive-article-date">
+  	<time datetime="2013-03-25T08:05:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-03-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>如果Excel表格单元格中包含有许多用文本形式显示的超链接，如“给我发邮件”、“访问我的网站”等，要逐一查看所有超链接的地址，用手工的方法显得太繁琐，我们可以用自定义函数来批量提取这些超链接中的地址，将下列代码插入到标准模块中： Function GetURL(rng As Range) As String On Error Resume Next GetURL = rng.Hyperlinks(1).Address End Function     使用方法是在单元格中输入公式，假如单元格D6中含有超链接：     =geturl(D6)     还可以使用下面的代码将工作表中的所有超链接地址全部显示出来，运行代码前先备份工作簿，因为它会在含有超链接的单元格的右侧显示其地址，有可能会破坏工作表结构。 Sub ExtractHL() Dim HL As Hyperlink For Each HL In ActiveSheet.Hyperlinks HL.Range.Offset(0, 1).Value = HL.Address Next End Sub</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数据</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/IT相关//" class="article-tag-list-link color5">IT相关</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/IT相关/其它//" class="article-tag-list-link color3">其它</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/posts/58d95df3.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-e7-bd-91-e7-ab-99-e6-b5-81-e9-87-8f-e6-95-b0-e6-8d-ae-e5-88-86-e6-9e-90-e7-9a-84-e5-85-a5-e9-97-a8-e5-bf-85-e8-af-bb-e5-b7-b2-e4-bc-98-e5-8c-96-e9-98-85-e8-af-bb-e4-bd-93-e9-aa-8c" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/posts/1b1c896a.html">网站流量数据分析的入门必读,看懂来源,质量,原因</a>
+    </h1>
+  
+
+        
+        <a href="/posts/1b1c896a.html" class="archive-article-date">
+  	<time datetime="2013-03-05T01:51:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-03-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>从网络营销管理的角度来定义网站流量统计分析，是指通过对用户访问网站的情况进行统计、分析，从中发现用户访问网站的规律，并将这些规律与网络营销策略相结合，从而发现目前网络营销活动中可能存在的问题，并为进一步修正或重新制定网络营销策略提供依据。 不管任何网站统计工具，流量来源大致分为三大块：直接流量，外部来源和搜索引擎。</p>
+<pre><code>直接流量是指直接输入网站的URL或者使用收藏夹和标签访问网站的流量。这些访客往往是网站的忠实用户，对网站已经非常熟悉——考察网站的域名，品牌的用户接受度，以及收藏功能的设计。
+
+外部来源是指那些将衔接指向网站的博客，联盟网站，论坛或竞争对手网站等等——考察网站对外推广工作，软文，博客等宣传效果。
+
+搜索引擎是指用户使用百度，谷歌，雅虎等等，通过搜索关键词访问网站的用户——考察网站与搜索引擎的友好程度。</code></pre><p><a href="https://upimg.ibolee.com/wp-blog-uploads/2013/03/05f0f1047d4ba9bfc6cba93ab9f72ade.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2013/03/05f0f1047d4ba9bfc6cba93ab9f72ade.jpg" alt="" title="图片1"></a></p>
+<p>Direct Traffic是来自“收藏夹”和“地址栏”的流量，但实际上并不仅仅如此。下面总结了几个常见影响Direct流量的因素： 一、线下推广（也会表现为品牌词搜索量的增长）：线下推广通常会宣传网址或品牌宣传语，从而引起Direct流量上升。 二、短信宣传：手机短信做为常用的营销手段，里面可以包含联系电话和网址，只要基数够大，带来的直接流量还是相当不错的。 三、IM工具：最常见的情况就是QQ群推广，访客通过QQ群里的链接来到网站，如果URL没有经过任何处理，也会被认为是Direct Traffic。 四、APP推广：同样，如果APP里的URL如果没有经过任何处理，通过APP里的超链接来到网站，也会被认为是直接流量。 五、Flash广告：Flash里URL的情况比较特殊，不同的浏览器或者不同的URL处理方式，可能会使统计工具认为来源是Direct Traffic也可能正确获取referrer。只需在浏览器地址栏里输入：javascript:alert(document.referrer)， 就可以得知浏览器是否正确得知flash中url的来源 <a href="https://upimg.ibolee.com/wp-blog-uploads/2013/03/47f2b15724828e4eb30ba368f8b6fc7e.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2013/03/47f2b15724828e4eb30ba368f8b6fc7e.jpg" alt="" title="图片2"></a>  <a href="https://upimg.ibolee.com/wp-blog-uploads/2013/03/52217ac72a9e57a777aa8d0d85493001.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2013/03/52217ac72a9e57a777aa8d0d85493001.jpg" alt="" title="图片3"></a><a href="https://upimg.ibolee.com/wp-blog-uploads/2013/03/7dcb7e52834174174e192c39b65e664e.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2013/03/7dcb7e52834174174e192c39b65e664e.jpg" alt="" title="图片4"></a><a href="https://upimg.ibolee.com/wp-blog-uploads/2013/03/fd6cba4d3f090a293c5388f859afd514.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2013/03/fd6cba4d3f090a293c5388f859afd514.jpg" alt="" title="图片5"></a><a href="https://upimg.ibolee.com/wp-blog-uploads/2013/03/b10d5f1f57def3dadde1a85d8d4c2505.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2013/03/b10d5f1f57def3dadde1a85d8d4c2505.jpg" alt="" title="图片6"></a><a href="https://upimg.ibolee.com/wp-blog-uploads/2013/03/16be33e59f375f48c20bed4df2f4e97e.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2013/03/16be33e59f375f48c20bed4df2f4e97e.jpg" alt="" title="图片7"></a><a href="https://upimg.ibolee.com/wp-blog-uploads/2013/03/1e8729f50f3742559385628ac4f3d8d0.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2013/03/1e8729f50f3742559385628ac4f3d8d0.jpg" alt="" title="图片8"></a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/IT相关//" class="article-tag-list-link color5">IT相关</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/posts/1b1c896a.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-e5-a6-82-e4-bd-95-e7-94-a8excle-e7-bb-9f-e8-ae-a1-e6-9f-90-e5-8d-95-e5-85-83-e6-a0-bc-e5-86-85-e5-90-ab-e6-9c-89-e6-9f-90-e5-ad-97-e7-ac-a6-e7-9a-84-e4-b8-aa-e6-95-b0" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/posts/42b27623.html">如何用excle统计某单元格内含有某字符的个数</a>
+    </h1>
+  
+
+        
+        <a href="/posts/42b27623.html" class="archive-article-date">
+  	<time datetime="2013-02-28T08:38:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-02-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天遇到一个例子，要统计Excel单元格内某字符出现的次数，具体使用公式如下： ＝LEN(计算出现某字符的字符串或单元格)-LEN(SUBSTITUTE(计算出现某字符的字符串或单元格,要查找的字符,””)) 意思是替换前的字符串字节数减去把查找到的字符替换为空（不是空格，是删除了）后字符串的字节数，就是被替换掉的字符数。 例如单元格A1中的数值是：65999,在B1中输入上面的公式：＝LEN(A1)-LEN(SUBSTITUTE(A1,9,””))，所得结果是3 （有三个9） 公式思路：先计算A1单元格的字符数，然后利用Substitute函数，把要统计的字符数删掉再次统计这个单元格的字符数，两次统计结果的差正好是删除的字符数，结果正好等于要查找的字符在单元格内出现的次数。 ==================================== <strong>Excel中SUBSTITUTE函数的用途介绍：</strong> 在文字字符串中用new_text替代old_text。如果需要在一个文字串中替换指定的文本，可以使用函数SUBSTITUTE；如果需要在某一文字串中替换指定位置处的任意文本，就应当使用函数REPLACE。 SUBSTITUTE函数的语法为： SUBSTITUTE(text, old_text, new_text, [instance_num]) SUBSTITUTE 函数语法具有下列参数：</p>
+<ol>
+<li>Text：必需。需要替换其中字符的文本，或对含有文本（需要替换其中字符）的单元格的引用。</li>
+<li>Old_text：必需。需要替换的旧文本。</li>
+<li>New_text：必需。用于替换 old_text 的文本。</li>
+<li>Instance_num：可选。用来指定要以 new_text 替换第几次出现的 old_text。如果指定了 instance_num，则只有满足要求的 old_text 被替换；否则会将 Text 中出现的每一处 old_text 都更改为 new_text。</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/IT相关//" class="article-tag-list-link color5">IT相关</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/posts/42b27623.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-e9-81-87-e5-88-b0-e6-97-a0-e7-ba-bf-e7-bd-91-e7-bb-9c-e5-8f-97-e9-99-90-e5-88-b6-e6-88-96-e6-97-a0-e8-bf-9e-e6-8e-a5-e7-9a-843-e7-a7-8d-e8-a7-a3-e5-86-b3-e6-96-b9-e6-b3-95" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/posts/616999e9.html">遇到“无线网络受限制或无连接”的3种解决方法</a>
+    </h1>
+  
+
+        
+        <a href="/posts/616999e9.html" class="archive-article-date">
+  	<time datetime="2013-02-24T07:00:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-02-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>如果你碰到如图所示无线网络受限制或无连接的问题，试着从以下3方面着手 <em><img src="https://upimg.ibolee.com/wp-blog-uploads/2013/02/aa90718a7e944a01607abc4c970722bd.jpg" alt="null"> 一、查看无线网卡端配置是否与前端路由器配置一致（密码、加密方式）；操作如下（以Windows XP为例）：</em> 1. 右击“网上邻居”属性 <img src="https://upimg.ibolee.com/wp-blog-uploads/2013/02/a1331986823ff3703cf38230e903c637.jpg" alt="null"> 2.右击“无线网络连接”属性 <img src="https://upimg.ibolee.com/wp-blog-uploads/2013/02/0d067211345953c1e2181f98de7eacc6.jpg" alt="null"> 3.点击——无线网络配置——首选网络——属性 <img src="https://upimg.ibolee.com/wp-blog-uploads/2013/02/e847491629df57bd9e5e91843b1a3af0.jpg" alt="null"> 4.出现以下页面，网络身份验证、数据加密、网络密钥选择与路由器一致——确定；如下图： <img src="https://upimg.ibolee.com/wp-blog-uploads/2013/02/d6f221554f6113837fcf78257f82256c.jpg" alt="null"> 二、是否关闭了路由器的DHCP服务器，用有线连接路由器，本地连接的IP地址用自动获取，看是否能获取到IP地址，如果获取得到，那就没关闭DHCP服务器，如果获取不到，提示受限制，那就是关闭了DHCP服务器，需要教用户开启DHCP服务器；操作如下（以Windows XP为例），如下图： 1.右击——“网上邻居”属性 <img src="https://upimg.ibolee.com/wp-blog-uploads/2013/02/d37533f7341142c200da1f31a48a4101.jpg" alt="null"> 2.（1）右击——“本地连接”状态——点击——支持，查看是否是通过DHCP指派（图1）： <img src="https://upimg.ibolee.com/wp-blog-uploads/2013/02/024911f6978ecda3ccca110d2baf368f.jpg" alt="null"> （图1） （2）如果显示“连接受限制”，点击——“常规”属性——“Internet协议（TCP/IP）”属性，点击——“使用下面的IP地址（手动分配IP地址）”——确定，如图（2）： <img src="https://upimg.ibolee.com/wp-blog-uploads/2013/02/c5058489495ef8b658a029d6ee9c187c.jpg" alt="null"> 3.进入路由器首页，高级设置——网络设置——局域网（“DHCP类型”选择（服务器））；如下图： <img src="https://upimg.ibolee.com/wp-blog-uploads/2013/02/a30e4d715852a0c5b8f14889e3c4b76a.jpg" alt="null"> 三、IP地址是否已分配完，进入路由器首页——高级设置——网络设置——局域网——起始IP地址、结束IP地址（看分配到你电脑的IP地址是否在该区域内）；如下图： <img src="https://upimg.ibolee.com/wp-blog-uploads/2013/02/af7674fe75c464a709308818d0bcb630.jpg" alt=""> 好了，通过这几个设置就可以解决“连接受限制”的问题了，你可以尽情的享受网络带来的快乐与自由。  </p>
+<p><strong>原文来自:猫理会</strong></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">电脑软硬件</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/IT相关//" class="article-tag-list-link color5">IT相关</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/posts/616999e9.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-e7-bd-91-e5-9d-80-e5-89-8d-e5-a4-b4-e7-9a-84https-e5-8d-8f-e8-ae-ae-e6-98-af-e4-bb-80-e4-b9-88-e6-84-8f-e6-80-9d-e5-9b-be-e8-a7-a3https-e5-8d-8f-e8-ae-ae-e8-af-a6-e7-bb-86-e7-89-88" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/posts/c07399be.html">网址前头的https协议是什么意思,图解https协议详细版</a>
+    </h1>
+  
+
+        
+        <a href="/posts/c07399be.html" class="archive-article-date">
+  	<time datetime="2013-02-03T10:46:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-02-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>我们都知道HTTPS能够加密信息，以免敏感信息被第三方获取。所以很多银行网站或电子邮箱等等安全级别较高的服务都会采用HTTPS协议。 HTTPS简介 HTTPS其实是有两部分组成：HTTP + SSL / TLS，也就是在HTTP上又加了一层处理加密信息的模块。服务端和客户端的信息传输都会通过TLS进行加密，所以传输的数据都是加密后的数据。具体是如何进行加密，解密，验证的，且看下图。 <a href="https://upimg.ibolee.com/wp-blog-uploads/2013/02/图片1.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2013/02/%E5%9B%BE%E7%89%871-300x259.png" alt="图片1"></a> 1. 客户端发起HTTPS请求 这个没什么好说的，就是用户在浏览器里输入一个https网址，然后连接到server的443端口。 2. 服务端的配置 采用HTTPS协议的服务器必须要有一套数字证书，可以自己制作，也可以向组织申请。区别就是自己颁发的证书需要客户端验证通过，才可以继续访问，而使用受信任的公司申请的证书则不会弹出提示页面(startssl就是个不错的选择，有1年的免费服务)。这套证书其实就是一对公钥和私钥。如果对公钥和私钥不太理解，可以想象成一把钥匙和一个锁头，只是全世界只有你一个人有这把钥匙，你可以把锁头给别人，别人可以用这个锁把重要的东西锁起来，然后发给你，因为只有你一个人有这把钥匙，所以只有你才能看到被这把锁锁起来的东西。 3. 传送证书 这个证书其实就是公钥，只是包含了很多信息，如证书的颁发机构，过期时间等等。 4. 客户端解析证书 这部分工作是有客户端的TLS来完成的，首先会验证公钥是否有效，比如颁发机构，过期时间等等，如果发现异常，则会弹出一个警告框，提示证书存在问题。如果证书没有问题，那么就生成一个随机值。然后用证书对该随机值进行加密。就好像上面说的，把随机值用锁头锁起来，这样除非有钥匙，不然看不到被锁住的内容。 5. 传送加密信息 这部分传送的是用证书加密后的随机值，目的就是让服务端得到这个随机值，以后客户端和服务端的通信就可以通过这个随机值来进行加密解密了。 6. 服务段解密信息 服务端用私钥解密后，得到了客户端传过来的随机值(私钥)，然后把内容通过该值进行对称加密。所谓对称加密就是，将信息和私钥通过某种算法混合在一起，这样除非知道私钥，不然无法获取内容，而正好客户端和服务端都知道这个私钥，所以只要加密算法够彪悍，私钥够复杂，数据就够安全。 7. 传输加密后的信息 这部分信息是服务段用私钥加密后的信息，可以在客户端被还原。 8. 客户端解密信息 客户端用之前生成的私钥解密服务段传过来的信息，于是获取了解密后的内容。整个过程第三方即使监听到了数据，也束手无策。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/IT相关//" class="article-tag-list-link color5">IT相关</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/posts/c07399be.html">展开全文 >></a>
         </p>
       
 
@@ -1092,7 +1151,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/5/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/5/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -1207,39 +1266,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">excle</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">mac</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">axure</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">响应式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">自适应</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">IT技术</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">kindle</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">电子书</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">LAMP</a>
+                <a href="javascript:void(0)" class="js-tag color3">数据</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1251,31 +1278,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">aliyun</a>
+                <a href="javascript:void(0)" class="js-tag color1">excle</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">linode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vps</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">阿里云</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">互联网</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">开放</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">模式</a>
+                <a href="javascript:void(0)" class="js-tag color5">IT技术</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1303,11 +1310,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">邮件客户端</a>
+                <a href="javascript:void(0)" class="js-tag color4">mac</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MAC终端</a>
+                <a href="javascript:void(0)" class="js-tag color1">邮件客户端</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1315,7 +1322,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">NaviCat</a>
+                <a href="javascript:void(0)" class="js-tag color4">TED</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1324,10 +1331,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">template</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">TED</a>
               </li>
             
             <div class="clearfix"></div>

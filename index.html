@@ -156,155 +156,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-mac-e4-b8-admamp-e5-a6-82-e4-bd-95-e9-85-8d-e7-bd-aenginx-e4-bc-aa-e9-9d-99-e6-80-81-e8-a7-84-e5-88-99-e9-99-84wordpress-e8-a7-84-e5-88-99-e9-85-8d-e7-bd-ae-e5-ae-9e-e4-be-8b-ef-bc-9b" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/40c85587.html">mac中mamp如何配置nginx伪静态规则,附wordpress规则配置实例；</a>
-    </h1>
-  
-
-        
-        <a href="/posts/40c85587.html" class="archive-article-date">
-  	<time datetime="2017-02-28T02:04:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>mamp在这个路径下配置即可： /Applications/MAMP/conf/nginx/nginx.conf wordpress的话，其它规则也是配置到这个位置： 在 root “/Applications/MAMP/htdocs”;之后添加你的伪静态规则，然后保存，重启nginx即可。比如我添加： <code>location / { if (-f $request_filename/index.html){ rewrite (.*) $1/index.html break; } if (-f $request_filename/index.php){ rewrite (.*) $1/index.php; } if (!-f $request_filename){ rewrite (.*) /index.php; } }</code></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT相关//" class="article-tag-list-link color5">IT相关</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/posts/40c85587.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-e8-a7-a3-e5-86-b3amh-e9-9d-a2-e6-9d-bf5-3-e5-ae-89-e8-a3-85-e5-87-ba-e7-8e-b0-ef-bc-9a" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/bd724204.html">解决AMH面板5.3安装出现：Sorry, Failed to install AMH</a>
-    </h1>
-  
-
-        
-        <a href="/posts/bd724204.html" class="archive-article-date">
-  	<time datetime="2017-02-23T06:04:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="发现问题"><a href="#发现问题" class="headerlink" title="发现问题"></a>发现问题</h3><p>运行：<code>wget http://amh.sh/amh.sh &amp;&amp; bash amh.sh 2&gt;&amp;1 | tee amh.log</code> 返回日志,只链结尾部分： <code>groupadd: group &#39;www&#39; already exists useradd: user &#39;www&#39; already exists mkdir: cannot create directory `/usr/local/php-generic-5.3/var/run/pid&#39;: File exists [Notice] php-generic-5.3 is not installed. ========================================================================== Sorry, Failed to install AMH Please contact us: http://amh.sh</code></p>
-<h3 id="解决问题的方法："><a href="#解决问题的方法：" class="headerlink" title="解决问题的方法："></a>解决问题的方法：</h3><p>1.进入阿里云后台，清空服务器硬盘；（更换一下系统盘，解决问题） 2.root权限进入云服务器，mac用户终端，windows用户用xshell等； 3.进入：/etc/resolv.conf在文件最后一行插入： <code>nameserver 8.8.8.8 nameserver 114.114.114.114</code> 补充3：与官网说的运行这个类似：<code>echo -e &quot;options timeout:1 attempts:1 rotate\nnameserver 8.8.8.8\nnameserver 114.114.114.114&quot; &gt;/etc/resolv.conf;</code> 4.重新运行安装命令，done！</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习笔记//" class="article-tag-list-link color5">学习笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/posts/bd724204.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-lxg-e9-a1-b9-e7-9b-ae-e4-ba-a7-e5-93-81-e7-bb-8f-e9-aa-8c" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -520,91 +371,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/posts/28c1b780.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-e7-94-9f-e6-b4-bb-e4-b8-ad-e9-9c-80-e8-a6-81-e4-b8-80-e6-8a-b9-e9-bb-84-e8-89-b2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/1a5fcd21.html">Mac版本的StarUML破解方法，最新。</a>
-    </h1>
-  
-
-        
-        <a href="/posts/1a5fcd21.html" class="archive-article-date">
-  	<time datetime="2016-07-08T03:24:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-07-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>理论上各平台版本均适用，本文更改的为Mac版本。 1：打开对应 mac版本的安装包位置，在对应目录/Applications/StarUML.app/Contents/www/license/node/LicenseManagerDomain.js文件。 我用的是免费的atom浏览器，为了安全起见，直接： <code>sudo atom /Applications/StarUML.app/Contents/www/license/node/LicenseManagerDomain.js</code> 进行编辑，当然您也可以手动到这个目录编辑文件。 2：找到文件23行-44行，修改对应下面函数。更改为如下代码： <code>(function () { &quot;use strict&quot;; var NodeRSA = require(&#39;node-rsa&#39;); function validate(PK, name, product, licenseKey) { var pk, decrypted; //修改于：20160713 return { name: &quot;lijunnan&quot;, product: &quot;StarUML&quot;, licenseType: &quot;vip&quot;, quantity: &quot;lijunnan.com&quot;, licenseKey: &quot;jihuo&quot; }; try { pk = new NodeRSA(PK); decrypted = pk.decrypt(licenseKey, &#39;utf8&#39;); } catch (err) { return false; } var terms = decrypted.trim().split(&quot;\n&quot;); if (terms[0] === name &amp;&amp; terms[1] === product) { return { name: name, product: product, licenseType: terms[2], quantity: terms[3], licenseKey: licenseKey }; } else { return false; } }</code> 我的做法是注释掉原有代码，再增加，防止出现问题。 3，打开starUML； help&gt;enter license Name:lijunnan licenseKey:lijunnan 然后提示你注册成功，如果有什么问题，欢迎交流，给我留言！</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">mac</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT相关//" class="article-tag-list-link color5">IT相关</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/posts/1a5fcd21.html">展开全文 >></a>
         </p>
       
 
@@ -933,50 +699,27 @@
 
 
   
-    <article id="post-e7-8e-a9-e8-bd-acwp-super-cache-e4-b8-ba-e7-ab-99-e7-82-b9-e6-8f-90-e9-80-9f-e6-97-a5-e5-bf-97" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-php-e4-bb-a3-e7-a0-81-ef-bc-9a-e8-8e-b7-e5-8f-96-e7-bd-91-e9-a1-b5-e4-b8-ad-e7-9a-84-e6-89-80-e6-9c-89-e9-93-be-e6-8e-a5" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/posts/936d8061.html">玩转wp-super-cache,为站点提速</a>
+      <a class="article-title" href="/posts/f3dc39ef.html">PHP代码：获取网页中的所有链接</a>
     </h1>
   
 
         
-        <a href="/posts/936d8061.html" class="archive-article-date">
-  	<time datetime="2015-09-08T06:21:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-09-08</time>
+        <a href="/posts/f3dc39ef.html" class="archive-article-date">
+  	<time datetime="2015-08-24T03:20:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-08-24</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="1-配置"><a href="#1-配置" class="headerlink" title="1.配置"></a>1.配置</h2><p>wordpress 的插件越来越多,速度也越来越慢,咋整?（原文出处：<a href="http://bigc.at/wp-super-cache.orz）" target="_blank" rel="noopener">http://bigc.at/wp-super-cache.orz）</a> 静态化! 今天主要是把流程 Step by Step 一下,不用理解为啥这么设置, 只需要知道设置后会变的很快 所谓提前优化是万恶之源的意思就是说,之前网站做的越烂,优化的空间就越多 和老板说看,之前多烂多烂,俺给你省了多少多少钱,一般都能拿奖金 静态化也一样,之前一大堆插件,开个页面上百次MYSQL查询,或烂人写的没效率SQL会让人不禁抓栏杆撕床单 WP Super Cache 并不是100%静态化,不过这个不重要,他把最卡的部分搞定了即可 WP Super Cache 他唯一的缺点就是如果你在改主题或搞啥插件,后台设置了前台看不出变化,为毛?下面有解决方案 OK, let’s gou</p>
-<ol>
-<li>首先，永久连接不能使用默认格式</li>
-<li>修改永久链接格式,中文推荐采用 /%post_id%.html (这下你知道我的.orz哪里来了吧) 如果你和我一样蛋疼愿意为每篇文章写一个英语的post slug 建议采用这样的格式：/%postname%.html (百分号外面的随意写)</li>
-</ol>
-<p><a href="https://upimg.ibolee.com/wp-blog-uploads/2015/09/supercache1.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/09/supercache1-292x300.png" alt="supercache1"></a> 这里我一二三四五六七都标注了就不介绍了吧,常规装插件也是这个套路 那些个神马ftp时代都已经过去鸟过去鸟 <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/09/supercache2.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/09/supercache2-300x86.png" alt="supercache2"></a> 装完后激活一下 <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/09/supercache3.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/09/supercache3-300x87.png" alt="supercache3"></a> 激活了,但他说还需要去设置一把, Rock it <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/09/supercache4.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/09/supercache4-242x300.png" alt="supercache4"></a> 凡是推荐的都打钩,无脑输出嘛   <strong>需要注意的是</strong>Don’t cache for known users的意思是对已经登录的用户不缓存 这就解决的后台改主题无法更新的缺点 也就是说,平时的时候这个选项不打钩,当你需要改主题或调试插件什么时候就打他,改完了再去掉 <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/09/supercache5.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/09/supercache5-169x300.png" alt="supercache5"></a> 因为我们选择了最快的mod_rewrite 方式,所以继续往下拉,会看到一坨螺旋状大黄色的容器,点里头的update mod_rewrite rules <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/09/supercache6.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/09/supercache6-300x95.png" alt="supercache6"></a> 不出意外会给个绿色的确认,某某.htaccess被插了… <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/09/supercache7.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/09/supercache7-300x205.png" alt="supercache7"></a> 有个激动人心的功能上几个版本才加进来的叫Preload,具体有兴趣可以看我写过的<a href="http://bigc.at/preload-cache-wp-super-cache.orz" target="_blank" rel="noopener">Preload</a> 就不累赘再说一次了 <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/09/supercache8.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/09/supercache8-300x42.png" alt="supercache8"></a> 全都搞定后去前台页面,右键查看源代码,拉到最下面,会有三行状态告诉你已经搞定鸟 FAQ: Q: 我流量那么小,有必要搞这个么? A: 搞这个纯粹为了自High,和流量没关系,例如打开自己的网站快个两三秒不是一键很爽的事咩? Q: 那个过期时间我能改咩? A: 建议用默认的</p>
-<blockquote>
-<p>Preload 模式下更改过期时间,会导致全站文件一遍遍的重新生成,这是完全没必要的 普通模式下更改过期时间,太短或太长都会导致CPU飙升,得不偿失,除非你流量大一个月五六千才有必要</p>
-</blockquote>
-<p>Q: 我发表新日志,或访客留言后他会全站再静态化一次么? A:不用担心,使用起来和没有装是一样的,有内容更新它会重新生成对应的页面的静态文件,没有更新的就没必要再去重新生成一次 Q: 这个对SEO有没有影响? A: 有,SEO里爬虫对页面打开速度比较敏感,</p>
-<blockquote>
-<p>常规模式下第一次访问才生成,到期后回收掉,也就是说第一次比较慢 Preload模式先给你都静态了,不管何时访问都快,对SEO更好</p>
-</blockquote>
-<p>Q: 乱码啦乱死人啦～～～ A: 关掉 Compress pages so they’re served more quickly to visitors. (Recommended)</p>
-<h2 id="2-预缓存"><a href="#2-预缓存" class="headerlink" title="2.预缓存"></a>2.预缓存</h2><p>下面是翻译自官方blog的预缓存(Preload cache) 介绍 <a href="http://ocaoimh.ie/preload-cache-wp-super-cache/" target="_blank" rel="noopener">Preload the cache in WP Super Cache</a> <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/09/cpu.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/09/cpu-300x124.png" alt="cpu"></a> 看到本周帅气的下垂了么? 我上周日启用了 WP Super Cache 的预缓存(preload cache),这玩意儿明显的降低了服务器的负载,创建缓存时会有个峰值,很黄很暴力 我一直不鼓励用户使用预缓存,主要是因为文件数量会导致一些问题,如果你有几千个缓存文件,硬盘挂了会需要很长时间才能恢复. (注: 有些主机商会限制文件数) 但反过来说,Google把速度作为一个网站的衡量标准之一.在过去,这个插件会忽略爬虫,因为爬虫每次只访问每个页面一次,缓存相对它们是毫无意义的.所有的页面都应该在 Google 还没开始爬过来之前就缓存好 (注: WP Super Cache 工作流程是第一次请求页面时把PHP+MySQL处理结果生成静态页面,再次访问时甚至都不用执行一行代码 ) <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/09/preload-screenshot.png" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/09/preload-screenshot-300x245.png" alt="preload-screenshot"></a> 如图所示,一旦你启动预缓存,它会挂载在 wp-cron 去获取100 个帖子, 过10秒后再去获取100个帖子 直到读完所有帖子. 它同时会禁止掉老帖子的垃圾回收机制,但有评论和新帖子的时候还是会干掉一些适当的缓存文件 目前它只缓存 文章页 (注:is_single()那种,中文差不知道咋翻译),貌似没啥必要去缓存 archive 或 tag 页,因为很多站已经写了 robots.txt去忽略这些页面 这次 WP Super Cache 的更新包括了</p>
-<ol>
-<li>更好的支持移动设备插件,例如 MobilePress (注:之前会有电脑访问出现手机界面的bug,不知道现在如何,有遇到问题的朋友请留言)</li>
-<li>增加了缓存测试功能(注:之前只能通过查看页面源代码最底下的注释了解情况)</li>
-<li>可设置只在评论更新的时候更新缓存,而不是前台或相关页面</li>
-<li>Works in WordPress 3.0.</li>
-</ol>
-<p>它还有一堆 bug 要修, 和其他功能要增加 愿意当小白鼠的可以尝试开发版本 from <a href="http://wordpress.org/extend/plugins/wp-super-cache/download/" target="_blank" rel="noopener">the download page</a> ,有问题就反馈到 <a href="http://wordpress.org/tags/wp-super-cache?forum_id=10" target="_blank" rel="noopener">support forum</a> =====补刀====================== 如何安装 WP Super Cache ? 答: 进入后台,选择左侧 plugins -&gt; Add New -&gt;输入 WP Super Cache 点 Search Plugs -&gt; Install Now 小博客很适合开启全站预缓存 个人觉得没必要设置定时重新生成全站缓存,如果你老帖子变动不频繁的话 因为即使老帖子变动了,对应的也会自动生成 有同学问,我网站规模太小,是不是不需要缓存? 答: 缓存是为了自己爽, 提速不是一个段位</p>
-<h2 id="3-结合七牛云存储，进行CDN加速；"><a href="#3-结合七牛云存储，进行CDN加速；" class="headerlink" title="3.结合七牛云存储，进行CDN加速；"></a>3.结合七牛云存储，进行CDN加速；</h2><p>如果你的博客使用 WP Super Cache 进行静态缓存加速的话，我们也可以使用 WP Super Cache 后台自带的 CDN 功能，更加完美实现博客整站的静态文件 CDN 加速。</p>
-<h2 id="在-WP-Super-Cache-中使用七牛镜像存储"><a href="#在-WP-Super-Cache-中使用七牛镜像存储" class="headerlink" title="在 WP Super Cache 中使用七牛镜像存储"></a>在 WP Super Cache 中使用七牛镜像存储</h2><p>在 WP Super Cache 中使用七牛云存储的前面三步都是一样的： 1. 登陆七牛，选择你的空间，然后点击 <strong>空间设置</strong> &gt; <strong>域名绑定</strong>，输入自定义的域名，或者直接使用七牛提供的域名： <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/09/600" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/09/600-300x155." alt="60"></a> 2. 然后点击 <strong>镜像存储</strong> 菜单，点击一键加速按钮： <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/09/6001" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/09/6001-300x107." alt="600"></a> 3. 输入源站的地址，点击确定加速： <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/09/6003" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/09/6003-300x157." alt="600"></a> 4. 最后登陆 WordPress 后台，点击 设置 &gt; WP Super Cache，选择 CDN Tab，在 off-site url 里面输入前面第一步获取的 url（注意要带 http://），如果你的 WordPress 安装子目录，这里还要带上子目录，并且实际测试下，其他设置如下图： <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/09/6002" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/09/6002-290x300." alt="600"></a> 关于在 WP Super Cache 中使用七牛云存储就介绍这么多，需要强调的是七牛是有免费套餐的，每个月 10G 流量，总空间 10GB，所以你可以来先体验下七牛加速之后的博客速度</p>
+        <p>以下代码可以获取到指定URL页面中的所有链接，即所有a标签的href属性： [cc lang=”php”] // 获取链接的HTML代码 $html = file_get_contents(‘<a href="http://www.example.com&#39;" target="_blank" rel="noopener">http://www.example.com&#39;</a>); $dom = new DOMDocument(); @$dom-&gt;loadHTML($html); $xpath = new DOMXPath($dom); $hrefs = $xpath-&gt;evaluate(‘/html/body//a’); for ($i = 0; $i &lt; $hrefs-&gt;length; $i++) { $href = $hrefs-&gt;item($i); $url = $href-&gt;getAttribute(‘href’); echo $url.’<br>‘; } [/cc] 这段代码会获取到所有a标签的href属性，但是href属性值不一定是链接，我们可以在做个过滤，只保留http开头的链接地址： [cc lang=”php”] // 获取链接的HTML代码 $html = file_get_contents(‘<a href="http://www.example.com&#39;" target="_blank" rel="noopener">http://www.example.com&#39;</a>); $dom = new DOMDocument(); @$dom-&gt;loadHTML($html); $xpath = new DOMXPath($dom); $hrefs = $xpath-&gt;evaluate(‘/html/body//a’); for ($i = 0; $i &lt; $hrefs-&gt;length; $i++) { $href = $hrefs-&gt;item($i); $url = $href-&gt;getAttribute(‘href’); // 保留以http开头的链接 if(substr($url, 0, 4) == ‘http’) echo $url.’<br>‘; } [/cc]</p>
 
       
 
@@ -1000,7 +743,296 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/posts/936d8061.html">展开全文 >></a>
+          <a class="article-more-a" href="/posts/f3dc39ef.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-e7-bd-91-e7-bb-9c-e7-a1-ac-e4-bb-b6-e4-b8-89-e5-89-91-e5-ae-a2-e9-9b-86-e7-ba-bf-e5-99-a8-e3-80-81-e4-ba-a4-e6-8d-a2-e6-9c-ba-e4-b8-8e-e8-b7-af-e7-94-b1-e5-99-a8-e5-9f-ba-e7-a1-80-e7-9f-a5" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/posts/d732a265.html">网络硬件三剑客 - 集线器、交换机与路由器基础知识</a>
+    </h1>
+  
+
+        
+        <a href="/posts/d732a265.html" class="archive-article-date">
+  	<time datetime="2015-07-28T06:10:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-07-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>号称网络硬件三剑客的集线器（Hub）、交换机（Switch）与路由器（Router）一直都是网络界的活跃分子，但让很多初入网络之门的菜鸟恼火的是，它们三者不仅外观相似，而且经常呆在一起，要想分清谁是谁，感觉有点难!就让我们一起来看看它们之间有什么区别和联系吧! 三剑客的工作原理 一、集线器 1.什么是集线器 在认识集线器之前，必须先了解一下中继器。在我们接触到的网络中，最简单的就是两台电脑通过两块网卡构成“双机互连”，两块网卡之间一般是由非屏蔽双绞线来充当信号线的。由于双绞线在传输信号时信号功率会逐渐衰减，当信号衰减到一定程度时将造成信号失真，因此在保证信号质量的前提下，双绞线的最大传输距离为 100米。当两台电脑之间的距离超过100米时，为了实现双机互连，人们便在这两台电脑之间安装一个“中继器”，它的作用就是将已经衰减得不完整的信号经过整理，重新产生出完整的信号再继续传送（图1）。</p>
+<p><a href="https://upimg.ibolee.com/wp-blog-uploads/2015/07/3771483212946493202.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/07/3771483212946493202-300x164.jpg" alt="3771483212946493202"></a>（图1）</p>
+<pre><code>中继器就是普通集线器的前身，集线器实际就是一种多端口的中继器。集线器一般有4、8、16、24、32等数量的RJ45接口，通过这些接口，集线器便能为相应数量的电脑完成“中继”功能。由于它在网络中处于一种“中心”位置，因此集线器也叫做“Hub”。</code></pre><p>2.集线器的工作原理</p>
+<pre><code>集线器的工作原理很简单，以图2为例，图中是一个具备8个端口的集线器，共连接了8台电脑。集线器处于网络的“中心”，通过集线器对信号进行转发，8台电脑之间可以互连互通。具体通信过程是这样的：假如计算机1要将一条信息发送给计算机8，当计算机1的网卡将信息通过双绞线送到集线器上时，集线器并不会直接将信息送给计算机8，它会将信息进行“广播”—— 将信息同时发送给8个端口，当8个端口上的计算机接收到这条广播信息时，会对信息进行检查，如果发现该信息是发给自己的，则接收，否则不予理睬。由于该信息是计算机1发给计算机8的，因此最终计算机8会接收该信息，而其它7台电脑看完信息后，会因为信息不是自己的而不接收该信息。</code></pre><p>3.集线器的特点</p>
+<p>1）共享带宽</p>
+<pre><code>集线器的带宽是指它通信时能够达到的最大速度。目前市面上用于中小型局域网的集线器主要有10Mbps、100Mbps和10/100Mbps自适应三种。
+
+10Mb带宽的集线器的传输速度最大为10Mbps，即使与它连接的计算机使用的是100Mbps网卡，在传输数据时速度仍然只有10Mbps。10/100Mbps自适应集线器能够根据与端口相连的网卡速度自动调整带宽，当与10Mbps的网卡相连时，其带宽为10Mb；与100Mbps的网卡相连时，其带宽为100Mb，因此这种集线器也叫做“双速集线器”。
+
+集线器是一种“共享”设备，集线器本身不能识别目的地址，当同一局域网内的A主机给B主机传输数据时，数据包在以集线器为架构的网络上是以广播方式传输的，由每一台终端通过验证数据包头的地址信息来确定是否接收。</code></pre><p>由于集线器在一个时钟周期中只能传输一组信息，如果一台集线器连接的机器数目较多，并且多台机器经常需要同时通信时，将导致集线器的工作效率很差，如发生信息堵塞、碰撞等。</p>
+<pre><code>为什么会这样呢?打给比方，以图2为例，当计算机1正在通过集线器发信息给计算机8时，如果此时计算机2也想通过集线器将信息发给计算机7，当它试图与集线器联系时，却发现集线器正在忙计算机1的事情，于是计算机2便会“带”着数据站在集线器的面前等待，并时时要求集线器停下计算机1的活来帮自己干。如果计算机2成功地将集线器“抢”过来了（由于集线器是“共享”的，因此很容易抢到手），此时正处于传输状态的计算机1的数据便会停止，于是计算机1也会去 “抢”集线器……</code></pre><p><a href="https://upimg.ibolee.com/wp-blog-uploads/2015/07/1698701484450406438.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/07/1698701484450406438-300x233.jpg" alt="1698701484450406438"></a>（图2） 可见，集线器上每个端口的真实速度除了与集线器的带宽有关外，与同时工作的设备数量也有关。比如说一个带宽为10Mb的集线器上连接了8台计算机，当这8台计算机同时工作时，则每台计算机真正所拥有的带宽是10/8=1.25Mb! 2）半双工 先说说全双工：两台设备在发送和接收数据时，通信双方都能在同一时刻进行发送或接收操作，这样的传送方式就是全双工。而处于半双工传送方式的设备，当其中一台设备在发送数据时，另一台只能接收，而不能同时将自己的数据发送出去。 由于集线器采取的是“广播”传输信息的方式，因此集线器传送数据时只能工作在半双工状态下，比如说计算机1与计算机8需要相互传送一些数据，当计算机1 在发送数据时，计算机8只能接收计算机1发过来的数据，只有等计算机1停止发送并做好了接收准备，它才能将自己的信息发送给计算机1或其它计算机。   二、交换机 1.什么是交换机   交换机也叫交换式集线器，它通过对信息进行重新生成，并经过内部处理后转发至指定端口，具备自动寻址能力和交换作用，由于交换机根据所传递信息包的目的地址，将每一信息包独立地从源端口送至目的端口，避免了和其他端口发生碰撞。广义的交换机就是一种在通信系统中完成信息交换功能的设备。 2.交换机的工作原理 在计算机网络系统中，交换机是针对共享工作模式的弱点而推出的。集线器是采用共享工作模式的代表，如果把集线器比作一个邮递员，那么这个邮递员是个不认识字的“傻瓜”——要他去送信，他不知道直接根据信件上的地址将信件送给收信人，只会拿着信分发给所有的人，然后让接收的人根据地址信息来判断是不是自己的!而交换机则是一个 “聪明”的邮递员——交换机拥有一条高带宽的背部总线和内部交换矩阵。交换机的所有的端口都挂接在这条背部总线上，当控制电路收到数据包以后，处理端口会查找内存中的地址对照表以确定目的MAC（网卡的硬件地址）的NIC（网卡）挂接在哪个端口上，通过内部交换矩阵迅速将数据包传送到目的端口。目的MAC若不存在，交换机才广播到所有的端口，接收端口回应后交换机会“学习”新的地址，并把它添加入内部地址表中。 可见，交换机在收到某个网卡发过来的“信件”时，会根据上面的地址信息，以及自己掌握的“常住居民户口簿”快速将信件送到收信人的手中。万一收信人的地址不在“户口簿”上，交换机才会像集线器一样将信分发给所有的人，然后从中找到收信人。而找到收信人之后，交换机会立刻将这个人的信息登记到“户口簿” 上，这样以后再为该客户服务时，就可以迅速将信件送达了。 3.交换机的性能特点 1）独享带宽 由于交换机能够智能化地根据地址信息将数据快速送到目的地，因此它不会像集线器那样在传输数据时“打扰”那些非收信人。这样一来，交换机在同一时刻可进行多个端口组之间的数据传输。并且每个端口都可视为是独立的网段，相互通信的双方独自享有全部的带宽，无须同其他设备竞争使用。比如说，当A主机向D主机发送数据时，B主机可同时向C主机发送数据，而且这两个传输都享有网络的全部带宽——假设此时它们使用的是10Mb的交换机，那么该交换机此时的总流通量就等于2×10Mb=20Mb。 2）全双工 当交换机上的两个端口在通信时，由于它们之间的通道是相对独立的，因此它们可以实现全双工通信。   三、集线器与交换机的区别 从两者的工作原理来看，交换机和集线器是有很大差别的。首先，从OSI体系结构来看，集线器属于OSI的第一层物理层设备，而交换机属于OSI的第二层数据链路层设备。 其次，从工作方式来看，集线器采用一种“广播”模式，因此很容易产生“广播风暴”，当网络规模较大时性能会受到很大的影响。而当交换机工作的时候，只有发出请求的端口和目的端口之间相互响应而不影响其他端口，因此交换机能够在一定程度上隔离冲突域和有效抑制“广播风暴”的产生。 另外，从带宽来看，集线器不管有多少个端口，所有端口都是共享一条带宽，在同一时刻只能有两个端口传送数据，其他端口只能等待，同时集线器只能工作在半双工模式下；而对于交换机而言，每个端口都有一条独占的带宽，当两个端口工作时并不影响其他端口的工作，同时交换机不但可以工作在半双工模式下而且可以工作在全双工模式下。 如果用最简单的语言叙述交换机与集线器的区别，那就应该是智能与非智能的区别。集线器说白了只是连接多个计算机的网络设备，它只能起到信号放大和传输的作用，不能对信号中的碎片进行处理，所以在传输过程中容易出错。而交换机则可以看作为是一种智能型的集线器，它除了拥有集线器的所有特性外，还具有自动寻址、交换、处理的功能。并且在数据传递过程中，发送端与接受端独立工作，不与其它端口发生关系，从而达到防止数据丢失和提高吞吐量的目的。   四、路由器 1.路由器的作用 通过集线器或交换机，我们可以将很多台电脑组成一个比较大的局域网（图3），但是当机器的数量达到一定数目时，问题也就来了：对于用集线器构成的局域网而言，由于采用“广播”工作模式，当网络规模较大时，信息在传输过程中出现碰撞、堵塞的情况越来越严重，即使是交换机，这种情况也同样存在。其次，这种局域网不安全，也不利于管理。</p>
+<p><a href="https://upimg.ibolee.com/wp-blog-uploads/2015/07/1438337130992819190.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/07/1438337130992819190-300x118.jpg" alt="1438337130992819190"></a>（图3）</p>
+<pre><code>为了解决这些问题，人们便将一个较大的网络划分为一个个小的子网、网段，或者直接将它们划分为多个VLAN（即虚拟局域网），在一个VLAN内，一台主机发出的信息只能发送到具有相同VLAN号的其他主机，其他VLAN的成员收不到这些信息或广播帧。采用VLAN划分网络后，可有效地抑制网络上的广播风暴，增加网络的安全性，使管理控制集中（图4）。</code></pre><p><a href="https://upimg.ibolee.com/wp-blog-uploads/2015/07/1908963292053487277.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/07/1908963292053487277-300x161.jpg" alt="1908963292053487277"></a>（图4）</p>
+<pre><code>既然是局域网，万一分别处于不同VLAN的主机需要互相通信时该怎么办呢?这时候就得通过路由器（Router，转发者）来帮忙了。路由器可以将处于不同子网、网段、VLAN的电脑连接起来，让它们自由通信。另外，我们都知道目前的网络有很多种结构类型，且不同网络所使用的协议、速度也不尽相同。当两个不同结构的网络需要互连时，也可以通过路由器来实现。路由器可以使两个相似或不同体系结构的局域网段连接到一起，以构成一个更大的局域网或一个广域网。
+
+可见，路由器是一种连接多个网络或网段的网络设备，它能将不同网络、网段或VLAN之间的数据信息进行“翻译”，以使它们能够相互“读”懂对方的数据，从而构成一个更大的网络。</code></pre><p>2.路由器的工作原理</p>
+<pre><code>所谓路由就是指通过相互连接的网络把信息从源地点移动到目标地点的活动。那么路由器具体是如何进行“翻译”工作的呢?我们平时在学习、翻译英语时，肯定会准备一本英汉字典，通过它来实现英文与中文之间的互现转换。而对于路由器而言，它也有这种用于翻译的字典——路径表。路径表（Routing Table）保存着各种传输路径的相关数据，如子网的标志信息、网上路由器的个数和下一个路由器的名字等内容。路径表可以是由系统管理员固定设置好的，也可以由系统动态修改，可以由路由器自动调整，也可以由主机控制。
+
+通过路由器可以让不同子网、网段进行互连，因此路由器与集线器、交换机不同，它一般安装在网络的“骨干”部位，而不像集线器、交换机那样工作在基层。比如说一个较大规模的企业局域网，基于管理、安全、性能的考虑，一般都会将整个网络划分为多个VLAN，如此一来，当VLAN与VLAN之间进行通讯时，就必须使用路由器。
+
+对于该企业网而言，肯定还需要与互联网相连，对于企业而言，一般都是通过租用电信的DDN专线或者利用ADSL、Cable、ISDN等方式将企业网接入互联网，而此时由于网络体系及所用协议的不同，也需要路由器来完成企业网与互联网的互连工作图5。</code></pre><p><a href="https://upimg.ibolee.com/wp-blog-uploads/2015/07/3251598930963094699.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/07/3251598930963094699-300x222.jpg" alt="3251598930963094699"></a>（图5）</p>
+<pre><code>一般来说，在路由过程中，信息至少会经过一个或多个中间节点。通常，人们会把路由和交换进行对比，这主要是因为在普通用户看来两者所实现的功能是完全一样的。其实，路由和交换之间的主要区别就是交换发生在OSI参考模型的第二层（数据链路层），而路由发生在第三层，即网络层。这一区别决定了路由和交换在移动信息的过程中需要使用不同的控制信息，所以两者实现各自功能的方式是不同的。路由器通过路由决定数据的转发。转发策略称为路由选择，这也是路由器名称的由来。</code></pre><p>三剑客的外观比较</p>
+<pre><code>前面我们已经讲解了集线器、交换机、路由器的工作原理，但是对于很多初学者来说，有时也希望能够从外观上去区分它们。当然，集线器、交换机、路由器在外观上肯定有所区别，但这些往往只能作为参考信息，毕竟现在很多集线器、交换机与路由器产品在外观上看非常相似。而这里面最难区分的就是普通桌面型的集线器与交换机，而路由器相对比较容易识别。</code></pre><p>1.集线器与交换机的外观区别</p>
+<p>1）集线器的外观 集线器的结构比较简单，因此集线器一般都比较小巧：接口面板上一般具备8个、16个、24个、32个等数量不等的RJ45接口。 由于单个集线器的最大接口数一般也就32个，如果要连接50台甚至100台主机的话该怎么办呢?集线器上的“Uplink”级联口就是为了解决这个问题而出现的——通过级联口，可以将多个集线器连接在一起，以便拓展集线器的接口数及连接距离，但最多只能级联4个集线器。 与接口对应的则是面板上标有数字的一排或两排指示灯，用来指示集线器的工作状态。其中“Power”是电源指示灯，标有数字的是“Link”（连接）与“Action”（活动）指示灯，当某个RJ45接口中有正确的信号接入时，该接口的“Link”灯呈常亮状态，当有信号传输时，则“Action”灯闪烁。现在集线器一般都将“Link”与“Action”指示灯合二为一，用一个指示灯来完成“Link”与“Action”的工作（图6）。</p>
+<p><a href="https://upimg.ibolee.com/wp-blog-uploads/2015/07/3050907272568735638.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/07/3050907272568735638-300x180.jpg" alt="3050907272568735638"></a>（图6）</p>
+<p>2）交换机的外观</p>
+<pre><code>根据应用范围不同交换机存在着多种多样的外观。例如一些用于骨干线路的交换机，往往采用的是“模块式”集成方式，用户可以通过购买、增加模块来增强交换机的功能，这类交换机一般应用在大型企业，其体积也很大。
+
+而对于那些应用在小型局域网的桌面型交换机，其外观与普通的集线器非常相似，要想在外观上区分它们，除了铭牌上“HUB”与“Switch”标志的区别外，关键是指示灯：如今的交换机大多是10/100Mbps自适应交换机，因此其面板上一般有用来表示该端口是工作在10Mbps还是100Mbps的指示灯。另外，交换机既可以工作在全双工状态下，也可以工作在半双工状态下，因此其面板上一般还有一排“FDX/COL”或“FD/COL”指示灯（图 7）。</code></pre><p><a href="https://upimg.ibolee.com/wp-blog-uploads/2015/07/890305351337689055.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/07/890305351337689055-300x147.jpg" alt="890305351337689055"></a>（图7）</p>
+<pre><code>其中“FDX”或“FD”是“Full Duplex”（全双工）的缩写，当交换机上的某个端口工作在全双工状态时，其对应的“FDX”指示灯会亮，否则该端口工作在半双工状态下；“COL”则是信息碰撞指示灯，当该端口中传输的数据出现碰撞时，则该灯会闪烁，碰撞越厉害，闪烁越厉害。
+
+对于集线器而言，虽然有些10/100Mbps自适应的集线器也有用来指示是工作在10Mbps还是100Mbps的指示灯，但绝对没有“FDX/COL”指示灯。初学者可以通过这一点来区分集线器与交换机。</code></pre><p>2.路由器的组成与外观</p>
+<p>1）路由器的组成</p>
+<pre><code>路由器作为一种高级的网络设备，并不是每个人都可以接触到的，这是因为它的普及性不如集线器、交换机高。
+
+集线器、交换机在工作时都是通过硬件直接实现信号的传输，而路由器则不同，事实上路由器是一台特殊的计算机，它有CPU、存储介质以及操作系统，只不过这些都与PC上的有点差别而已。总的说来，路由器也可分为硬件及软件两部分。软件部分主要是操作系统，普通PC的操作系统有Windows系列、 Linux/Unix等，而路由器的操作系统就是IOS（Internetwork Operating System，互联网际操作系统）。
+
+路由器的硬件主要有CPU、接口和存储介质等。路由器中的CPU和计算机中的CPU所要实现的功能都是一样的。一般来说，计算机的CPU处理能力比路由器强大，但是在一些高端路由器上也会用到频率高到300MHz的CPU。路由器中的接口是非常重要的，因为它是连接网络最直接的媒介，它的接口主要有以太网口、串口、FDDI、令牌环等。计算机中有内存和硬盘，路由器中也有，只不过它的名字不同而已；路由器中的存储介质主要有ROM（Read-Only Memory，只读储存设备）、Flash（闪存）、NVROM（非易失性随机存储器）、DRAM（动态随机存储器）等几种。
+
+路由器正是通过其特殊的软件功能来完成路由工作的，由于这种专业的路由器价格昂贵，所以现在人们也会在一些对路由器要求不高的应用环境中利用普通的 PC机来实现路由功能，比如说只要在一台PC机上安装Windows2000 Server，然后进行必要的配置，一台“路由器”就打造出来了。</code></pre><p>2）路由器的外观</p>
+<pre><code>路由器主要运行在骨干网络上，因此外观也千姿百态，比如一些应用于因特网骨干线路的千兆级别的路由器，往往也是模块化设计，体型也很庞大。
+
+而那些应用于中小型企业的路由器则相对比较小巧，这类外观看起来与集线器、交换机差不多的路由器，其最大的外观特点就是端口数量相对较少，但类型多样。图8是某种路由器背面的接口图。</code></pre><p><a href="https://upimg.ibolee.com/wp-blog-uploads/2015/07/1843379622479799914.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/07/1843379622479799914-300x212.jpg" alt="1843379622479799914"></a>（图8）</p>
+<pre><code>其实也很好理解，路由器主要是用来连接不同类型的网络，它位于网络的最高层，基于成本的考虑，其端口肯定比较少，但同时为了连接多种类型的网络，又必须具备多种类型的网络接口。</code></pre><p>三剑客的选购</p>
+<pre><code>集线器、交换机、路由器的工作原理、性能特点和价格都不同，因此在构建网络平台时，应该根据实际需要，科学地选择产品。当然，我们在这里讨论的选购主要是针对一些中小型网络而言的，对于校园网、大型企业网，由于涉及的面太多，一般都需要专业的网络工程师进行网络设计与产品选购。</code></pre><p>一、不同用户需求推荐</p>
+<p>1.普通家庭用户</p>
+<pre><code>一般一个家庭的电脑数量有限，而组网的目的一般是为了实现共享上网、玩网络游戏等。由于电脑数量少，对带宽的要求不高，因此选择一个端口数少于8个，10Mbps带宽的集线器比较合适，目前这类产品很多，价格也非常便宜，一般在80~100元之间。
+
+集线器的特点是价格便宜，但由于采用“共享带宽”的工作模式，因此集线器只适合那些对价格敏感、网络规模不大且数据传输量不大的用户使用。</code></pre><p>2.学生宿舍</p>
+<pre><code>对于学生宿舍而言，一般电脑数量比较多，再加上宿舍与宿舍之间比较近，组网非常方便。学生一般比较喜欢通过组网来实现共享上网、联网游戏、视频欣赏等，因此对带宽的要求相对较高，再加上学生作息时间都差不多，往往许多电脑会同时上网，所以最佳选择是使用交换机。交换机独享带宽的工作模式，能够满足学生对高带宽的要求，同时也可以避免许多机器同时通信所带来的网路堵塞问题。考虑到学生的经济承受能力不高，可以选择国内厂商出品的中低端10/100Mbps自适应桌面交换机，端口数要根据联网的电脑数目进行考虑，不过最好是选择16口的价廉物美的主流产品，目前这类中低端产品的价格大都在700元以下，对于学生来说也还可以承受。如果端口数不够的话，可以采取级联的方式解决。 当然，上面我们是针对一些对网络速度要求较高的学生宿舍而言的，如果联网的电脑不是很多（少于10台），并且只想共享上网或玩一些对网速要求不高的游戏的话，则也可以考虑使用10Mbps的集线器，但不推荐使用10/100Mbps自适应的集线器。如果要求高一点的话，可以到市场上找找那些迷你型的10Mbps交换机，这类产品一般端口数少，而且售价也很便宜，一般在200元左右。</code></pre><p>3.中小型办公网络</p>
+<pre><code>对于中小型的办公网络而言，如果考虑性能、稳定性及以后的扩展性，最好选择10/100Mbps自适应交换机来构建局域网，如果是小型的办公网络，也可以考虑集线器。 如今办公室一般都需要共享上网，而目前使用最多的就是共享ADSL上网。对于中小型办公网络而言，由于一般不会配备专业的服务器，因此要共享上网的话，可以通过配置一台ADSL路由器来解决共享问题，这样可以省去一台代理服务器。目前这类ADSL路由器价格比较便宜，且可供选择的产品很多。</code></pre><p>二、集线器的选购标准</p>
+<p>1.注意带宽标准</p>
+<pre><code>根据带宽的不同，目前市面上用于局域网（一般是指小型局域网）的HUB可分为10Mbps、100Mbps和10/100Mbps 自适应三种。选择哪种集线器主要取决于三个因素：a.上连设备带宽：如果上连设备支持IEEE802.3U，自然可购买100Mbps集线器，否则只有选择10Mbps的了；b.站点数：由于连在集线器上的所有电脑均争用同一个上行总线，处于同一冲突域内，所以如果电脑数目较多，最好选择带宽高的；c.应用需求。</code></pre><p>2.是否满足扩展需求</p>
+<pre><code>根据端口数目的多少HUB一般分为8口、16口和24口几种。当一个集线器提供的端口不够时，一般有以下两种方法扩展： a.堆叠：堆叠是解决单个集线器端口不足时的一种方法，但是因为堆叠在一起的多个集线器还是工作在同一环境下，所以堆叠的层数也不能太多。市面上一些集线器以其堆叠层数比其他品牌的多而作为卖点，如果遇到这种情况，要辨证认识：一方面可堆叠层数越多，一般说明集线器的稳定性越高；另一方面，可堆叠层数越多，每个用户实际可享有的带宽则越小。 b.级联：级联是在网络中增加用户数的另一种方法，但是此项功能的使用一般是有条件的，即HUB必须提供可级联的端口，此端口上常标有“Uplink”或“MDI”字样，用此端口与其他的HUB进行级联。如果没有提供专门的端口，当要进行级联时，连接两个集线器的双绞线在制作时必须要进行错线。</code></pre><p>3.是否支持网管功能</p>
+<pre><code>根据对HUB管理方式的不同可分为Damp Hub 亚集线器　和Intelligent Hub 智能集线器　两种。智能集线器改进了普通HUB的缺点，增加了网络交换功能，具有网络管理和自动检测网络端口速度的能力（类似于交换机）。而亚集线器只起到简单的信号放大和再生的作用，无法对网络性能进行优化。早期使用的共享式HUB一般为非智能型的，而现在流行的100Mbps HUB和10/100Mbps自适应HUB多为智能型的。</code></pre><p>4.注意接口类型</p>
+<pre><code>选择HUB时，还要注意信号输入口的接口类型，与双绞线连接时需要具有RJ-45接口；如果与细缆相连，需要具有BNC接口；与粗缆相连需要有AUI接口；当局域网长距离连接时，还需要具有与光纤连接的光纤接口。早期的10Mbps HUB一般具有RJ-45、BNC和AUI三种接口。100Mbps HUB和10/100Mbps HUB一般只有RJ-45接口，有的也具有光纤接口。</code></pre><p>5.注意品牌和价格</p>
+<pre><code>目前市面上的高档HUB市场主要还是由美国产品占据，如3COM、Intel等，它们在设计上比较独特，一般几个甚至是每个端口配置一个处理器，当然价格比较高。我国台湾的D-Link和Accton的产品占据了中低端市场上的主要份额，而大陆的一些公司如联想、实达也分别推出了自己的产品。中低档产品一般均采用单处理器技术，其外围电路的设计也大同小异。各个品牌在质量上差距已经不大。相对而言，大陆产品的价格要便宜很多。</code></pre><p>本文“网络硬件三剑客 - 集线器、交换机与路由器”，来自：<a href="http://lcx.cc/" target="_blank" rel="noopener">Nuclear’Atk 网络安全研究中心</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/IT相关//" class="article-tag-list-link color5">IT相关</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/posts/d732a265.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-e5-b0-8f-e5-bd-93-e5-ae-b6-e5-b9-b2-e8-84-86-e9-9d-a2-e6-b0-b4-e6-b5-92-e4-bc-a0-e4-b8-bb-e9-a2-98-e5-8d-a1-e6-bb-a1-e6-bb-a1-e7-9a-84-e7-ab-a5-e5-b9-b4-e5-9b-9e-e5-bf-86-ef-bc-81" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/posts/f5e3a1c0.html">小当家干脆面---水浒传主题卡-满满的童年回忆！</a>
+    </h1>
+  
+
+        
+        <a href="/posts/f5e3a1c0.html" class="archive-article-date">
+  	<time datetime="2015-05-27T03:08:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-05-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>小时候为存一套不惜把方便面一箱一箱地买，于是有那么一段时间经常拉肚子。。。<img src="http://b.bst.126.net/common/portrait/pop/preview/pop6.gif" alt="">（油炸东西吃太多，就是这下场。。。各位请勿尝试）。 不过小浣熊也是够坑爹的，原来是一批一批地出卡的。。。知道这个真相，在下就开始慢慢一包一包买就算了。。。（虽然干脆面有很多种口味，但还真可以吃到吐。。。于是在下到现在一直都不怎么喜欢方便面<img src="http://b.bst.126.net/common/portrait/pop/preview/pop14.gif" alt="">） 后来还有些什么特别的银边彩闪什么的卡，那个看着印刷不怎么样，也没怎么收。。。恶人卡一张都没有抽到过，RP奇差啊。PS：恶人卡是可以换钱的。 最后辛苦收集完毕，后来一张小温侯。吕方给友人，然后就一直残缺到现在了。。。 今日看微薄，有人发这个东西，突然勾起这个回忆，于是发这博文纪念一下。 图片基本来自以下链接。。。不过链接里，LZ不知道为何漏了个14号武松，不过在下这里补上了。。。另外六大恶人是在司徒玄羽那里找的，看水印就知道了。。。 <a href="http://tieba.baidu.com/p/1414090580?pn=1" target="_blank" rel="noopener">http://tieba.baidu.com/p/1414090580?pn=1</a> <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597958172051869245.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597958172051869245-300x223.jpg" alt="6597958172051869245"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597852618935600363.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597852618935600363-300x223.jpg" alt="6597852618935600363"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598070322237727093.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598070322237727093-300x222.jpg" alt="6598070322237727093"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598090113447027001.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598090113447027001-300x223.jpg" alt="6598090113447027001"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597428207447220009.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597428207447220009-300x222.jpg" alt="6597428207447220009"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597343545053317002.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597343545053317002-300x222.jpg" alt="6597343545053317002"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597818534075141469.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597818534075141469-300x223.jpg" alt="6597818534075141469"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598237448005148692.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598237448005148692-300x223.jpg" alt="6598237448005148692"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598121999284231483.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598121999284231483-300x223.jpg" alt="6598121999284231483"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597949375958847101.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597949375958847101-300x223.jpg" alt="6597949375958847101"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597836126261187032.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597836126261187032-300x223.jpg" alt="6597836126261187032"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597427107935592232.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597427107935592232-300x223.jpg" alt="6597427107935592232"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598208860702829742.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598208860702829742-300x223.jpg" alt="6598208860702829742"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597786648237928696.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597786648237928696-300x220.jpg" alt="6597786648237928696"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597811937005372548.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597811937005372548-300x223.jpg" alt="6597811937005372548"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598207761191202007.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598207761191202007-300x223.jpg" alt="6598207761191202007"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598165979749342357.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598165979749342357-300x223.jpg" alt="6598165979749342357"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597517267889071995.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597517267889071995-300x223.jpg" alt="6597517267889071995"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598163780726086814.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598163780726086814-300x223.jpg" alt="6598163780726086814"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597476585958844064.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597476585958844064-300x223.jpg" alt="6597476585958844064"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598249542633052927.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598249542633052927-300x223.jpg" alt="6598249542633052927"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597143433936977889.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597143433936977889-300x223.jpg" alt="6597143433936977889"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597679995610033636.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597679995610033636-300x223.jpg" alt="6597679995610033636"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597666801470498750.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597666801470498750-300x223.jpg" alt="6597666801470498750"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597376530402156078.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597376530402156078-300x223.jpg" alt="6597376530402156078"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597379828937037992.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597379828937037992-300x223.jpg" alt="6597379828937037992"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597530462028655490.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597530462028655490-300x223.jpg" alt="6597530462028655490"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597785548726300910.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597785548726300910-300x223.jpg" alt="6597785548726300910"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598083516377260517.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598083516377260517-300x223.jpg" alt="6598083516377260517"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598116501726092612.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598116501726092612-300x223.jpg" alt="6598116501726092612"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598084615888888284.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598084615888888284-300x223.jpg" alt="6598084615888888284"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597902096958850065.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597902096958850065-300x223.jpg" alt="6597902096958850065"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597408416239352320.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597408416239352320-300x223.jpg" alt="6597408416239352320"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597824031633280325.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597824031633280325-300x223.jpg" alt="6597824031633280325"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598233049958635133.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598233049958635133-300x223.jpg" alt="6598233049958635133"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597944977912333473.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597944977912333473-300x223.jpg" alt="6597944977912333473"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597352341146345069.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597352341146345069-300x223.jpg" alt="6597352341146345069"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597874609168157088.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597874609168157088-300x223.jpg" alt="6597874609168157088"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597964769121637028.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597964769121637028-300x223.jpg" alt="6597964769121637028"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597710781935608032.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597710781935608032-300x223.jpg" alt="6597710781935608032"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597756961423977783.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597756961423977783-300x223.jpg" alt="6597756961423977783"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597756961423977768.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597756961423977768-300x223.jpg" alt="6597756961423977768"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597593134191438721.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597593134191438721-300x223.jpg" alt="6597593134191438721"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597816335051883596.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597816335051883596-300x223.jpg" alt="6597816335051883596"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597891101842573070.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597891101842573070-300x223.jpg" alt="6597891101842573070"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597194011471847064.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597194011471847064-300x223.jpg" alt="6597194011471847064"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598124198307487001.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598124198307487001-300x223.jpg" alt="6598124198307487001"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598094511493538469.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598094511493538469-300x222.jpg" alt="6598094511493538469"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598124198307486986.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598124198307486986-300x223.jpg" alt="6598124198307486986"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598219855819103840.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598219855819103840-300x223.jpg" alt="6598219855819103840"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597511770330933133.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597511770330933133-300x222.jpg" alt="6597511770330933133"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598237448005148659.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598237448005148659-300x223.jpg" alt="6598237448005148659"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597971366191400416.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597971366191400416-300x223.jpg" alt="6597971366191400416"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597960371075125956.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597960371075125956-300x223.jpg" alt="6597960371075125956"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597706383889096835.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597706383889096835-300x223.jpg" alt="6597706383889096835"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598289125051656090.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598289125051656090-300x223.jpg" alt="6598289125051656090"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598157183656320654.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598157183656320654-300x223.jpg" alt="6598157183656320654"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597622821005389051.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597622821005389051-300x222.jpg" alt="6597622821005389051"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598085715400516009.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598085715400516009-300x223.jpg" alt="6598085715400516009"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598237448005148632.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598237448005148632-300x223.jpg" alt="6598237448005148632"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597663502935615373.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597663502935615373-300x223.jpg" alt="6597663502935615373"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597679995610033586.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597679995610033586-300x222.jpg" alt="6597679995610033586"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598288025540028324.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598288025540028324-300x223.jpg" alt="6598288025540028324"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598119800260975893.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598119800260975893-300x223.jpg" alt="6598119800260975893"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598197865586547646.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598197865586547646-300x223.jpg" alt="6598197865586547646"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597535959586793280.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597535959586793280-300x223.jpg" alt="6597535959586793280"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597983460819307245.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597983460819307245-300x223.jpg" alt="6597983460819307245"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598202263633063127.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598202263633063127-300x223.jpg" alt="6598202263633063127"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598140690981904155.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598140690981904155-300x223.jpg" alt="6598140690981904155"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597513969354188702.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597513969354188702-300x223.jpg" alt="6597513969354188702"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597583238586786458.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597583238586786458-300x223.jpg" alt="6597583238586786458"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597741568261186891.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597741568261186891-300x223.jpg" alt="6597741568261186891"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597226996820682033.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597226996820682033-300x223.jpg" alt="6597226996820682033"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597855917470483697.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597855917470483697-300x223.jpg" alt="6597855917470483697"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597201708053241158.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597201708053241158-300x223.jpg" alt="6597201708053241158"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597979062772794801.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597979062772794801-300x222.jpg" alt="6597979062772794801"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597921888168151326.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597921888168151326-300x223.jpg" alt="6597921888168151326"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597487581075121752.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597487581075121752-300x223.jpg" alt="6597487581075121752"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597261081681155937.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597261081681155937-300x223.jpg" alt="6597261081681155937"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597951574982102615.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597951574982102615-300x222.jpg" alt="6597951574982102615"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598167079260970019.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598167079260970019-300x222.jpg" alt="6598167079260970019"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598234149470262839.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598234149470262839-300x223.jpg" alt="6598234149470262839"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598181372912134588.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598181372912134588-300x223.jpg" alt="6598181372912134588"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597163225146275560.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597163225146275560-300x223.jpg" alt="6597163225146275560"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597884504772806371.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597884504772806371-300x223.jpg" alt="6597884504772806371"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597968067656520340.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597968067656520340-300x223.jpg" alt="6597968067656520340"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598268234330726753.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598268234330726753-300x223.jpg" alt="6598268234330726753"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598075819795865955.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598075819795865955-300x223.jpg" alt="6598075819795865955"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597786648237928638.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597786648237928638-300x223.jpg" alt="6597786648237928638"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597258882657900375.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597258882657900375-300x223.jpg" alt="6597258882657900375"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597650308796084360.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597650308796084360-300x222.jpg" alt="6597650308796084360"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597808638470489147.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597808638470489147-300x223.jpg" alt="6597808638470489147"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597659104889104893.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597659104889104893-300x223.jpg" alt="6597659104889104893"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597407316727724512.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597407316727724512-300x223.jpg" alt="6597407316727724512"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597807538958861362.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597807538958861362-300x223.jpg" alt="6597807538958861362"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597993356423957403.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597993356423957403-300x222.jpg" alt="6597993356423957403"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597571143958882670.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597571143958882670-300x223.jpg" alt="6597571143958882670"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597929584749546882.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597929584749546882-300x223.jpg" alt="6597929584749546882"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597504073749538720.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597504073749538720-300x222.jpg" alt="6597504073749538720"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598095611005166205.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6598095611005166205-300x223.jpg" alt="6598095611005166205"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597534860075165465.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597534860075165465-300x223.jpg" alt="6597534860075165465"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597504073749538689.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597504073749538689-300x223.jpg" alt="6597504073749538689"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597806439447233583.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597806439447233583-300x222.jpg" alt="6597806439447233583"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597985659842562748.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597985659842562748-300x222.jpg" alt="6597985659842562748"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597654706842593806.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597654706842593806-300x223.jpg" alt="6597654706842593806"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597219300239297559.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597219300239297559-300x223.jpg" alt="6597219300239297559"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597526063982144327.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597526063982144327-300x223.jpg" alt="6597526063982144327"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597606328330967408.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/6597606328330967408-300x223.jpg" alt="6597606328330967408"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/102456891524051915.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/102456891524051915-300x220.jpg" alt="102456891524051915"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/102456891524051890.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/102456891524051890-300x220.jpg" alt="102456891524051890"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/102456891524051801.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/102456891524051801-300x220.jpg" alt="102456891524051801"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/102456891524051863.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/102456891524051863-300x220.jpg" alt="102456891524051863"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/102456891524051835.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/102456891524051835-300x220.jpg" alt="102456891524051835"></a>   <a href="https://upimg.ibolee.com/wp-blog-uploads/2015/05/102456891524051778.jpg" target="_blank" rel="noopener"><img src="https://upimg.ibolee.com/wp-blog-uploads/2015/05/102456891524051778-300x220.jpg" alt="102456891524051778"></a> 来源：路人月</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/其它//" class="article-tag-list-link color3">其它</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/posts/f5e3a1c0.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-ef-bf-bd-e7-9a-84-e9-97-ae-e9-a2-98-e8-a7-a3-e5-86-b3-e8-ae-ba-e9-bb-91-e6-a1-86-e9-97-ae-e5-8f-b7-e6-96-b9-e6-a1-86-e9-97-ae-e5-8f-b7-e5-9c-a8-e4-bb-a3-e7-a0-81-e4-b8-ad-e7-9a-84-e5-ae-b3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/posts/23eff0a8.html">�的问题解决,论:黑框问号,方框问号在代码中的害处</a>
+    </h1>
+  
+
+        
+        <a href="/posts/23eff0a8.html" class="archive-article-date">
+  	<time datetime="2015-05-13T09:43:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-05-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>中文截断的部分结尾处总有一个带问号的黑色方框乱码。 我查看了一下模板，代码是这样写的： <?php echo mb\_strimwidth(strip\_tags(apply\_filters('the\_content', $post->post_content)), 0, 250,"..."); ?> 解决的办法有两个： <strong>1、开启mb_string extension</strong> 如果你是自己的服务器，可以更改apache配置，可以将mb_string extension设置为on。 <strong>2、设置字符集</strong> 将代码加上UTF-8参数，代码就变成了： <?php echo mb\_strimwidth(strip\_tags(apply\_filters('the\_content', $post->post\_content)), 0, 250,"...",'utf-8'); ?> 这样就解决了这个WordPress中mb_strimwidth函数中文截断产生乱码的问题。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">干货</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/学习笔记//" class="article-tag-list-link color5">学习笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/posts/23eff0a8.html">展开全文 >></a>
         </p>
       
 
@@ -1032,7 +1064,7 @@
   
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -1147,39 +1179,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">excle</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">mac</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">axure</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">响应式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">自适应</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">IT技术</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">kindle</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">电子书</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">LAMP</a>
+                <a href="javascript:void(0)" class="js-tag color3">数据</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1191,31 +1191,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">aliyun</a>
+                <a href="javascript:void(0)" class="js-tag color1">excle</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">linode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vps</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">阿里云</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">互联网</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">开放</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">模式</a>
+                <a href="javascript:void(0)" class="js-tag color5">IT技术</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1243,11 +1223,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">邮件客户端</a>
+                <a href="javascript:void(0)" class="js-tag color4">mac</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MAC终端</a>
+                <a href="javascript:void(0)" class="js-tag color1">邮件客户端</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1255,7 +1235,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">NaviCat</a>
+                <a href="javascript:void(0)" class="js-tag color4">TED</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1264,10 +1244,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">template</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">TED</a>
               </li>
             
             <div class="clearfix"></div>
