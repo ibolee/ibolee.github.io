@@ -1,0 +1,69 @@
+baseURL = "https://blog.ibolee.com"
+title = "黑李白的博客"
+theme = "erblog"
+paginate = 3
+languageCode = "zh-cn"
+DefaultContentLanguage = "zh-cn"
+enableInlineShortcodes = true
+footnoteReturnLinkContents = "^"
+
+[params]
+    author = "黑李白"
+    badge = "orange"
+    quote = "red"
+    index_posts_num = 10
+    logo = "//upimg.ibolee.com/blog/github_avatar.jpeg"
+    bio = """
+    <p>黑李白,内蒙古巴彦淖尔人,在北京从事IT行业工作.</p>
+    """
+    # copyright = "Copyright © 2008–2019, Steve Francia and the Hugo Authors; all rights reserved."
+
+
+[[menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "/about/"
+    weight = 10
+
+# [[menu.main]]
+#     identifier = "zone"
+#     name = "Zone"
+#     url = "/zone/"
+#     weight = 10
+
+[[menu.footer]]
+    identifier = "home"
+    name = "home"
+    url = "/"
+    weight = 1
+
+[[menu.footer]]
+    identifier = "about"
+    name = "About"
+    url = "/about/"
+    weight = 2
+
+[taxonomies]
+category = "categories"
+tag = "tags"
+series = "series"
+
+[[menu.icon]]
+    url = "mailto:ibolee@live.com"
+    name = "envelope-o"
+    weight = 1
+
+[[menu.icon]]
+    url = "https://github.com/ibolee/"
+    name = "github"
+    weight = 1
+
+[[menu.icon]]
+    url = "https://twitter.com/ibolee"
+    name = "twitter"
+    weight = 1
+
+[[menu.icon]]
+    url = "https://www.instagram.com/cnibolee/"
+    name = "instagram"
+    weight = 1
