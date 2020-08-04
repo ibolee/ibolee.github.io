@@ -1,7 +1,7 @@
 baseURL = "/"
 languageCode = "en-US"
 defaultContentLanguage = "en"
-publishDir = docs
+publishDir = "docs"
 title = "Hugo Learn Documentation"
 theme = "hugo-theme-learn"
 themesdir = "../.."
