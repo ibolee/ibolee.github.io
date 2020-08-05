@@ -1,103 +1,97 @@
-baseURL = "https://blog.ibolee.com/"
-languageCode = "en-US"
-defaultContentLanguage = "en"
-publishDir = "docs"
-title = "Hugo Learn Documentation"
-theme = "hugo-theme-learn"
-themesdir = "../.."
-metaDataFormat = "yaml"
-defaultContentLanguageInSubdir= true
+# Hugo variables
+#
+baseurl = "https://blog.ibolee.com/"
+languageCode = "zh"
+title = "黑李白的博客"
+theme = "hugo-theme-bootstrap4-blog"
+# number of posts to show on home/category/tag pages (Default: 10)
+paginate = 10
+# number of words to use for summary on home/category/tag pages (Default: 70)
+summaryLength = 50
+# optionally override the site's footer with custom copyright text
+# copyright = "Except where otherwise noted, content on this site is licensed under a [Creative Commons Attribution 4.0 International license](https://creativecommons.org/licenses/by-sa/4.0/)."
+#googleAnalytics = "UA-123-45"
+#disqusShortname = "XYW"
 
+[permalinks]
+  posts = "/:06/:1/:2/:filename/"
+  page = "/:filename/"
+
+[[menu.sidebar]]
+  name = "Link 1"
+  url = "https://example.com"
+
+[[menu.sidebar]]
+  name = "Link 2"
+  url = "https://example.org"
+
+[[menu.navbar]]
+  name = "黑李白首页"
+  url = "https://www.ibolee.com"
+
+
+# Theme variables
+#
 [params]
-  editURL = "https://github.com/matcornic/hugo-theme-learn/edit/master/exampleSite/content/"
-  description = "Documentation for Hugo Learn Theme"
-  author = "Mathieu Cornic"
-  showVisitedLinks = true
-  disableBreadcrumb = false
-  disableNextPrev = false
+  # Site author
+  author = "黑李白"
 
-[outputs]
-home = [ "HTML", "RSS", "JSON"]
+  # Description/subtitle for homepage (can be Markdown)
+  description = "博客内容主要围绕：Python数据分析&经营分析相关业务层与技术层内容展开干货级记录。"
 
-[Languages]
-[Languages.en]
-title = "Documentation for Hugo Learn Theme"
-weight = 1
-languageName = "English"
+  # Show header (default: true)
+  #header_visible = true
 
-[[Languages.en.menu.shortcuts]]
-name = "<i class='fab fa-fw fa-github'></i> GitHub repo"
-identifier = "ds"
-url = "https://github.com/matcornic/hugo-theme-learn"
-weight = 10
+  # Format dates with Go's time formatting
+  date_format = "Mon Jan 02, 2006"
 
-[[Languages.en.menu.shortcuts]]
-name = "<i class='fas fa-fw fa-camera'></i> Showcases"
-url = "showcase"
-weight = 11
+  # verification string for Google Webmaster Tools
+  #google_verify_meta = "BAi57DROASu4b2mkVNA_EyUsobfA7Mq8BmSg7Rn-Zp9"
 
-[[Languages.en.menu.shortcuts]]
-name = "<i class='fas fa-fw fa-bookmark'></i> Hugo Documentation"
-identifier = "hugodoc"
-url = "https://gohugo.io/"
-weight = 20
+  # verification string for Bing Webmaster Tools
+  #bing_verify_meta = "3DA353059F945D1AA256B1CD8A3DA847"
 
-[[Languages.en.menu.shortcuts]]
-name = "<i class='fas fa-fw fa-bullhorn'></i> Credits"
-url = "/credits"
-weight = 30
+  # verification string for Yandex Webmaster Tools
+  #yandex_verify_meta = "66b077430f35f04a"
 
-[Languages.fr]
-title = "Documentation du thème Hugo Learn"
-weight = 2
-languageName = "Français"
+  # Optionally display a message about the site's use of cookies, which may be
+  # required for your site in the European Union. Set the parameter below to a
+  # page where the user can get more information about cookies, either on your
+  # site or externally, for example:
+  #cookie_consent_info_url = "/cookie-information/"
+  #cookie_consent_info_url = "http://cookiesandyou.com"
 
-[[Languages.fr.menu.shortcuts]]
-name = "<i class='fab fa-fw fa-github'></i> Repo GitHub"
-identifier = "ds"
-url = "https://github.com/matcornic/hugo-theme-learn"
-weight = 10
+  # show sharing icons on pages/posts (default: true)
+  #sharingicons = true
 
-[[Languages.fr.menu.shortcuts]]
-name = "<i class='fas fa-fw fa-camera'></i> Vitrine"
-url = "/showcase"
-weight = 11
+  # Display post summaries instead of content in list templates (default: true)
+  #truncate = true
 
-[[Languages.fr.menu.shortcuts]]
-name = "<i class='fas fa-fw fa-bookmark'></i> Documentation Hugo"
-identifier = "hugodoc"
-url = "https://gohugo.io/"
-weight = 20
+  # Disable the use of sub-resource integrity on CSS/JS assets (default: false)
+  # Useful if you're using a CDN or other host where you can't control cache headers
+  #disable_sri = false
 
-[[Languages.fr.menu.shortcuts]]
-name = "<i class='fas fa-fw fa-bullhorn'></i> Crédits"
-url = "/credits"
-weight = 30
+  [params.sidebar]
+    # Optional about block for sidebar (can be Markdown)
+    about = "A simple Hugo theme based on the [Bootstrap v4 blog example](http://v4-alpha.getbootstrap.com/examples/blog/)."
 
-[Languages.zh]
-title = "Hugo 主题的 Learn 文档"
-weight = 3
-languageName = "简体中文"
+    # How many posts to show on the sidebar (Default: 5)
+    #num_recent_posts = 2
 
-[[Languages.zh.menu.shortcuts]]
-name = "<i class='fab fa-fw fa-github'></i> GitHub 仓库"
-identifier = "ds"
-url = "https://github.com/matcornic/hugo-theme-learn"
-weight = 10
+  [params.social]
+    # Optional, used for attribution in Twitter cards (ideally not a person
+    # for example: nytimes, flickr, NatGeo, etc).
+    # See: https://dev.twitter.com/cards/types/summary-large-image
+    twitter = "ibolee"
 
-[[Languages.zh.menu.shortcuts]]
-name = "<i class='fas fa-fw fa-camera'></i> 展示区"
-url = "/showcase"
-weight = 11
+# Default content language for Hugo 0.17's multilingual support (default is "zh")
+# See: https://github.com/spf13/hugo/blob/master/docs/content/content/multilingual.md
+#DefaultContentLanguage = "zh"
 
-[[Languages.zh.menu.shortcuts]]
-name = "<i class='fas fa-fw fa-bookmark'></i> Hugo 文档"
-identifier = "hugodoc"
-url = "https://gohugo.io/"
-weight = 20
+# Languages to render
+#[languages.en]
+#[languages.bg]
+  # Bulgarian date format is dd.mm.yyyy
+  #date_format = "02.01.2006"
 
-[[Languages.zh.menu.shortcuts]]
-name = "<i class='fas fa-fw fa-bullhorn'></i> 鸣谢"
-url = "/credits"
-weight = 30
-
+# vim: ts=2 sw=2 et
