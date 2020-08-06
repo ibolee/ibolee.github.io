@@ -9,7 +9,7 @@ paginate = 10
 # number of words to use for summary on home/category/tag pages (Default: 70)
 summaryLength = 50
 # optionally override the site's footer with custom copyright text
-# copyright = "Except where otherwise noted, content on this site is licensed under a [Creative Commons Attribution 4.0 International license](https://creativecommons.org/licenses/by-sa/4.0/)."
+copyright = "Power by hugo丨Theme by hugo-theme-bootstrap4-blog丨蒙ICP备10001529号"
 #googleAnalytics = "UA-123-45"
 disqusShortname = "ibolee"
 publishDir = "docs"
@@ -19,18 +19,20 @@ publishDir = "docs"
   page = "/:filename/"
 
 [[menu.sidebar]]
-  name = "Link 1"
-  url = "https://example.com"
+  name = "艾利克斯部落"
+  url = "https://www.chenxie.net/"
 
 [[menu.sidebar]]
-  name = "Link 2"
-  url = "https://example.org"
-
+  name = "梁爽的看图说话"
+  url = "http://www.lionshuang.com/"
+#add navbar&tag code 20200805
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+  series = "series"
 [[menu.navbar]]
-  name = "黑李白首页"
-  url = "https://www.ibolee.com"
-
-
+  name = "关于我"
+  url = "/about/"
 # Theme variables
 #
 [params]
@@ -41,7 +43,7 @@ publishDir = "docs"
   description = "博客内容主要围绕：Python数据分析&经营分析相关业务层与技术层内容展开干货级记录。"
 
   # Show header (default: true)
-  #header_visible = true
+  header_visible = true
 
   # Format dates with Go's time formatting
   date_format = "Mon Jan 02, 2006"
@@ -63,7 +65,7 @@ publishDir = "docs"
   #cookie_consent_info_url = "http://cookiesandyou.com"
 
   # show sharing icons on pages/posts (default: true)
-  #sharingicons = true
+  sharingicons = true
 
   # Display post summaries instead of content in list templates (default: true)
   #truncate = true
@@ -74,10 +76,10 @@ publishDir = "docs"
 
   [params.sidebar]
     # Optional about block for sidebar (can be Markdown)
-    about = "A simple Hugo theme based on the [Bootstrap v4 blog example](http://v4-alpha.getbootstrap.com/examples/blog/)."
+    #about = "“一点点小贡献，没什么好说的！”[还是了解一下](/about/)"
 
     # How many posts to show on the sidebar (Default: 5)
-    #num_recent_posts = 2
+    num_recent_posts = 5
 
   [params.social]
     # Optional, used for attribution in Twitter cards (ideally not a person
@@ -87,7 +89,7 @@ publishDir = "docs"
 
 # Default content language for Hugo 0.17's multilingual support (default is "zh")
 # See: https://github.com/spf13/hugo/blob/master/docs/content/content/multilingual.md
-DefaultContentLanguage = "zh"
+hugoDefaultContentLanguage = "zh"
 
 # Languages to render
 #[languages.en]
