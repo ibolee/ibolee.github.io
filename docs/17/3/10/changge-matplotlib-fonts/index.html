@@ -5,16 +5,24 @@
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<meta property="og:title" content="关于我" />
-<meta property="og:description" content="我是谁 关于测试 " />
+<meta property="og:title" content="如何更改matplotlib的字体" />
+<meta property="og:description" content="1.找到路径 把下载好的windows字体复制到这个文件夹下的ttf文件夹
+2.修改文件 修改上图文件路径如下:
+最后一处修改为下图样式,并去掉前面的#号:
+3.删除缓存文件 C:\Users\Administrator\ .matplotlib
+4.重启annaconda 5.重启以后在anaconda中添加代码: plt.rcParams[&#39;font.sans-serif&#39;] = [&#39;SimHei&#39;]" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.ibolee.com/about/" />
-<meta property="article:published_time" content="2010-08-03T11:34:37+08:00" />
-<meta property="article:modified_time" content="2010-08-03T11:34:37+08:00" />
+<meta property="og:url" content="https://blog.ibolee.com/17/3/10/changge-matplotlib-fonts/" />
+<meta property="article:published_time" content="2017-03-10T00:00:00+00:00" />
+<meta property="article:modified_time" content="2017-03-10T00:00:00+00:00" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="关于我"/>
-<meta name="twitter:description" content="我是谁 关于测试 "/>
+<meta name="twitter:title" content="如何更改matplotlib的字体"/>
+<meta name="twitter:description" content="1.找到路径 把下载好的windows字体复制到这个文件夹下的ttf文件夹
+2.修改文件 修改上图文件路径如下:
+最后一处修改为下图样式,并去掉前面的#号:
+3.删除缓存文件 C:\Users\Administrator\ .matplotlib
+4.重启annaconda 5.重启以后在anaconda中添加代码: plt.rcParams[&#39;font.sans-serif&#39;] = [&#39;SimHei&#39;]"/>
 <meta name="generator" content="Hugo 0.74.3" />
 
 
@@ -23,11 +31,11 @@
 {
   "@context": "http://schema.org",
   "@type": "BlogPosting",
-  "headline": "关于我",
-  "url": "https://blog.ibolee.com/about/",
-  "wordCount": "2",
-  "datePublished": "2010-08-03T11:34:37+08:00",
-  "dateModified": "2010-08-03T11:34:37+08:00",
+  "headline": "如何更改matplotlib的字体",
+  "url": "https://blog.ibolee.com/17/3/10/changge-matplotlib-fonts/",
+  "wordCount": "13",
+  "datePublished": "2017-03-10T00:00:00+00:00",
+  "dateModified": "2017-03-10T00:00:00+00:00",
   "author": {
     "@type": "Person",
     "name": "黑李白"
@@ -37,9 +45,9 @@
 
 
 
-    <link rel="canonical" href="https://blog.ibolee.com/about/">
+    <link rel="canonical" href="https://blog.ibolee.com/17/3/10/changge-matplotlib-fonts/">
 
-    <title>关于我 | 黑李白的博客</title>
+    <title>如何更改matplotlib的字体 | 黑李白的博客</title>
 
     
     <!-- combined, minified CSS -->
@@ -94,12 +102,23 @@
 
 <article class="blog-post">
   <header>
-    <h2 class="blog-post-title" dir="auto"><a href="https://blog.ibolee.com/about/">关于我</a></h2>
-    <p class="blog-post-meta"><time datetime="2010-08-03T11:34:37+08:00">Tue Aug 03, 2010</time> by 黑李白</p>
+    <h2 class="blog-post-title" dir="auto"><a href="https://blog.ibolee.com/17/3/10/changge-matplotlib-fonts/">如何更改matplotlib的字体</a></h2>
+    <p class="blog-post-meta"><time datetime="2017-03-10T00:00:00Z">Fri Mar 10, 2017</time> by 黑李白</p>
   </header>
-  <h2 id="我是谁">我是谁</h2>
-<h2 id="关于测试">关于测试</h2>
-
+  <h3 id="1找到路径">1.找到路径</h3>
+<p><img src="https://img2.ibolee.com/git_blog/image-20200724143025685.png" alt="image-20200724143025685"></p>
+<p>把下载好的windows字体复制到这个文件夹下的ttf文件夹</p>
+<h3 id="2修改文件">2.修改文件</h3>
+<p>修改上图文件路径如下:</p>
+<p><img src="https://img2.ibolee.com/git_blog/image-20200724143801871.png" alt="image-20200724143801871"></p>
+<p>最后一处修改为下图样式,并去掉前面的#号:</p>
+<p><img src="https://img2.ibolee.com/git_blog/image-20200724144014250.png" alt="image-20200724144014250"></p>
+<h3 id="3删除缓存文件">3.删除缓存文件</h3>
+<p>C:\Users\Administrator\ .matplotlib</p>
+<h3 id="4重启annaconda">4.重启annaconda</h3>
+<h3 id="5重启以后在anaconda中添加代码">5.重启以后在anaconda中添加代码:</h3>
+<pre><code>plt.rcParams['font.sans-serif'] = ['SimHei']
+</code></pre>
 
   
 
@@ -111,9 +130,9 @@
     <section>
     <h4>分享</h4>
     <nav class="nav sharing-icons">
-      <a class="nav-item" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.ibolee.com%2fabout%2f" title="Share on Facebook"><span class="fab fa-facebook-f fa-2x" aria-hidden="true"></span></a>
-      <a class="nav-item" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fblog.ibolee.com%2fabout%2f" title="Share on LinkedIn"><span class="fab fa-linkedin-in fa-2x" aria-hidden="true"></span></a>
-      <a class="nav-item" href="https://twitter.com/intent/tweet?url=https%3a%2f%2fblog.ibolee.com%2fabout%2f&amp;text=%e5%85%b3%e4%ba%8e%e6%88%91" title="Tweet this"><span class="fab fa-twitter fa-2x"></span></a>
+      <a class="nav-item" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.ibolee.com%2f17%2f3%2f10%2fchangge-matplotlib-fonts%2f" title="Share on Facebook"><span class="fab fa-facebook-f fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fblog.ibolee.com%2f17%2f3%2f10%2fchangge-matplotlib-fonts%2f" title="Share on LinkedIn"><span class="fab fa-linkedin-in fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://twitter.com/intent/tweet?url=https%3a%2f%2fblog.ibolee.com%2f17%2f3%2f10%2fchangge-matplotlib-fonts%2f&amp;text=%e5%a6%82%e4%bd%95%e6%9b%b4%e6%94%b9matplotlib%e7%9a%84%e5%ad%97%e4%bd%93" title="Tweet this"><span class="fab fa-twitter fa-2x"></span></a>
     </nav>
   </section>
 

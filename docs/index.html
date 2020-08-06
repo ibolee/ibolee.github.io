@@ -9,7 +9,7 @@
 <meta property="og:description" content="博客内容主要围绕：Python数据分析&amp;经营分析相关业务层与技术层内容展开干货级记录。" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://blog.ibolee.com/" />
-<meta property="og:updated_time" content="2014-09-28T00:00:00+00:00" />
+<meta property="og:updated_time" content="2017-03-10T00:00:00+00:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="黑李白的博客"/>
@@ -28,7 +28,7 @@
     "@type": "Person",
     "name": "黑李白"
   },
-  "dateModified": "2014-09-28T00:00:00+00:00",
+  "dateModified": "2017-03-10T00:00:00+00:00",
   "keywords": "development,""golang,""development,""go,""golang,""hugo,""templates,""themes,",
   "description":"博客内容主要围绕：Python数据分析\u0026经营分析相关业务层与技术层内容展开干货级记录。"
 }
@@ -98,11 +98,29 @@
 
 <article class="blog-post">
   <header>
-    <h2 class="blog-post-title" dir="auto"><a href="https://blog.ibolee.com/14/9/28/creating-a-new-theme/">Creating a New Theme</a></h2>
-    <p class="blog-post-meta"><time datetime="2014-09-28T00:00:00Z">Sun Sep 28, 2014</time> by Michael Henderson</p>
+    <h2 class="blog-post-title" dir="auto"><a href="https://blog.ibolee.com/17/3/10/changge-matplotlib-fonts/">如何更改matplotlib的字体</a></h2>
+    <p class="blog-post-meta"><time datetime="2017-03-10T00:00:00Z">Fri Mar 10, 2017</time> by 黑李白</p>
   </header>
-  Introduction This tutorial will show you how to create a simple theme in Hugo. I assume that you are familiar with HTML, the bash command line, and that you are comfortable using Markdown to format content. I&rsquo;ll explain how Hugo uses templates and how you can organize your templates to create a theme.
-  <a href='https://blog.ibolee.com/14/9/28/creating-a-new-theme/'>阅读更多 →</a>
+  1.找到路径 把下载好的windows字体复制到这个文件夹下的ttf文件夹
+2.修改文件 修改上图文件路径如下:
+最后一处修改为下图样式,并去掉前面的#号:
+3.删除缓存文件 C:\Users\Administrator\ .matplotlib
+4.重启annaconda 5.重启以后在anaconda中添加代码: plt.rcParams['font.sans-serif'] = ['SimHei']
+  <a href='https://blog.ibolee.com/17/3/10/changge-matplotlib-fonts/'>阅读更多 →</a>
+</article> 
+
+
+
+
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title" dir="auto"><a href="https://blog.ibolee.com/14/9/28/unforgettable-mysql-1/">那些令我难忘的Myqsl语句(1)</a></h2>
+    <p class="blog-post-meta"><time datetime="2014-09-28T00:00:00Z">Sun Sep 28, 2014</time> by ibolee</p>
+  </header>
+  Introduction 
+  <a href='https://blog.ibolee.com/14/9/28/unforgettable-mysql-1/'>阅读更多 →</a>
 </article> 
 
 
@@ -181,7 +199,9 @@ Step 2. Build the Docs Hugo has its own example site which happens to also be th
     <ol class="list-unstyled">
 
 
-<li><a href="/14/9/28/creating-a-new-theme/">Creating a New Theme</a></li>
+<li><a href="/17/3/10/changge-matplotlib-fonts/">如何更改matplotlib的字体</a></li>
+
+<li><a href="/14/9/28/unforgettable-mysql-1/">那些令我难忘的Myqsl语句(1)</a></li>
 
 <li><a href="/14/3/10/migrate-from-jekyll/">Migrate to Hugo from Jekyll</a></li>
 
