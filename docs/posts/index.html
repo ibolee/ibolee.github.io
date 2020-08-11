@@ -29,7 +29,7 @@
     "name": "黑李白"
   },
   "dateModified": "2017-03-10T00:00:00+00:00",
-  "keywords": "development,""golang,""development,""go,""golang,""hugo,""templates,""themes,",
+  "keywords": "development,""golang,""数据,""development,""go,""golang,""hugo,""mysql,""数据库,",
   "description":"博客内容主要围绕：Python数据分析\u0026经营分析相关业务层与技术层内容展开干货级记录。"
 }
 </script>
@@ -145,26 +145,6 @@
 
 <article class="blog-post">
   <header>
-    <h2 class="blog-post-title" dir="auto"><a href="https://blog.ibolee.com/14/4/2/goisforlovers/">(Hu)go Template Primer</a></h2>
-    <p class="blog-post-meta"><time datetime="2014-04-02T00:00:00Z">Wed Apr 02, 2014</time> by 黑李白 in 
-<span class="fas fa-folder" aria-hidden="true"></span>&nbsp;<a href="/categories/development/" rel="category tag">Development</a>, <a href="/categories/golang/" rel="category tag">golang</a>
-
-
-<span class="fas fa-tag" aria-hidden="true"></span>&nbsp;<a href="/tags/go/" rel="tag">go</a>, <a href="/tags/golang/" rel="tag">golang</a>, <a href="/tags/templates/" rel="tag">templates</a>, <a href="/tags/themes/" rel="tag">themes</a>, <a href="/tags/development/" rel="tag">development</a>
-
-</p>
-  </header>
-  Hugo uses the excellent go html/template library for its template engine. It is an extremely lightweight engine that provides a very small amount of logic. In our experience that it is just the right amount of logic to be able to create a good static website. If you have used other template systems from different languages or frameworks you will find a lot of similarities in go templates.
-  <a href='https://blog.ibolee.com/14/4/2/goisforlovers/'>阅读更多 →</a>
-</article> 
-
-
-
-
-
-
-<article class="blog-post">
-  <header>
     <h2 class="blog-post-title" dir="auto"><a href="https://blog.ibolee.com/14/4/2/hugoisforlovers/">Getting Started with Hugo</a></h2>
     <p class="blog-post-meta"><time datetime="2014-04-02T00:00:00Z">Wed Apr 02, 2014</time> by 黑李白 in 
 <span class="fas fa-folder" aria-hidden="true"></span>&nbsp;<a href="/categories/development/" rel="category tag">Development</a>, <a href="/categories/golang/" rel="category tag">golang</a>
@@ -179,6 +159,26 @@ Save it somewhere specific as we will be using it in the next step.
 More complete instructions are available at installing hugo
 Step 2. Build the Docs Hugo has its own example site which happens to also be the documentation site you are reading right now.
   <a href='https://blog.ibolee.com/14/4/2/hugoisforlovers/'>阅读更多 →</a>
+</article> 
+
+
+
+
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title" dir="auto"><a href="https://blog.ibolee.com/14/4/2/goisforlovers/">MYSQL数据库特征</a></h2>
+    <p class="blog-post-meta"><time datetime="2014-04-02T00:00:00Z">Wed Apr 02, 2014</time> by 黑李白 in 
+<span class="fas fa-folder" aria-hidden="true"></span>&nbsp;<a href="/categories/%E6%95%B0%E6%8D%AE/" rel="category tag">数据</a>
+
+
+<span class="fas fa-tag" aria-hidden="true"></span>&nbsp;<a href="/tags/mysql/" rel="tag">mysql</a>, <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a>
+
+</p>
+  </header>
+  1.多条sql语句必须用;号分隔; 2.sql语句不区分大小写; 3.处理sql语句时,其中所有空格都被忽略.sql语句可以写成长的一行,也可以分开写多行. 4.mysql在选择多个列的时候一定要在选择列后面加上逗号;最后一个选择列可以不加; 5.一般而言，除非你确实需要表中的每一列，否则最好别使用通配符。因为这会耗损sql服务器资源; 6.SELECT DISTINCT vend_id 告诉 DBMS 只返回不同（具有唯一性）的vend_id 行，distincy的作用就是返回唯一值; 7.在指定一条 ORDER BY 子句时，应该保证它是 SELECT 语句中最后一条子句。如果它不是最后的子句，将会出现错误消息。 8.如果想在多个列上进行降序排序，必须对每一列指定 DESC 关键字。ASC的作用是升序,一般而言默认是升序,所以a很少被使用; 9.mysql中,单引号用来限定字符串。如果将值与字符串类型的 列进行比较，就需要限定引号。用来与数值列进行比较的值不用引号。 10.!=和&lt;&gt;通常可以互换。但是，并非所有 DBMS 都支持这两种不等于操作符。例如，Microsoft Access 支持&lt;&gt;而不支持!=。 11.NULL无值（no value），它与字段包含 0、空字符串或仅仅包含空格不同。 12.OR,WHERE 子句中使用的关键字，用来表示检索匹配任一给定条件的行。如何 AND使用的化,and 在求值过程中优先级更高.解决冲突的方法是及时使用圆括号去进行分组计算组合,界定优先级顺序. 13.mysql中的%有点类似于搜索命令中的,%告诉 DBMS 接受 Fish(关键词) 之后的任意字符，不管它有多少字符。但是这个通配符不能匹配NULL. 14.与匹配多个字符的%不同,_下划线只匹配一个字符; 15.mysql使用过程中查询网站:https://www.runoob.com/mysql/mysql-tutorial.html
+  <a href='https://blog.ibolee.com/14/4/2/goisforlovers/'>阅读更多 →</a>
 </article> 
 
 
@@ -205,9 +205,9 @@ Step 2. Build the Docs Hugo has its own example site which happens to also be th
 
 <li><a href="/14/3/10/migrate-from-jekyll/">Migrate to Hugo from Jekyll</a></li>
 
-<li><a href="/14/4/2/goisforlovers/">(Hu)go Template Primer</a></li>
-
 <li><a href="/14/4/2/hugoisforlovers/">Getting Started with Hugo</a></li>
+
+<li><a href="/14/4/2/goisforlovers/">MYSQL数据库特征</a></li>
 
     </ol>
   </section>

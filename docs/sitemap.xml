@@ -28,11 +28,6 @@
   </url>
   
   <url>
-    <loc>https://blog.ibolee.com/14/4/2/goisforlovers/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://blog.ibolee.com/categories/</loc>
     <lastmod>2014-04-02T00:00:00+00:00</lastmod>
   </url>
@@ -73,17 +68,27 @@
   </url>
   
   <url>
+    <loc>https://blog.ibolee.com/tags/mysql/</loc>
+    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.ibolee.com/14/4/2/goisforlovers/</loc>
+    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://blog.ibolee.com/tags/</loc>
     <lastmod>2014-04-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.ibolee.com/tags/templates/</loc>
+    <loc>https://blog.ibolee.com/categories/%E6%95%B0%E6%8D%AE/</loc>
     <lastmod>2014-04-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.ibolee.com/tags/themes/</loc>
+    <loc>https://blog.ibolee.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
     <lastmod>2014-04-02T00:00:00+00:00</lastmod>
   </url>
   
