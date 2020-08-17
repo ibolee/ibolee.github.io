@@ -8,7 +8,8 @@ theme = "LoveIt"
 # themes directory
 # 主题目录
 themesDir = "../hugo_blog/themes/"
-
+#发布目录指定
+publishDir = "docs"
 # website title
 # 网站标题
 title = "黑李白的博客"

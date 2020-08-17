@@ -1,80 +1,89 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>黑李白的博客</title>
-    <link>https://blog.ibolee.com/</link>
-    <description>Recent content on 黑李白的博客</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh</language>
-    <copyright>Power by hugo丨Theme by hugo-theme-bootstrap4-blog丨蒙ICP备10001529号</copyright>
-    <lastBuildDate>Fri, 10 Mar 2017 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://blog.ibolee.com/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>如何更改matplotlib的字体</title>
-      <link>https://blog.ibolee.com/17/3/10/changge-matplotlib-fonts/</link>
-      <pubDate>Fri, 10 Mar 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.ibolee.com/17/3/10/changge-matplotlib-fonts/</guid>
-      <description>1.找到路径 把下载好的windows字体复制到这个文件夹下的ttf文件夹
-2.修改文件 修改上图文件路径如下:
-最后一处修改为下图样式,并去掉前面的#号:
-3.删除缓存文件 C:\Users\Administrator\ .matplotlib
-4.重启annaconda 5.重启以后在anaconda中添加代码: plt.rcParams[&#39;font.sans-serif&#39;] = [&#39;SimHei&#39;]</description>
-    </item>
-    
-    <item>
-      <title>那些令我难忘的Myqsl语句(1)</title>
-      <link>https://blog.ibolee.com/14/9/28/unforgettable-mysql-1/</link>
-      <pubDate>Sun, 28 Sep 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.ibolee.com/14/9/28/unforgettable-mysql-1/</guid>
-      <description>Introduction </description>
-    </item>
-    
-    <item>
-      <title>Migrate to Hugo from Jekyll</title>
-      <link>https://blog.ibolee.com/14/3/10/migrate-from-jekyll/</link>
-      <pubDate>Mon, 10 Mar 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.ibolee.com/14/3/10/migrate-from-jekyll/</guid>
-      <description>Move static content to static Jekyll has a rule that any directory not starting with _ will be copied as-is to the _site output. Hugo keeps all static content under static. You should therefore move it all there. With Jekyll, something that looked like
-▾ &amp;lt;root&amp;gt;/ ▾ images/ logo.png  should become</description>
-    </item>
-    
-    <item>
-      <title>Getting Started with Hugo</title>
-      <link>https://blog.ibolee.com/14/4/2/hugoisforlovers/</link>
-      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.ibolee.com/14/4/2/hugoisforlovers/</guid>
-      <description>Step 1. Install Hugo Goto hugo releases and download the appropriate version for your os and architecture.
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>黑李白的博客</title>
+        <link>https://blog.ibolee.com/</link>
+        <description>关于 LoveIt 主题</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>ibolee@live.com (ibolee)</managingEditor>
+            <webMaster>ibolee@live.com (ibolee)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 06 Mar 2020 21:40:32 &#43;0800</lastBuildDate>
+            <atom:link href="https://blog.ibolee.com/index.xml" rel="self" type="application/rss+xml" />
+        <item>
+    <title>主题文档 - 基本概念</title>
+    <link>https://blog.ibolee.com/theme-documentation-basics/</link>
+    <pubDate>Fri, 06 Mar 2020 21:40:32 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://blog.ibolee.com/theme-documentation-basics/</guid>
+    <description><![CDATA[<p>探索 Hugo - <strong>LoveIt</strong> 主题的全部内容和背后的核心概念.</p>]]></description>
+</item><item>
+    <title>主题文档 - 内容</title>
+    <link>https://blog.ibolee.com/theme-documentation-content/</link>
+    <pubDate>Thu, 05 Mar 2020 16:30:05 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://blog.ibolee.com/theme-documentation-content/</guid>
+    <description><![CDATA[<p>了解如何在 <strong>LoveIt</strong> 主题中快速, 直观地创建和组织内容.</p>]]></description>
+</item><item>
+    <title>主题文档 - 扩展 Shortcodes</title>
+    <link>https://blog.ibolee.com/theme-documentation-extended-shortcodes/</link>
+    <pubDate>Tue, 03 Mar 2020 16:29:59 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://blog.ibolee.com/theme-documentation-extended-shortcodes/</guid>
+    <description><![CDATA[<p><strong>LoveIt</strong> 主题在 Hugo 内置的 shortcode 的基础上提供多个扩展的 shortcode.</p>]]></description>
+</item><item>
+    <title>Markdown 基本语法</title>
+    <link>https://blog.ibolee.com/basic-markdown-syntax/</link>
+    <pubDate>Sun, 01 Dec 2019 21:57:40 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://blog.ibolee.com/basic-markdown-syntax/</guid>
+    <description><![CDATA[<p>这篇文章提供了可以在 Hugo 的文章中使用的基本 Markdown 语法示例.</p>]]></description>
+</item><item>
+    <title>Emoji 支持</title>
+    <link>https://blog.ibolee.com/emoji-support/</link>
+    <pubDate>Tue, 01 Oct 2019 17:55:28 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://blog.ibolee.com/emoji-support/</guid>
+    <description><![CDATA[<p>Emoji 可以通过多种方式在 Hugo 项目中启用.</p>]]></description>
+</item><item>
+    <title>如何更改matplotlib的字体</title>
+    <link>https://blog.ibolee.com/changge-matplotlib-fonts/</link>
+    <pubDate>Fri, 10 Mar 2017 00:00:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://blog.ibolee.com/changge-matplotlib-fonts/</guid>
+    <description><![CDATA[1.找到路径 把下载好的windows字体复制到这个文件夹下的ttf文件夹 2.修改文件 修改上图文件路径如下: 最后一处修改为下图样式,并去掉前面]]></description>
+</item><item>
+    <title>那些令我难忘的Myqsl语句(1)</title>
+    <link>https://blog.ibolee.com/unforgettable-mysql-1/</link>
+    <pubDate>Sun, 28 Sep 2014 00:00:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://blog.ibolee.com/unforgettable-mysql-1/</guid>
+    <description><![CDATA[Introduction]]></description>
+</item><item>
+    <title>Migrate to Hugo from Jekyll</title>
+    <link>https://blog.ibolee.com/migrate-from-jekyll/</link>
+    <pubDate>Mon, 10 Mar 2014 00:00:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://blog.ibolee.com/migrate-from-jekyll/</guid>
+    <description><![CDATA[python基础 如果python字符串内部既包含&rsquo;又包含&quot;怎么办？ 1 2 写法:&#39;I\&#39;m \&#34;OK\&#34;!&#39; #可以用转义字]]></description>
+</item><item>
+    <title>Getting Started with Hugo</title>
+    <link>https://blog.ibolee.com/hugoisforlovers/</link>
+    <pubDate>Wed, 02 Apr 2014 00:00:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://blog.ibolee.com/hugoisforlovers/</guid>
+    <description><![CDATA[Step 1. Install Hugo Goto hugo releases and download the appropriate version for your os and architecture.
 Save it somewhere specific as we will be using it in the next step.
 More complete instructions are available at installing hugo
-Step 2. Build the Docs Hugo has its own example site which happens to also be the documentation site you are reading right now.</description>
-    </item>
-    
-    <item>
-      <title>MYSQL数据库特征</title>
-      <link>https://blog.ibolee.com/14/4/2/goisforlovers/</link>
-      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.ibolee.com/14/4/2/goisforlovers/</guid>
-      <description>1.多条sql语句必须用;号分隔; 2.sql语句不区分大小写; 3.处理sql语句时,其中所有空格都被忽略.sql语句可以写成长的一行,也可以分开写多行. 4.mysql在选择多个列的时候一定要在选择列后面加上逗号;最后一个选择列可以不加; 5.一般而言，除非你确实需要表中的每一列，否则最好别使用通配符。因为这会耗损sql服务器资源; 6.SELECT DISTINCT vend_id 告诉 DBMS 只返回不同（具有唯一性）的vend_id 行，distincy的作用就是返回唯一值; 7.在指定一条 ORDER BY 子句时，应该保证它是 SELECT 语句中最后一条子句。如果它不是最后的子句，将会出现错误消息。 8.如果想在多个列上进行降序排序，必须对每一列指定 DESC 关键字。ASC的作用是升序,一般而言默认是升序,所以a很少被使用; 9.mysql中,单引号用来限定字符串。如果将值与字符串类型的 列进行比较，就需要限定引号。用来与数值列进行比较的值不用引号。 10.!=和&amp;lt;&amp;gt;通常可以互换。但是，并非所有 DBMS 都支持这两种不等于操作符。例如，Microsoft Access 支持&amp;lt;&amp;gt;而不支持!=。 11.NULL无值（no value），它与字段包含 0、空字符串或仅仅包含空格不同。 12.OR,WHERE 子句中使用的关键字，用来表示检索匹配任一给定条件的行。如何 AND使用的化,and 在求值过程中优先级更高.解决冲突的方法是及时使用圆括号去进行分组计算组合,界定优先级顺序. 13.mysql中的%有点类似于搜索命令中的,%告诉 DBMS 接受 Fish(关键词) 之后的任意字符，不管它有多少字符。但是这个通配符不能匹配NULL. 14.与匹配多个字符的%不同,_下划线只匹配一个字符; 15.mysql使用过程中查询网站:https://www.runoob.com/mysql/mysql-tutorial.html</description>
-    </item>
-    
-    <item>
-      <title>关于我</title>
-      <link>https://blog.ibolee.com/about/</link>
-      <pubDate>Tue, 03 Aug 2010 11:34:37 +0800</pubDate>
-      
-      <guid>https://blog.ibolee.com/about/</guid>
-      <description>我是谁 黑李白，来自内蒙古巴彦淖尔市临河区，80后；目前居于北京，从事互联网相关工作。
-爱好：烹饪,音乐;
-人生观：去掉浮躁，心态平和，甘于寂寞，逆向思维，持之以恒，志成高远。</description>
-    </item>
-    
-  </channel>
+Step 2. Build the Docs Hugo has its own example site which happens to also be the documentation site you are reading right now.
+Follow the following steps:
+ Clone the hugo repository Go into the repo Run hugo in server mode and build the docs Open your browser to http://localhost:1313  Corresponding pseudo commands:]]></description>
+</item><item>
+    <title>MYSQL数据库特征</title>
+    <link>https://blog.ibolee.com/goisforlovers/</link>
+    <pubDate>Wed, 02 Apr 2014 00:00:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://blog.ibolee.com/goisforlovers/</guid>
+    <description><![CDATA[<p>1.多条sql语句必须用;号分隔;
+2.sql语句不区分大小写;
+3.处理sql语句时,其中所有空格都被忽略.sql语句可以写成长的一行,也可以分开写多行.
+4.mysql在选择多个列的时候一定要在选择列后面加上逗号;最后一个选择列可以不加;
+5.一般而言，除非你确实需要表中的每一列，否则最好别使用*通配符。因为这会耗损sql服务器资源;</p>]]></description>
+</item></channel>
 </rss>
