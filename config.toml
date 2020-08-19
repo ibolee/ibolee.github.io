@@ -160,52 +160,52 @@ enableEmoji = true
           paginate = 6
       # Social config in home page
       [languages.en.params.social]
-        GitHub = "xxxx"
-        Linkedin = ""
-        Twitter = "xxxx"
-        Instagram = "cnibolee"
-        Facebook = "xxxx"
-        Telegram = "xxxx"
-        Medium = ""
-        Gitlab = ""
-        Youtubelegacy = "xxxx"
-        Youtubecustom = ""
-        Youtubechannel = ""
-        Tumblr = ""
-        Quora = ""
-        Keybase = ""
-        Pinterest = ""
-        Reddit = ""
-        Codepen = ""
-        FreeCodeCamp = ""
-        Bitbucket = ""
-        Stackoverflow = ""
-        Weibo = ""
-        Odnoklassniki = ""
-        VK = ""
-        Flickr = ""
-        Xing = ""
-        Snapchat = ""
-        Soundcloud = ""
-        Spotify = ""
-        Bandcamp = ""
-        Paypal = ""
-        Fivehundredpx = ""
-        Mix = ""
-        Goodreads = ""
-        Lastfm = ""
-        Foursquare = ""
-        Hackernews = ""
-        Kickstarter = ""
-        Patreon = ""
-        Steam = ""
-        Twitch = ""
-        Strava = ""
-        Skype = ""
-        Whatsapp = ""
-        Zhihu = ""
-        Douban = ""
-        Angellist = ""
+        GitHub = "ibolee"
+        Linkedin = "ibolee"
+        Twitter = "ibolee"
+      #  Instagram = "cnibolee"
+      #  Facebook = "xxxx"
+        Telegram = "ibolee"
+      #  Medium = ""
+      #  Gitlab = ""
+      #  Youtubelegacy = "xxxx"
+      #  Youtubecustom = ""
+      #  Youtubechannel = ""
+      #  Tumblr = ""
+      #  Quora = ""
+      #  Keybase = ""
+      #  Pinterest = ""
+      #  Reddit = ""
+      #  Codepen = ""
+      #  FreeCodeCamp = ""
+      #  Bitbucket = ""
+      #  Stackoverflow = ""
+        Weibo = "ibolee"
+      #  Odnoklassniki = ""
+      #  VK = ""
+      #  Flickr = ""
+      #  Xing = ""
+      #  Snapchat = ""
+      #  Soundcloud = ""
+      #  Spotify = ""
+      #  Bandcamp = ""
+      #  Paypal = ""
+      #  Fivehundredpx = ""
+      #  Mix = ""
+      #  Goodreads = ""
+      #  Lastfm = ""
+      #  Foursquare = ""
+      #  Hackernews = ""
+      #  Kickstarter = ""
+      #  Patreon = ""
+      #  Steam = ""
+      #  Twitch = ""
+      #  Strava = ""
+      #  Skype = ""
+      #  Whatsapp = ""
+        Zhihu = "ibolee"
+        Douban = "ibolee"
+      #  Angellist = ""
         Slidershare = ""
         Jsfiddle = ""
         Deviantart = ""
@@ -221,7 +221,7 @@ enableEmoji = true
         XMPP = ""
         Matrix = ""
         Bilibili = ""
-        Email = "xxxx@xxxx.com"
+        Email = "ibolee@live.com"
         RSS = true
         [languages.en.params.social.Mastodon]
           id = "@xxxx"
@@ -425,7 +425,7 @@ enableEmoji = true
         Email = "xxxx@xxxx.com"
         RSS = true
 
-  [languages.fr]
+
     weight = 3
     # language code
     languageCode = "fr"
@@ -658,7 +658,7 @@ enableEmoji = true
       logo = ""
       # title name
       # 标题名称
-      name = "LoveIt"
+      name = "黑李白的博客"
       # you can add extra information before the name (HTML format is supported), such as icons
       # 你可以在名称 (允许 HTML 格式) 之前添加其他信息, 例如图标
       pre = "<i class='far fa-kiss-wink-heart fa-fw'></i>"
@@ -678,13 +678,13 @@ enableEmoji = true
     custom = ''
     # whether to show Hugo and theme info
     # 是否显示 Hugo 和主题信息
-    hugo = true
+    hugo = false
     # whether to show copyright info
     # 是否显示版权信息
-    copyright = true
+    copyright = false
     # whether to show the author
     # 是否显示作者
-    author = true
+    author = false
     # site creation time
     # 网站创立年份
     since = 2010
@@ -693,7 +693,7 @@ enableEmoji = true
     icp = "蒙ICP备10001529号"
     # license info (HTML format is supported)
     # 许可协议信息 (支持 HTML 格式)
-    license= '<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a>'
+    license= '<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="nofollow">CC BY-NC 4.0</a>'
 
   # Section (all posts) page config
   # Section (所有文章) 页面配置
@@ -818,18 +818,18 @@ enableEmoji = true
     # 文章页面的分享信息设置
     [params.page.share]
       enable = true
-      Twitter = false
+      Twitter = true
       Facebook = true
-      Linkedin = false
+      Linkedin = true
       Whatsapp = false
       Pinterest = false
       Tumblr = false
-      HackerNews = true
+      HackerNews = false
       Reddit = false
       VK = false
       Buffer = false
       Xing = false
-      Line = true
+      Line = false
       Instapaper = false
       Pocket = false
       Digg = false
@@ -839,7 +839,7 @@ enableEmoji = true
       Renren = false
       Myspace = false
       Blogger = false
-      Baidu = false
+      Baidu = true
       Odnoklassniki = false
       Evernote = false
       Skype = false
