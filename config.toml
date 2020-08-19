@@ -620,7 +620,7 @@ enableEmoji = true
         Bilibili = ""
         Email = "xxxx@xxxx.com"
         RSS = true
-
+disableLanguages = ["fr", "en"]
 [params]
   # LoveIt theme version
   # LoveIt 主题版本
@@ -681,7 +681,7 @@ enableEmoji = true
     hugo = false
     # whether to show copyright info
     # 是否显示版权信息
-    copyright = false
+    copyright = true
     # whether to show the author
     # 是否显示作者
     author = false
@@ -868,8 +868,8 @@ enableEmoji = true
       # Valine 评论系统设置 (https://github.com/xCss/Valine)
       [params.page.comment.valine]
         enable = true
-        appId = "QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI"
-        appKey = "WBmoGyJtbqUswvfLh6L8iEBr"
+        appId = "tsbgGzpaMzJcVpIJcXqbOqx8-gzGzoHsz"
+        appKey = "CQyNbRYfPJsBTmbasgSA8eQd"
         placeholder = ""
         avatar = "mp"
         meta= ""
@@ -879,7 +879,7 @@ enableEmoji = true
         recordIP = true
         highlight = true
         enableQQ = false
-        serverURLs = "https://leancloud.hugoloveit.com"
+        serverURLs = "https://comment.ibolee.com"
         # emoji data file name, default is "google.yml"
         # ("apple.yml", "google.yml", "facebook.yml", "twitter.yml")
         # located in "themes/LoveIt/assets/data/emoji/" directory
