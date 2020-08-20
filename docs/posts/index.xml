@@ -61,18 +61,6 @@
     <guid>https://blog.ibolee.com/migrate-from-jekyll/</guid>
     <description><![CDATA[python基础 如果python字符串内部既包含&rsquo;又包含&quot;怎么办？ 1 2 写法:&#39;I\&#39;m \&#34;OK\&#34;!&#39; #可以用转义字]]></description>
 </item><item>
-    <title>Getting Started with Hugo</title>
-    <link>https://blog.ibolee.com/hugoisforlovers/</link>
-    <pubDate>Wed, 02 Apr 2014 00:00:00 &#43;0000</pubDate>
-    <author>作者</author>
-    <guid>https://blog.ibolee.com/hugoisforlovers/</guid>
-    <description><![CDATA[Step 1. Install Hugo Goto hugo releases and download the appropriate version for your os and architecture.
-Save it somewhere specific as we will be using it in the next step.
-More complete instructions are available at installing hugo
-Step 2. Build the Docs Hugo has its own example site which happens to also be the documentation site you are reading right now.
-Follow the following steps:
- Clone the hugo repository Go into the repo Run hugo in server mode and build the docs Open your browser to http://localhost:1313  Corresponding pseudo commands:]]></description>
-</item><item>
     <title>MYSQL数据库特征</title>
     <link>https://blog.ibolee.com/goisforlovers/</link>
     <pubDate>Wed, 02 Apr 2014 00:00:00 &#43;0000</pubDate>

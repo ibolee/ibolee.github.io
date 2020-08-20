@@ -23,9 +23,7 @@ enableGitInfo = true
 # whether to use emoji code
 # 是否使用 emoji 代码
 enableEmoji = true
-
 [languages]
-
   [languages.zh-cn]
     weight = 2
     # 网站语言, 仅在这里 CN 大写
