@@ -61,4 +61,4 @@ Disallow: /
 User-agent: ZoominfoBot
 Disallow: /
 
-Sitemap: https://blog.ibolee.com/fr/sitemap.xml
+Sitemap: https://blog.ibolee.com/sitemap.xml

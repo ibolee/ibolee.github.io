@@ -4,10 +4,6 @@
     ><url>
             <loc>https://blog.ibolee.com/theme-documentation-basics/</loc><lastmod>2020-08-17T04:10:52&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
-                        hreflang="en"
-                        href="https://blog.ibolee.com/en/theme-documentation-basics/"
-                        /><xhtml:link
-                        rel="alternate"
                         hreflang="fr"
                         href="https://blog.ibolee.com/fr/theme-documentation-basics/"
                         /><xhtml:link
@@ -16,10 +12,6 @@
                     href="https://blog.ibolee.com/theme-documentation-basics/"
                     /></url><url>
             <loc>https://blog.ibolee.com/theme-documentation-content/</loc><lastmod>2020-08-17T04:10:52&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
-                        rel="alternate"
-                        hreflang="en"
-                        href="https://blog.ibolee.com/en/theme-documentation-content/"
-                        /><xhtml:link
                         rel="alternate"
                         hreflang="fr"
                         href="https://blog.ibolee.com/fr/theme-documentation-content/"
@@ -30,10 +22,6 @@
                     /></url><url>
             <loc>https://blog.ibolee.com/theme-documentation-extended-shortcodes/</loc><lastmod>2020-08-17T04:10:52&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
-                        hreflang="en"
-                        href="https://blog.ibolee.com/en/theme-documentation-extended-shortcodes/"
-                        /><xhtml:link
-                        rel="alternate"
                         hreflang="fr"
                         href="https://blog.ibolee.com/fr/theme-documentation-extended-shortcodes/"
                         /><xhtml:link
@@ -43,10 +31,6 @@
                     /></url><url>
             <loc>https://blog.ibolee.com/basic-markdown-syntax/</loc><lastmod>2020-08-17T04:10:52&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
-                        hreflang="en"
-                        href="https://blog.ibolee.com/en/basic-markdown-syntax/"
-                        /><xhtml:link
-                        rel="alternate"
                         hreflang="fr"
                         href="https://blog.ibolee.com/fr/basic-markdown-syntax/"
                         /><xhtml:link
@@ -55,10 +39,6 @@
                     href="https://blog.ibolee.com/basic-markdown-syntax/"
                     /></url><url>
             <loc>https://blog.ibolee.com/emoji-support/</loc><lastmod>2020-08-17T04:10:52&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
-                        rel="alternate"
-                        hreflang="en"
-                        href="https://blog.ibolee.com/en/emoji-support/"
-                        /><xhtml:link
                         rel="alternate"
                         hreflang="fr"
                         href="https://blog.ibolee.com/fr/emoji-support/"
@@ -72,10 +52,6 @@
             <loc>https://blog.ibolee.com/migrate-from-jekyll/</loc><lastmod>2020-08-17T22:54:40&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://blog.ibolee.com/categories/</loc><lastmod>2020-08-17T04:10:52&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
-                        hreflang="en"
-                        href="https://blog.ibolee.com/en/categories/"
-                        /><xhtml:link
-                        rel="alternate"
                         hreflang="fr"
                         href="https://blog.ibolee.com/fr/categories/"
                         /><xhtml:link
@@ -84,10 +60,6 @@
                     href="https://blog.ibolee.com/categories/"
                     /></url><url>
             <loc>https://blog.ibolee.com/posts/</loc><lastmod>2020-08-17T22:54:40&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
-                        rel="alternate"
-                        hreflang="en"
-                        href="https://blog.ibolee.com/en/posts/"
-                        /><xhtml:link
                         rel="alternate"
                         hreflang="fr"
                         href="https://blog.ibolee.com/fr/posts/"
@@ -98,10 +70,6 @@
                     /></url><url>
             <loc>https://blog.ibolee.com/tags/</loc><lastmod>2020-08-17T04:10:52&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
-                        hreflang="en"
-                        href="https://blog.ibolee.com/en/tags/"
-                        /><xhtml:link
-                        rel="alternate"
                         hreflang="fr"
                         href="https://blog.ibolee.com/fr/tags/"
                         /><xhtml:link
@@ -110,10 +78,6 @@
                     href="https://blog.ibolee.com/tags/"
                     /></url><url>
             <loc>https://blog.ibolee.com/</loc><lastmod>2020-08-17T22:54:40&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
-                        rel="alternate"
-                        hreflang="en"
-                        href="https://blog.ibolee.com/en/"
-                        /><xhtml:link
                         rel="alternate"
                         hreflang="fr"
                         href="https://blog.ibolee.com/fr/"
@@ -124,10 +88,6 @@
                     /></url><url>
             <loc>https://blog.ibolee.com/tags/markdown/</loc><lastmod>2020-08-17T04:10:52&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
-                        hreflang="en"
-                        href="https://blog.ibolee.com/en/tags/markdown/"
-                        /><xhtml:link
-                        rel="alternate"
                         hreflang="fr"
                         href="https://blog.ibolee.com/fr/tags/markdown/"
                         /><xhtml:link
@@ -136,10 +96,6 @@
                     href="https://blog.ibolee.com/tags/markdown/"
                     /></url><url>
             <loc>https://blog.ibolee.com/tags/shortcodes/</loc><lastmod>2020-08-17T04:10:52&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
-                        rel="alternate"
-                        hreflang="en"
-                        href="https://blog.ibolee.com/en/tags/shortcodes/"
-                        /><xhtml:link
                         rel="alternate"
                         hreflang="fr"
                         href="https://blog.ibolee.com/fr/tags/shortcodes/"
@@ -150,10 +106,6 @@
                     /></url><url>
             <loc>https://blog.ibolee.com/tags/html/</loc><lastmod>2020-08-17T04:10:52&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
-                        hreflang="en"
-                        href="https://blog.ibolee.com/en/tags/html/"
-                        /><xhtml:link
-                        rel="alternate"
                         hreflang="fr"
                         href="https://blog.ibolee.com/fr/tags/html/"
                         /><xhtml:link
@@ -162,10 +114,6 @@
                     href="https://blog.ibolee.com/tags/html/"
                     /></url><url>
             <loc>https://blog.ibolee.com/categories/markdown/</loc><lastmod>2020-08-17T04:10:52&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
-                        rel="alternate"
-                        hreflang="en"
-                        href="https://blog.ibolee.com/en/categories/markdown/"
-                        /><xhtml:link
                         rel="alternate"
                         hreflang="fr"
                         href="https://blog.ibolee.com/fr/categories/markdown/"
@@ -176,10 +124,6 @@
                     /></url><url>
             <loc>https://blog.ibolee.com/tags/emoji/</loc><lastmod>2020-08-17T04:10:52&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
-                        hreflang="en"
-                        href="https://blog.ibolee.com/en/tags/emoji/"
-                        /><xhtml:link
-                        rel="alternate"
                         hreflang="fr"
                         href="https://blog.ibolee.com/fr/tags/emoji/"
                         /><xhtml:link
@@ -188,10 +132,6 @@
                     href="https://blog.ibolee.com/tags/emoji/"
                     /></url><url>
             <loc>https://blog.ibolee.com/about/</loc><lastmod>2020-08-19T03:53:19&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
-                        rel="alternate"
-                        hreflang="en"
-                        href="https://blog.ibolee.com/en/about/"
-                        /><xhtml:link
                         rel="alternate"
                         hreflang="fr"
                         href="https://blog.ibolee.com/fr/about/"
@@ -213,10 +153,6 @@
             <loc>https://blog.ibolee.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc><lastmod>2020-08-11T19:43:56&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
             <loc>https://blog.ibolee.com/tags/content/</loc><lastmod>2020-08-17T04:10:52&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
-                        hreflang="en"
-                        href="https://blog.ibolee.com/en/tags/content/"
-                        /><xhtml:link
-                        rel="alternate"
                         hreflang="fr"
                         href="https://blog.ibolee.com/fr/tags/content/"
                         /><xhtml:link
@@ -225,10 +161,6 @@
                     href="https://blog.ibolee.com/tags/content/"
                     /></url><url>
             <loc>https://blog.ibolee.com/tags/installation/</loc><lastmod>2020-08-17T04:10:52&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
-                        rel="alternate"
-                        hreflang="en"
-                        href="https://blog.ibolee.com/en/tags/installation/"
-                        /><xhtml:link
                         rel="alternate"
                         hreflang="fr"
                         href="https://blog.ibolee.com/fr/tags/installation/"
@@ -239,10 +171,6 @@
                     /></url><url>
             <loc>https://blog.ibolee.com/categories/documentation/</loc><lastmod>2020-08-17T04:10:52&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
-                        hreflang="en"
-                        href="https://blog.ibolee.com/en/categories/documentation/"
-                        /><xhtml:link
-                        rel="alternate"
                         hreflang="fr"
                         href="https://blog.ibolee.com/fr/categories/documentation/"
                         /><xhtml:link
@@ -251,10 +179,6 @@
                     href="https://blog.ibolee.com/categories/documentation/"
                     /></url><url>
             <loc>https://blog.ibolee.com/tags/configuration/</loc><lastmod>2020-08-17T04:10:52&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
-                        rel="alternate"
-                        hreflang="en"
-                        href="https://blog.ibolee.com/en/tags/configuration/"
-                        /><xhtml:link
                         rel="alternate"
                         hreflang="fr"
                         href="https://blog.ibolee.com/fr/tags/configuration/"
