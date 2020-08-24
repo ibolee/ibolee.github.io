@@ -2,7 +2,7 @@
     <channel>
         <title>黑李白的博客</title>
         <link>https://blog.ibolee.com/</link>
-        <description>关于 LoveIt 主题</description>
+        <description>黑李白，互联网从业者，来自内蒙古巴彦淖尔。</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>ibolee@live.com (ibolee)</managingEditor>
             <webMaster>ibolee@live.com (ibolee)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 06 Mar 2020 21:40:32 &#43;0800</lastBuildDate>
             <atom:link href="https://blog.ibolee.com/index.xml" rel="self" type="application/rss+xml" />
