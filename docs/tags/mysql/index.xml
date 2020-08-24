@@ -5,16 +5,9 @@
         <description>mysql - 标签 - 黑李白的博客</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>ibolee@live.com (ibolee)</managingEditor>
             <webMaster>ibolee@live.com (ibolee)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 28 Sep 2014 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.ibolee.com/tags/mysql/" rel="self" type="application/rss+xml" /><item>
-    <title>那些令我难忘的Myqsl语句(1)</title>
-    <link>https://blog.ibolee.com/unforgettable-mysql-1/</link>
-    <pubDate>Sun, 28 Sep 2014 00:00:00 &#43;0000</pubDate>
-    <author>作者</author>
-    <guid>https://blog.ibolee.com/unforgettable-mysql-1/</guid>
-    <description><![CDATA[Introduction 1231232132131232131]]></description>
-</item><item>
     <title>MYSQL数据库特征</title>
     <link>https://blog.ibolee.com/mysql-default/</link>
-    <pubDate>Wed, 02 Apr 2014 00:00:00 &#43;0000</pubDate>
+    <pubDate>Sun, 28 Sep 2014 00:00:00 &#43;0000</pubDate>
     <author>作者</author>
     <guid>https://blog.ibolee.com/mysql-default/</guid>
     <description><![CDATA[<p>1.多条sql语句必须用;号分隔;
@@ -22,5 +15,12 @@
 3.处理sql语句时,其中所有空格都被忽略.sql语句可以写成长的一行,也可以分开写多行.
 4.mysql在选择多个列的时候一定要在选择列后面加上逗号;最后一个选择列可以不加;
 5.一般而言，除非你确实需要表中的每一列，否则最好别使用*通配符。因为这会耗损sql服务器资源;</p>]]></description>
+</item><item>
+    <title>那些令我难忘的Myqsl语句(1)</title>
+    <link>https://blog.ibolee.com/unforgettable-mysql-1/</link>
+    <pubDate>Sun, 28 Sep 2014 00:00:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://blog.ibolee.com/unforgettable-mysql-1/</guid>
+    <description><![CDATA[Introduction 1231232132131232131]]></description>
 </item></channel>
 </rss>

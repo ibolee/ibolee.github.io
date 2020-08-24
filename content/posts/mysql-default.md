@@ -1,16 +1,12 @@
-+++
-title = "MYSQL数据库特征"
-description = ""
-tags = [
-    "mysql",
-    "数据库",
-]
-date = "2014-04-02"
-categories = [
-    "数据"
-]
-menu = "main"
-+++
+---
+author: "ibolee"
+date: 2014-09-28
+linktitle: default-mysql
+tags: ["mysql"]
+categories: ["数据"]
+title: MYSQL数据库特征
+weight: 10
+---
 1.多条sql语句必须用;号分隔;
 2.sql语句不区分大小写;
 3.处理sql语句时,其中所有空格都被忽略.sql语句可以写成长的一行,也可以分开写多行.
@@ -30,3 +26,4 @@ menu = "main"
 13.mysql中的%有点类似于搜索命令中的*,%告诉 DBMS 接受 Fish(关键词) 之后的任意字符，不管它有多少字符。但是这个通配符不能匹配NULL.
 14.与匹配多个字符的%不同,_下划线只匹配一个字符;
 15.mysql使用过程中查询网站:https://www.runoob.com/mysql/mysql-tutorial.html
+16.数据库设计三范式;数据库三范式的目的就是为了解决数据冗余;三范式,1.所有表都该有主键,每个表的数据元不可再分;2.所有非主键字段完全依赖主键,不可产生部分依赖;3.所有非主键字段直接依赖主键,不能产生传递依赖;
