@@ -13,7 +13,6 @@ publishDir = "docs"
 # website title
 # 网站标题
 title = "黑李白的博客"
-
 # whether to use robots.txt
 # 是否使用 robots.txt
 enableRobotsTXT = true
@@ -40,16 +39,24 @@ enableEmoji = true
     copyright = "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License."
     # 菜单配置
     [languages.zh-cn.menu]
+        [[languages.zh-cn.menu.main]]
+        identifier = "homepage"
+        pre = ""
+        post = ""
+        name = "首页"
+        url = "https://www.ibolee.com"
+        title = ""
+        weight = 1
       [[languages.zh-cn.menu.main]]
         identifier = "posts"
         # 你可以在名称 (允许 HTML 格式) 之前添加其他信息, 例如图标
         pre = ""
         # 你可以在名称 (允许 HTML 格式) 之后添加其他信息, 例如图标
         post = ""
-        name = "所有文章"
+        name = "文章"
         url = "/posts/"
         title = ""
-        weight = 1
+        weight = 2
       [[languages.zh-cn.menu.main]]
         identifier = "tags"
         pre = ""
@@ -86,14 +93,14 @@ enableEmoji = true
         pre = "<i class='fab fa-github fa-fw'></i>"
         post = ""
         name = ""
-        url = "https://github.com/dillonzq/LoveIt"
+        url = "https://github.com/ibolee"
         title = "GitHub"
         weight = 6
     [languages.zh-cn.params]
       # 网站描述
-      description = "关于 LoveIt 主题"
+      description = "黑李白，互联网从业者，来自内蒙古巴彦淖尔。"
       # 网站关键词
-      keywords = ["Theme", "Hugo"]
+      keywords = ["黑李白"]
       # 应用图标配置
       [languages.zh-cn.params.app]
         # 当添加到 iOS 主屏幕或者 Android 启动器时的标题, 覆盖默认标题
@@ -137,15 +144,15 @@ enableEmoji = true
         [languages.zh-cn.params.home.profile]
           enable = true
           # Gravatar 邮箱，用于优先在主页显示的头像
-          gravatarEmail = ""
+          gravatarEmail = "ibolee@qq.com"
           # 主页显示头像的 URL
-          avatarURL = "/images/avatar.png"
+          avatarURL = "https://img.ibolee.com/git_blog/2020-heilibai-512x512.png"
           # 主页显示的网站标题 (支持 HTML 格式)
           title = ""
           # 主页显示的网站副标题
-          subtitle = "一个简洁、优雅且高效的 Hugo 主题"
+          subtitle = "长风破浪会有时，直挂云帆济沧海。"
           # 是否为副标题显示打字机动画
-          typeit = true
+          typeit = false
           # 是否显示社交账号
           social = true
           # 免责声明 (支持 HTML 格式)
@@ -157,12 +164,12 @@ enableEmoji = true
           paginate = 6
       # 主页的社交信息设置
       [languages.zh-cn.params.social]
-        GitHub = "xxxx"
+        GitHub = "ibolee"
         Linkedin = ""
         Twitter = "ibolee"
-        Instagram = "cnibolee"
+        Instagram = ""
         Facebook = ""
-        Telegram = ""
+        Telegram = "ibolee"
         Medium = ""
         Gitlab = ""
         Youtubelegacy = ""
@@ -177,7 +184,7 @@ enableEmoji = true
         FreeCodeCamp = ""
         Bitbucket = ""
         Stackoverflow = ""
-        Weibo = "xxxx"
+        Weibo = "ibolee"
         Odnoklassniki = ""
         VK = ""
         Flickr = ""
@@ -195,13 +202,13 @@ enableEmoji = true
         Hackernews = ""
         Kickstarter = ""
         Patreon = ""
-        Steam = "xxxx"
+        Steam = ""
         Twitch = ""
         Strava = ""
         Skype = ""
         Whatsapp = ""
-        Zhihu = "xxxx"
-        Douban = "xxxx"
+        Zhihu = "ibolee"
+        Douban = "ibolee"
         Angellist = ""
         Slidershare = ""
         Jsfiddle = ""
@@ -214,12 +221,12 @@ enableEmoji = true
         Researchgate = ""
         Mastodon = ""
         Thingiverse = ""
-        Devto = "xxxx"
+        Devto = ""
         Gitea = ""
         XMPP = ""
         Matrix = ""
-        Bilibili = "xxxx"
-        Email = "xxxx@xxxx.com"
+        Bilibili = ""
+        Email = "a@ibolee.com"
         RSS = true
 disableLanguages = ["fr", "en"]
 [params]
