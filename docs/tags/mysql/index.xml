@@ -1,0 +1,26 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>mysql - 标签 - 黑李白的博客</title>
+        <link>https://blog.ibolee.com/tags/mysql/</link>
+        <description>mysql - 标签 - 黑李白的博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>ibolee@live.com (ibolee)</managingEditor>
+            <webMaster>ibolee@live.com (ibolee)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 28 Sep 2014 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.ibolee.com/tags/mysql/" rel="self" type="application/rss+xml" /><item>
+    <title>MYSQL数据库特征</title>
+    <link>https://blog.ibolee.com/mysql-default/</link>
+    <pubDate>Sun, 28 Sep 2014 00:00:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://blog.ibolee.com/mysql-default/</guid>
+    <description><![CDATA[<p>1.多条sql语句必须用;号分隔;
+2.sql语句不区分大小写;
+3.处理sql语句时,其中所有空格都被忽略.sql语句可以写成长的一行,也可以分开写多行.
+4.mysql在选择多个列的时候一定要在选择列后面加上逗号;最后一个选择列可以不加;
+5.一般而言，除非你确实需要表中的每一列，否则最好别使用*通配符。因为这会耗损sql服务器资源;</p>]]></description>
+</item><item>
+    <title>Myqsl语句经典例题</title>
+    <link>https://blog.ibolee.com/unforgettable-mysql-1/</link>
+    <pubDate>Sun, 28 Sep 2014 00:00:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://blog.ibolee.com/unforgettable-mysql-1/</guid>
+    <description><![CDATA[这里是mysql例题导入代码 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56]]></description>
+</item></channel>
+</rss>
