@@ -1,7 +1,7 @@
 ---
 author: "ibolee"
 date: 2014-09-28
-linktitle: unforgettable-mysql-1
+linktitle: mysql-practice-45
 tags: ["mysql"]
 categories: ["数据"]
 title: Myqsl语句经典例题
@@ -191,5 +191,25 @@ SELECT *
 FROM (SELECT * FROM sc WHERE CId='01' ) a
 LEFT JOIN sc b
 ON a.SId=b.SId AND b.CId='02'
+```
+{{< /admonition >}}
+
+4:查询不存在01课程,但存在02课程的情况
+{{< admonition tip "解题代码" false >}}
+```
+#第一种写法
+SELECT
+*
+FROM
+(SELECT *
+FROM sc WHERE sid NOT IN
+(SELECT SId FROM sc WHERE CId='01')) A
+INNER JOIN SC B
+ON A.SID=B.SId AND B.CID='02';
+#第二种写法
+select *
+FROM sc a
+WHERE SId not in (SELECT SId from sc where cid='01')#用not in 进行了排除
+AND cid='02';git status
 ```
 {{< /admonition >}}
