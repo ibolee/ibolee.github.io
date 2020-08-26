@@ -206,5 +206,5 @@ WHERE SId not in (SELECT SId from sc where cid='01')#用not in 进行了排除
 AND cid='02';git status
 ```
 {{< /admonition >}}
-0826updata
+0826
 
