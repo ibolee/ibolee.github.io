@@ -7,4 +7,6 @@ categories: ["tutorials"]
 lightgallery: true
 ---
 
-这篇文章提供了可以在 Hugo 的文章中使用的基本 tutorials 语法示例.
+这篇文章提供了可以在 Hugo 的文章中使用的基本 tutorials 语法示例。
+
+。。。。。20200827.。。。。
