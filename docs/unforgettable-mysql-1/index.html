@@ -34,7 +34,7 @@
                             "url": "https:\/\/blog.ibolee.com\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "mysql","wordcount":  1319 ,
+                        }],"genre": "posts","keywords": "mysql","wordcount":  1906 ,
         "url": "https:\/\/blog.ibolee.com\/unforgettable-mysql-1\/","datePublished": "2014-09-28T00:00:00+00:00","dateModified": "2020-08-26T09:38:25+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
@@ -116,8 +116,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Myqsl语句经典例题</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>ibolee</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E6%95%B0%E6%8D%AE/"><i class="far fa-folder fa-fw"></i>数据</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2014-09-28">2014-09-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1319 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2014-09-28">2014-09-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1906 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -423,24 +423,30 @@ insert into SC values(&#39;07&#39; , &#39;03&#39; , 98);
         <div class="details-content">
             <div class="admonition-content"><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">SELECT *
-FROM
-student a
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">#1.查询01课程比02课程成绩高的学生信息和成绩分数
+#学生信息在student这个表中
+#成绩分数在sc表中
+#目的:01课程比02课程成绩高的学生,01课程和02课程用cid体现,cid只在sc中有
+select * from student a
 INNER JOIN sc b
-on a.SId=b.SId
-inner join sc c
-on a.sid=c.SId AND b.cid=01 AND c.CId=02
-WHERE b.score&gt;c.score
+on a.SId=b.SId #这里看成第一个大表
+
+INNER JOIN sc c
+on b.SId=c.SId and b.CId=&#34;01&#34; AND c.cid=&#34;02&#34; #这里看成第二个大表
+WHERE b.score&gt;c.score #进行分数比较
 </code></pre></td></tr></table>
 </div>
 </div></div>
@@ -465,19 +471,33 @@ WHERE b.score&gt;c.score
 </span><span class="lnt"> 9
 </span><span class="lnt">10
 </span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-fallback" data-lang="fallback">#第一种写法
+#查询同时存在01课程和02课程的情况
+#01课程和02课程的成绩表都在sc表之中
+SELECT *
+FROM
+(SELECT * FROM sc where cid=&#39;01&#39;) a
+INNER join
+(select * from sc where cid=&#39;02&#39;) b
+on a.sid=b.sid
+#第二种写法
+#这个解决方案相当于,把where条件改加到最下面了
 SELECT *
 FROM
 sc a
-INNER JOIN sc b
-on a.SId=b.SId AND a.cid=&#34;01&#34; and b.CId=&#34;02&#34;
-#第二种写法
-SELECT *
-FROM (SELECT * FROM sc WHERE CId=&#39;01&#39; ) a
-INNER JOIN (SELECT * FROM sc WHERE CId=&#39;02&#39; ) b
-ON a.SId=b.SId;
+INNER join
+sc b
+on a.sid=b.sid
+WHERE a.CId=&#39;01&#39; AND b.cid=&#39;02&#39;
 </code></pre></td></tr></table>
 </div>
 </div></div>
@@ -491,16 +511,36 @@ ON a.SId=b.SId;
         <div class="details-content">
             <div class="admonition-content"><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">SELECT *
-FROM (SELECT * FROM sc WHERE CId=&#39;01&#39; ) a
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">#第一种写法
+#查询存在01课程但可能不存在02课程的情况(不存在时显示为null)
+SELECT *
+FROM
+(select * from sc WHERE cid=&#39;01&#39;) a
+LEFT JOIN (SELECT * FROM sc where CId=&#39;02&#39;) b
+on a.sid=b.sid
+#第二种写法
+SELECT *
+FROM
+sc a
 LEFT JOIN sc b
-ON a.SId=b.SId AND b.CId=&#39;02&#39;
+on a.sid=b.sid and b.cid=&#39;02&#39;
+WHERE a.cid=&#39;01&#39;;
 </code></pre></td></tr></table>
 </div>
 </div></div>
@@ -549,7 +589,79 @@ AND cid=&#39;02&#39;;git status
 </div></div>
         </div>
     </div>
-0826</p>
+5:查询不存在01课程,但存在02课程的情况
+<div class="details admonition tip">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>解题代码<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">#第一种写法
+SELECT
+*
+FROM
+(SELECT *
+FROM sc WHERE sid NOT IN
+(SELECT SId FROM sc WHERE CId=&#39;01&#39;)) A
+INNER JOIN SC B
+ON A.SID=B.SId AND B.CID=&#39;02&#39;;
+#第二种写法
+select *
+FROM sc a
+WHERE SId not in (SELECT SId from sc where cid=&#39;01&#39;)#用not in 进行了排除
+AND cid=&#39;02&#39;;
+</code></pre></td></tr></table>
+</div>
+</div></div>
+        </div>
+    </div>
+6:查询平均成绩大于等于 60 分的同学的学生编号和学生姓名和平均成绩
+<div class="details admonition tip">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>解题代码<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">#解题思路:先查询sid,然后用sid进行匹配;group by配合平均函数使用;
+SELECT b.sid,b.Sname,a.avg_score
+FROM
+(SELECT sid,AVG(score) as avg_score FROM sc GROUP BY SId HAVING avg_score&gt;=60) a
+INNER JOIN student b
+ON a.sid=b.sid</div>
+        </div>
+    </div>
+7:查询在 SC(成绩表) 表存在成绩的学生信息;
+<div class="details admonition tip">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>解题代码<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">#查询在 SC 表存在成绩的学生信息,这题目主要巩固group by的括号内严谨写法,还有b.<em>可作为查询条件.
+select b.</em>
+FROM
+(SELECT
+SId from
+sc GROUP BY sid) a
+LEFT JOIN student b
+on a.Sid=b.SId;</div>
+        </div>
+    </div></p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
