@@ -1,12 +1,10 @@
 ---
 date: 2014-03-10
-linktitle: python学习笔记1
-menu:
-  main:
-    parent: tutorials
-prev: /tutorials/mathjax
-title: Migrate to Hugo from Jekyll
+linktitle: python1
+title: python学习笔记
 weight: 10
+tags: ["python"]
+categories: ["数据"]
 ---
 #### python基础
 

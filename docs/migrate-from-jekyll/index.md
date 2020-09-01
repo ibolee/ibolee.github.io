@@ -1,4 +1,4 @@
-# Migrate to Hugo from Jekyll
+# python学习笔记
 
 #### python基础
 

@@ -272,3 +272,17 @@ sc GROUP BY sid) a
 LEFT JOIN student b
 on a.Sid=b.SId;
 {{< /admonition >}}
+4:查询所有同学的学生编号、学生姓名、选课总数、所有课程的总成绩(没成绩的显示为null)
+{{< admonition tip "解题代码" false >}}
+#查询所有同学的学生编号、学生姓名、选课总数、所有课程的总成绩(没成绩的显示为null)
+SELECT a.SId as 学生编号,a.Sname as 学生姓名,b.COUNT_CID as 选课总数,b.SUM_SCORE
+FROM
+student a
+LEFT JOIN
+(SELECT
+SId,SUM(score) AS SUM_SCORE,COUNT(CId) AS COUNT_CID
+FROM
+sc
+GROUP BY SId) b
+ON a.SId=b.SId
+{{< /admonition >}}

@@ -22,5 +22,12 @@
     <author>作者</author>
     <guid>https://blog.ibolee.com/unforgettable-mysql-1/</guid>
     <description><![CDATA[这里是mysql例题导入代码 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56]]></description>
+</item><item>
+    <title>python学习笔记</title>
+    <link>https://blog.ibolee.com/migrate-from-jekyll/</link>
+    <pubDate>Mon, 10 Mar 2014 00:00:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://blog.ibolee.com/migrate-from-jekyll/</guid>
+    <description><![CDATA[python基础 如果python字符串内部既包含&rsquo;又包含&quot;怎么办？ 1 2 写法:&#39;I\&#39;m \&#34;OK\&#34;!&#39; #可以用转义字]]></description>
 </item></channel>
 </rss>
