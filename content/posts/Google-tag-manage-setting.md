@@ -1,6 +1,6 @@
 ---
 title: "Google Tag Manage Step"
-date: 2020-09-01T19:07:41+08:00
+date: 2018-09-01T19:07:41+08:00
 draft: true
 resources:
 - name: "google analytics"

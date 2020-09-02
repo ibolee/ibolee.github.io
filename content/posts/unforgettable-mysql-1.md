@@ -272,7 +272,7 @@ sc GROUP BY sid) a
 LEFT JOIN student b
 on a.Sid=b.SId;
 {{< /admonition >}}
-4:查询所有同学的学生编号、学生姓名、选课总数、所有课程的总成绩(没成绩的显示为null)
+8:查询所有同学的学生编号、学生姓名、选课总数、所有课程的总成绩(没成绩的显示为null)
 {{< admonition tip "解题代码" false >}}
 #查询所有同学的学生编号、学生姓名、选课总数、所有课程的总成绩(没成绩的显示为null)
 SELECT a.SId as 学生编号,a.Sname as 学生姓名,b.COUNT_CID as 选课总数,b.SUM_SCORE
@@ -285,4 +285,35 @@ FROM
 sc
 GROUP BY SId) b
 ON a.SId=b.SId
+{{< /admonition >}}
+4.1:查询有成绩的学生信息;
+{{< admonition tip "解题代码" false >}}
+#这个案例是用in来实现的;
+SELECT a.*
+FROM student a
+WHERE a.SId IN (SELECT SId from sc GROUP BY SId);
+#上面用了 where in 在什么什么里面查找;
+#还可以用exist来判断存在;
+SELECT
+a.*
+FROM
+student a
+where EXISTS (SELECT * FROM sc B WHERE a.SId=b.SId)
+#用inner join实现
+SELECT a.* 
+FROM student a
+INNER JOIN (SELECT sid FROM sc GROUP BY sid) b
+ON a.sid=b.SId;
+{{< /admonition >}}
+5:求交集,inner join
+{{< admonition tip "解题代码" false >}}
+#查询姓李的老师都有谁?
+SELECT * FROM teacher WHERE Tname LIKE '李%';
+#查询数量的话
+SELECT COUNT(1) as cons FROM teacher WHERE Tname LIKE '李%';
+{{< /admonition >}}
+6:查询学过「张三」老师授课的同学的信息
+![表结构](https://img.ibolee.com/git_blog/11.png)
+{{< admonition tip "解题代码" false >}}
+
 {{< /admonition >}}
