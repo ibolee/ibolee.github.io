@@ -1,10 +1,5 @@
----
-title: "Power bi导入数据出现:microsoft.ACE.oledb.12.0无法连接解决办法"
-linktitle: power-bi-Access-Database-Engine
-date: 2019-09-02T14:06:43+08:00
-tags: ["PowerBi"]
-categories: ["数据"]
----
+# Power bi导入数据出现:microsoft.ACE.oledb.12.0无法连接解决办法
+
 ###问题描述:
 用powerbi的powerquery导入数据的时候出现下图:
 本错误是由于你使用了ACCESS2007版本建立的数据库,但服务器中没有相配合使用的程序,所以出错.

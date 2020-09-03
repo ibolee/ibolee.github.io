@@ -1,12 +1,10 @@
 ---
 date: 2017-03-10
 linktitle: 如何更改matplotlib的字体
-menu:
-  main:
-    parent: tutorials
-prev: /tutorials/mathjax
 title: 如何更改matplotlib的字体
 weight: 10
+tags: ["python"]
+categories: ["数据"]
 ---
 
 ### 1.找到路径
