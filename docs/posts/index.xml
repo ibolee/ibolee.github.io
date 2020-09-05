@@ -4,7 +4,7 @@
         <link>https://blog.ibolee.com/posts/</link>
         <description>所有文章 | 黑李白的博客</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>ibolee@live.com (ibolee)</managingEditor>
-            <webMaster>ibolee@live.com (ibolee)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 02 Sep 2019 14:06:43 &#43;0800</lastBuildDate><atom:link href="https://blog.ibolee.com/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>ibolee@live.com (ibolee)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 05 Sep 2020 17:11:37 &#43;0800</lastBuildDate><atom:link href="https://blog.ibolee.com/posts/" rel="self" type="application/rss+xml" /><item>
     <title>如何更改matplotlib的字体</title>
     <link>https://blog.ibolee.com/changge-matplotlib-fonts/</link>
     <pubDate>Fri, 10 Mar 2017 00:00:00 &#43;0000</pubDate>
@@ -36,6 +36,20 @@
     <author>作者</author>
     <guid>https://blog.ibolee.com/migrate-from-jekyll/</guid>
     <description><![CDATA[python基础 如果python字符串内部既包含&rsquo;又包含&quot;怎么办？ 1 2 写法:&#39;I\&#39;m \&#34;OK\&#34;!&#39; #可以用转义字]]></description>
+</item><item>
+    <title>Financial Terms</title>
+    <link>https://blog.ibolee.com/financial-terms/</link>
+    <pubDate>Sat, 05 Sep 2020 17:11:37 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://blog.ibolee.com/financial-terms/</guid>
+    <description><![CDATA[什么是经营分析? management analysis ###常规利润表内名词解读: 注册资本是股东责任的象征; 注册资本=实收资本(实际打到公司账户的钱+认缴资本(破产前必须打到]]></description>
+</item><item>
+    <title>一维数组和二维数组的区别</title>
+    <link>https://blog.ibolee.com/1array-2array/</link>
+    <pubDate>Sun, 05 Jan 2020 17:11:37 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://blog.ibolee.com/1array-2array/</guid>
+    <description><![CDATA[一维表和二维表的区别? 一维表更适合进行数据透视,二维表更适合呈现表内细项问题.]]></description>
 </item><item>
     <title>Power bi导入数据出现:microsoft.ACE.oledb.12.0无法连接解决办法</title>
     <link>https://blog.ibolee.com/power-bi-access-database-engine/</link>
