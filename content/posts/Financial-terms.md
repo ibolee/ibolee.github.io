@@ -2,7 +2,7 @@
 title: "经营分析常用术语"
 linktitle: Financial-Terms
 date: 2020-09-05T17:11:37+08:00
-tags: ["经营分析术语,财务术语"]
+tags: ["经营分析术语","财务术语"]
 categories: ["其它"]
 ---
 什么是经营分析?（management analysis）
@@ -42,3 +42,5 @@ categories: ["其它"]
 付费下载网站:
 https://WWW.WIND.COM.CN/(万得)
 HTTPS://WWW.GTARSC.COM/(国泰安)
+
+高纳德,
