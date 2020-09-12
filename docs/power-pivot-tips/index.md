@@ -1,10 +1,5 @@
----
-title: "Power Pivot Tips"
-date: 2020-09-11T13:33:09+08:00
-linktitle: Power-Pivot-Tips
-tags: ["PowerBi","Power Pivot tips"]
-categories: ["数据"]
----
+# Power Pivot Tips
+
 1. 为什么power pivot在对时间划分的时候不能以365天每一天生成折线图?
 + 在设置中关闭全局和当前文件的[时间智能]
 系统创建的日期表无法添加自定义字段,比如节假日;比如农历日期,法定节假日;还可以写度量值;

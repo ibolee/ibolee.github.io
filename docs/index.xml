@@ -4,7 +4,7 @@
         <link>https://blog.ibolee.com/</link>
         <description>黑李白，互联网从业者，来自内蒙古巴彦淖尔。</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>ibolee@live.com (ibolee)</managingEditor>
-            <webMaster>ibolee@live.com (ibolee)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 05 Sep 2020 17:11:37 &#43;0800</lastBuildDate>
+            <webMaster>ibolee@live.com (ibolee)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 11 Sep 2020 13:33:09 &#43;0800</lastBuildDate>
             <atom:link href="https://blog.ibolee.com/index.xml" rel="self" type="application/rss+xml" />
         <item>
     <title>如何更改matplotlib的字体</title>
@@ -39,6 +39,13 @@
     <guid>https://blog.ibolee.com/migrate-from-jekyll/</guid>
     <description><![CDATA[python基础 如果python字符串内部既包含&rsquo;又包含&quot;怎么办？ 1 2 写法:&#39;I\&#39;m \&#34;OK\&#34;!&#39; #可以用转义字]]></description>
 </item><item>
+    <title>Power Pivot Tips</title>
+    <link>https://blog.ibolee.com/power-pivot-tips/</link>
+    <pubDate>Fri, 11 Sep 2020 13:33:09 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://blog.ibolee.com/power-pivot-tips/</guid>
+    <description><![CDATA[为什么power pivot在对时间划分的时候不能以365天每一天生成折线图? 在设置中关闭全局和当前文件的[时间智能] 系统创建的日期表无法添加]]></description>
+</item><item>
     <title>经营分析常用术语</title>
     <link>https://blog.ibolee.com/financial-terms/</link>
     <pubDate>Sat, 05 Sep 2020 17:11:37 &#43;0800</pubDate>
@@ -65,7 +72,7 @@
     <pubDate>Tue, 10 Sep 2019 09:28:39 &#43;0800</pubDate>
     <author>作者</author>
     <guid>https://blog.ibolee.com/powerbi-tips/</guid>
-    <description><![CDATA[###1.使用powerbi实现分类判断功能,类似Excel的if函数; powerbi-pp数据视图-表-建模-新建列-源码框: 1 列名=IF]]></description>
+    <description><![CDATA[###power bi常用度量值函数 ###power bi图表展示类型]]></description>
 </item><item>
     <title>Power bi导入数据出现:microsoft.ACE.oledb.12.0无法连接解决办法</title>
     <link>https://blog.ibolee.com/power-bi-access-database-engine/</link>
@@ -73,12 +80,5 @@
     <author>作者</author>
     <guid>https://blog.ibolee.com/power-bi-access-database-engine/</guid>
     <description><![CDATA[###问题描述: 用powerbi的powerquery导入数据的时候出现下图: 本错误是由于你使用了ACCESS2007版本建立的数据库,但服]]></description>
-</item><item>
-    <title>楚菜:蒜蓉焗黄花鱼,其实还可以焗其它,比如鸡翅根</title>
-    <link>https://blog.ibolee.com/suanjuyiqie/</link>
-    <pubDate>Mon, 11 Mar 2019 11:10:10 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://blog.ibolee.com/suanjuyiqie/</guid>
-    <description><![CDATA[点评: 这个视频的做法口味很百搭,比较嫩一点,好做的肉都可以用这个方法,鱼肉,鸡肉比较适用;我一般用这个方法,百试不爽,有喜欢的朋友还可以留言]]></description>
 </item></channel>
 </rss>
