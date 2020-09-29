@@ -7,3 +7,7 @@
 ###power bi图表展示类型
 
 ![](https://img.ibolee.com/git_blog/%E4%BD%A0%E6%83%B3%E5%B1%95%E7%A4%BA%E4%BB%80%E4%B9%88.png)
+
+###power bi常用分析方法
+
+![](https://img.ibolee.com/git_blog/2.png)
