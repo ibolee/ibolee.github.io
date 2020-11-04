@@ -470,15 +470,15 @@ disableLanguages = ["fr", "en"]
         enable = true
         appId = "tsbgGzpaMzJcVpIJcXqbOqx8-gzGzoHsz"
         appKey = "CQyNbRYfPJsBTmbasgSA8eQd"
-        placeholder = ""
-        avatar = ""
+        placeholder = "说点什么吧..."
+        avatar = "monsterid"
         meta= ""
         pageSize = 10
         lang = ""
         visitor = true
         recordIP = true
         highlight = true
-        enableQQ = false
+        enableQQ = true
         serverURLs = "https://comment.ibolee.com"
         # emoji data file name, default is "google.yml"
         # ("apple.yml", "google.yml", "facebook.yml", "twitter.yml")

@@ -5,7 +5,7 @@ linktitle: Power-Querry-Tips
 tags: ["PowerBi","powerbi tips"]
 categories: ["数据"]
 ---
-1. 设置中打开power query编辑栏;
+1. powerbi中设置中打开power query编辑栏的俩个方法;
 
 解决方法:
 
@@ -13,8 +13,7 @@ categories: ["数据"]
 
 ![在选项卡设置中设置](https://img.ibolee.com/git_blog/pqtips1.png)
 
-2. power query不要自动添加"更改数据类型"
-如果添加了自动更改数据类型,在pq原表中如果删了数据列,pq会报错:expresssion:error找不到表的""列;
+2. power query中设置将第一行提升标题会有附带数据类型修改,设置不要自动添加"更改数据类型"如果添加了自动更改数据类型,在pq原表中如果删了数据列,pq会报错:expresssion:error找不到表的""列;
 
 解决方法:
 

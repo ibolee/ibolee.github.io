@@ -1,7 +1,6 @@
 ---
 title: "Google Tag Manage Step"
 date: 2018-09-01T19:07:41+08:00
-draft: true
 resources:
 - name: "google analytics"
   src: "https://pic1.zhimg.com/v2-10d438cd53e787764ecff89a6e0a56e7_1440w.jpg"

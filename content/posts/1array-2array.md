@@ -3,7 +3,7 @@ title: "一维数组和二维数组的区别"
 date: 2020-01-05T21:29:15+08:00
 linktitle: 1array-2array.md
 date: 2020-01-05T17:11:37+08:00
-tags: ["powerbi,power query"]
+tags: ["powerbi","power query"]
 categories: ["数据"]
 ---
 ---

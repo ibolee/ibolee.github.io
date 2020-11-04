@@ -1,4 +1,4 @@
-# power-bi的一切小技巧
+# power-bi的一些小技巧
 
 ###power bi常用度量值函数
 

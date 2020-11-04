@@ -17,8 +17,22 @@ categories: ["数据"]
 + 这种情况就去建立桥接表，用distinct函数去建立；
 ![](https://img.ibolee.com/git_blog/distinct.png)
 
-5.power bi 和power pivot导出数据到没有powerquery的excel
+5. power bi 和power pivot导出数据到没有powerquery的excel
 
 + 在power query的表查询中，随便点一列，然后复制表，再到excel中去粘贴即可。
 
 + 直接在power bi的图标预览中点右上方三个点，导出数据即可。
+
+6. 用power pivot中用summarize新建表
+
+![](https://img.ibolee.com/git_blog/summarize.png)
+
++ 第一个参数是用哪个表来算,第二个是用哪列来算,第三个参数是算什么名称,叫什么?
+```
+店铺销售情况 = SUMMARIZE('订单表','订单表'[店铺名称],"销售额",SUM('订单表'[销售额]))
+```
+7. power pivot常用函数:
+
+![](https://img.ibolee.com/git_blog/Snipaste_2020-09-27_08-57-01.png)
+
+

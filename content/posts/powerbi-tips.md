@@ -1,5 +1,5 @@
 ---
-title: "power-bi的一切小技巧"
+title: "power-bi的一些小技巧"
 date: 2019-09-10T09:28:39+08:00
 linktitle: Powerbi-Tips
 tags: ["PowerBi","powerbi tips"]

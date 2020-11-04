@@ -5,6 +5,13 @@
         <description>所有文章 | 黑李白的博客</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>ibolee@live.com (ibolee)</managingEditor>
             <webMaster>ibolee@live.com (ibolee)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 11 Sep 2020 13:33:09 &#43;0800</lastBuildDate><atom:link href="https://blog.ibolee.com/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>python学习笔记</title>
+    <link>https://blog.ibolee.com/migrate-from-jekyll/</link>
+    <pubDate>Sat, 10 Mar 2018 00:00:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://blog.ibolee.com/migrate-from-jekyll/</guid>
+    <description><![CDATA[python基础 如果python字符串内部既包含&rsquo;又包含&quot;怎么办？ 1 2 写法:&#39;I\&#39;m \&#34;OK\&#34;!&#39; #可以用转义字]]></description>
+</item><item>
     <title>如何更改matplotlib的字体</title>
     <link>https://blog.ibolee.com/changge-matplotlib-fonts/</link>
     <pubDate>Fri, 10 Mar 2017 00:00:00 &#43;0000</pubDate>
@@ -30,13 +37,6 @@
     <guid>https://blog.ibolee.com/unforgettable-mysql-1/</guid>
     <description><![CDATA[这里是mysql例题导入代码 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56]]></description>
 </item><item>
-    <title>python学习笔记</title>
-    <link>https://blog.ibolee.com/migrate-from-jekyll/</link>
-    <pubDate>Mon, 10 Mar 2014 00:00:00 &#43;0000</pubDate>
-    <author>作者</author>
-    <guid>https://blog.ibolee.com/migrate-from-jekyll/</guid>
-    <description><![CDATA[python基础 如果python字符串内部既包含&rsquo;又包含&quot;怎么办？ 1 2 写法:&#39;I\&#39;m \&#34;OK\&#34;!&#39; #可以用转义字]]></description>
-</item><item>
     <title>Power Pivot Tips</title>
     <link>https://blog.ibolee.com/power-pivot-tips/</link>
     <pubDate>Fri, 11 Sep 2020 13:33:09 &#43;0800</pubDate>
@@ -51,12 +51,19 @@
     <guid>https://blog.ibolee.com/financial-terms/</guid>
     <description><![CDATA[什么是经营分析?（management analysis） 通常的解释，经营分析是利用会计核算、统计核算、业务以及其他方面提供的数据信息，采用一]]></description>
 </item><item>
+    <title>Power bi dax calculate学习记录</title>
+    <link>https://blog.ibolee.com/calculate/</link>
+    <pubDate>Wed, 11 Mar 2020 09:19:36 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://blog.ibolee.com/calculate/</guid>
+    <description><![CDATA[###calculate函数 Calculate:= Calculate（表达式（度量值）筛选条件1.筛选条件N） 未完待续~!]]></description>
+</item><item>
     <title>Power Querry操作小技巧</title>
     <link>https://blog.ibolee.com/power-querry-tips/</link>
     <pubDate>Tue, 11 Feb 2020 09:19:36 &#43;0800</pubDate>
     <author>作者</author>
     <guid>https://blog.ibolee.com/power-querry-tips/</guid>
-    <description><![CDATA[设置中打开power query编辑栏; 解决方法: power query不要自动添加&quot;更改数据类型&rdquo; 如果添加了自动更改数据类型,在]]></description>
+    <description><![CDATA[powerbi中设置中打开power query编辑栏的俩个方法; 解决方法: power query中设置将第一行提升标题会有附带数据类型修改,设置不要自]]></description>
 </item><item>
     <title>一维数组和二维数组的区别</title>
     <link>https://blog.ibolee.com/1array-2array/</link>
@@ -65,18 +72,11 @@
     <guid>https://blog.ibolee.com/1array-2array/</guid>
     <description><![CDATA[一维表和二维表的区别? 一维表更适合进行数据透视,二维表更适合呈现表内细项问题.]]></description>
 </item><item>
-    <title>power-bi的一切小技巧</title>
+    <title>power-bi的一些小技巧</title>
     <link>https://blog.ibolee.com/powerbi-tips/</link>
     <pubDate>Tue, 10 Sep 2019 09:28:39 &#43;0800</pubDate>
     <author>作者</author>
     <guid>https://blog.ibolee.com/powerbi-tips/</guid>
     <description><![CDATA[###power bi常用度量值函数 ###power bi图表展示类型 ###power bi常用分析方法]]></description>
-</item><item>
-    <title>Power bi导入数据出现:microsoft.ACE.oledb.12.0无法连接解决办法</title>
-    <link>https://blog.ibolee.com/power-bi-access-database-engine/</link>
-    <pubDate>Mon, 02 Sep 2019 14:06:43 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://blog.ibolee.com/power-bi-access-database-engine/</guid>
-    <description><![CDATA[###问题描述: 用powerbi的powerquery导入数据的时候出现下图: 本错误是由于你使用了ACCESS2007版本建立的数据库,但服]]></description>
 </item></channel>
 </rss>

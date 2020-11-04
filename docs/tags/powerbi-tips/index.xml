@@ -4,15 +4,22 @@
         <link>https://blog.ibolee.com/tags/powerbi-tips/</link>
         <description>powerbi tips - 标签 - 黑李白的博客</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>ibolee@live.com (ibolee)</managingEditor>
-            <webMaster>ibolee@live.com (ibolee)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 11 Feb 2020 09:19:36 &#43;0800</lastBuildDate><atom:link href="https://blog.ibolee.com/tags/powerbi-tips/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>ibolee@live.com (ibolee)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 11 Mar 2020 09:19:36 &#43;0800</lastBuildDate><atom:link href="https://blog.ibolee.com/tags/powerbi-tips/" rel="self" type="application/rss+xml" /><item>
+    <title>Power bi dax calculate学习记录</title>
+    <link>https://blog.ibolee.com/calculate/</link>
+    <pubDate>Wed, 11 Mar 2020 09:19:36 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://blog.ibolee.com/calculate/</guid>
+    <description><![CDATA[###calculate函数 Calculate:= Calculate（表达式（度量值）筛选条件1.筛选条件N） 未完待续~!]]></description>
+</item><item>
     <title>Power Querry操作小技巧</title>
     <link>https://blog.ibolee.com/power-querry-tips/</link>
     <pubDate>Tue, 11 Feb 2020 09:19:36 &#43;0800</pubDate>
     <author>作者</author>
     <guid>https://blog.ibolee.com/power-querry-tips/</guid>
-    <description><![CDATA[设置中打开power query编辑栏; 解决方法: power query不要自动添加&quot;更改数据类型&rdquo; 如果添加了自动更改数据类型,在]]></description>
+    <description><![CDATA[powerbi中设置中打开power query编辑栏的俩个方法; 解决方法: power query中设置将第一行提升标题会有附带数据类型修改,设置不要自]]></description>
 </item><item>
-    <title>power-bi的一切小技巧</title>
+    <title>power-bi的一些小技巧</title>
     <link>https://blog.ibolee.com/powerbi-tips/</link>
     <pubDate>Tue, 10 Sep 2019 09:28:39 &#43;0800</pubDate>
     <author>作者</author>

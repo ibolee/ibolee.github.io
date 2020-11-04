@@ -1,5 +1,5 @@
 ---
-date: 2014-03-10
+date: 2018-03-10
 linktitle: python1
 title: python学习笔记
 weight: 10

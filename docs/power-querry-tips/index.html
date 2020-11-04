@@ -6,21 +6,21 @@
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
         <title>Power Querry操作小技巧 - 黑李白的博客</title><meta name="Description" content="黑李白，互联网从业者，来自内蒙古巴彦淖尔。"><meta property="og:title" content="Power Querry操作小技巧" />
-<meta property="og:description" content="设置中打开power query编辑栏; 解决方法: power query不要自动添加&quot;更改数据类型&rdquo; 如果添加了自动更改数据类型,在" />
+<meta property="og:description" content="powerbi中设置中打开power query编辑栏的俩个方法; 解决方法: power query中设置将第一行提升标题会有附带数据类型修改,设置不要自" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.ibolee.com/power-querry-tips/" />
 <meta property="og:image" content="https://img.ibolee.com/git_blog/2020-heilibai-512x512.png"/>
 <meta property="article:published_time" content="2020-02-11T09:19:36+08:00" />
-<meta property="article:modified_time" content="2020-09-11T13:58:36+08:00" />
+<meta property="article:modified_time" content="2020-09-29T21:07:12+08:00" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://img.ibolee.com/git_blog/2020-heilibai-512x512.png"/>
 
 <meta name="twitter:title" content="Power Querry操作小技巧"/>
-<meta name="twitter:description" content="设置中打开power query编辑栏; 解决方法: power query不要自动添加&quot;更改数据类型&rdquo; 如果添加了自动更改数据类型,在"/>
+<meta name="twitter:description" content="powerbi中设置中打开power query编辑栏的俩个方法; 解决方法: power query中设置将第一行提升标题会有附带数据类型修改,设置不要自"/>
 <meta name="application-name" content="LoveIt">
 <meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.ibolee.com/power-querry-tips/" /><link rel="prev" href="https://blog.ibolee.com/1array-2array/" /><link rel="next" href="https://blog.ibolee.com/financial-terms/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.ibolee.com/power-querry-tips/" /><link rel="prev" href="https://blog.ibolee.com/1array-2array/" /><link rel="next" href="https://blog.ibolee.com/calculate/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -34,8 +34,8 @@
                             "url": "https:\/\/blog.ibolee.com\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "PowerBi, powerbi tips","wordcount":  1263 ,
-        "url": "https:\/\/blog.ibolee.com\/power-querry-tips\/","datePublished": "2020-02-11T09:19:36+08:00","dateModified": "2020-09-11T13:58:36+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+                        }],"genre": "posts","keywords": "PowerBi, powerbi tips","wordcount":  1299 ,
+        "url": "https:\/\/blog.ibolee.com\/power-querry-tips\/","datePublished": "2020-02-11T09:19:36+08:00","dateModified": "2020-09-29T21:07:12+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
                     "@type": "ImageObject",
@@ -116,7 +116,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Power Querry操作小技巧</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>ibolee</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E6%95%B0%E6%8D%AE/"><i class="far fa-folder fa-fw"></i>数据</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-02-11">2020-02-11</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1263 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-02-11">2020-02-11</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1299 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -125,7 +125,7 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
             </div><div class="content" id="content"><ol>
-<li>设置中打开power query编辑栏;</li>
+<li>powerbi中设置中打开power query编辑栏的俩个方法;</li>
 </ol>
 <p>解决方法:</p>
 <p><img
@@ -145,8 +145,7 @@
         alt="https://img.ibolee.com/git_blog/pqtips1.png"
         title="在选项卡设置中设置" /></p>
 <ol start="2">
-<li>power query不要自动添加&quot;更改数据类型&rdquo;
-如果添加了自动更改数据类型,在pq原表中如果删了数据列,pq会报错:expresssion:error找不到表的&quot;&ldquo;列;</li>
+<li>power query中设置将第一行提升标题会有附带数据类型修改,设置不要自动添加&quot;更改数据类型&quot;如果添加了自动更改数据类型,在pq原表中如果删了数据列,pq会报错:expresssion:error找不到表的&quot;&ldquo;列;</li>
 </ol>
 <p>解决方法:</p>
 <p>设置&mdash;-选项和设置&mdash;-选项&mdash;-类型加载&mdash;-自动检测未结构化源的列类型和标题(去掉对勾)
@@ -288,8 +287,8 @@ a721-章5-class20
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2020-09-11&nbsp;<a class="git-hash" href="https://github.com/dillonzq/LoveIt/commit/4db5820f4a2d553b3c3eb45ed85b05decab0cabd" target="_blank" title="commit by ibolee(ibolee@qq.com) 4db5820f4a2d553b3c3eb45ed85b05decab0cabd: 20200911">
-                                    <i class="fas fa-hashtag fa-fw"></i>4db5820</a></span>
+                <span>更新于 2020-09-29&nbsp;<a class="git-hash" href="https://github.com/dillonzq/LoveIt/commit/5a88ba4b67805a9a021743f542559d29ea1bd03a" target="_blank" title="commit by ibolee(ibolee@qq.com) 5a88ba4b67805a9a021743f542559d29ea1bd03a: 20200929">
+                                    <i class="fas fa-hashtag fa-fw"></i>5a88ba4</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -304,14 +303,14 @@ a721-章5-class20
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/powerbi/">PowerBi</a>,&nbsp;<a href="/tags/powerbi-tips/">powerbi tips</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/powerbi/">powerbi</a>,&nbsp;<a href="/tags/powerbi-tips/">powerbi tips</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
         </section>
     </div>
 
     <div class="post-nav"><a href="/1array-2array/" class="prev" rel="prev" title="一维数组和二维数组的区别"><i class="fas fa-angle-left fa-fw"></i>一维数组和二维数组的区别</a>
-            <a href="/financial-terms/" class="next" rel="next" title="经营分析常用术语">经营分析常用术语<i class="fas fa-angle-right fa-fw"></i></a></div>
+            <a href="/calculate/" class="next" rel="next" title="Power bi dax calculate学习记录">Power bi dax calculate学习记录<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">
